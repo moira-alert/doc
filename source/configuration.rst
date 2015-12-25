@@ -7,5 +7,5 @@ By default, microservices will look for ``/etc/moira/config.yml``, but you can c
 in systemd configuration files (pass your path as a command-line parameter) and in
 ``worker/bin/config.py``.
 
-.. literalinclude:: config.example.yml
+.. literalinclude:: ../config.example.yml
    :language: yaml
