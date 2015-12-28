@@ -27,9 +27,12 @@ not so directory-tree-dependent, so you can just check out all of Moira into you
 
    yum install golang
    export GOPATH=/opt/go
-   mkdir -p /opt/go/src/github.com/skbkontur
-   cd /opt/go/src/github.com/skbkontur
-   git clone https://github.com/skbkontur/moira.git
+   mkdir -p /opt/go/src/github.com/moira-alert
+   cd /opt/go/src/github.com/moira-alert
+   git clone https://github.com/moira-alert/web.git
+   git clone https://github.com/moira-alert/cache.git
+   git clone https://github.com/moira-alert/notifier.git
+   git clone https://github.com/moira-alert/worker.git
 
 
 Copy configuration file
@@ -69,7 +72,7 @@ Build it from source.
 
 .. code-block:: bash
 
-   cd /opt/go/src/github.com/skbkontur/moira/cache
+   cd /opt/go/src/github.com/moira-alert/cache
    go get
 
 .. note:: Check that executable file **/opt/go/bin/cache** is created
@@ -121,7 +124,7 @@ Checker
 .. code-block:: bash
 
    yum install make gcc python-devel python-pip
-   cd /opt/go/src/github.com/skbkontur/moira/worker
+   cd /opt/go/src/github.com/moira-alert/worker
    pip install -r requirements.txt
 
 Create systemd service configuration at ``/etc/systemd/system/moira-checker.service``.
@@ -132,8 +135,8 @@ Create systemd service configuration at ``/etc/systemd/system/moira-checker.serv
    Description=moira-checker - graphite metric checker service based on twisted python framework
 
    [Service]
-   ExecStart=/usr/bin/twistd --nodaemon --python /opt/go/src/github.com/skbkontur/moira/worker/bin/checker/server.py --pidfile=  --logger moira.checker -r epoll
-   WorkingDirectory=/opt/go/src/github.com/skbkontur/moira/worker/bin/
+   ExecStart=/usr/bin/twistd --nodaemon --python /opt/go/src/github.com/moira-alert/worker/bin/checker/server.py --pidfile=  --logger moira.checker -r epoll
+   WorkingDirectory=/opt/go/src/github.com/moira-alert/worker/bin/
    User=moira
    Group=moira
    Restart=always
@@ -161,8 +164,8 @@ Create systemd service configuration at ``/etc/systemd/system/moira-api.service`
    Description=moira-api - REST-API service over http based on twisted python framework
 
    [Service]
-   ExecStart=/usr/bin/twistd --nodaemon --python /opt/go/src/github.com/skbkontur/moira/worker/bin/api/server.py --pidfile=  --logger moira.api -r epoll
-   WorkingDirectory=/opt/go/src/github.com/skbkontur/moira/worker/bin/
+   ExecStart=/usr/bin/twistd --nodaemon --python /opt/go/src/github.com/moira-alert/worker/bin/api/server.py --pidfile=  --logger moira.api -r epoll
+   WorkingDirectory=/opt/go/src/github.com/moira-alert/worker/bin/
    User=moira
    Group=moira
    Restart=always
@@ -186,7 +189,7 @@ Build it from source.
 
 .. code-block:: bash
 
-   cd /opt/go/src/github.com/skbkontur/moira/notifier/notifier
+   cd /opt/go/src/github.com/moira-alert/notifier/notifier
    go get
 
 .. note:: Check that executable file **/opt/go/bin/notifier** is created
@@ -226,7 +229,7 @@ User interface is a static web application. In order to build it, you'll need No
 
 .. code-block:: bash
 
-   cd /opt/go/src/github.com/skbkontur/moira/web
+   cd /opt/go/src/github.com/moira-alert/web
    npm run build
    mkdir /var/local/www/moira
    cp -r dist /var/local/www/moira/
