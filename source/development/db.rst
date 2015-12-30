@@ -1,5 +1,5 @@
 Redis data layer
 ================
 
-.. automodule:: db
+.. automodule:: moira.db
     :members:

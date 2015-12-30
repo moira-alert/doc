@@ -6,3 +6,4 @@ pyenchant
 recommonmark
 txredisapi
 anyjson
+git+https://github.com/moira-alert/worker#egg=moira
