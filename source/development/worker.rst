@@ -18,19 +18,19 @@ Run API.
 
 .. code-block:: bash
 
-   cd worker/bin/api
-   twistd -y server.py -n
+   cd moira-alert/worker
+   twistd -y moira/api/server.py -n
 
 Run Checker.
 
 .. code-block:: bash
 
-   cd worker/bin
-   twistd -y checker/server.py -n
+   cd moira-alert/worker
+   twistd -y moira/checker/server.py -n
 
 Run tests.
 
 .. code-block:: bash
 
-   cd worker/tests
+   cd moira-alert/worker/tests
    trial functional

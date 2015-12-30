@@ -135,8 +135,8 @@ Create systemd service configuration at ``/etc/systemd/system/moira-checker.serv
    Description=moira-checker - graphite metric checker service based on twisted python framework
 
    [Service]
-   ExecStart=/usr/bin/twistd --nodaemon --python /opt/go/src/github.com/moira-alert/worker/bin/checker/server.py --pidfile=  --logger moira.checker -r epoll
-   WorkingDirectory=/opt/go/src/github.com/moira-alert/worker/bin/
+   ExecStart=/usr/bin/twistd --nodaemon --python /opt/go/src/github.com/moira-alert/worker/moira/checker/server.py --pidfile=  --logger moira.logs.checker -r epoll
+   WorkingDirectory=/opt/go/src/github.com/moira-alert/worker/
    User=moira
    Group=moira
    Restart=always
@@ -164,8 +164,8 @@ Create systemd service configuration at ``/etc/systemd/system/moira-api.service`
    Description=moira-api - REST-API service over http based on twisted python framework
 
    [Service]
-   ExecStart=/usr/bin/twistd --nodaemon --python /opt/go/src/github.com/moira-alert/worker/bin/api/server.py --pidfile=  --logger moira.api -r epoll
-   WorkingDirectory=/opt/go/src/github.com/moira-alert/worker/bin/
+   ExecStart=/usr/bin/twistd --nodaemon --python /opt/go/src/github.com/moira-alert/worker/moira/api/server.py --pidfile=  --logger moira.logs.api -r epoll
+   WorkingDirectory=/opt/go/src/github.com/moira-alert/worker/
    User=moira
    Group=moira
    Restart=always
