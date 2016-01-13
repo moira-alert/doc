@@ -124,8 +124,7 @@ Checker
 .. code-block:: bash
 
    yum install make gcc python-devel python-pip
-   cd /opt/go/src/github.com/moira-alert/worker
-   pip install -r requirements.txt
+   pip install git+https://github.com/moira-alert/worker.git
 
 Create systemd service configuration at ``/etc/systemd/system/moira-checker.service``.
 
@@ -135,8 +134,7 @@ Create systemd service configuration at ``/etc/systemd/system/moira-checker.serv
    Description=moira-checker - graphite metric checker service based on twisted python framework
 
    [Service]
-   ExecStart=/usr/bin/twistd --nodaemon --python /opt/go/src/github.com/moira-alert/worker/moira/checker/server.py --pidfile=  --logger moira.logs.checker -r epoll
-   WorkingDirectory=/opt/go/src/github.com/moira-alert/worker/
+   ExecStart=/usr/bin/moira-checker -l /var/log/moira/worker
    User=moira
    Group=moira
    Restart=always
@@ -164,8 +162,7 @@ Create systemd service configuration at ``/etc/systemd/system/moira-api.service`
    Description=moira-api - REST-API service over http based on twisted python framework
 
    [Service]
-   ExecStart=/usr/bin/twistd --nodaemon --python /opt/go/src/github.com/moira-alert/worker/moira/api/server.py --pidfile=  --logger moira.logs.api -r epoll
-   WorkingDirectory=/opt/go/src/github.com/moira-alert/worker/
+   ExecStart=/usr/bin/moira-api -l /var/log/moira/worker
    User=moira
    Group=moira
    Restart=always

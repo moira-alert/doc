@@ -8,25 +8,22 @@ for Graphite function evaluation.
 
 .. note:: Run ``redis-server`` before you run these microservices.
 
-Install dependencies.
+Install .
 
 .. code-block:: bash
 
-   pip install -r requirements.txt
+   python setup.py install
 
 Run API.
 
 .. code-block:: bash
-
-   cd moira-alert/worker
-   twistd -y moira/api/server.py -n
+   moira-api
 
 Run Checker.
 
 .. code-block:: bash
 
-   cd moira-alert/worker
-   twistd -y moira/checker/server.py -n
+   moira-checker
 
 Run tests.
 
