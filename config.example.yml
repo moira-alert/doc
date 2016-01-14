@@ -46,7 +46,16 @@ notifier:
       api_token: # place your token here
     - type: script
       name: MyCustomScript
-      exec: /bin/bash /opt/myscripts/gsm-modem.sh 
+      exec: /bin/bash /opt/myscripts/gsm-modem.sh
+    - type: twilio sms
+      api_sid: # place your api sid
+      api_secret: # place your api secret
+      api_fromphone: # place phone
+    - type: twilio voice
+      api_sid: # place your api sid
+      api_secret: # place your api secret
+      api_fromphone: # place phone
+      
 
 cache:
   log_file: /var/log/moira/cache/cache.log
