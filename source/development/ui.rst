@@ -26,17 +26,3 @@ Run tests.
 .. code-block:: bash
 
    karma start
-
-By default, test output is in Teamcity-compatible format. Edit ``karma.conf.js`` to remove Teamcity
-log output and code coverage reports.
-
-.. code-block:: js
-
-   //webpackConfig.module['postLoaders'] = [{
-   //  test: /\.ts$/,
-   //  exclude: /tests/,
-   //  loader: 'istanbul-instrumenter'
-   //}];
-   ...
-   //reporters: ['progress', 'coverage', 'teamcity'],
-   reporters: ['progress'],
