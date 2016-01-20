@@ -17,6 +17,7 @@ Install .
 Run API.
 
 .. code-block:: bash
+
    moira-api
 
 Run Checker.
