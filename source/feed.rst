@@ -5,7 +5,7 @@ Send metrics to cache
 
 This is an important and non-obvious part. Default Graphite relay does not support duplicating
 metric stream to several backends, which is how Moira works. Good news is that you probably already
-use a different relay that supports duplication, because default relay is very slow.
+use a different relay that supports duplication, because the default relay is very slow.
 
 Here is an example of carbon-c-relay_ configuration for Moira.
 

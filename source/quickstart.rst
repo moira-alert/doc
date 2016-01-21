@@ -33,7 +33,7 @@ https://github.com/moira-alert/web/releases/latest
 Configuration
 ^^^^^^^^^^^^^
 
-1. Place configuration file to default location /etc/moira/config.yml
+1. Place configuration file to the default location /etc/moira/config.yml
 
 You can dive into :doc:`/configuration` syntax on a separate page.
 
@@ -58,7 +58,7 @@ Run
 ^^^
 
 1. Run nginx and redis-server
-2. Run cache 
+2. Run cache
 
 .. code-block:: bash
 
@@ -67,19 +67,19 @@ Run
 3. Run notifier
 
 .. code-block:: bash
-    
+
    $GOPATH/bin/notifier --config=/etc/moira/config.yml
 
-4. Run API 
+4. Run API
 
 .. code-block:: bash
 
    moira-api
 
-5. Run checker 
+5. Run checker
 
 .. code-block:: bash
 
    moira-checker
 
-Now you need :doc:`/feed` on port 2003 and creating alerts in UI.
+Now you need to :doc:`/feed` on port 2003 and to create alerts in UI.

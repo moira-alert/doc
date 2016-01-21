@@ -7,93 +7,124 @@ Architecture
 
     <style> .moira-state { padding: 5px; padding-left: 13px; padding-right: 13px; border-radius: 1pc; display: inline-block; color: white} </style>
 
+
+
 Terminology
 -----------
-
-Trigger
-^^^^^^^
-
-Check description, consists of the following parts:
-
-- name
-- one or more targets
-- warn, error value limits or expression to calculate state
-- one or more tags
-- ttl limit, after wich trigger will turn into NODATA state
-- check schedule
-
-State
-^^^^^
-
-Each metric can be only in one state at some time moment:
-
-.. raw:: html
-
-   <span style="background-color: #00bfa5" class="moira-state">OK</span>
-   
-   <span style="background-color: #ffc107" class="moira-state">WARN</span>
-   
-   <span style="background-color: #ff5722" class="moira-state">ERROR</span>
-   
-   <span style="background-color: #9e9e9e" class="moira-state">NODATA</span>
-
-Target
-^^^^^^
-
-Graphite target_, contains metric patterns and functions
-
-For example:
-
-.. code-block:: text 
-   
-   averageSeries(server.web*.load)
 
 Pattern
 ^^^^^^^
 
-Raw graphite metric or it mask according multiple graphite metrics
+A Graphite pattern is a single dot-separated metric name, possibly containing one or more wildcards.
 
-For example, this is pattern from previous example:
+Examples:
 
 .. code-block:: text
 
    server.web*.load
-   
+   server.web{1,2,3}.load
+   server.web1.load
+
+
+Target
+^^^^^^
+
+A Graphite target_ is one or more patterns, possibly combined using Graphite functions.
+
+Examples:
+
+.. code-block:: text
+
+   averageSeries(server.web*.load)
+
+
+Metric
+^^^^^^
+
+A metric is a single time-series that is a result of parsing some Graphite target.
+
+Some targets produce a single metric, for example:
+
+.. code-block:: text
+
+   server.web1.load
+   highestCurrent(server.web*.load)
+
+Some targets produce several metrics, for example:
+
+.. code-block:: text
+
+   movingAverage(server.web*.load, 10)
+
+
+State
+^^^^^
+
+Moira stores separate state for every metric. Each metric can be in only one state at any moment:
+
+.. raw:: html
+
+   <span style="background-color: #00bfa5" class="moira-state">OK</span>
+
+   <span style="background-color: #ffc107" class="moira-state">WARN</span>
+
+   <span style="background-color: #ff5722" class="moira-state">ERROR</span>
+
+   <span style="background-color: #9e9e9e" class="moira-state">NODATA</span>
+
+
+Trigger
+^^^^^^^
+
+Trigger is a configuration that tells Moira which metrics to watch for. Triggers consist of:
+
+- Name. This is just for convenience, user can enter anything here.
+- One or more targets.
+- WARN and ERROR value limits, or a Python expression to calculate state.
+- One or more tags.
+- TTL value. Metrics switch to NODATA state when new data doesn't arrive for TTL seconds.
+- Check schedule. For example, a trigger can be set to check only during business hours.
+
+
 Last check
 ^^^^^^^^^^
 
-Information about last trigger checking for each target:
+When Moira checks a trigger, it stores the following information on each metric:
 
-- checked value
-- timestamp
-- state
+- Current value.
+- Current timestamp.
+- Current state.
+
 
 Trigger event
 ^^^^^^^^^^^^^
 
-Created if any of trigger metrics state changed
+When Moira checks a trigger, if any of the metric states change, Moira generates an event. Events consist of:
 
-Contains:
+- Trigger ID.
+- Metric name (as given by parsed target).
+- New state.
+- Previous state.
+- Current timestamp.
 
-- trigger id
-- metric name (given by target)
-- new state
-- previous state
-- timestamp
 
 Tags
 ^^^^
 
-Strings markers for grouping triggers and selection them in subscriptions.
+Tags are simple string markers for grouping of triggers and configuring subscriptions.
+
 
 Subscription
 ^^^^^^^^^^^^
 
-Contains:
- 
-- set of tags
-- contacts to send notifications
-- schedule
+Moira generates notifications for an event only if trigger tags match any of the user-created subscriptions.
+Each subscription consists of:
+
+- One or more tags.
+- Contact information.
+- Quiet time schedule.
+
+
 
 Dataflow
 --------
@@ -105,18 +136,13 @@ Save and filter incoming metrics
    :alt: cache
    :width: 50%
 
-When user adds a new trigger, metrics patterns are parsed from trigger targets and saved in redis moira-pattern-list.
+When user adds a new trigger, Moira parses patterns from targets and saves them to ``moira-pattern-list`` key in Redis. Cache rereads this list every second.
+When a metric value arrives, Cache checks metric name against the list of patterns. Matching metrics are saved to ``moira-metric:<metricname>`` keys in Redis.
+Redis pub/sub mechanism is used to inform Checker-master of incoming metric value that should be checked as soon as possible.
 
-Cache refreshes this list every one second.
+Checker-master reads triggers by pattern from ``moira-pattern-triggers:<pattern>`` key in Redis and adds triggers to check set at ``moira-triggers-tocheck`` Redis key.
+In case of no incoming data, all triggers are added to check once per ``nodata_check_interval`` setting.
 
-Matched pattern metrics are saved in redis moira-metric:<metricname> set.
-
-Redis pub/sub used to inform checker-master, that incoming metric should be checked as soon as possible.
-
-Checker-master read triggers by pattern from redis moira-pattern-triggers:<pattern> list and adds triggers to check set
-moira-triggers-tocheck.
-
-In case of no data for metrics, all triggers add to check once per nodata_check_interval setting.
 
 Check triggers
 ^^^^^^^^^^^^^^
@@ -124,14 +150,13 @@ Check triggers
 .. image:: ../_static/dfd-checker.svg
    :alt: checker
    :width: 50%
-   
-Checker-worker constantly reads redis moira-triggers-tocheck set and calculates trigger targets values.
 
-Target can contain one or multiple metrics, so results are written as per metrics, which name resolved by target.
+Checker-worker constantly reads ``moira-triggers-tocheck`` key in Redis and calculates trigger targets values. Target can contain one or multiple metrics, so results are written per metric.
 
-Redis moira-metric-last-check:<trigger_id> contain last check json with metrics states.
+``moira-metric-last-check:<trigger_id>`` Redis key contains last check JSON with metric states.
 
-In case some metric has changed its state, new event written to moira-trigger-events list if value timestamp is allowed by trigger schedule.
+When a metric changes its state, a new event is written to ``moira-trigger-events`` Redis key. This happens only if value timestamp falls inside time period allowed by trigger schedule.
+
 
 Process trigger events
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -140,18 +165,19 @@ Process trigger events
    :alt: checker
    :width: 30%
 
-Part of notifier constantly pull new events from moira-trigger-events and schedule notifications according to subscription schedule and throttling rules.
+Notifier constantly pulls new events from ``moira-trigger-events`` Redis key and schedules notifications according to subscription schedule and throttling rules.
+If and only if a trigger contains *all* of the tags in a subscription, a notification is created for this subscription.
 
-Trigger set of tags must include subscription set of tags to process subscription for trigger.
+Subscription schedule delays notifications of occurred event to the beginning of next allowed time interval.
+Note that this is different from trigger schedule, which suppresses event generation entirely.
 
-Subscription schedule delays notifications of occurred event to beginning of next allowed time interval. This distinct trigger schedule, when trigger event not generated.
+Throttling rules will delay notifications:
 
-Throttling rules will delay notifications: 
+- If there are more than 10 events per hour, a notification will be sent at most once per 30 minutes.
+- If there are more than 20 events per 3 hours, a notification will be sent at most once per hour.
 
-- for 30 min in case events generated more than 10 count during last hour
-- for 1 hour in case events generated more than 20 count  during last 3 hours
+Scheduled notifications are written to ``moira-notifier-notifications`` Redis key.
 
-Scheduled notifications are written to moira-notifier-notifications set
 
 Process notifications
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -160,6 +186,5 @@ Process notifications
    :alt: checker
    :width: 50%
 
-Part of notifier constantly pull schedled noficications from moira-notifier-notifications set.
-
-It calls sender for certain contact type and writes notification back to redis in case of send error.
+Notifier constantly pulls scheduled notifications from ``moira-notifier-notifications`` Redis key.
+It calls sender for certain contact type and writes notification back to Redis in case of sender error.
