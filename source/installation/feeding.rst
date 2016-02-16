@@ -1,5 +1,5 @@
-Send metrics to cache
-=====================
+Feeding metrics to Moira
+========================
 
 .. _carbon-c-relay: https://github.com/grobian/carbon-c-relay
 

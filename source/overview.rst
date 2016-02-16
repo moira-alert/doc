@@ -96,11 +96,8 @@ welcome to replace or to add new ones.
 .. image:: _static/triggers.png
    :alt: ui screenshot
 
-(see more :doc:`/ui`)
-
 
 All services communicate only through a Redis database, without any additional protocols or
 connections between each other.
 
-.. image:: _static/components.png
-   :alt: microservices
+.. blockdiag:: _diagrams/components.diag

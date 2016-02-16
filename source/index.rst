@@ -8,11 +8,8 @@ Contents
    :maxdepth: 2
 
    overview
-   quickstart
-   configuration
-   ui
-   security
+   installation/index
+   user_guide/index
    development/index
-   feed
 
 .. include:: overview.rst

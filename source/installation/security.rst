@@ -5,7 +5,7 @@ Typically, internal DevOps tools like Graphite are deployed in intranet without 
 so you can skip authentication and leave everything accessible to everyone. But powerful Moira
 features, like separate subscriptions for tags, work best when you have some way to tell apart users.
 
-Moira doesn't provide any authentication mechanism. It is hard to find one that fits all users.
+Moira doesn't provide any authentication mechanism. It is hard to find one that fits all situations.
 Instead, Moira accepts ``X-WebAuth-User`` header with some user id, like login name. You are free to
 set up any reverse proxy and configure it to provide this header.
 

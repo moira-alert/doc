@@ -1,5 +1,5 @@
-Quickstart
-============
+Manual installation
+===================
 
 .. _golang: https://golang.org/doc/install
 .. _redis: http://redis.io/download
@@ -33,11 +33,11 @@ https://github.com/moira-alert/web/releases/latest
 Configuration
 ^^^^^^^^^^^^^
 
-1. Place configuration file to the default location /etc/moira/config.yml
+1. Place configuration file to the default location, ``/etc/moira/config.yml``
 
-You can dive into :doc:`/configuration` syntax on a separate page.
+You can dive into :doc:`/installation/configuration` syntax on a separate page.
 
-2. Place nginx configuration file to /etc/nginx/conf.d/moira.conf
+2. Place nginx configuration file to ``/etc/nginx/conf.d/moira.conf``
 
 .. code-block:: text
 
@@ -52,7 +52,7 @@ You can dive into :doc:`/configuration` syntax on a separate page.
         }
     }
 
-3. Place UI config.json_ file to /var/local/www/moira/config.json
+3. Place UI config.json_ file to ``/var/local/www/moira/config.json``
 
 Run
 ^^^
@@ -82,4 +82,4 @@ Run
 
    moira-checker
 
-Now you need to :doc:`/feed` on port 2003 and to create alerts in UI.
+Now you need to feed your metrics to Moira (see :doc:`/installation/feeding`) on port 2003 and to create alerts in UI (see :doc:`/user_guide/index`).

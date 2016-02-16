@@ -32,8 +32,11 @@ from recommonmark.parser import CommonMarkParser
 # ones.
 
 extensions = [
-    'sphinx.ext.autodoc', 'sphinxcontrib.httpdomain', 'sphinxcontrib.spelling'
+    'sphinx.ext.autodoc', 'sphinxcontrib.httpdomain', 'sphinxcontrib.spelling', 'sphinxcontrib.blockdiag'
 ]
+
+blockdiag_fontpath = 'PTM55F.ttf'
+blockdiag_antialias = True
 
 autodoc_docstring_signature = True
 
@@ -57,7 +60,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Moira'
-copyright = u'2015, SKB Kontur'
+copyright = u'2016, SKB Kontur'
 author = u'SKB Kontur'
 
 # The version info for the project you're documenting, acts as replacement for

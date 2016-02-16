@@ -1,0 +1,21 @@
+blockdiag {
+  node_width = 200;
+  node_height = 100;
+
+  default_fontsize = 20;
+  default_node_color = "#2D85EF";
+  default_textcolor = white;
+  default_shape = roundedbox;
+
+  orientation = portrait;
+
+  incoming [shape = beginpoint, label = "metrics", textcolor = black, fontsize = 17];
+  Redis [shape = flowchart.database];
+
+  incoming -> Cache [folded];
+  Cache <-> Redis;
+  Checker <-> Redis;
+  UI <-> API;
+  API <-> Redis;
+  Notifier <-> Redis;
+}
