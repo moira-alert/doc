@@ -23,6 +23,8 @@ checker:
   check_interval: 5 # (in seconds)
   # metrics older than this age will be purged after use
   metrics_ttl: 3600 # (in seconds)
+  # if master is not receiving any metrics it stops nodata checks after that interval
+  stop_checking_interval: 30 # (in seconds)
 
 # Moira frontend uri, used to make links in notification templates
 front:
