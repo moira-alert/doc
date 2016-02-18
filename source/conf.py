@@ -32,11 +32,8 @@ from recommonmark.parser import CommonMarkParser
 # ones.
 
 extensions = [
-    'sphinx.ext.autodoc', 'sphinxcontrib.httpdomain', 'sphinxcontrib.spelling', 'sphinxcontrib.blockdiag'
+    'sphinx.ext.autodoc', 'sphinxcontrib.httpdomain', 'sphinxcontrib.spelling'
 ]
-
-blockdiag_fontpath = 'PTM55F.ttf'
-blockdiag_antialias = True
 
 autodoc_docstring_signature = True
 

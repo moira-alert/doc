@@ -100,4 +100,5 @@ welcome to replace or to add new ones.
 All services communicate only through a Redis database, without any additional protocols or
 connections between each other.
 
-.. blockdiag:: _diagrams/components.diag
+.. image:: _static/components.png
+   :alt: microservices
