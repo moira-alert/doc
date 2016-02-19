@@ -1,4 +1,4 @@
-Redis data layer
+Redis Data Layer
 ================
 
 .. automodule:: moira.db

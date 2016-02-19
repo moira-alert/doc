@@ -1,4 +1,4 @@
-UI application
+UI Application
 ==============
 
 .. _TypeScript: http://www.typescriptlang.org

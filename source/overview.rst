@@ -6,7 +6,7 @@ Overview
 Moira is a real-time alerting tool, based on Graphite_ data.
 
 
-Key features
+Key Features
 ^^^^^^^^^^^^
 
 .. _Seyren: https://github.com/scobal/seyren

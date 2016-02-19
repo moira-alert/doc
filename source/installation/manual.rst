@@ -1,4 +1,4 @@
-Manual installation
+Manual Installation
 ===================
 
 .. _golang: https://golang.org/doc/install
@@ -14,7 +14,7 @@ There are following components you need to install before running Moira microser
 3. python_ version 2.7
 4. web server e.g. nginx_
 
-Install Moira microservices
+Install Moira Microservices
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: bash
@@ -25,13 +25,13 @@ Install Moira microservices
    pip install git+https://github.com/moira-alert/worker.git
 
 
-Download web UI application
+Download Web UI Application
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 https://github.com/moira-alert/web/releases/latest
 
-Configuration
-^^^^^^^^^^^^^
+Configure
+^^^^^^^^^
 
 1. Place configuration file to the default location, ``/etc/moira/config.yml``
 

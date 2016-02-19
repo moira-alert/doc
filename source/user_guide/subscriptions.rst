@@ -1,4 +1,4 @@
-Setting up your subscriptions
+Setting Up Your Subscriptions
 =============================
 
 By now you should have at least one trigger saved. If you don't, go back to the :doc:`/user_guide/simple` page.

@@ -1,4 +1,4 @@
-Simple threshold trigger
+Simple Threshold Trigger
 ========================
 
 .. _documentation: http://graphite.readthedocs.org/en/latest/functions.html
@@ -14,7 +14,7 @@ You can easily accomplish this by adding a trigger in Moira's Simple Mode:
    :alt: simple trigger
 
 
-Graphite target
+Graphite Target
 ^^^^^^^^^^^^^^^
 
 You can specify a single metric like we did here: ``DevOps.my_server.hdd.freespace_mbytes``.

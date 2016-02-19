@@ -1,4 +1,4 @@
-Docker containers
+Docker Containers
 =================
 
 .. _Docker: https://github.com/warmfusion/moira-docker

@@ -1,4 +1,4 @@
-Moira documentation
+Moira Documentation
 ===================
 
 Contents
