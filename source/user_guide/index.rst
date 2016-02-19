@@ -10,4 +10,4 @@ and specific. Also, we have screenshots.
    simple
    subscriptions
    schedule
-   event_history
+   trigger_page
