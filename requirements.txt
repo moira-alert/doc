@@ -1,3 +1,4 @@
+PIL
 Sphinx
 sphinx-rtd-theme
 sphinxcontrib-httpdomain
