@@ -46,14 +46,17 @@ There are four ways to disable throttling for a specific trigger:
 
 .. image:: ../_static/maintenance.png
    :alt: maintenance mode
+   :scale: 100%
 
 3. Manually reset throttling for your trigger. This basically means that you've fixed the system and would like to
    resume operation normally. It won't help if your trigger is still spamming notifications:
 
 .. image:: ../_static/reset_throttling.png
    :alt: reset throttling
+   :scale: 100%
 
 4. Disable throttling entirely for a trigger. *This is not recommended*, unless you really know what you are doing:
 
 .. image:: ../_static/throttling.png
    :alt: disable throttling
+   :scale: 100%

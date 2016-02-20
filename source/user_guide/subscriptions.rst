@@ -7,6 +7,7 @@ First, add some contacts:
 
 .. image:: ../_static/contacts.png
    :alt: contacts settings
+   :scale: 100%
 
 If your Moira installation is configured with separate user accounts, you will see only your contacts
 and subscriptions on this page. Otherwise, every user will see the same "Anonymous settings" page with
@@ -18,6 +19,7 @@ Once you have at least one contact, you can create a subscription. Press +NOTIFI
 
 .. image:: ../_static/notifications.png
    :alt: notification settings
+   :scale: 100%
 
 
 Tags

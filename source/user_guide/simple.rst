@@ -12,6 +12,7 @@ You can easily accomplish this by adding a trigger in Moira's Simple Mode:
 
 .. image:: ../_static/simple.png
    :alt: simple trigger
+   :scale: 100%
 
 
 Graphite Target
@@ -46,6 +47,7 @@ Tags also help to filter information on main screen:
 
 .. image:: ../_static/main_screen.png
    :alt: main screen with filter
+   :scale: 100%
 
 You can add as many tags as you want.
 

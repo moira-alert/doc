@@ -11,6 +11,7 @@ Moira shows current state, current value and time of last event for every separa
 
 .. image:: ../_static/current_state.png
    :alt: contacts settings
+   :scale: 100%
 
 
 Total State
@@ -20,6 +21,7 @@ On this tab you can see total statistics for each separate metric.
 
 .. image:: ../_static/total_state.png
    :alt: contacts settings
+   :scale: 100%
 
 
 Event History
@@ -31,3 +33,4 @@ and does not represent metric value just before the event.
 
 .. image:: ../_static/event_history.png
    :alt: contacts settings
+   :scale: 100%
