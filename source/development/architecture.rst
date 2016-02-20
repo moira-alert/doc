@@ -134,7 +134,6 @@ Save and Filter Incoming Metrics
 
 .. image:: ../_static/dfd-cache.svg
    :alt: cache
-   :width: 50%
 
 When user adds a new trigger, Moira parses patterns from targets and saves them to ``moira-pattern-list`` key in Redis. Cache rereads this list every second.
 When a metric value arrives, Cache checks metric name against the list of patterns. Matching metrics are saved to ``moira-metric:<metricname>`` keys in Redis.
@@ -149,7 +148,6 @@ Check Triggers
 
 .. image:: ../_static/dfd-checker.svg
    :alt: checker
-   :width: 50%
 
 Checker-worker constantly reads ``moira-triggers-tocheck`` key in Redis and calculates trigger targets values. Target can contain one or multiple metrics, so results are written per metric.
 
@@ -163,7 +161,6 @@ Process Trigger Events
 
 .. image:: ../_static/dfd-notifier-events.svg
    :alt: checker
-   :width: 30%
 
 Notifier constantly pulls new events from ``moira-trigger-events`` Redis key and schedules notifications according to subscription schedule and throttling rules.
 If and only if a trigger contains *all* of the tags in a subscription, a notification is created for this subscription.
@@ -184,7 +181,6 @@ Process Notifications
 
 .. image:: ../_static/dfd-notifier-notifications.svg
    :alt: checker
-   :width: 50%
 
 Notifier constantly pulls scheduled notifications from ``moira-notifier-notifications`` Redis key.
 It calls sender for certain contact type and writes notification back to Redis in case of sender error.
