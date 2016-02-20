@@ -11,3 +11,4 @@ and specific. Also, we have screenshots.
    subscriptions
    schedule
    trigger_page
+   throttling
