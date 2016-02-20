@@ -19,7 +19,7 @@ Then, run Ginkgo_ tests.
    ginkgo
 
 Writing Your Own Notification Sender
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+------------------------------------
 
 First, look at built-in senders:
 

@@ -3,6 +3,7 @@ Sphinx
 sphinx-rtd-theme
 sphinxcontrib-httpdomain
 sphinxcontrib-spelling
+sphinxcontrib-images
 pyenchant
 recommonmark
 txredisapi

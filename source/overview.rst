@@ -7,7 +7,7 @@ Moira is a real-time alerting tool, based on Graphite_ data.
 
 
 Key Features
-^^^^^^^^^^^^
+------------
 
 .. _Seyren: https://github.com/scobal/seyren
 .. _Slack: https://slack.com
@@ -52,7 +52,7 @@ Key Features
 
 
 Limitations
-^^^^^^^^^^^
+-----------
 
 By default, Moira stores metric history for one hour. This ensures performance under heavy load.
 You can tweak this in config file, but note that performance will degrade.
@@ -63,39 +63,52 @@ You can also tweak this in config file.
 
 
 Microservices
-^^^^^^^^^^^^^
+-------------
 
 In spirit of Graphite architecture, Moira consists of several loosely coupled microservices. You are
 welcome to replace or to add new ones.
 
-* **Cache**
 
-  Cache is a lightweight Go application responsible for receiving lots of metric data in Graphite
-  format. Cache filters received data and saves only metrics that match any of user triggers. This
-  reduces load on all other parts of Moira.
+Cache
+^^^^^
 
-* **Checker**
+Cache is a lightweight Go application responsible for receiving lots of metric data in Graphite
+format. Cache filters received data and saves only metrics that match any of user triggers. This
+reduces load on all other parts of Moira.
 
-  Checker is a Python application with embedded Graphite functions. Checker watches for incoming
-  metric values and performs checks according to saved trigger settings. When state of any trigger
-  changes, Checker generates an event.
 
-* **Notifier**
+Checker
+^^^^^^^
 
-  Notifier is a Go application that watches for generated events. Notifier is responsible for
-  scheduling and sending notifications, observing quiet hours, retrying failed notifications, etc.
+Checker is a Python application with embedded Graphite functions. Checker watches for incoming
+metric values and performs checks according to saved trigger settings. When state of any trigger
+changes, Checker generates an event.
 
-* **API**
 
-  API is a Python application that serves as a backend for UI.
+Notifier
+^^^^^^^^
 
-* **UI**
+Notifier is a Go application that watches for generated events. Notifier is responsible for
+scheduling and sending notifications, observing quiet hours, retrying failed notifications, etc.
 
-  UI is a frontend Angular application, it looks like this:
+
+API
+^^^
+
+API is a Python application that serves as a backend for UI.
+
+
+UI
+^^
+
+UI is a frontend Angular application, it looks like this:
 
 .. image:: _static/triggers.png
    :alt: ui screenshot
 
+
+Database
+^^^^^^^^
 
 All services communicate only through a Redis database, without any additional protocols or
 connections between each other.

@@ -15,7 +15,7 @@ There are following components you need to install before running Moira microser
 4. web server e.g. nginx_
 
 Install Moira Microservices
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+---------------------------
 
 .. code-block:: bash
 
@@ -26,12 +26,12 @@ Install Moira Microservices
 
 
 Download Web UI Application
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+---------------------------
 
 https://github.com/moira-alert/web/releases/latest
 
 Configure
-^^^^^^^^^
+---------
 
 1. Place configuration file to the default location, ``/etc/moira/config.yml``
 
@@ -55,7 +55,7 @@ You can dive into :doc:`/installation/configuration` syntax on a separate page.
 3. Place UI config.json_ file to ``/var/local/www/moira/config.json``
 
 Run
-^^^
+---
 
 1. Run nginx and redis-server
 2. Run cache

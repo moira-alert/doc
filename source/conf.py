@@ -33,8 +33,12 @@ from recommonmark.parser import CommonMarkParser
 # ones.
 
 extensions = [
-    'sphinx.ext.autodoc', 'sphinxcontrib.httpdomain', 'sphinxcontrib.spelling'
+    'sphinx.ext.autodoc', 'sphinxcontrib.httpdomain', 'sphinxcontrib.spelling', 'sphinxcontrib.images'
 ]
+
+images_config = {
+    'override_image_directive': True
+}
 
 autodoc_docstring_signature = True
 

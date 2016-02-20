@@ -12,11 +12,10 @@ You can easily accomplish this by adding a trigger in Moira's Simple Mode:
 
 .. image:: ../_static/simple.png
    :alt: simple trigger
-   :scale: 100%
 
 
 Graphite Target
-^^^^^^^^^^^^^^^
+---------------
 
 You can specify a single metric like we did here: ``DevOps.my_server.hdd.freespace_mbytes``.
 
@@ -28,7 +27,7 @@ Moira understands everything that Graphite itself understands. See appropriate d
 
 
 Thresholds
-^^^^^^^^^^
+----------
 
 In simple mode you need to specify two threshold values: WARNING and ERROR. Note that Moira will
 automatically switch to raising or falling mode according to these settings. In our example, warning
@@ -38,7 +37,7 @@ large values a problem - then you should make error threshold greater than warni
 
 
 Tags
-^^^^
+----
 
 In Moira, you cannot subscribe to a single trigger. Instead, you should categorize your triggers by
 tags and subscribe to a tag. It may look like an overkill here, but when you have dozens of triggers,
@@ -47,12 +46,11 @@ Tags also help to filter information on main screen:
 
 .. image:: ../_static/main_screen.png
    :alt: main screen with filter
-   :scale: 100%
 
 You can add as many tags as you want.
 
 
 Subscriptions
-^^^^^^^^^^^^^
+-------------
 
 Proceed to the :doc:`/user_guide/subscriptions` page to learn how to set up a subscription to your trigger.
