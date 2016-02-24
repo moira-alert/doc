@@ -7,6 +7,9 @@ Manual Installation
 .. _nginx: http://nginx.org/en/download.html
 .. _config.json: https://github.com/moira-alert/web/blob/master/config.json.example
 
+
+.. tip: For a quick-start getting Moira working, why not try out a :docker:`/installation/docker` version
+
 There are following components you need to install before running Moira microservices:
 
 1. golang_ version 1.4 or higher

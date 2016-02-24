@@ -5,7 +5,7 @@ Installation
    :maxdepth: 1
 
    manual
-   configuration
    docker
+   configuration
    feeding
    security
