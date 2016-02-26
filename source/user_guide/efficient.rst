@@ -76,7 +76,7 @@ EXCEPTION
 ^^^^^^^^^
 
 This is an error inside Moira. Unless you have bad syntax in your :doc:`/user_guide/advanced` trigger, this has nothing
-to do with your metric state. You should try to fix or reinstall Moira, or contact Moira developers (see :doc:`/contacts`).
+to do with your metric state. You should try to fix or update Moira, or contact Moira developers (see :doc:`/contacts`).
 
 
 Dealing With False Positives
@@ -103,3 +103,11 @@ Graphite provides tons of useful functions_ to process data, and Moira understan
 
 - If you are interested in aggregate 10-minute values, not single minute values, use ``summarize``.
 - If you want zeroes instead of missing data points, use ``transformNull``.
+
+
+Draw First, Monitor Later
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Always draw a graph of target(s) you are planning to monitor. Use generic Graphite web interface or something like
+Grafana. Look for minumum and maximum values. Notice, how often and for how long the graph crosses your planned thresholds.
+Try to  correlate the graph with previous system failures. Then, copy and paste corrected target to Moira.

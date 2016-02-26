@@ -17,10 +17,11 @@ Maybe you can construct a monstrous Graphite expression to reflect this combinat
 You can use any Python expression with predefined constants here:
 
 - ``t1``, ``t2``, ... are values from your targets
-- ``OK``, ``WARN``, ``ERROR`` are states that must be the result of evaluation
+- ``OK``, ``WARN``, ``ERROR``, ``NODATA`` are states that must be the result of evaluation
+- ``PREV_STATE`` is equal to previously set state, and allows you to prevent frequent state changes
 
-.. note:: Use only targets that resolve into one metric in Advanced Mode. There is no way for Moira to understand how to
-          use multiple-metric targets in an expression.
+.. note:: Only T1 target can resolve into multiple metrics in Advanced Mode. T2, T3, ... must resolve to single metrics.
+          Moira will calculate expression separately for every metric in T1.
 
 .. note:: Expression evaluation is intended to be as safe as possible. You can't use any Python functions here.
 
