@@ -72,6 +72,9 @@ Moira stores separate state for every metric. Each metric can be in only one sta
 
    <span style="background-color: #9e9e9e" class="moira-state">NODATA</span>
 
+   <span style="background-color: #e14f4f" class="moira-state">EXCEPTION</span>
+
+   <div>&nbsp;</div>
 
 Trigger
 ^^^^^^^
@@ -154,6 +157,10 @@ Checker-worker constantly reads ``moira-triggers-tocheck`` key in Redis and calc
 ``moira-metric-last-check:<trigger_id>`` Redis key contains last check JSON with metric states.
 
 When a metric changes its state, a new event is written to ``moira-trigger-events`` Redis key. This happens only if value timestamp falls inside time period allowed by trigger schedule.
+
+If a metric has been in NODATA or ERROR state for a long period, every 24 hours will be issued additional reminder event.
+
+Trigger gets EXCEPTION state, if any exception has occurred during trigger checking. 
 
 
 Process Trigger Events
