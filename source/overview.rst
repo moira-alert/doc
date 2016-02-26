@@ -113,5 +113,7 @@ Database
 All services communicate only through a Redis database, without any additional protocols or
 connections between each other.
 
-.. image:: _static/components.png
+.. image:: _static/dfd-microservices.svg
    :alt: microservices
+   :width: 80%
+   :align: center
