@@ -158,9 +158,9 @@ Checker-worker constantly reads ``moira-triggers-tocheck`` key in Redis and calc
 
 When a metric changes its state, a new event is written to ``moira-trigger-events`` Redis key. This happens only if value timestamp falls inside time period allowed by trigger schedule.
 
-If a metric has been in NODATA or ERROR state for a long period, every 24 hours will be issued additional reminder event.
+If a metric has been in NODATA or ERROR state for a long period, every 24 hours Moira will issue an additional reminder event.
 
-Trigger gets EXCEPTION state, if any exception has occurred during trigger checking. 
+Trigger switches to EXCEPTION state, if any exception occurs during trigger checking.
 
 
 Process Trigger Events

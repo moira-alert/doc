@@ -14,8 +14,9 @@ When Moira hasn't been receiving data for more than default 600 seconds, it will
 You can set any other state or change time delay here. For example, if you have an error metric, and no data means no
 errors, you should set this to OK.
 
-There is special nodata state "DEL", which tells to moira-checker to delete metric, that got nodata state automatically.
-Only known use case for "DEL" state is for metrics, that comes from external source e.g. from health checker.
-Otherwise you risk to miss alert, that target has broken down and not sending any metrics.
+You can also select DEL here to automatically delete all metrics that no longer provide data. A simple use case is when
+you often rename metrics and Moira quickly becomes flooded with old irrelevant metric names.
+
+.. warning:: DEL is a dangerous setting, you can easily miss a real notification if your system stops sending metric data.
 
 You will receive notifications when your metric goes in and out of NODATA state, just like any other state.
