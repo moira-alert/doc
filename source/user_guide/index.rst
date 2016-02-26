@@ -11,7 +11,9 @@ and specific. Also, we have screenshots.
 
    simple
    subscriptions
+   efficient
    schedule
    trigger_page
    throttling
    nodata
+   advanced
