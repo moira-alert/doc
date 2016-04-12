@@ -113,4 +113,7 @@ Draw First, Monitor Later
 
 Always draw a graph of target(s) you are planning to monitor. Use generic Graphite web interface or something like
 Grafana. Look for minumum and maximum values. Notice, how often and for how long the graph crosses your planned thresholds.
-Try to  correlate the graph with previous system failures. Then, copy and paste corrected target to Moira.
+Try to correlate the graph with previous system failures. Then, copy and paste corrected target to Moira.
+
+Of course, you can and should remove any functions that make no sense in Moira (like ``sortByTotal``) and can generate
+unwanted side effects (like ``averageAbove``).
