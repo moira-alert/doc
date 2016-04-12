@@ -102,7 +102,10 @@ Graphite provides tons of useful functions_ to process data, and Moira understan
      :alt: moving average Graphite function
 
 - If you are interested in aggregate 10-minute values, not single minute values, use ``summarize``.
-- If you want zeroes instead of missing data points, use ``transformNull``.
+- If you want zeroes instead of missing data points, use ``transformNull``. Also, ``keepLastValue`` is useful when
+  dealing with missing points.
+- Avoid functions that show and hide metrics, like ``averageAbove``. Moira does not consider hidden metrics to be in
+  NODATA state. Instead, Moira retains last state that the metric had when it was visible.
 
 
 Draw First, Monitor Later
