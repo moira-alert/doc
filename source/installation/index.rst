@@ -6,6 +6,7 @@ Installation
 
    manual
    docker
+   packages
    configuration
    feeding
    security
