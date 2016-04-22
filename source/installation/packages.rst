@@ -12,6 +12,12 @@ packages. You can download these packages on `releases` page of every repository
 1. Web_
 2. Notifier_
 3. Worker_ (RPM and DEB packages are not ready yet, but you can install with `pip`)
+
+  .. code-block:: bash
+
+    wget https://github.com/moira-alert/worker/releases/download/v1.1.14/moira_worker-1.1.14.tar.gz
+    sudo pip install moira_worker-1.1.14.tar.gz
+
 4. Cache_
 
 We don't maintain strict version dependencies between packages (sorry), but you should be okay if you install/upgrade
