@@ -1,4 +1,4 @@
-API and Checker microservices
+API and Checker Microservices
 =============================
 
 .. _Twisted: http://twistedmatrix.com

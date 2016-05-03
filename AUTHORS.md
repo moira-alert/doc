@@ -7,3 +7,5 @@ Moira was originally developed and is supported by SKB Kontur (https://kontur.ru
 - Alexey Larkov (larkov@skbkontur.ru)
 
 # Contributors
+
+- Toby Jackson (toby.jackson@warmfusion.co.uk)

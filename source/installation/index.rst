@@ -5,7 +5,9 @@ Installation
    :maxdepth: 1
 
    manual
-   configuration
+   vagrant
    docker
+   packages
+   configuration
    feeding
    security

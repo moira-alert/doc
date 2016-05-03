@@ -1,4 +1,4 @@
-Manual installation
+Manual Installation
 ===================
 
 .. _golang: https://golang.org/doc/install
@@ -7,31 +7,53 @@ Manual installation
 .. _nginx: http://nginx.org/en/download.html
 .. _config.json: https://github.com/moira-alert/web/blob/master/config.json.example
 
+
+.. tip: For a quick-start getting Moira working, why not try out a :docker:`/installation/docker` version
+
 There are following components you need to install before running Moira microservices:
 
-1. golang_ version 1.4 or higher
+1. golang_ version 1.5 or higher
 2. redis_ database version 2.8 or higher
 3. python_ version 2.7
 4. web server e.g. nginx_
 
-Install Moira microservices
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Install Moira Microservices
+---------------------------
+
+Cache and Notifier
+^^^^^^^^^^^^^^^^^^
 
 .. code-block:: bash
 
-   export GOPATH=<your gopath>
-   go get github.com/moira-alert/cache
-   go get github.com/moira-alert/notifier/notifier
-   pip install git+https://github.com/moira-alert/worker.git
+   git clone https://github.com/moira-alert/cache.git
+   cd cache
+   sudo make
+
+.. code-block:: bash
+
+   git clone https://github.com/moira-alert/notifier.git
+   cd notifier
+   sudo make
+
+Worker
+^^^^^^
+
+.. code-block:: bash
+
+   git clone https://github.com/moira-alert/worker.git
+   cd worker
+   sudo make prepare
+   make pip
+   sudo pip install dist/moira_worker-*.tar.gz
 
 
-Download web UI application
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Download Web UI Application
+---------------------------
 
 https://github.com/moira-alert/web/releases/latest
 
-Configuration
-^^^^^^^^^^^^^
+Configure
+---------
 
 1. Place configuration file to the default location, ``/etc/moira/config.yml``
 
@@ -55,7 +77,7 @@ You can dive into :doc:`/installation/configuration` syntax on a separate page.
 3. Place UI config.json_ file to ``/var/local/www/moira/config.json``
 
 Run
-^^^
+---
 
 1. Run nginx and redis-server
 2. Run cache

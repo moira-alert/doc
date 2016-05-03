@@ -1,4 +1,4 @@
-Setting up your subscriptions
+Setting Up Your Subscriptions
 =============================
 
 By now you should have at least one trigger saved. If you don't, go back to the :doc:`/user_guide/simple` page.
@@ -21,7 +21,7 @@ Once you have at least one contact, you can create a subscription. Press +NOTIFI
 
 
 Tags
-^^^^
+----
 
 You will receive notifications from triggers with these tags. Note that a trigger must contain *all*
 of the subscription tags to match. For example, if you create a subscription for ``tag1``, ``tag2``,
@@ -33,14 +33,14 @@ you may wish to subscribe your Pushover account only to ERROR-level notification
 
 
 Contacts
-^^^^^^^^
+--------
 
 Select contacts for your notification by clicking on them. You can add as many contacts to one notification
 as you want.
 
 
 Save & Test
-^^^^^^^^^^^
+-----------
 
 You can just save your notification, but if you want to be 100% sure it works, you should immediately test it.
 Dummy notification message will arrive shortly.

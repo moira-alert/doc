@@ -72,6 +72,9 @@ Moira stores separate state for every metric. Each metric can be in only one sta
 
    <span style="background-color: #9e9e9e" class="moira-state">NODATA</span>
 
+   <span style="background-color: #e14f4f" class="moira-state">EXCEPTION</span>
+
+   <div>&nbsp;</div>
 
 Trigger
 ^^^^^^^
@@ -86,7 +89,7 @@ Trigger is a configuration that tells Moira which metrics to watch for. Triggers
 - Check schedule. For example, a trigger can be set to check only during business hours.
 
 
-Last check
+Last Check
 ^^^^^^^^^^
 
 When Moira checks a trigger, it stores the following information on each metric:
@@ -96,7 +99,7 @@ When Moira checks a trigger, it stores the following information on each metric:
 - Current state.
 
 
-Trigger event
+Trigger Event
 ^^^^^^^^^^^^^
 
 When Moira checks a trigger, if any of the metric states change, Moira generates an event. Events consist of:
@@ -129,12 +132,11 @@ Each subscription consists of:
 Dataflow
 --------
 
-Save and filter incoming metrics
+Save and Filter Incoming Metrics
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. image:: ../_static/dfd-cache.svg
    :alt: cache
-   :width: 50%
 
 When user adds a new trigger, Moira parses patterns from targets and saves them to ``moira-pattern-list`` key in Redis. Cache rereads this list every second.
 When a metric value arrives, Cache checks metric name against the list of patterns. Matching metrics are saved to ``moira-metric:<metricname>`` keys in Redis.
@@ -144,12 +146,11 @@ Checker-master reads triggers by pattern from ``moira-pattern-triggers:<pattern>
 In case of no incoming data, all triggers are added to check once per ``nodata_check_interval`` setting.
 
 
-Check triggers
+Check Triggers
 ^^^^^^^^^^^^^^
 
 .. image:: ../_static/dfd-checker.svg
    :alt: checker
-   :width: 50%
 
 Checker-worker constantly reads ``moira-triggers-tocheck`` key in Redis and calculates trigger targets values. Target can contain one or multiple metrics, so results are written per metric.
 
@@ -157,13 +158,18 @@ Checker-worker constantly reads ``moira-triggers-tocheck`` key in Redis and calc
 
 When a metric changes its state, a new event is written to ``moira-trigger-events`` Redis key. This happens only if value timestamp falls inside time period allowed by trigger schedule.
 
+If a metric has been in NODATA or ERROR state for a long period, every 24 hours Moira will issue an additional reminder event.
 
-Process trigger events
+Trigger switches to EXCEPTION state, if any exception occurs during trigger checking.
+
+
+Process Trigger Events
 ^^^^^^^^^^^^^^^^^^^^^^
 
 .. image:: ../_static/dfd-notifier-events.svg
    :alt: checker
-   :width: 30%
+   :width: 70%
+   :align: center
 
 Notifier constantly pulls new events from ``moira-trigger-events`` Redis key and schedules notifications according to subscription schedule and throttling rules.
 If and only if a trigger contains *all* of the tags in a subscription, a notification is created for this subscription.
@@ -179,12 +185,11 @@ Throttling rules will delay notifications:
 Scheduled notifications are written to ``moira-notifier-notifications`` Redis key.
 
 
-Process notifications
-^^^^^^^^^^^^^^^^^^^^^^
+Process Notifications
+^^^^^^^^^^^^^^^^^^^^^
 
 .. image:: ../_static/dfd-notifier-notifications.svg
    :alt: checker
-   :width: 50%
 
 Notifier constantly pulls scheduled notifications from ``moira-notifier-notifications`` Redis key.
 It calls sender for certain contact type and writes notification back to Redis in case of sender error.

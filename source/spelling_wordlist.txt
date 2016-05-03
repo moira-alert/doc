@@ -14,7 +14,7 @@ app
 teamcity
 Dataflow
 incomming
-delpoy
+deploy
 api
 screenshots
 ui

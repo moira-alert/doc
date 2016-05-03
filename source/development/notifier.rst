@@ -18,8 +18,8 @@ Then, run Ginkgo_ tests.
    cd notifier/tests
    ginkgo
 
-Writing your own notification sender
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Writing Your Own Notification Sender
+------------------------------------
 
 First, look at built-in senders:
 

@@ -1,8 +1,8 @@
-Moira documentation
+Moira Documentation
 ===================
 
 Contents
-^^^^^^^^
+--------
 
 .. toctree::
    :maxdepth: 2
@@ -11,5 +11,6 @@ Contents
    installation/index
    user_guide/index
    development/index
+   contacts
 
 .. include:: overview.rst
