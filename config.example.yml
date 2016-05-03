@@ -42,6 +42,10 @@ notifier:
       smtp_port: 25
       from: moira@example.com
       insecure_tls: false
+      # Authentication params (username, password, hostname)
+      username:
+      password:
+      hostname:
     - type: slack
       api_token: # place your token here
     - type: pushover
