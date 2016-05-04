@@ -38,9 +38,11 @@ notifier:
   resending_timeout: 24:00 # 24 hours
   senders:
     - type: mail
-      smtp_host: smtp.example.com
-      smtp_port: 25
-      from: moira@example.com
+      smtp_host: smtp.gmail.com
+      smtp_port: 587
+      smtp_pass: # no auth if empty
+      smtp_user: # be used mail_from value if empty
+      mail_from: moira@gmail.com
       insecure_tls: false
     - type: slack
       api_token: # place your token here
