@@ -44,11 +44,6 @@ notifier:
       smtp_user: # be used mail_from value if empty
       mail_from: moira@gmail.com
       insecure_tls: false
-      tls_hostname: smtp.example.com # server name for certificate validation
-      # Authentication params (username, password, hostname)
-      username:
-      password:
-      hostname: # expected hostname from server
     - type: slack
       api_token: # place your token here
     - type: pushover
