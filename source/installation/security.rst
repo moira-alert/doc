@@ -30,7 +30,7 @@ Assuming that Moira UI static files are in ``/var/www/moira-web`` and API is run
      auth_basic "Moira";
      auth_basic_user_file /etc/nginx/htpasswd;
 
-     listen 127.0.0.1:80 default_server;
+     listen 0.0.0.0:80 default_server;
 
      location / {
        root /var/www/moira-web;
