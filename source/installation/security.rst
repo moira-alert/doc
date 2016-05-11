@@ -15,3 +15,33 @@ If you don't, Moira will assume that user id is "anonymous".
              read and write accessible to every user, and there is no meaningful way of authorization
              in Moira. This is by design, because Moira is an internal DevOps tool. Separating users
              is a convenience, not protection feature.
+
+
+Simple Nginx configuration
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Assuming that Moira UI static files are in ``/var/www/moira-web`` and API is running on port 8081, here is an example
+of Nginx configuration:
+
+.. code-block:: text
+
+   server {
+     listen 127.0.0.1:8888 default_server;
+     location / {
+       root /var/www/moira-web;
+       index index.html;
+     }
+     location /api/ {
+       proxy_pass http://127.0.0.1:8081;
+     }
+   }
+
+   server {
+     listen 0.0.0.0:80 default_server;
+     location / {
+       auth_basic "Moira";
+       auth_basic_user_file /etc/nginx/htpasswd;
+       proxy_set_header X-WebAuth-User $remote_user;
+       proxy_pass http://127.0.0.1:8888;
+     }
+   }
