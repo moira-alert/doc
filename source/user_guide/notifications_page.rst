@@ -12,3 +12,6 @@ This will be continued for configured ``resending_timeout`` until notification w
 In some cases notification will never be delivered for e.g. wrong contact type or value.
 
 You can delete those notifications from hidden page /#/notifications/. That means you need type it in browser address bar.
+
+  .. image:: ../_static/notifications_page.png
+     :alt: notifications
