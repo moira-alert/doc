@@ -17,3 +17,5 @@ and specific. Also, we have screenshots.
    throttling
    nodata
    advanced
+   tags_page
+   notifications_page
