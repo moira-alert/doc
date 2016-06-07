@@ -33,11 +33,12 @@ with ``tag1`` only.
 | ``WARN`` and ``ERROR`` are special pseudo-tags that match only events with corresponding level. For example,
 you may wish to subscribe your Pushover account only to ERROR-level notifications.
 
-| ``DEGRADATION`` is a special pseudo-tag that match events: 
+| ``DEGRADATION`` is a special pseudo-tag that match any event, where trigger's state degraded, e.g: 
 |   ``OK`` |rarr| ``WARN``
 |   ``WARN`` |rarr| ``ERROR``
+|   ``OK`` |rarr| ``NODATA``
 |
-| ``HIGH DEGRADATION`` is special pseudo-tag that match events: 
+| In addition to ``DEGRADATION`` a special ``HIGH DEGRADATION`` pseudo-tag will be added for the following events: 
 |    ``OK`` |rarr| ``ERROR``
 |    ``OK`` |rarr| ``NODATA``
 |    ``WARN`` |rarr| ``NODATA``
