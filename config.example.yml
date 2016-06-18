@@ -5,6 +5,7 @@ redis:
 # Base log directory for Moira API and Moira Checker microservices
 worker:
   log_dir: /var/log/moira/worker
+  log_level: info
 
 api:
   port: 8081
