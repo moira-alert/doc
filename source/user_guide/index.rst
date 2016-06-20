@@ -17,3 +17,4 @@ and specific. Also, we have screenshots.
    throttling
    nodata
    advanced
+   hidden_pages
