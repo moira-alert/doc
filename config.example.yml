@@ -1,6 +1,7 @@
 redis:
   host: localhost
   port: 6379
+  dbid: 0 # redis database index http://redis.io/commands/select
 
 # Base log directory for Moira API and Moira Checker microservices
 worker:
