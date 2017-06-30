@@ -17,13 +17,13 @@ Key Features
 
 * **Graphite storage independence**
 
-  Some Graphite queries are *very* ineffective. Tools like Seyren_ multiply this effect by making
-  lots of ineffective queries every minute, overloading your cluster. Moira relies on the incoming
+  Some Graphite queries are *very* ineffective. Tools like Seyren_ multiply this effect every minute making
+  lots of ineffective queries and overloading your cluster. Moira relies on the incoming
   metric stream, and has its own fast cache for recent data.
 
 * **Support for all Graphite functions**
 
-  Graphite function library is embedded directly into the source code of Moira. You can use any
+  Graphite function library is embedded directly into Moira source code. You can use any
   function and get predictable results, like in your Graphite dashboards.
 
 * **Support for custom Python expressions**
@@ -38,7 +38,7 @@ Key Features
 
 * **Extendable notification channels**
 
-  Moira has support for email, Slack_ and Pushover_ notifications out-of-the-box. But you can always
+  Moira supports email, Slack_ and Pushover_ notifications out-of-the-box. But you can always
   write your own plugin in Go and rebuild Moira Notifier microservice.
 
 * |Alarm fatigue|_ **protection**
@@ -46,7 +46,7 @@ Key Features
   Sometimes one of your triggers goes mad and switches back and forth between states, sending you
   hundreds of notifications. Sometimes you just ignore and delete all messages, accidentally also
   deleting one that is actually important. Moira tries to protect you with a feature called
-  *throttling*. It's simple: if one of your triggers starts to send more than 10 messages over an
+  *throttling*. It's simple: if one of your triggers starts to send over 10 messages per an
   hour, Moira limits this trigger to one message per 30 minutes. Alerts from this trigger are
   combined, and not lost - just packaged into a single message.
 
@@ -80,7 +80,7 @@ reduces load on all other parts of Moira.
 Checker
 ^^^^^^^
 
-Checker is a Python application with embedded Graphite functions. Checker watches for incoming
+Checker is a Python application with embedded Graphite functions. Checker views incoming
 metric values and performs checks according to saved trigger settings. When state of any trigger
 changes, Checker generates an event.
 
@@ -88,7 +88,7 @@ changes, Checker generates an event.
 Notifier
 ^^^^^^^^
 
-Notifier is a Go application that watches for generated events. Notifier is responsible for
+Notifier is a Go application viewing generated events. Notifier is responsible for
 scheduling and sending notifications, observing quiet hours, retrying failed notifications, etc.
 
 
@@ -111,7 +111,7 @@ Database
 ^^^^^^^^
 
 All services communicate only through a Redis database, without any additional protocols or
-connections between each other.
+connections between them.
 
 .. image:: _static/dfd-microservices.svg
    :alt: microservices
