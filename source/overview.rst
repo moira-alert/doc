@@ -80,7 +80,7 @@ reduces load on all other parts of Moira.
 Checker
 ^^^^^^^
 
-Checker is a Python application with embedded Graphite functions. Checker views incoming
+Checker is a Python application with embedded Graphite functions. Checker watches for incoming
 metric values and performs checks according to saved trigger settings. When state of any trigger
 changes, Checker generates an event.
 
@@ -88,7 +88,7 @@ changes, Checker generates an event.
 Notifier
 ^^^^^^^^
 
-Notifier is a Go application viewing generated events. Notifier is responsible for
+Notifier is a Go application that watches for generated events. Notifier is responsible for
 scheduling and sending notifications, observing quiet hours, retrying failed notifications, etc.
 
 
