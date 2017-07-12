@@ -6,7 +6,7 @@ Docker Containers
 
 .. warning:: This is a third-party installation container provided by community. Use at your own risk.
 
-You can quickly test a local moira installationg using Docker_ containers provided by Toby Jackson.
+You can quickly test a local Moira installationg using Docker_ containers provided by Toby Jackson.
 
 .. code-block:: bash
 
@@ -15,7 +15,7 @@ You can quickly test a local moira installationg using Docker_ containers provid
   docker-compose up
 
 
-.. tip:: If using Docker-Machine you can navigate to the Moira interface on ``http://$(docker-machine ip dev):8080/``
+.. tip:: Using Docker-Machine you can navigate to Moira interface on ``http://$(docker-machine ip dev):8080/``
 
 
 This should setup a small cluster of Docker containers ready to accept data and handle notifications, with the interface on ``http://localhost:8080`` and accepts graphite metrics on ``localhost:2003``
