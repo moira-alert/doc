@@ -7,7 +7,7 @@ RPM and DEB Packages
 .. _Cache: https://github.com/moira-alert/cache/releases
 
 All stable versions of Moira components are tagged on GitHub. For every tag, we automatically build RPM and DEB
-packages. You can download these packages on `releases` page of every repository:
+packages. You can download these packages on each repository `releases` page:
 
 1. Web_
 2. Notifier_
