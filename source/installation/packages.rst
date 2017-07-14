@@ -20,5 +20,5 @@ packages. You can download these packages on each repository `releases` page:
 
 4. Cache_
 
-We don't maintain strict version dependencies between packages (sorry), but you should be okay if you install/upgrade
+We don't maintain strict version dependencies between packages (sorry), but everything will be OK if you install/upgrade
 all of the packages at once.
