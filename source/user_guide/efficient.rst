@@ -3,20 +3,19 @@ Efficient Triggers
 
 To use Moira efficiently, you should understand its underlying design decisions.
 
-We often notice that when new users create their first triggers, they set thresholds at random, or by intuition. This is
-because when you configure your first 24/7/365 automated monitoring system, you don't really know how your system works.
+We often notice that when new users create their first triggers, they set thresholds at random, or by intuition. It happens because when you configure your first 24/7/365 automated monitoring system, you don't really know how your system works.
 If you have at least hundreds of metrics, it's impossible to watch all of them with your eyes. What are the limits of
 your system? How often does your system reach critical resource consumption during a day? Should you immediately react
 when metric X reaches value N, or is it a fluctuation that passes by itself?
 
-With time, when you learn to understand you system, you will need to tune your triggers. And that's when you need to
+Later, when you learn to understand you system, you will need to adjust your triggers. And that's when you need to
 understand Moira.
 
 
 States
 ------
 
-Unlike many other tools, that provide several distinct level systems like "priority" and "severity", Moira supports a
+Unlike many other tools providing several distinct level systems like "priority" and "severity", Moira supports a
 single set of states. Every state has a well-defined meaning, and you should use these states accordingly.
 
 
@@ -30,7 +29,7 @@ you should keep your metrics green.
 WARN
 ^^^^
 
-This state means that you should do something to prevent having ERRORs in the future. Not immediately: maybe you should
+This state means that you should do something to prevent ERRORs in the future. Not immediately: maybe you should
 order more hardware from your vendor, or plan to optimize code in the next iteration. You can configure less intrusive
 notification channels here, like email.
 
@@ -40,8 +39,7 @@ Metrics can be in this state for days or even weeks.
 ERROR
 ^^^^^
 
-This is a critical condition that requires immediate intervention. Your datacenter is on fire. All application processes
-have shut down. There is no disk space left on your database server to process million-dollar transactions. These
+This is a critical condition that requires immediate intervention. Your datacenter is on fire. All application processes shut down. There is no disk space left on your database server to process million-dollar transactions. These
 notifications are important enough to wake you up at night. You can still configure schedules to assign shifts to several
 engineers, though (see :doc:`/user_guide/schedule`). You should configure more intrusive notification channels here, like
 Pushover.
@@ -65,7 +63,7 @@ You should delete old unused metrics from Moira when they stop providing data po
 .. image:: ../_static/delete_metric.png
    :alt: delete unused metrics
 
-Every metric is in this state at first. You will receive one NODATA -> OK notification when the first data point arrives.
+In the beginning every metric is in this state. You will receive one NODATA -> OK notification when the first data point arrives.
 
 Moira will send you reminders every 24 hours if some of your metrics remain in this state.
 
@@ -83,7 +81,7 @@ Dealing With False Positives
 ----------------------------
 
 Sometimes it's hard to maintain strict rule of keeping your metrics green, if your triggers switch OK->ERROR->OK->ERROR
-for short amounts of time several times a day. It can lead to alarm fatigue and missing actual failures.
+for short periods of time several times a day. It can lead to alarm fatigue and missing actual failures.
 
 There is no single recipe for eliminating false positives, but here are some tips.
 
@@ -102,7 +100,7 @@ Graphite provides tons of useful functions_ to process data, and Moira understan
      :alt: moving average Graphite function
 
 - If you are interested in aggregate 10-minute values, not single minute values, use ``summarize``.
-- If you want zeroes instead of missing data points, use ``transformNull``. Also, ``keepLastValue`` is useful when
+- If you want zeros instead of missing data points, use ``transformNull``. Also, ``keepLastValue`` is useful when
   dealing with missing points.
 - Avoid functions that show and hide metrics, like ``averageAbove``. Moira does not consider hidden metrics to be in
   NODATA state. Instead, Moira retains last state that the metric had when it was visible.
@@ -115,5 +113,5 @@ Always draw a graph of target(s) you are planning to monitor. Use generic Graphi
 Grafana. Look for minumum and maximum values. Notice, how often and for how long the graph crosses your planned thresholds.
 Try to correlate the graph with previous system failures. Then, copy and paste corrected target to Moira.
 
-Of course, you can and should remove any functions that make no sense in Moira (like ``sortByTotal``) and can generate
+Of course, you may and should remove any functions that make no sense in Moira (like ``sortByTotal``) and can generate
 unwanted side effects (like ``averageAbove``).
