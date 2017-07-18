@@ -62,6 +62,8 @@ notifier:
       api_authtoken: # place your api secret
       api_fromphone: # place phone
       voiceurl: # place your voice url
+    - type: telegram
+      api_token: # place your token here
 
 
 cache:
