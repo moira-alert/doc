@@ -22,10 +22,10 @@ you just receive them later. Events will still appear on the event history page 
 Trigger Watch Time
 ------------------
 
-Sometimes you want to monitor a metric only part of the time. Let's say, you have a popular website, that serves over
-1000 page views per second during the day. You can set up a trigger to notify you when you have less than 50 page views
+Sometimes you want to monitor a metric not every minute. Let's say, you have a popular website, that serves over
+1000 page views per second during a day. You can set up a trigger to notify you when you have less than 50 page views
 per second - obviously, something is wrong. You also need to disable this trigger for the night, because in the night all
-of your users are sleeping, and this metric is irrelevant.
+of your users sleep, and this metric is irrelevant.
 
 Of course, you can set up a subscription schedule - but your history will become riddled with false night "events", and
 you will still receive notifications in the morning. In this case, you need to set up a trigger watch time:
