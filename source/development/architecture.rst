@@ -172,10 +172,10 @@ Process Trigger Events
    :align: center
 
 Notifier constantly pulls new events from ``moira-trigger-events`` Redis key and schedules notifications according to subscription schedule and throttling rules.
-If and only if a trigger contains *all* of the tags in a subscription, a notification is created for this subscription.
+If a trigger contains *all* of the tags in a subscription,and only in this case, a notification is created for this subscription.
 
 Subscription schedule delays notifications of occurred event to the beginning of next allowed time interval.
-Note that this is different from trigger schedule, which suppresses event generation entirely.
+Note that this differs from trigger schedule, which suppresses event generation entirely.
 
 Throttling rules will delay notifications:
 
