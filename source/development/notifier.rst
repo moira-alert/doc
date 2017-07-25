@@ -28,7 +28,7 @@ First, look at built-in senders:
 - notifier/mail
 
 All of them implement interface ``Sender`` from ``interfaces.go``. Please, note that scheduling and
-throttling require that senders support packing several events into one message.
+throttling require senders to support packing several events into one message.
 
 You should include your new sender in ``configureSenders`` method of ``notifier/main.go`` with
 appropriate type.
