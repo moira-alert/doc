@@ -27,7 +27,7 @@ It works like this:
 - Tenth notification is delivered immediately, and you get a warning: "Please, fix your system or tune this trigger to
   generate less events."
 - Next notifications are delayed so that you receive one message per 30 minutes/1 hour. Nothing is lost, you just
-  receive one message with pack of events. Every message contains a warning: "Please, fix your system or tune this
+  receive one message with a pack of events. Every message contains a warning: "Please, fix your system or tune this
   trigger to generate less events."
 
 *Moira will enable and disable throttling automatically based on frequency of events.*
@@ -38,7 +38,7 @@ Disabling Throttling
 
 There are four ways to disable throttling for a specific trigger:
 
-1. Listen to the warning message. That is, fix your system to generate less events. Or change trigger thresholds. Or
+1. Obey the warning message. That is, fix your system to generate less events. Or change trigger thresholds. Or
    use Graphite functions like ``movingAverage`` to remove spikes from your metric graph. This is the best method to
    deal with throttling.
 2. Enable maintenance mode for some of your metrics. This will temporarily disable checking of a metric and give you
@@ -53,7 +53,7 @@ There are four ways to disable throttling for a specific trigger:
 .. image:: ../_static/reset_throttling.png
    :alt: reset throttling
 
-4. Disable throttling entirely for a trigger. *This is not recommended*, unless you really know what you are doing:
+4. Entirely disable throttling for a trigger. *This is not recommended*, unless you really know what you are doing:
 
 .. image:: ../_static/throttling.png
    :alt: disable throttling
