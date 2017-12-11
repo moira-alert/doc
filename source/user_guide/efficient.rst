@@ -1,3 +1,5 @@
+.. include:: <isonum.txt>
+
 Efficient Triggers
 ==================
 
@@ -31,7 +33,7 @@ WARN
 
 This state means that you should do something to prevent ERRORs in the future. Not immediately: maybe you should
 order more hardware from your vendor, or plan to optimize code in the next iteration. You can configure less intrusive
-notification channels here, like email.
+delivery channels here, like email.
 
 Metrics can be in this state for days or even weeks.
 
@@ -41,14 +43,14 @@ ERROR
 
 This is a critical condition that requires immediate intervention. Your datacenter is on fire. All application processes shut down. There is no disk space left on your database server to process million-dollar transactions. These
 notifications are important enough to wake you up at night. You can still configure schedules to assign shifts to several
-engineers, though (see :doc:`/user_guide/schedule`). You should configure more intrusive notification channels here, like
+engineers, though (see :doc:`/user_guide/schedule`). You should configure more intrusive delivery channels here, like
 Pushover.
 
 Metrics should not be in this state for more than several hours.
 
 Moira will send you reminders every 24 hours if some of your metrics remain in this state.
 
-If a notification channel supports high-priority messages (like Pushover does), Moira will try to use them for ERRORs.
+If a delivery channel supports high-priority messages (like Pushover does), Moira will try to use them for ERRORs.
 
 
 NODATA
@@ -63,7 +65,7 @@ You should delete old unused metrics from Moira when they stop providing data po
 .. image:: ../_static/delete_metric.png
    :alt: delete unused metrics
 
-In the beginning every metric is in this state. You will receive one NODATA -> OK notification when the first data point arrives.
+In the beginning every metric is in this state. You will receive one NODATA |rarr| OK notification when the first data point arrives.
 
 Moira will send you reminders every 24 hours if some of your metrics remain in this state.
 
@@ -80,7 +82,7 @@ to do with your metric state. You should try to fix or update Moira, or contact 
 Dealing With False Positives
 ----------------------------
 
-Sometimes it's hard to maintain strict rule of keeping your metrics green, if your triggers switch OK->ERROR->OK->ERROR
+Sometimes it's hard to maintain strict rule of keeping your metrics green, if your triggers switch OK |rarr| ERROR |rarr| OK |rarr| ERROR
 for short periods of time several times a day. It can lead to alarm fatigue and missing actual failures.
 
 There is no single recipe for eliminating false positives, but here are some tips.

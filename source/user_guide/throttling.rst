@@ -53,7 +53,8 @@ There are four ways to disable throttling for a specific trigger:
 .. image:: ../_static/reset_throttling.png
    :alt: reset throttling
 
-4. Entirely disable throttling for a trigger. *This is not recommended*, unless you really know what you are doing:
+4. Entirely disable throttling for a subscription. *This is not recommended*, unless you really know what you are doing:
 
 .. image:: ../_static/throttling.png
    :alt: disable throttling
+   :width: 400

@@ -1,6 +1,8 @@
 Advanced Mode Trigger
 =====================
 
+.. _govaluate: https://github.com/Knetic/govaluate/blob/master/MANUAL.md
+
 Sometimes a simple trigger (:doc:`/user_guide/simple`) doesn't provide enough flexibility for your task.
 
 For example, you may want to receive a notification when 5% of user requests take up more than a second to process, but
@@ -14,7 +16,7 @@ Maybe you can construct a monstrous Graphite expression to reflect this combinat
 .. image:: ../_static/advanced.png
    :alt: advanced trigger
 
-You can use any Python expression with predefined constants here:
+You can use any govaluate_ expression with predefined constants here:
 
 - ``t1``, ``t2``, ... are values from your targets
 - ``OK``, ``WARN``, ``ERROR``, ``NODATA`` are states that must be the result of evaluation
@@ -22,7 +24,5 @@ You can use any Python expression with predefined constants here:
 
 .. note:: Only T1 target can resolve into multiple metrics in Advanced Mode. T2, T3, ... must resolve to single metrics.
           Moira will calculate expression separately for every metric in T1.
-
-.. note:: Expression evaluation is intended to be as safe as possible. You can't use any Python functions here.
 
 Any incorrect expressions or bad syntax will result in EXCEPTION trigger state.

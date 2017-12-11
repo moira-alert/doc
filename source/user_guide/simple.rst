@@ -29,11 +29,10 @@ Moira understands everything that Graphite itself understands. See appropriate d
 Thresholds
 ----------
 
-In simple mode you need to specify two threshold values: WARNING and ERROR. Note that Moira will
-automatically switch to raising or falling mode according to these settings. In our example, warning
-threshold is greater than error threshold. In this case, Moira will consider any value less than 50000
+In simple mode you need to specify two threshold values: WARNING and ERROR. In our example, lower values are bad,
+so we set warning threshold greater than error threshold. In this case, Moira will consider any value less than 50000
 a warning and less than 1000 an error, which is what we want. In other cases, you may need to consider
-large values a problem - then you should make error threshold greater than warning.
+large values a problem - then you should make error threshold greater than warning and select ``Watch for value raising`` option.
 
 
 Tags

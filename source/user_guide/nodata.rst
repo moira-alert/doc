@@ -9,6 +9,7 @@ know, whether you have enough disk space left or not? In this case, a trigger se
 
 .. image:: ../_static/nodata.png
    :alt: NODATA settings
+   :width: 400
 
 When Moira hasn't been receiving data for more than default 600 seconds, it will set a special NODATA state for this metric.
 You can set any other state or change time delay here. For example, if you have an error metric, and no data means no

@@ -15,6 +15,7 @@ There are following components you need to install before running Moira microser
 2. redis_ database version 2.8 or higher
 3. web server e.g. nginx_
 
+
 Build Moira Microservices
 -------------------------
 
@@ -27,12 +28,14 @@ Build Moira Microservices
 
 You will find binaries in ``$GOPATH/bin``.
 
+
 Download Web UI Application
 ---------------------------
 
 https://github.com/moira-alert/web2.0/releases/latest
 
 Download and unpack ``.tar.gz`` file into Nginx static files directory (e.g. ``/var/local/www/moira``).
+
 
 Configure
 ---------
@@ -56,6 +59,7 @@ Configure
     }
 
 3. If you need to override UI settings, place your custom config.json_ file near ``index.html`` (``/var/local/www/moira/config.json`` in our examples).
+
 
 Run
 ---

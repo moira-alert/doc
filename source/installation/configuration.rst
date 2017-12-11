@@ -6,6 +6,7 @@ by passing your path as a command-line parameter ``--config``.
 
 On this page you can find examples of configuration files for Moira microservices.
 
+
 Filter
 ------
 
@@ -16,11 +17,13 @@ Filter
 
 storage-schemas.conf_ is graphite carbon configuration file that should match similarly-named file in your Graphite installation.
 
+
 Checker
 -------
 
 .. literalinclude:: ../../checker.example.yml
    :language: yaml
+
 
 Notifier
 --------
@@ -28,11 +31,13 @@ Notifier
 .. literalinclude:: ../../notifier.example.yml
    :language: yaml
 
+
 API
 ---
 
 .. literalinclude:: ../../api.example.yml
    :language: yaml
+
 
 UI
 --
