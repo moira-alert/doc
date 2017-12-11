@@ -10,7 +10,5 @@ Following topics describe database structure, running tests, developing notifica
    :maxdepth: 1
 
    architecture
-   worker
    ui
    notifier
-   db

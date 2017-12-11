@@ -1,11 +1,10 @@
-UI Application
-==============
+UI
+==
 
-.. _TypeScript: http://www.typescriptlang.org
-.. _AngularJS: https://angularjs.org
-.. _webpack: https://webpack.github.io
+.. _RetailUI: https://github.com/skbkontur/retail-ui
+.. _React: https://reactjs.org
 
-UI is a static web application built with TypeScript_, AngularJS_ and webpack_.
+UI is a static web application built with RetailUI_ based on React_.
 
 Install dependencies.
 
@@ -13,16 +12,10 @@ Install dependencies.
 
    npm install
 
-Run webpack dev server at http://localhost:8080.
+Run webpack dev server at http://localhost:9000.
 
 .. code-block:: bash
 
    npm start
 
-.. note:: UI doesn't work without API microservice
-
-Run tests.
-
-.. code-block:: bash
-
-   karma start
+.. note:: UI doesn't work without running API microservice.

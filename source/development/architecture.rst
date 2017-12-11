@@ -1,7 +1,7 @@
 Architecture
 ============
 
-.. _target: http://graphite.readthedocs.org/en/1.0/url-api.html#target
+.. _target: http://graphite.readthedocs.io/en/latest/render_api.html#target
 
 .. raw:: html
 
@@ -82,6 +82,7 @@ Trigger
 Trigger is a configuration that tells Moira which metrics to watch for. Triggers consist of:
 
 - Name. This is just for convenience, user can enter anything here.
+- Description. Longer text that gets included in notification to delivery channels that support long texts.
 - One or more targets.
 - WARN and ERROR value limits, or a Python expression to calculate state.
 - One or more tags.
@@ -135,14 +136,14 @@ Dataflow
 Save and Filter Incoming Metrics
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. image:: ../_static/dfd-cache.svg
+.. image:: ../_static/dfd-filter.svg
    :alt: cache
 
-When user adds a new trigger, Moira parses patterns from targets and saves them to ``moira-pattern-list`` key in Redis. Cache rereads this list every second.
-When a metric value arrives, Cache checks metric name against the list of patterns. Matching metrics are saved to ``moira-metric:<metricname>`` keys in Redis.
-Redis pub/sub mechanism is used to inform Checker-master of incoming metric value that should be checked as soon as possible.
+When user adds a new trigger, Moira parses patterns from targets and saves them to ``moira-pattern-list`` key in Redis. Filter rereads this list every second.
+When a metric value arrives, Filter checks metric name against the list of patterns. Matching metrics are saved to ``moira-metric:<metricname>`` keys in Redis.
+Redis pub/sub mechanism is used to inform Checker of incoming metric value that should be checked as soon as possible.
 
-Checker-master reads triggers by pattern from ``moira-pattern-triggers:<pattern>`` key in Redis and adds triggers to check set at ``moira-triggers-tocheck`` Redis key.
+Checker reads triggers by pattern from ``moira-pattern-triggers:<pattern>`` key in Redis and adds triggers to check set at ``moira-triggers-tocheck`` Redis key.
 In case of no incoming data, all triggers are added to check once per ``nodata_check_interval`` setting.
 
 
@@ -152,7 +153,7 @@ Check Triggers
 .. image:: ../_static/dfd-checker.svg
    :alt: checker
 
-Checker-worker constantly reads ``moira-triggers-tocheck`` key in Redis and calculates trigger targets values. Target can contain one or multiple metrics, so results are written per metric.
+Checker constantly reads ``moira-triggers-tocheck`` key in Redis and calculates trigger targets values. Target can contain one or multiple metrics, so results are written per metric.
 
 ``moira-metric-last-check:<trigger_id>`` Redis key contains last check JSON with metric states.
 
@@ -172,7 +173,7 @@ Process Trigger Events
    :align: center
 
 Notifier constantly pulls new events from ``moira-trigger-events`` Redis key and schedules notifications according to subscription schedule and throttling rules.
-If a trigger contains *all* of the tags in a subscription,and only in this case, a notification is created for this subscription.
+If a trigger contains *all* of the tags in a subscription, and only in this case, a notification is created for this subscription.
 
 Subscription schedule delays notifications of occurred event to the beginning of next allowed time interval.
 Note that this differs from trigger schedule, which suppresses event generation entirely.

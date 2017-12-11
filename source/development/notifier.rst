@@ -1,36 +1,37 @@
-Notifier
-========
+Backend
+=======
 
 .. _Go: https://golang.org
-.. _Ginkgo: https://onsi.github.io/ginkgo/
+.. _GoConvey: http://goconvey.co
 
-This microservice is written in Go_. To run tests, first get all dependencies.
-
-.. code-block:: bash
-
-   cd notifier/notifier
-   go get
-
-Then, run Ginkgo_ tests.
+Backend microservices are written in Go_. To run tests, first get all dependencies.
 
 .. code-block:: bash
 
-   cd notifier/tests
-   ginkgo
+   go get github.com/kardianos/govendor
+   govendor sync
+
+Then, run GoConvey_ tests.
+
+.. code-block:: bash
+
+   go get github.com/smartystreets/goconvey
+   goconvey
+
 
 Writing Your Own Notification Sender
 ------------------------------------
 
 First, look at built-in senders:
 
-- notifier/slack
-- notifier/pushover
-- notifier/mail
+- senders/slack
+- senders/pushover
+- senders/mail
 
 All of them implement interface ``Sender`` from ``interfaces.go``. Please, note that scheduling and
 throttling require senders to support packing several events into one message.
 
-You should include your new sender in ``configureSenders`` method of ``notifier/main.go`` with
+You should include your new sender in ``RegisterSenders`` method of ``notifier/registrator.go`` with
 appropriate type.
 
 Senders have access to their settings in common config, which is passed to the ``Init`` method.
