@@ -1,23 +1,41 @@
 Configuration
 =============
 
-.. _storage-schemas.conf: http://graphite.readthedocs.io/en/latest/config-carbon.html
+By default, microservices will look for ``/etc/moira/<servicename>.yml``, but you can change this location
+by passing your path as a command-line parameter ``--config``.
 
-All Moira microservices can use a single configuration file in YAML format.
+On this page you can find examples of configuration files for Moira microservices.
 
-By default, microservices will look for ``/etc/moira/config.yml``, but you can change this location
-in system configuration files (pass your path as a command-line parameter) and in
-``moira-alert/worker/moira/config.py``
+Filter
+------
 
-.. literalinclude:: ../../config.example.yml
+.. _storage-schemas.conf: http://graphite.readthedocs.io/en/latest/config-carbon.html#storage-schemas-conf
+
+.. literalinclude:: ../../filter.example.yml
    :language: yaml
 
-storage-schemas.conf_ is graphite carbon configuration file.
+storage-schemas.conf_ is graphite carbon configuration file that should match similarly-named file in your Graphite installation.
 
-Example:
+Checker
+-------
 
-.. code-block:: text
+.. literalinclude:: ../../checker.example.yml
+   :language: yaml
 
-   [default_1min_for_1day]
-   pattern = .*
-   retentions = 1m:1d
+Notifier
+--------
+
+.. literalinclude:: ../../notifier.example.yml
+   :language: yaml
+
+API
+---
+
+.. literalinclude:: ../../api.example.yml
+   :language: yaml
+
+UI
+--
+
+.. literalinclude:: ../../ui.example.json
+   :language: json

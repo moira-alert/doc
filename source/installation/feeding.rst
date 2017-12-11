@@ -5,7 +5,7 @@ Feeding Metrics to Moira
 
 Moira needs to keep its own local copy of your metric data to improve performance and reduce load
 on your existing graphite cluster. This means data needs to be duplicated from your existing stream
-and sent to your existing cluster and to your moira installation.
+and sent to your existing cluster and to your Moira installation.
 
 Unfortunatly, the Carbon-Relay with Graphite does not support duplication of data to multiple
 backends, and so you need to use a more feature rich carbon relay such as carbon-c-relay_.
@@ -29,8 +29,7 @@ a three node cluster of Carbon servers.
     ;
 
    match *
-       send to 
+       send to
            moira
            graphite
    ;
-.. note:: replace **moira-host** with your host name

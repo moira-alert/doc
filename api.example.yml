@@ -1,0 +1,10 @@
+redis:
+  host: "moira-redis"
+  port: "6379"
+  dbid: 0
+api:
+  listen: :8081
+  enable_cors: true
+log:
+  log_file: stdout
+  log_level: info

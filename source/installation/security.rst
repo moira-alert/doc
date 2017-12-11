@@ -33,7 +33,7 @@ Assuming that Moira UI static files are in ``/var/www/moira-web`` and API is run
      listen 0.0.0.0:80 default_server;
 
      location / {
-       root /var/www/moira-web;
+       root /var/www/moira;
        index index.html;
      }
 
@@ -43,4 +43,4 @@ Assuming that Moira UI static files are in ``/var/www/moira-web`` and API is run
      }
    }
 
-Look at auth_basic_module_ if you need more details of Nginx basic authentication. 
+Look at auth_basic_module_ if you need more details of Nginx basic authentication.

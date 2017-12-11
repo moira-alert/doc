@@ -14,6 +14,8 @@ Key Features
 .. _Pushover: https://pushover.net
 .. |Alarm fatigue| replace:: **Alarm fatigue**
 .. _Alarm fatigue: https://en.wikipedia.org/wiki/Alarm_fatigue
+.. _carbonapi: https://github.com/go-graphite/carbonapi/blob/master/COMPATIBILITY.md#functions
+.. _govaluate: https://github.com/Knetic/govaluate/blob/master/MANUAL.md
 
 * **Graphite storage independence**
 
@@ -21,14 +23,14 @@ Key Features
   lots of ineffective queries and overloading your cluster. Moira relies on the incoming
   metric stream, and has its own fast cache for recent data.
 
-* **Support for all Graphite functions**
+* **Support for (almost) all Graphite functions**
 
-  Graphite function library is embedded directly into Moira source code. You can use any
-  function and get predictable results, like in your Graphite dashboards.
+  Graphite function library (carbonapi_) is embedded directly into Moira source code. You can use any
+  function and get predictable results, like in your Graphite or Grafana dashboards.
 
-* **Support for custom Python expressions**
+* **Support for custom expressions**
 
-  If simple warning/error threshold is not enough, you can write flexible Python expressions to
+  If simple warning/error threshold is not enough, you can write flexible govaluate_ expressions to
   calculate trigger state based on metric data.
 
 * **Tags for triggers and subscriptions**
@@ -38,7 +40,7 @@ Key Features
 
 * **Extendable notification channels**
 
-  Moira supports email, Slack_ and Pushover_ notifications out-of-the-box. But you can always
+  Moira supports email, Slack_, Pushover_ and many other channels of notification out-of-the-box. But you can always
   write your own plugin in Go and rebuild Moira Notifier microservice.
 
 * |Alarm fatigue|_ **protection**
@@ -69,18 +71,18 @@ In spirit of Graphite architecture, Moira consists of several loosely coupled mi
 welcome to replace or to add new ones.
 
 
-Cache
-^^^^^
+Filter
+^^^^^^
 
-Cache is a lightweight Go application responsible for receiving lots of metric data in Graphite
-format. Cache filters received data and saves only metrics that match any of user triggers. This
+Filter is a lightweight service responsible for receiving lots of metric data in Graphite
+format. It filters received data and saves only metrics that match any of user triggers. This
 reduces load on all other parts of Moira.
 
 
 Checker
 ^^^^^^^
 
-Checker is a Python application with embedded Graphite functions. Checker watches for incoming
+Checker is an application with embedded Graphite functions. Checker watches for incoming
 metric values and performs checks according to saved trigger settings. When state of any trigger
 changes, Checker generates an event.
 
@@ -88,32 +90,20 @@ changes, Checker generates an event.
 Notifier
 ^^^^^^^^
 
-Notifier is a Go application that watches for generated events. Notifier is responsible for
+Notifier is an application that watches for generated events. Notifier is responsible for
 scheduling and sending notifications, observing quiet hours, retrying failed notifications, etc.
 
 
 API
 ^^^
 
-API is a Python application that serves as a backend for UI.
+API is an application that serves as a backend for UI.
 
 
-UI
-^^
+Web 2.0
+^^^^^^^
 
-UI is a frontend Angular application, it looks like this:
+Web 2.0 is a frontend React application, it looks like this:
 
 .. image:: _static/triggers.png
    :alt: ui screenshot
-
-
-Database
-^^^^^^^^
-
-All services communicate only through a Redis database, without any additional protocols or
-connections between them.
-
-.. image:: _static/dfd-microservices.svg
-   :alt: microservices
-   :width: 80%
-   :align: center

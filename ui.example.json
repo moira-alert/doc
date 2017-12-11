@@ -1,0 +1,16 @@
+{
+	"api_url": "/api",
+	"contacts": [
+		{"type": "pushover", "validation": "", "img": "pushover.ico"},
+		{"type": "slack", "validation": "^[@#].+$", "img": "slack.ico"},
+		{"type": "telegram", "validation": "", "img": "telegram.ico", "title": "#channel, @username, group", "help": "required to grant @ExampleMoiraBot admin privileges for channels, or /start command in groups and personal chats"},
+	],
+	"paging": {
+		"size": 60
+	},
+	"event_history":{
+		"paging": {
+			"size": 100
+		}
+	}
+}

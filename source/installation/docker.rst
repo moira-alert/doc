@@ -1,23 +1,17 @@
-Docker Containers
-=================
+Docker
+======
 
-.. _Docker: https://github.com/warmfusion/moira-docker
-.. _documentation: https://github.com/warmfusion/moira-docker
+.. |Docker Hub| replace:: Docker Hub
+.. _Docker Hub: https://hub.docker.com/u/moira/
 
-.. warning:: This is a third-party installation container provided by community. Use at your own risk.
-
-You can quickly test a local Moira installationg using Docker_ containers provided by Toby Jackson.
+You can quickly test a local Moira installation using Docker containers from |Docker Hub|_.
 
 .. code-block:: bash
 
-  git clone https://github.com/warmfusion/moira-docker.git
-  cd moira-docker
-  docker-compose up
+  docker pull moira/web2
+  docker pull moira/filter
+  docker pull moira/checker
+  docker pull moira/notifier
+  docker pull moira/api
 
-
-.. tip:: Using Docker-Machine you can navigate to Moira interface on ``http://$(docker-machine ip dev):8080/``
-
-
-This should setup a small cluster of Docker containers ready to accept data and handle notifications, with the interface on ``http://localhost:8080`` and accepts graphite metrics on ``localhost:2003``
-
-See Tobys documentation_ for more information on submitting data to your new containers, and the :doc:`/user_guide/index` for everything else.
+Containers are preconfigured to serve Web UI at ``localhost:8080`` and accept graphite metrics at ``localhost:2003``.
