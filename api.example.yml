@@ -4,7 +4,8 @@ redis:
   dbid: 0
 api:
   listen: :8081
-  enable_cors: true
+  enable_cors: false
+  web_config_path: "/etc/moira/web.json"
 log:
   log_file: stdout
   log_level: info
