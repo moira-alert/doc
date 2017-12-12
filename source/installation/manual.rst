@@ -4,7 +4,8 @@ Manual Installation
 .. _golang: https://golang.org/doc/install
 .. _redis: http://redis.io/download
 .. _nginx: http://nginx.org/en/download.html
-.. _config.json: https://github.com/moira-alert/web2.0/blob/master/config.json.example
+.. _web.json: https://github.com/moira-alert/moira/blob/master/pkg/api/web.json
+.. _configuration: https://moira.readthedocs.io/en/latest/installation/configuration.html#api
 
 
 .. tip:: To get Moira running quickly, try :doc:`/installation/docker` version
@@ -21,10 +22,10 @@ Build Moira Microservices
 
 .. code-block:: bash
 
-    go install github.com/moira-alert/moira-cmd/filter
-    go install github.com/moira-alert/moira-cmd/checker
-    go install github.com/moira-alert/moira-cmd/notifier
-    go install github.com/moira-alert/moira-cmd/api
+    go install github.com/moira-alert/moira/cmd/filter
+    go install github.com/moira-alert/moira/cmd/checker
+    go install github.com/moira-alert/moira/cmd/notifier
+    go install github.com/moira-alert/moira/cmd/api
 
 You will find binaries in ``$GOPATH/bin``.
 
@@ -58,7 +59,7 @@ Configure
         }
     }
 
-3. If you need to override UI settings, place your custom config.json_ file near ``index.html`` (``/var/local/www/moira/config.json`` in our examples).
+3. If you need to override UI settings, edit web.json_ file. You can find its location in API configuration_.
 
 
 Run
