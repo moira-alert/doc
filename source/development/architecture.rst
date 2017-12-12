@@ -133,28 +133,22 @@ Each subscription consists of:
 Dataflow
 --------
 
-Save and Filter Incoming Metrics
+Filter and Check Incoming Metrics
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. image:: ../_static/dfd-filter.svg
-   :alt: cache
+   :alt: filter and checker
+   :width: 70%
+   :align: center
 
 When user adds a new trigger, Moira parses patterns from targets and saves them to ``moira-pattern-list`` key in Redis. Filter rereads this list every second.
 When a metric value arrives, Filter checks metric name against the list of patterns. Matching metrics are saved to ``moira-metric:<metricname>`` keys in Redis.
 Redis pub/sub mechanism is used to inform Checker of incoming metric value that should be checked as soon as possible.
 
-Checker reads triggers by pattern from ``moira-pattern-triggers:<pattern>`` key in Redis and adds triggers to check set at ``moira-triggers-tocheck`` Redis key.
+Checker reads triggers by pattern from ``moira-pattern-triggers:<pattern>`` key in Redis and checks each trigger. 
 In case of no incoming data, all triggers are added to check once per ``nodata_check_interval`` setting.
 
-
-Check Triggers
-^^^^^^^^^^^^^^
-
-.. image:: ../_static/dfd-checker.svg
-   :alt: checker
-
-Checker constantly reads ``moira-triggers-tocheck`` key in Redis and calculates trigger targets values. Target can contain one or multiple metrics, so results are written per metric.
-
+Trigger target can contain one or multiple metrics, so results are written per metric.
 ``moira-metric-last-check:<trigger_id>`` Redis key contains last check JSON with metric states.
 
 When a metric changes its state, a new event is written to ``moira-trigger-events`` Redis key. This happens only if value timestamp falls inside time period allowed by trigger schedule.
@@ -168,7 +162,7 @@ Process Trigger Events
 ^^^^^^^^^^^^^^^^^^^^^^
 
 .. image:: ../_static/dfd-notifier-events.svg
-   :alt: checker
+   :alt: notifier events
    :width: 70%
    :align: center
 
@@ -190,7 +184,7 @@ Process Notifications
 ^^^^^^^^^^^^^^^^^^^^^
 
 .. image:: ../_static/dfd-notifier-notifications.svg
-   :alt: checker
+   :alt: notifier notifications
 
 Notifier constantly pulls scheduled notifications from ``moira-notifier-notifications`` Redis key.
 It calls sender for certain contact type and writes notification back to Redis in case of sender error.
