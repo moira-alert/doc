@@ -5,7 +5,40 @@ Architecture
 
 .. raw:: html
 
-    <style> .moira-state { padding: 5px; padding-left: 13px; padding-right: 13px; border-radius: 1pc; display: inline-block; color: white} </style>
+    <style>
+    @keyframes moira-status-blink {
+        0% {
+            opacity: .25;
+        }
+        15% {
+            opacity: 1;
+        }
+        40% {
+            opacity: 1;
+        }
+        100% {
+            opacity: .25;
+        }
+    }
+    .moira-status-exception {
+        animation: moira-status-blink 1.6s infinite;
+        animation-name: moira-status-blink;
+        animation-duration: 1.6s;
+        animation-timing-function: initial;
+        animation-delay: initial;
+        animation-iteration-count: infinite;
+        animation-direction: initial;
+        animation-fill-mode: initial;
+        animation-play-state: initial;
+    } 
+    .moira-status {
+        margin-bottom: 10px;
+    }
+    .moira-status > * {
+        vertical-align: middle;
+        margin-right: 5px;
+    }
+    </style>
 
 
 
@@ -64,15 +97,30 @@ Moira stores separate state for every metric. Each metric can be in only one sta
 
 .. raw:: html
 
-   <span style="background-color: #00bfa5" class="moira-state">OK</span>
+   <div class="moira-status">
+    <svg viewBox="-1 -1 2 2" width="20" height="20"><circle cx="0" cy="0" r="1" fill="#00bfa5"></circle></svg>
+    <span>OK</span>
+   </div>
 
-   <span style="background-color: #ffc107" class="moira-state">WARN</span>
+   <div class="moira-status">
+    <svg viewBox="-1 -1 2 2" width="20" height="20"><circle cx="0" cy="0" r="1" fill="#ffc107"></circle></svg>
+    <span>WARN</span>
+   </div>
 
-   <span style="background-color: #ff5722" class="moira-state">ERROR</span>
+   <div class="moira-status">
+    <svg viewBox="-1 -1 2 2" width="20" height="20"><circle cx="0" cy="0" r="1" fill="#ff5722"></circle></svg>
+    <span>ERROR</span>
+   </div>
 
-   <span style="background-color: #9e9e9e" class="moira-state">NODATA</span>
+   <div class="moira-status">
+    <svg viewBox="-1 -1 2 2" width="20" height="20"><circle cx="0" cy="0" r="1" fill="#9e9e9e"></circle></svg>
+    <span>NODATA</span>
+   </div>
 
-   <span style="background-color: #e14f4f" class="moira-state">EXCEPTION</span>
+   <div class="moira-status">
+    <svg viewBox="-1 -1 2 2" width="20" height="20"><circle cx="0" cy="0" r="1" fill="#ff5722" class="moira-status-exception"></circle></svg>
+    <span>EXCEPTION</span>
+   </div>
 
    <div>&nbsp;</div>
 
