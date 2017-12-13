@@ -3,15 +3,15 @@ redis:
   port: "6379"
   dbid: 0
 graphite:
-  enabled: "true"
+  enabled: true
   uri: graphite-relay:2003
   prefix: DevOps.moira
-  interval: 60s0ms
+  interval: 60s
 log:
   log_file: stdout
   log_level: info
 notifier:
-  sender_timeout: 10s0ms
+  sender_timeout: 10s
   resending_timeout: "1:00"
   front_uri: https://moira.example.com
   timezone: Europe/Moscow
@@ -23,11 +23,11 @@ notifier:
     - type: telegram
       api_token: ...
   moira_selfstate:
-    enabled: "true"
-    redis_disconect_delay: 60
-    last_metric_received_delay: 120
-    last_check_delay: 120
-    notice_interval: 600
+    enabled: true
+    redis_disconect_delay: 60s
+    last_metric_received_delay: 120s
+    last_check_delay: 120s
+    notice_interval: 600s
     contacts:
       - type: email
         value: devopsteam@example.com
