@@ -2,9 +2,9 @@ Changelog
 =========
 
 .. _govaluate: https://github.com/Knetic/govaluate
-.. _carbonapi: https://github.com/go-graphite/carbonapi/blob/master/COMPATIBILITY.md#functions
+.. _carbonapi: https://github.com/go-graphite/carbonapi/blob/a5304b99d57da999a8561f6dee7745ef88164d2c/COMPATIBILITY.md#functions
 .. |supported Graphite functions| replace:: supported Graphite functions
-.. _supported Graphite functions: https://github.com/go-graphite/carbonapi/blob/master/COMPATIBILITY.md#functions
+.. _supported Graphite functions: https://github.com/go-graphite/carbonapi/blob/a5304b99d57da999a8561f6dee7745ef88164d2c/COMPATIBILITY.md#functions
 
 
 2.0
