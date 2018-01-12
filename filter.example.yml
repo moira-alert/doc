@@ -4,11 +4,11 @@ redis:
   dbid: 0
 graphite:
   enabled: true
-  uri: graphite-relay:2003
+  uri: "graphite-relay:2003"
   prefix: DevOps.moira
   interval: 60s
 filter:
-  listen: :2003
+  listen: ":2003"
   retention-config: /etc/moira/storage-schemas.conf
 log:
   log_file: stdout

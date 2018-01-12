@@ -4,7 +4,7 @@ redis:
   dbid: 0
 graphite:
   enabled: true
-  uri: graphite-relay:2003
+  uri: "graphite-relay:2003"
   prefix: DevOps.moira
   interval: 60s
 checker:

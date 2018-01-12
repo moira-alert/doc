@@ -3,7 +3,7 @@ redis:
   port: "6379"
   dbid: 0
 api:
-  listen: :8081
+  listen: ":8081"
   enable_cors: false
   web_config_path: "/etc/moira/web.json"
 log:

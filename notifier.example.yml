@@ -4,7 +4,7 @@ redis:
   dbid: 0
 graphite:
   enabled: true
-  uri: graphite-relay:2003
+  uri: "graphite-relay:2003"
   prefix: DevOps.moira
   interval: 60s
 log:
@@ -13,7 +13,7 @@ log:
 notifier:
   sender_timeout: 10s
   resending_timeout: "1:00"
-  front_uri: https://moira.example.com
+  front_uri: "https://moira.example.com"
   timezone: Europe/Moscow
   senders:
     - type: slack
