@@ -7,6 +7,15 @@ Changelog
 .. _supported Graphite functions: https://github.com/go-graphite/carbonapi/blob/a5304b99d57da999a8561f6dee7745ef88164d2c/COMPATIBILITY.md#functions
 
 
+2.1
+---
+
+- Throw an exception if any target except the first one resolves in more than one metric.
+- Fix Moira version detection in CI builds.
+- Add user login information to API request logs.
+- Fix long interval between creating a new trigger and getting data into that trigger.
+
+
 2.0
 ---
 
