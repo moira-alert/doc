@@ -35,6 +35,7 @@ Assuming that Moira UI static files are in ``/var/www/moira-web`` and API is run
      location / {
        root /var/www/moira;
        index index.html;
+       try_files $uri $uri/ /index.html;
      }
 
      location /api/ {
