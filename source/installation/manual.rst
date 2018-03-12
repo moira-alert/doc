@@ -22,12 +22,11 @@ Build Moira Microservices
 
 .. code-block:: bash
 
-    go install github.com/moira-alert/moira/cmd/filter
-    go install github.com/moira-alert/moira/cmd/checker
-    go install github.com/moira-alert/moira/cmd/notifier
-    go install github.com/moira-alert/moira/cmd/api
+    go get -u github.com/moira-alert/moira
+    cd $GOPATH/src/github.com/moira-alert/moira
+    make build
 
-You will find binaries in ``$GOPATH/bin``.
+You will find binaries in ``$GOPATH/src/github.com/moira-alert/moira/build``.
 
 
 Download Web UI Application
@@ -53,6 +52,7 @@ Configure
         location / {
             root /var/local/www/moira;
             index index.html;
+            try_files $uri $uri/ /index.html;
         }
         location /api/ {
             proxy_pass http://127.0.0.1:8081;
