@@ -37,7 +37,7 @@ compat.make_admonition = BaseAdmonition
 # ones.
 
 extensions = [
-    'sphinx.ext.autodoc', 'sphinxcontrib.httpdomain', 'sphinxcontrib.spelling', 'sphinxcontrib.images'
+    'sphinx.ext.autodoc', 'sphinxcontrib.httpdomain', 'sphinxcontrib.images'
 ]
 
 images_config = {
