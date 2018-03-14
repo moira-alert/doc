@@ -7,6 +7,37 @@ Changelog
 .. _supported Graphite functions: https://github.com/go-graphite/carbonapi/blob/a5304b99d57da999a8561f6dee7745ef88164d2c/COMPATIBILITY.md#functions
 
 
+2.2
+---
+
+- Fix bug in triggers with multiple targets. Metrics from targets T2, T3, ... were not deleted properly.
+- Fix old-style configuration files in platform-specific packages.
+- Fix bug that prevented non-integer timestamps from processing.
+- Add domain autoresolving for self-metrics sending to Graphite.
+- Fix bug that allowed to create pseudotags (ERROR, etc.) as ordinary tags.
+- Translate pagination.
+- Hide tag list on trigger edit page.
+- Highlight metric row on mouse hover.
+- Re-enable Markdown in Slack sender.
+- Fix logo image background.
+- Optimize reading metrics while checking trigger (removed unnecessary Redis transaction).
+- Replace pseudotags with ordinary checkboxes in Web UI (but not on backend yet).
+- Update event names in case trigger name had changed.
+- Fix sorting on -s and 0s.
+- Make sorting by status the default option on trigger page.
+- Fix UI glitch while setting maintenance time.
+- Automatically add tags from search bar when creating new trigger.
+- Sort tags alphabetically everywhere.
+- Update carbonapi (new functions: map, reduce, delay; updated: asPercent).
+- Fix concurrent read/write from expression cache.
+- Add metrics for each trigger handling time.
+- Add Redis Sentinel support.
+- Increase trigger processing speed by adding a cache on metric patterns.
+- Add metric name to "Trigger has same timeseries names" error message.
+- Fix retention scheme parsing for some rare cases with comments.
+- Optimize internal metric collection.
+
+
 2.1
 ---
 
