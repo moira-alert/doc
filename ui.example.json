@@ -1,8 +1,8 @@
 {
 	"contacts": [
-		{"type": "pushover", "validation": "", "img": "pushover.ico"},
-		{"type": "slack", "validation": "^[@#].+$", "img": "slack.ico"},
-		{"type": "telegram", "validation": "", "img": "telegram.ico", "title": "#channel, @username, group", "help": "required to grant @ExampleMoiraBot admin privileges for channels, or /start command in groups and personal chats"},
+		{"type": "pushover", "validation": ""},
+		{"type": "slack", "validation": "^[@#].+$"},
+		{"type": "telegram", "validation": "", "title": "#channel, @username, group", "help": "required to grant @ExampleMoiraBot admin privileges for channels, or /start command in groups and personal chats"},
 	],
   "supportEmail": "devops@example.com"
 }

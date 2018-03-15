@@ -7,27 +7,60 @@ graphite:
   uri: "graphite-relay:2003"
   prefix: DevOps.moira
   interval: 60s
-log:
-  log_file: stdout
-  log_level: info
 notifier:
   sender_timeout: 10s
   resending_timeout: "1:00"
   front_uri: "https://moira.example.com"
   timezone: Europe/Moscow
+  # List of senders, every element has "type" field (one of ["pushover", "slack", "mail", "telegram", "twilio sms", "twilio voice", "script"])
+  # Every type of sender has additional config fields
   senders:
-    - type: slack
-      api_token: ...
     - type: pushover
+      # Api token for your pushover channel, for more info see https://pushover.net/api#registration
+      api_token: ...
+    - type: slack
+      # Api token for your moira notifications slack user, for more info see https://get.slack.help/hc/en-us/articles/215770388-Create-and-regenerate-API-tokens
       api_token: ...
     - type: telegram
+      # Api token for your telegram bot, for more info about creating bot and get token see https://core.telegram.org/bots#3-how-do-i-create-a-bot
       api_token: ...
+    - type: mail
+      mail_from: ...
+      smtp_host: ...
+      smtp_port: ...
+      # Skip SMTP server certificate chain validation if false
+      insecure_tls: false
+      # Uses "mail_from" if empty
+      smtp_user: ...
+      smtp_pass: ...
+      # Email template file path (standard Go templates), if empty use default template
+      template_file: ...
+    - type: twilio sms
+      api_asid: ...
+      api_authtoken: ...
+      api_fromphone: ...
+      # URL that responds with TwiML config for voice message generation, see https://www.twilio.com/docs/api/twiml/voice-overview
+      voiceurl: ...
+      append_message: true
+    - type: twilio voice
+      api_asid: ...
+      api_authtoken: ...
+      api_fromphone: ...
+    - type: script
+      name: ...
+      # Executable path. File must exist on all machines where notifier is running.
+      # You can use ${trigger_name} and ${contact_value} in command-line parameters,
+      # they will be replaced with trigger name and contact (as specified in web interface).
+      exec: ...
   moira_selfstate:
     enabled: true
     redis_disconect_delay: 60s
     last_metric_received_delay: 120s
     last_check_delay: 120s
-    notice_interval: 600s
+    notice_interval: 300s
     contacts:
       - type: email
         value: devopsteam@example.com
+log:
+  log_file: stdout
+  log_level: info
