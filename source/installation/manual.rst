@@ -70,9 +70,9 @@ Run
 
 .. code-block:: bash
 
-    $GOPATH/bin/cache
-    $GOPATH/bin/checker
-    $GOPATH/bin/notifier
-    $GOPATH/bin/api
+    $GOPATH/src/github.com/moira-alert/moira/build/cache
+    $GOPATH/src/github.com/moira-alert/moira/build/checker
+    $GOPATH/src/github.com/moira-alert/moira/build/notifier
+    $GOPATH/src/github.com/moira-alert/moira/build/api
 
 Now you need to feed your metrics to Moira (see :doc:`/installation/feeding`) on port 2003 and to create alerts in UI (see :doc:`/user_guide/index`).
