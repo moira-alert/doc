@@ -1,5 +1,5 @@
-// Use fields MasterName and SentinelAddrs to enable Redis Sentinel support,
-// use Host and Port fields otherwise.
+# Use fields MasterName and SentinelAddrs to enable Redis Sentinel support,
+# use Host and Port fields otherwise.
 redis:
   # Sentinel cluster name
   master_name: ""
