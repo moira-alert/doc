@@ -8,9 +8,13 @@ graphite:
   prefix: DevOps.moira
   interval: 60s
 notifier:
+  # Hard timeout to stop retrying to send notification after multiple failed attempts
   sender_timeout: 10s
+  # Soft timeout to start retrying to send notification after single failed attempt
   resending_timeout: "1:00"
+  # Web-UI uri prefix for trigger links in notifications. For example: with 'http://localhost' every notification will contain link like 'http://localhost/trigger/triggerId'
   front_uri: "https://moira.example.com"
+  # Timezone to use to convert ticks. Default is UTC. See https://golang.org/pkg/time/#LoadLocation for more details.
   timezone: Europe/Moscow
   # List of senders, every element has "type" field (one of ["pushover", "slack", "mail", "telegram", "twilio sms", "twilio voice", "script"])
   # Every type of sender has additional config fields
@@ -52,12 +56,18 @@ notifier:
       # You can use ${trigger_name} and ${contact_value} in command-line parameters,
       # they will be replaced with trigger name and contact (as specified in web interface).
       exec: ...
+  # Self state monitor configuration section. Note: No inner subscriptions is required. It's own notification mechanism will be used.
   moira_selfstate:
     enabled: true
+    # Max Redis disconnect delay to send alert when reached
     redis_disconect_delay: 60s
+    # Max Filter metrics receive delay to send alert when reached
     last_metric_received_delay: 120s
+    # Max Checker checks perform delay to send alert when reached
     last_check_delay: 120s
+    # Self state monitor alerting interval
     notice_interval: 300s
+    # Contact list for Self state monitor alerts, use this like delivery channels in web-ui
     contacts:
       - type: email
         value: devopsteam@example.com

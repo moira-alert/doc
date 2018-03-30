@@ -8,10 +8,16 @@ graphite:
   prefix: DevOps.moira
   interval: 60s
 checker:
+  # Period for every trigger to perform forced check on
   nodata_check_interval: 60s
+  # Min period to perform triggers re-check. Note: Reducing of this value leads to increasing of CPU and memory usage values
   check_interval: 10s
+  # Time interval to store metrics. Note: Increasing of this value leads to increasing of Redis memory consumption value
   metrics_ttl: 3h
+  # Period for every trigger to cancel forced check (greater than 'NoDataCheckInterval') if no metrics were received
   stop_checking_interval: 30s
+  # Equals to the number of processor cores found on Moira host by default or when variable is defined as 0.
+  max_parallel_checks: 0
 log:
   log_file: stdout
   log_level: info

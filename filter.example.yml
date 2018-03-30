@@ -1,14 +1,29 @@
+// Use fields MasterName and SentinelAddrs to enable Redis Sentinel support,
+// use Host and Port fields otherwise.
 redis:
+  # Sentinel cluster name
+  master_name: ""
+  # Sentinel address list, format: {host1_name:port};{ip:port}
+  sentinel_addrs: ""
+  # Node ip-address or host name
   host: "moira-redis"
+  # Node port
   port: "6379"
+  # Database id
   dbid: 0
 graphite:
+  # If true, graphite logger will be enabled
   enabled: true
+  # Graphite relay URI
   uri: "graphite-relay:2003"
+  # Moira metrics prefix. Use 'prefix: {hostname}' to use hostname autoresolver.
   prefix: DevOps.moira
+  # Metrics sending interval
   interval: 60s
 filter:
+  # Metrics listener uri
   listen: ":2003"
+  # Retentions config file path. Simply use your original storage-schemas.conf or create new if you're using Moira without existing Graphite installation.
   retention-config: /etc/moira/storage-schemas.conf
 log:
   log_file: stdout

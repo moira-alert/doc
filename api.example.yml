@@ -3,8 +3,11 @@ redis:
   port: "6379"
   dbid: 0
 api:
+  # Api local network address. Default is ':8081' so api will be available at http://moira.company.com:8081/api
   listen: ":8081"
+  # If true, CORS for cross-domain requests will be enabled. This option can be used only for debugging purposes.
   enable_cors: false
+  # Web_UI config file path. If file not found, api will return 404 in response to "api/config"
   web_config_path: "/etc/moira/web.json"
 log:
   log_file: stdout
