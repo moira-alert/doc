@@ -8,9 +8,9 @@ graphite:
   prefix: DevOps.moira
   interval: 60s
 notifier:
-  # Hard timeout to stop retrying to send notification after multiple failed attempts
-  sender_timeout: 10s
   # Soft timeout to start retrying to send notification after single failed attempt
+  sender_timeout: 10s
+  # Hard timeout to stop retrying to send notification after multiple failed attempts
   resending_timeout: "1:00"
   # Web-UI uri prefix for trigger links in notifications. For example: with 'http://localhost' every notification will contain link like 'http://localhost/trigger/triggerId'
   front_uri: "https://moira.example.com"
