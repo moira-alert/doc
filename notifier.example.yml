@@ -16,6 +16,8 @@ notifier:
   front_uri: "https://moira.example.com"
   # Timezone to use to convert ticks. Default is UTC. See https://golang.org/pkg/time/#LoadLocation for more details.
   timezone: Europe/Moscow
+  # Format for email sender. Default is "15:04 02.01.2006". See https://golang.org/pkg/time/#Time.Format for more details about golang time formatting.
+  date_time_format: "15:04 02.01.2006"
   # List of senders, every element has "type" field (one of ["pushover", "slack", "mail", "telegram", "twilio sms", "twilio voice", "script"])
   # Every type of sender has additional config fields
   senders:
