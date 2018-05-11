@@ -69,7 +69,7 @@ notifier:
     notice_interval: 300s
     # Contact list for Self state monitor alerts, use this like delivery channels in web-ui
     contacts:
-      - type: email
+      - type: mail
         value: devopsteam@example.com
 log:
   log_file: stdout
