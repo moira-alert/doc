@@ -1,6 +1,15 @@
+# Use fields MasterName and SentinelAddrs to enable Redis Sentinel support,
+# use Host and Port fields otherwise.
 redis:
+  # Sentinel cluster name
+  master_name: ""
+  # Sentinel address list, format: {host1_name:port};{ip:port}
+  sentinel_addrs: ""
+  # Node ip-address or host name
   host: "moira-redis"
+  # Node port
   port: "6379"
+  # Database id
   dbid: 0
 api:
   # Api local network address. Default is ':8081' so api will be available at http://moira.company.com:8081/api
