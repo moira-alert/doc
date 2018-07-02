@@ -30,7 +30,7 @@ Architecture
         animation-direction: initial;
         animation-fill-mode: initial;
         animation-play-state: initial;
-    } 
+    }
     .moira-status {
         margin-bottom: 10px;
     }
@@ -182,7 +182,7 @@ Dataflow
 --------
 
 Filter and Check Incoming Metrics
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. image:: ../_static/dfd-filter.svg
    :alt: filter and checker
@@ -193,7 +193,7 @@ When user adds a new trigger, Moira parses patterns from targets and saves them 
 When a metric value arrives, Filter checks metric name against the list of patterns. Matching metrics are saved to ``moira-metric:<metricname>`` keys in Redis.
 Redis pub/sub mechanism is used to inform Checker of incoming metric value that should be checked as soon as possible.
 
-Checker reads triggers by pattern from ``moira-pattern-triggers:<pattern>`` key in Redis and checks each trigger. 
+Checker reads triggers by pattern from ``moira-pattern-triggers:<pattern>`` key in Redis and checks each trigger.
 In case of no incoming data, all triggers are added to check once per ``nodata_check_interval`` setting.
 
 Trigger target can contain one or multiple metrics, so results are written per metric.
