@@ -31,6 +31,12 @@ Notifier
 .. literalinclude:: ../../notifier.example.yml
    :language: yaml
 
+By default mail sender will use 'Fancy' template
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. image:: ../_static/fancy-email-template.png
+   :alt: Fancy email template
+   :width: 400
 
 API
 ---
