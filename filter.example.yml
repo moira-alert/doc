@@ -14,8 +14,8 @@ redis:
 graphite:
   # If true, graphite sender will be enabled.
   enabled: true
-  # If true, runtime stats will be captured and sent to graphite.
-  runtime_stats: true
+  # If true, runtime stats will be captured and sent to graphite. Note: It takes to call stoptheworld() with configured "graphite.interval" to capture runtime stats (https://golang.org/src/runtime/mstats.go)
+  runtime_stats: false
   # Graphite relay URI, format: ip:port
   uri: "graphite-relay:2003"
   # Moira metrics prefix. Use 'prefix: {hostname}' to use hostname autoresolver.
