@@ -1,0 +1,21 @@
+{
+  "contacts": [
+    {
+      "type": "pushover",
+      "validation": "",
+      "title": "pushover user key"
+    },
+    {
+      "type": "slack",
+      "validation": "^[@#][a-zA-Z0-9-_]+",
+      "title": "slack #channel / @user"
+    },
+    {
+      "type": "telegram",
+      "validation": "",
+      "title": "Enter telegram #channel, @username or group",
+      "help": "### To make things work you should:\n### In personal chat:\n - start conversation with bot [@ExampleMoiraBot](https://t.me/ExampleMoiraBot);\n - execute command `/start`;\n - type your login in above field as `@login`.\n\n### In group chat:\n - invite bot [@ExampleMoiraBot](https://t.me/ExampleMoiraBot) into chat;\n - execute command `/start@ExampleMoiraBot`;\n - bot will send you chat id, you should type it without extra characters in above field.\n\n### In channel:\n - add bot [@ExampleMoiraBot](https://t.me/ExampleMoiraBot) into channel;\n - promote bot as channel administrator;\n - type channel name in above field as `#channel`.\n"
+    }
+  ],
+  "supportEmail": "devops@example.com"
+}
