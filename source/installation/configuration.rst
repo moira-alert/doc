@@ -45,8 +45,19 @@ API
    :language: yaml
 
 
-UI
---
+WEB UI
+------
 
-.. literalinclude:: ../../ui.example.json
+.. literalinclude:: ../../web.example.json
    :language: json
+
+- `type` — contact type: pushover, slack, mail, script, telegram, twilio sms, twilio voice;
+- `validation` — regular expression for user contact;
+- `title` — hint shown in input field;
+- `help` — help text in Markdown_ markup .
+
+.. image:: ../_static/web-ui-example.png
+   :alt: WEB UI example
+   :width: 400
+
+.. _Markdown: https://daringfireball.net/projects/markdown/syntax
