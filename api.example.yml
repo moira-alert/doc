@@ -1,7 +1,27 @@
+# Use fields MasterName and SentinelAddrs to enable Redis Sentinel support,
+# use Host and Port fields otherwise.
 redis:
+  # Sentinel cluster name
+  master_name: ""
+  # Sentinel address list, format: {host1_name:port};{ip:port}
+  sentinel_addrs: ""
+  # Node ip-address or host name
   host: "moira-redis"
+  # Node port
   port: "6379"
+  # Database id
   dbid: 0
+graphite:
+  # If true, graphite sender will be enabled.
+  enabled: true
+  # If true, runtime stats will be captured and sent to graphite. Note: It takes to call stoptheworld() with configured "graphite.interval" to capture runtime stats (https://golang.org/src/runtime/mstats.go)
+  runtime_stats: false
+  # Graphite relay URI, format: ip:port
+  uri: "graphite-relay:2003"
+  # Moira metrics prefix. Use 'prefix: {hostname}' to use hostname autoresolver.
+  prefix: DevOps.moira
+  # Metrics sending interval
+  interval: 60s
 api:
   # Api local network address. Default is ':8081' so api will be available at http://moira.company.com:8081/api
   listen: ":8081"

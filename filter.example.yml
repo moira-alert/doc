@@ -12,9 +12,11 @@ redis:
   # Database id
   dbid: 0
 graphite:
-  # If true, graphite logger will be enabled
+  # If true, graphite sender will be enabled.
   enabled: true
-  # Graphite relay URI
+  # If true, runtime stats will be captured and sent to graphite. Note: It takes to call stoptheworld() with configured "graphite.interval" to capture runtime stats (https://golang.org/src/runtime/mstats.go)
+  runtime_stats: false
+  # Graphite relay URI, format: ip:port
   uri: "graphite-relay:2003"
   # Moira metrics prefix. Use 'prefix: {hostname}' to use hostname autoresolver.
   prefix: DevOps.moira
