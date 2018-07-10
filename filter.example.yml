@@ -26,7 +26,9 @@ filter:
   # Metrics listener uri
   listen: ":2003"
   # Retentions config file path. Simply use your original storage-schemas.conf or create new if you're using Moira without existing Graphite installation.
-  retention-config: /etc/moira/storage-schemas.conf
+  retention_config: /etc/moira/storage-schemas.conf
+  # Number of metrics to cache before sending them to Redis. Note: As this value increases, Redis CPU usage decreases. Normally, this must be value of the same order of graphite.prefix.filter.recevied.matching.count | nonNegativeDerivative() | scaleToSeconds(1)
+  cache_capacity: 100
 log:
   log_file: stdout
   log_level: info
