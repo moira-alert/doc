@@ -73,7 +73,7 @@ notifier:
       # You can use ${trigger_name} and ${contact_value} in command-line parameters,
       # they will be replaced with trigger name and contact (as specified in web interface).
       exec: ...
-  # Self state monitor configuration section. Note: No inner subscriptions is required. It's own notification mechanism will be used.
+  # Self state monitor configuration section. Note: No inner subscriptions is required. Moira will use its notification mechanism to send messages.
   moira_selfstate:
     enabled: true
     # Max Redis disconnect delay to send alert when reached

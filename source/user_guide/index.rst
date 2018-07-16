@@ -19,3 +19,4 @@ and specific. Also, we have screenshots.
    advanced
    hidden_pages
    maintenance
+   selfstate
