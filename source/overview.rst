@@ -64,6 +64,8 @@ Probably, your metrics arrive once every minute, so you really won't notice this
 You can also tweak this in config file.
 
 
+.. _microservices-architecture:
+
 Microservices
 -------------
 
