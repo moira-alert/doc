@@ -2,3 +2,4 @@
 .DS_Store
 build
 source/_build_html
+.vscode

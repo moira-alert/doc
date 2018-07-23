@@ -24,6 +24,7 @@ Checker
 .. literalinclude:: ../../checker.example.yml
    :language: yaml
 
+.. _notifier-configuration:
 
 Notifier
 --------
@@ -31,12 +32,22 @@ Notifier
 .. literalinclude:: ../../notifier.example.yml
    :language: yaml
 
-By default mail sender will use 'Fancy' template
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Email template
+^^^^^^^^^^^^^^
+
+By default mail sender will use 'Fancy' template:
 
 .. image:: ../_static/fancy-email-template.png
    :alt: Fancy email template
    :width: 400
+
+Self state monitor
+^^^^^^^^^^^^^^^^^^
+
+If self state monitor is enabled, Moira will periodically check the Redis connection,
+the number of incoming metrics in the Moira-Filter and the number of triggers to be checked by Moira-Checker.
+
+See :doc:`../user_guide/selfstate` for more details.
 
 API
 ---
