@@ -23,7 +23,7 @@ but notify administrators of the existing problem**.
   When Self State Monitor detects a problem, it disables any notifications to end users
   and does not turn it back on without manual intervention.
 
-  Please. read this manual before using Self State Monitor in production.
+  Please, read this manual before using Self State Monitor in production.
 
 .. seealso::
 
@@ -62,6 +62,11 @@ When you turn Self State Monitor on, it works this way:
      :alt: email alarm message
 
 * Self State Monitor turns Moira-Notifier service off, switching it in ``ERROR`` state.
+
+  .. note::
+
+    When Moira-Notifier switches to ``ERROR`` state, it mutes all messages to end users and only alerts administrators about Moira health issues.
+    You need to fix existing problems and then manually switch Moira-Notifier back to ``OK`` using :ref:`API <notifier-state-api>`.
 
   *When Moira-Notifier not in* ``OK`` *state, Moira will show you an error in Web UI*:
 
