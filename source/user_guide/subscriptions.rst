@@ -17,32 +17,58 @@ Consult :doc:`/installation/security` page for instructions on separating user a
 
 Once you have at least one channel, you can create a subscription. Press ``+ Add subscription`` button:
 
-.. image:: ../_static/subscriptions.png
-   :alt: subscription settings
+.. image:: ../_static/subscriptions_tags.png
+   :alt: subscription settings tags
 
 
 Tags
 ----
 
-You will receive notifications from triggers with these tags. Note that a trigger must contain *all*
-of the subscription tags to match. For example, if you create a subscription for ``tag1``, ``tag2``,
-you will receive notifications from trigger with ``tag1``, ``tag2``, ``tag3``, but not from trigger
-with ``tag1`` only.
+Add required tags into subscription to receive notifications from triggers with these tags.
 
-``WARN`` and ``ERROR`` are special pseudo-tags that match only events with corresponding level. For example, you may wish to subscribe your Pushover account only to ERROR-level notifications.
+Matching rules are:
 
-``DEGRADATION`` is a special pseudo-tag that match any event, where trigger's state degraded, e.g:
+- If subscription has only one tag, you will receive notifications from any trigger with this tag.
 
-  - ``OK`` |rarr| ``WARN``
-  - ``WARN`` |rarr| ``ERROR``
-  - ``OK`` |rarr| ``NODATA``
+Create Triggger1 with tags: ["DevOps", "Moira-duty"]
+Create Triggger2 with tags: ["DevOps"]
 
-In addition to ``DEGRADATION``, a special ``HIGH DEGRADATION`` pseudo-tag will be added for the following events:
+Create Subscription1 with tags: ["DevOps"]
 
-  - ``OK`` |rarr| ``ERROR``
-  - ``OK`` |rarr| ``NODATA``
-  - ``WARN`` |rarr| ``NODATA``
-  - ``ERROR`` |rarr| ``NODATA``
+By using Subscription1 you will receive events for both Triggger1 and Triggger2 
+
+- If subscription has multiple tags, you will receive notifications only from triggers which include all this tags.
+
+Create Subscription2 with tags: ["DevOps", "Moira-duty"]
+
+By using Subscription2 you will receive events only for Trigger1
+
+.. image:: ../_static/subscriptions_options.png
+   :alt: subscription settings options
+
+
+Ignore specific states transitions
+----------------------------------
+
+In addition to tags you may limit number of events to be notified of by ignoring unnecessary events:
+
+- Send notifications when triggers degraded only
+
+Only following states transitions will require notifications:
+
+``OK`` |rarr| ``WARN``
+``OK`` |rarr| ``ERROR``
+``OK`` |rarr| ``NODATA``
+``WARN`` |rarr| ``ERROR``
+``WARN`` |rarr| ``NODATA``
+``ERROR`` |rarr| ``NODATA``
+
+- Do not send WARN notifications
+
+Following states transitions will be ignored:
+
+``OK`` |rarr| ``WARN``
+``WARN`` |rarr| ``OK``
 
 
 Create and Test
