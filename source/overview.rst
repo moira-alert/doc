@@ -14,7 +14,7 @@ Key Features
 .. _Pushover: https://pushover.net
 .. |Alarm fatigue| replace:: **Alarm fatigue**
 .. _Alarm fatigue: https://en.wikipedia.org/wiki/Alarm_fatigue
-.. _carbonapi: https://github.com/go-graphite/carbonapi/blob/f9817bf00cffe35a42cd310cb285c07d530283df/COMPATIBILITY.md#functions
+.. _carbonapi: https://github.com/go-graphite/carbonapi/blob/ccac7217894801a5a6ceb8602a70ea0d79e975cf/cmd/carbonapi/COMPATIBILITY.md#functions
 .. _govaluate: https://github.com/Knetic/govaluate/blob/master/MANUAL.md
 
 * **Graphite storage independence**
