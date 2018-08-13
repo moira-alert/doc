@@ -17,8 +17,8 @@ Consult :doc:`/installation/security` page for instructions on separating user a
 
 Once you have at least one channel, you can create a subscription. Press ``+ Add subscription`` button:
 
-.. image:: ../_static/subscriptions_tags.png
-   :alt: subscription settings tags
+.. image:: ../_static/subscriptions.png
+   :alt: subscription settings
 
 
 Tags
@@ -42,10 +42,6 @@ By using Subscription1 you will receive events for both Triggger1 and Triggger2
 Create Subscription2 with tags: ["DevOps", "Moira-duty"]
 
 By using Subscription2 you will receive events only for Trigger1
-
-.. image:: ../_static/subscriptions_options.png
-   :alt: subscription settings options
-
 
 Ignore specific states transitions
 ----------------------------------
