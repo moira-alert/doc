@@ -24,6 +24,20 @@ Checker
 .. literalinclude:: ../../checker.example.yml
    :language: yaml
 
+.. _remote-triggers-checker:
+
+Remote Triggers Checker
+^^^^^^^^^^^^^^^^^^^^^^^
+
+One of Moira key feature is Graphite independance. Some Graphite queries are *very* ineffective. 
+Tools like Seyren_ multiply this effect every minute making
+lots of ineffective queries and overloading your cluster. Moira relies on the incoming
+metric stream, and has its own fast cache for recent data.
+
+Enabling Remote triggers Checker allows user to create triggers that relies on Graphite Storage instead of Redis DB.
+
+.. warning:: Use this feature with caution, because it can create an extra load on Graphite HTTP API.
+
 .. _notifier-configuration:
 
 Notifier
@@ -66,9 +80,11 @@ WEB UI
 - `validation` — regular expression for user contact;
 - `title` — hint shown in input field;
 - `help` — help text in Markdown_ markup .
+- `remoteAllowed` — set to ``true`` if `Remote Triggers Checker`_ is enabled.
 
 .. image:: ../_static/web-ui-example.png
    :alt: WEB UI example
    :width: 400
 
 .. _Markdown: https://daringfireball.net/projects/markdown/syntax
+.. _Seyren: https://github.com/scobal/seyren
