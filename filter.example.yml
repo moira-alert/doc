@@ -32,6 +32,9 @@ filter:
   # Normally, this value must be an order of magnitude less than graphite.prefix.filter.recevied.matching.count | nonNegativeDerivative() | scaleToSeconds(1)
   # For example: with 100 matching metrics, set cache_capacity to 10. With 1000 matching metrics, increase cache_capacity up to 100.
   cache_capacity: 10
+  # Defines number of threads to match incoming graphite-metrics.
+  # Equals to the number of processor cores found on Moira host by default or when variable is defined as 0.
+  max_parallel_matches: 0
 log:
   log_file: stdout
   log_level: info
