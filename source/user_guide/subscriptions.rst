@@ -30,41 +30,40 @@ Matching rules are:
 
 - If subscription has only one tag, you will receive notifications from any trigger with this tag.
 
-Create Triggger1 with tags: ["DevOps", "Moira-duty"]
-Create Triggger2 with tags: ["DevOps"]
-
-Create Subscription1 with tags: ["DevOps"]
-
-By using Subscription1 you will receive events for both Triggger1 and Triggger2 
+  - Create Triggger1 with tags: ``["DevOps", "Moira-duty"]``
+  - Create Triggger2 with tags: ``["DevOps"]``
+  - Create Subscription1 with tags: ``["DevOps"]``
+    
+    By using Subscription1 you will receive events for both Triggger1 and Triggger2 
 
 - If subscription has multiple tags, you will receive notifications only from triggers which include all this tags.
 
-Create Subscription2 with tags: ["DevOps", "Moira-duty"]
-
-By using Subscription2 you will receive events only for Trigger1
+  - Create Subscription2 with tags: ``["DevOps", "Moira-duty"]``
+  
+    By using Subscription2 you will receive events only for Trigger1
 
 Ignore specific states transitions
 ----------------------------------
 
-In addition to tags you may limit number of events to be notified of by ignoring unnecessary events:
+You also can reduce number of notifications ignoring unnecessary event. For this purpose use following check boxes:
 
 - Send notifications when triggers degraded only
 
-Only following states transitions will require notifications:
+  Only following states transitions will require notifications:
 
-``OK`` |rarr| ``WARN``
-``OK`` |rarr| ``ERROR``
-``OK`` |rarr| ``NODATA``
-``WARN`` |rarr| ``ERROR``
-``WARN`` |rarr| ``NODATA``
-``ERROR`` |rarr| ``NODATA``
+  - ``OK`` |rarr| ``WARN``
+  - ``OK`` |rarr| ``ERROR``
+  - ``OK`` |rarr| ``NODATA``
+  - ``WARN`` |rarr| ``ERROR``
+  - ``WARN`` |rarr| ``NODATA``
+  - ``ERROR`` |rarr| ``NODATA``
 
 - Do not send WARN notifications
 
-Following states transitions will be ignored:
+  Following states transitions will be ignored:
 
-``OK`` |rarr| ``WARN``
-``WARN`` |rarr| ``OK``
+  - ``OK`` |rarr| ``WARN``
+  - ``WARN`` |rarr| ``OK``
 
 
 Create and Test
