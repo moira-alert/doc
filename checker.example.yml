@@ -33,6 +33,25 @@ checker:
   stop_checking_interval: 30s
   # Equals to the number of processor cores found on Moira host by default or when variable is defined as 0.
   max_parallel_checks: 0
+  # Is related with remote triggers (see remote section)
+  # Equals to the number of processor cores found on Moira host by default or when variable is defined as 0.
+  max_parallel_remote_checks: 0
+# This section configures remote triggers Checker.
+# See https://moira.readthedocs.io/en/latest/installation/configuration.html#remote-triggers-checker for futher information
+remote:
+  enabled: false
+  # URL of Graphite HTTP API: graphite-web, carbonapi, etc.
+  # Specify full URL including '/render'
+  url: "http://graphite.example.com/render"
+  # Auth username. Only Basic-auth supported
+  user: devops
+  # Auth password. Only Basic-auth supported
+  password: verySecurePassword
+  # Min period to perform triggers re-check. 
+  # Note: Reducing of this value leads to increasing of CPU and memory usage values and extra load on Graphite HTTP API
+  check_interval: 60s
+  # Maximum timeout for HTTP-request made to Graphite HTTP API
+  timeout: 60s
 log:
   log_file: stdout
   log_level: info

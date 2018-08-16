@@ -76,12 +76,18 @@ notifier:
   # Self state monitor configuration section. Note: No inner subscriptions is required. Moira will use its notification mechanism to send messages.
   moira_selfstate:
     enabled: true
+    # If true, Moira selfstate will check remote triggers checker works properly and notify admin if remote checker fails
+    # See https://moira.readthedocs.io/en/latest/installation/configuration.html#remote-triggers-checker for futher information
+    remote_triggers_enabled: false
     # Max Redis disconnect delay to send alert when reached
     redis_disconect_delay: 60s
     # Max Filter metrics receive delay to send alert when reached
     last_metric_received_delay: 120s
     # Max Checker checks perform delay to send alert when reached
     last_check_delay: 120s
+    # Max Remote triggers Checker checks perform delay to send alert when reached
+    # See https://moira.readthedocs.io/en/latest/installation/configuration.html#remote-triggers-checker for futher information
+    last_remote_check_delay: 300s
     # Self state monitor alerting interval
     notice_interval: 300s
     # Contact list for Self state monitor alerts, use this like delivery channels in web-ui
