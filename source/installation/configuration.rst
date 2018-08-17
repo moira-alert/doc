@@ -6,6 +6,7 @@ by passing your path as a command-line parameter ``--config``.
 
 On this page you can find examples of configuration files for Moira microservices.
 
+.. _filter-configuration:
 
 Filter
 ------

@@ -42,6 +42,8 @@ Matching rules are:
   
     By using Subscription2 you will receive events only for Trigger1
 
+.. _subscription-states-transitions:
+
 Ignore specific states transitions
 ----------------------------------
 
