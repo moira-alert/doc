@@ -36,7 +36,8 @@ Matching rules are:
     
     By using Subscription1 you will receive events for both Triggger1 and Triggger2 
 
-- If subscription has multiple tags, you will receive notifications only from triggers which include all this tags.
+
+- If subscription has multiple tags, you will receive notifications only from triggers which include all these tags.
 
   - Create Subscription2 with tags: ``["DevOps", "Moira-duty"]``
   
