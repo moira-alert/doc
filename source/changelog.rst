@@ -21,7 +21,7 @@ Changelog
 - Prohibit removal of contact with assigned subscriptions found `moira-alert/moira#91 <https://github.com/moira-alert/moira/pull/91>`_.
 - Make trigger exception messages more descriptive `moira-alert/moira#92 <https://github.com/moira-alert/moira/pull/92>`_.
 - Make filter cache capacity configurable `moira-alert/moira#93 <https://github.com/moira-alert/moira/pull/93>`_. See more :ref:`Filter Configuration <filter-configuration>`.
-- Fix incorrect behavior in which the trigger did not return from the EXECTION state `moira-alert/moira#94 <https://github.com/moira-alert/moira/pull/94>`_.
+- Fix incorrect behavior in which the trigger did not return from the ``EXCEPTION`` state `moira-alert/moira#94 <https://github.com/moira-alert/moira/pull/94>`_.
 - Remove deprecated pseudo-tags, use checkboxes instead `moira-alert/moira#95 <https://github.com/moira-alert/moira/pull/95>`_. See more: :ref:`subscription-states-transitions`.
 - Allow to use single-valued thresholds (ex. only ``WARN`` or only ``ERROR``) `moira-alert/moira#96 <https://github.com/moira-alert/moira/pull/96>`_.
 - Reduce the useless CPU usage in Moira-Filter `moira-alert/moira#98 <https://github.com/moira-alert/moira/pull/98>`_. Thanks to `@errx <https://github.com/errx>`_.
@@ -32,7 +32,7 @@ Changelog
 - Fix default timezone in trigger `moira-alert/web2.0#173 <https://github.com/moira-alert/web2.0/pull/173>`_.
 - Add ability to type negative numbers in simple trigger edit mode  `moira-alert/web2.0#169 <https://github.com/moira-alert/web2.0/pull/169>`_.
 - Fix trailing whitespaces in tag search bar `moira-alert/web2.0#139 <https://github.com/moira-alert/web2.0/pull/139>`_.
-- Update `Moira Client 2.3.2 <https://github.com/moira-alert/python-moira-client/releases/tag/2.3.2>`_.
+- Update `Moira Client 2.3.4 <https://github.com/moira-alert/python-moira-client/releases/tag/2.3.4>`_.
 - Update `Moira Trigger Role 2.3 <https://galaxy.ansible.com/moira-alert/moira-trigger-role>`_.
 
 .. important:: **Redis DB conversion is desirable.**
