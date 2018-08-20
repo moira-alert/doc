@@ -1,11 +1,26 @@
+# Use fields MasterName and SentinelAddrs to enable Redis Sentinel support,
+# use Host and Port fields otherwise.
 redis:
+  # Sentinel cluster name
+  master_name: ""
+  # Sentinel address list, format: {host1_name:port};{ip:port}
+  sentinel_addrs: ""
+  # Node ip-address or host name
   host: "moira-redis"
+  # Node port
   port: "6379"
+  # Database id
   dbid: 0
 graphite:
+  # If true, graphite sender will be enabled.
   enabled: true
+  # If true, runtime stats will be captured and sent to graphite. Note: It takes to call stoptheworld() with configured "graphite.interval" to capture runtime stats (https://golang.org/src/runtime/mstats.go)
+  runtime_stats: false
+  # Graphite relay URI, format: ip:port
   uri: "graphite-relay:2003"
+  # Moira metrics prefix. Use 'prefix: {hostname}' to use hostname autoresolver.
   prefix: DevOps.moira
+  # Metrics sending interval
   interval: 60s
 notifier:
   # Soft timeout to start retrying to send notification after single failed attempt
@@ -39,8 +54,8 @@ notifier:
       # Uses "mail_from" if empty
       smtp_user: ...
       smtp_pass: ...
-      # Email template file path (standard Go templates), if empty use default template
-      template_file: ...
+      # Email template file path (standard Go templates). By default use 'Fancy' template (see screenshot below). If empty, use build-in template with no markups and styles.
+      template_file: '/etc/moira/fancy-template.html'
     - type: twilio sms
       api_asid: ...
       api_authtoken: ...
@@ -58,15 +73,21 @@ notifier:
       # You can use ${trigger_name} and ${contact_value} in command-line parameters,
       # they will be replaced with trigger name and contact (as specified in web interface).
       exec: ...
-  # Self state monitor configuration section. Note: No inner subscriptions is required. It's own notification mechanism will be used.
+  # Self state monitor configuration section. Note: No inner subscriptions is required. Moira will use its notification mechanism to send messages.
   moira_selfstate:
     enabled: true
+    # If true, Moira selfstate will check remote triggers checker works properly and notify admin if remote checker fails
+    # See https://moira.readthedocs.io/en/latest/installation/configuration.html#remote-triggers-checker for futher information
+    remote_triggers_enabled: false
     # Max Redis disconnect delay to send alert when reached
     redis_disconect_delay: 60s
     # Max Filter metrics receive delay to send alert when reached
     last_metric_received_delay: 120s
     # Max Checker checks perform delay to send alert when reached
     last_check_delay: 120s
+    # Max Remote triggers Checker checks perform delay to send alert when reached
+    # See https://moira.readthedocs.io/en/latest/installation/configuration.html#remote-triggers-checker for futher information
+    last_remote_check_delay: 300s
     # Self state monitor alerting interval
     notice_interval: 300s
     # Contact list for Self state monitor alerts, use this like delivery channels in web-ui

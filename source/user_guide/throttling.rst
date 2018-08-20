@@ -41,7 +41,7 @@ There are four ways to disable throttling for a specific trigger:
 1. Obey the warning message. That is, fix your system to generate less events. Or change trigger thresholds. Or
    use Graphite functions like ``movingAverage`` to remove spikes from your metric graph. This is the best method to
    deal with throttling.
-2. Enable maintenance mode for some of your metrics. This will temporarily disable checking of a metric and give you
+2. Enable :doc:`maintenance` mode for some of your metrics. This will temporarily disable checking of a metric and give you
    time to fix the system:
 
 .. image:: ../_static/maintenance.png

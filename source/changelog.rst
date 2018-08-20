@@ -2,10 +2,66 @@ Changelog
 =========
 
 .. _govaluate: https://github.com/Knetic/govaluate
-.. _carbonapi: https://github.com/go-graphite/carbonapi/blob/a5304b99d57da999a8561f6dee7745ef88164d2c/COMPATIBILITY.md#functions
+.. _carbonapi: https://github.com/go-graphite/carbonapi/blob/ccac7217894801a5a6ceb8602a70ea0d79e975cf/cmd/carbonapi/COMPATIBILITY.md#functions
 .. |supported Graphite functions| replace:: supported Graphite functions
-.. _supported Graphite functions: https://github.com/go-graphite/carbonapi/blob/a5304b99d57da999a8561f6dee7745ef88164d2c/COMPATIBILITY.md#functions
+.. _supported Graphite functions: https://github.com/go-graphite/carbonapi/blob/ccac7217894801a5a6ceb8602a70ea0d79e975cf/cmd/carbonapi/COMPATIBILITY.md#functions
 
+2.3
+---
+
+- Add API methods: ``DELETE /notification/all`` and ``DELETE /event/all`` `moira-alert/moira#73 <https://github.com/moira-alert/moira/pull/73>`_.
+- Add notifier config option: DateTime format for email sender `moira-alert/moira#74 <https://github.com/moira-alert/moira/pull/74>`_.
+- Add Graphite-API support for remote triggers `moira-alert/moira#75 <https://github.com/moira-alert/moira/pull/75>`_. See more: :ref:`remote-triggers-checker`. Thanks to `@errx <https://github.com/errx>`_.
+- Fix newlines in trigger description body for web and email sender `moira-alert/moira#76 <https://github.com/moira-alert/moira/pull/76>`_.
+- Add option to enable runtime metrics in Graphite-section of configuration `moira-alert/moira#79 <https://github.com/moira-alert/moira/pull/79>`_.
+- Add new fancy email template 🎂 `moira-alert/moira#82 <https://github.com/moira-alert/moira/pull/82>`_.
+- Change default trigger state to TTLState option instead of NODATA `moira-alert/moira#83 <https://github.com/moira-alert/moira/pull/83>`_.
+- Refactor maintenance logic `moira-alert/moira#87 <https://github.com/moira-alert/moira/pull/87>`_. See more: :doc:`/user_guide/maintenance`.
+- Add basic false NODATA protection `moira-alert/moira#90 <https://github.com/moira-alert/moira/pull/90>`_. See more: :doc:`/user_guide/selfstate`.
+- Prohibit removal of contact with assigned subscriptions found `moira-alert/moira#91 <https://github.com/moira-alert/moira/pull/91>`_.
+- Make trigger exception messages more descriptive `moira-alert/moira#92 <https://github.com/moira-alert/moira/pull/92>`_.
+- Make filter cache capacity configurable `moira-alert/moira#93 <https://github.com/moira-alert/moira/pull/93>`_. See more :ref:`Filter Configuration <filter-configuration>`.
+- Fix incorrect behavior in which the trigger did not return from the ``EXCEPTION`` state `moira-alert/moira#94 <https://github.com/moira-alert/moira/pull/94>`_.
+- Remove deprecated pseudo-tags, use checkboxes instead `moira-alert/moira#95 <https://github.com/moira-alert/moira/pull/95>`_. See more: :ref:`subscription-states-transitions`.
+- Allow to use single-valued thresholds (ex. only ``WARN`` or only ``ERROR``) `moira-alert/moira#96 <https://github.com/moira-alert/moira/pull/96>`_.
+- Reduce the useless CPU usage in Moira-Filter `moira-alert/moira#98 <https://github.com/moira-alert/moira/pull/98>`_. Thanks to `@errx <https://github.com/errx>`_.
+- Add concurrent matching workers in Moira-Filter `moira-alert/moira#99 <https://github.com/moira-alert/moira/pull/99>`_. Thanks to `@errx <https://github.com/errx>`_.
+- Update Carbonapi to 1.0.0-rc.0 `moira-alert/moira#101 <https://github.com/moira-alert/moira/pull/101>`_.
+- Improve checker performance `moira-alert/moira#103 <https://github.com/moira-alert/moira/pull/103>`_.
+- Add Markdown support in contact edit modal view `moira-alert/web2.0#138 <https://github.com/moira-alert/web2.0/pull/138>`_.
+- Fix default timezone in trigger `moira-alert/web2.0#173 <https://github.com/moira-alert/web2.0/pull/173>`_.
+- Add ability to type negative numbers in simple trigger edit mode  `moira-alert/web2.0#169 <https://github.com/moira-alert/web2.0/pull/169>`_.
+- Fix trailing whitespaces in tag search bar `moira-alert/web2.0#139 <https://github.com/moira-alert/web2.0/pull/139>`_.
+- Update `Moira Client 2.3.4 <https://github.com/moira-alert/python-moira-client/releases/tag/2.3.4>`_.
+- Update `Moira Trigger Role 2.3 <https://galaxy.ansible.com/moira-alert/moira-trigger-role>`_.
+
+.. important:: **Redis DB conversion is desirable.**
+
+  Moira 2.3 has some structure changes in Redis DB. 
+  It will work fluently out of the box, but we recommend you to run converter once Moira is updated.
+
+  .. code-block:: bash
+
+    moira-cli -update --config=/etc/moira/cli.yml
+
+  .. code-block:: YAML
+      :name: cli.yml
+      :caption: /etc/moira/cli.yml
+
+      redis:
+        host: localhost
+        port: "6379"
+        dbid: 0
+      log_file: stdout
+      log_level: debug
+
+  If you would like to downgrade back to Moira 2.2, you should run CLI-converter.
+
+  .. code-block:: bash
+
+    moira-cli -downgrade --config=/etc/moira/cli.yml
+
+  Both cases imply usage of Moira-Cli v.2.3, you can find it on `Release Page <https://github.com/moira-alert/moira/releases>`_.
 
 2.2
 ---

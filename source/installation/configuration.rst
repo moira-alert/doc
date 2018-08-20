@@ -6,6 +6,7 @@ by passing your path as a command-line parameter ``--config``.
 
 On this page you can find examples of configuration files for Moira microservices.
 
+.. _filter-configuration:
 
 Filter
 ------
@@ -24,6 +25,21 @@ Checker
 .. literalinclude:: ../../checker.example.yml
    :language: yaml
 
+.. _remote-triggers-checker:
+
+Remote Triggers Checker
+^^^^^^^^^^^^^^^^^^^^^^^
+
+One of Moira key feature is Graphite independance. Some Graphite queries are *very* ineffective. 
+Tools like Seyren_ multiply this effect every minute making
+lots of ineffective queries and overloading your cluster. Moira relies on the incoming
+metric stream, and has its own fast cache for recent data.
+
+Enabling Remote triggers Checker allows user to create triggers that relies on Graphite Storage instead of Redis DB.
+
+.. warning:: Use this feature with caution, because it can create an extra load on Graphite HTTP API.
+
+.. _notifier-configuration:
 
 Notifier
 --------
@@ -31,6 +47,22 @@ Notifier
 .. literalinclude:: ../../notifier.example.yml
    :language: yaml
 
+Email template
+^^^^^^^^^^^^^^
+
+By default mail sender will use 'Fancy' template:
+
+.. image:: ../_static/fancy-email-template.png
+   :alt: Fancy email template
+   :width: 400
+
+Self state monitor
+^^^^^^^^^^^^^^^^^^
+
+If self state monitor is enabled, Moira will periodically check the Redis connection,
+the number of incoming metrics in the Moira-Filter and the number of triggers to be checked by Moira-Checker.
+
+See :doc:`../user_guide/selfstate` for more details.
 
 API
 ---
@@ -39,8 +71,21 @@ API
    :language: yaml
 
 
-UI
---
+WEB UI
+------
 
-.. literalinclude:: ../../ui.example.json
+.. literalinclude:: ../../web.example.json
    :language: json
+
+- `type` — contact type: pushover, slack, mail, script, telegram, twilio sms, twilio voice;
+- `validation` — regular expression for user contact;
+- `title` — hint shown in input field;
+- `help` — help text in Markdown_ markup .
+- `remoteAllowed` — set to ``true`` if `Remote Triggers Checker`_ is enabled.
+
+.. image:: ../_static/web-ui-example.png
+   :alt: WEB UI example
+   :width: 400
+
+.. _Markdown: https://daringfireball.net/projects/markdown/syntax
+.. _Seyren: https://github.com/scobal/seyren

@@ -30,7 +30,7 @@ Architecture
         animation-direction: initial;
         animation-fill-mode: initial;
         animation-play-state: initial;
-    } 
+    }
     .moira-status {
         margin-bottom: 10px;
     }
@@ -182,7 +182,7 @@ Dataflow
 --------
 
 Filter and Check Incoming Metrics
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. image:: ../_static/dfd-filter.svg
    :alt: filter and checker
@@ -193,8 +193,12 @@ When user adds a new trigger, Moira parses patterns from targets and saves them 
 When a metric value arrives, Filter checks metric name against the list of patterns. Matching metrics are saved to ``moira-metric:<metricname>`` keys in Redis.
 Redis pub/sub mechanism is used to inform Checker of incoming metric value that should be checked as soon as possible.
 
-Checker reads triggers by pattern from ``moira-pattern-triggers:<pattern>`` key in Redis and checks each trigger. 
-In case of no incoming data, all triggers are added to check once per ``nodata_check_interval`` setting.
+Checker metrics handler reads triggers by pattern from ``moira-pattern-triggers:<pattern>`` and add ``trigger_id`` to Redis set ``moira-triggers-to-check``.
+NODATA Checker adds all triggers to Redis set ``moira-triggers-to-check`` once per ``nodata_check_interval`` setting.
+:ref:`remote-triggers-checker` gets all remote trigger ID and adds it to Redis set ``moira-remote-triggers-to-check`` once per ``remote\check_interval`` setting.
+
+Checker pops ``trigger_id`` from ``moira-triggers-to-check`` and starts checking procedure.
+:ref:`remote-triggers-checker` does the same, but pops ``trigger_id`` from ``moira-remote-triggers-to-check`` and starts remote check, which involve remote Graphite HTTP API.
 
 Trigger target can contain one or multiple metrics, so results are written per metric.
 ``moira-metric-last-check:<trigger_id>`` Redis key contains last check JSON with metric states.

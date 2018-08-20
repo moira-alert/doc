@@ -18,3 +18,5 @@ and specific. Also, we have screenshots.
    nodata
    advanced
    hidden_pages
+   maintenance
+   selfstate

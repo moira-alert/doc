@@ -2,6 +2,8 @@ Advanced Mode Trigger
 =====================
 
 .. _govaluate: https://github.com/Knetic/govaluate/blob/master/MANUAL.md
+.. _redis: https://redis.io/
+.. _graphite: https://github.com/go-graphite/carbonapi
 
 Sometimes a simple trigger (:doc:`/user_guide/simple`) doesn't provide enough flexibility for your task.
 
@@ -26,3 +28,18 @@ You can use any govaluate_ expression with predefined constants here:
           Moira will calculate expression separately for every metric in T1.
 
 Any incorrect expressions or bad syntax will result in EXCEPTION trigger state.
+
+Data source
+------------
+
+If :ref:`remote-triggers-checker` is enabled, you can choose between following Data Sources:
+
+- Redis_ — Moira database. By default Redis stores data for only several hours. It covers most of user cases when you need real-time alerting.
+- Graphite_ — remote Graphite-like HTTP API. It should be used only when you need to get metrics for a large period.
+
+  .. warning:: Please, use this Data Source with caution. It may cause extra load on Graphite HTTP API.
+
+  .. important::
+
+    Please, keep in mind that functions in Remote and Local triggers can work differently.
+    To avoid this, make sure you use Carbonapi with the same revision as in Moira. Latest Carbonapi listed in :doc:`../changelog`.

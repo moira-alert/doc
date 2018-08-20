@@ -1,8 +1,0 @@
-{
-	"contacts": [
-		{"type": "pushover", "validation": ""},
-		{"type": "slack", "validation": "^[@#].+$"},
-		{"type": "telegram", "validation": "", "title": "#channel, @username, group", "help": "required to grant @ExampleMoiraBot admin privileges for channels, or /start command in groups and personal chats"},
-	],
-  "supportEmail": "devops@example.com"
-}
