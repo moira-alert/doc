@@ -6,6 +6,11 @@ Changelog
 .. |supported Graphite functions| replace:: supported Graphite functions
 .. _supported Graphite functions: https://github.com/go-graphite/carbonapi/blob/ccac7217894801a5a6ceb8602a70ea0d79e975cf/cmd/carbonapi/COMPATIBILITY.md#functions
 
+2.4
+---
+
+- Flush trigger events when removing the trigger `moira-alert/moira#116 <https://github.com/moira-alert/moira/pull/116>`_.
+
 2.3.1
 -----
 
