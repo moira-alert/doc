@@ -15,6 +15,13 @@ When Moira hasn't been receiving data for more than default 600 seconds, it will
 You can set any other state or change time delay here. For example, if you have an error metric, and no data means no
 errors, you should set this to OK.
 
+.. note::
+
+  Checkbox ``Notify about new metrics`` defines whether Moira should notify you about new metrics. 
+  If you check this box, Moira will send you ``NODATA`` → ``OK`` event for every new metric in the trigger.
+  
+  New metrics alerting is useful, for example when you want to receive messages about new server added in cluster.
+
 You can also select DEL here to automatically delete all metrics that no longer provide data. A simple use case is when
 you often rename metrics and Moira quickly becomes flooded with old irrelevant metric names.
 

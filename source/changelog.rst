@@ -11,6 +11,7 @@ Changelog
 
 - Flush trigger events when removing the trigger `moira-alert/moira#116 <https://github.com/moira-alert/moira/pull/116>`_.
 - Remove redundant Graphite-metrics that counted the time of check of each single trigger `moira-alert/moira#117 <https://github.com/moira-alert/moira/pull/117>`_.
+- By default mute notifications about new metrics in the trigger `moira-alert/moira#113 <https://github.com/moira-alert/moira/pull/113>`_.
 
 2.3.1
 -----
