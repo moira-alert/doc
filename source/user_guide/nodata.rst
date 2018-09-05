@@ -17,10 +17,10 @@ errors, you should set this to OK.
 
 .. note::
 
-  Checkbox ``Notify about new metrics`` defines whether Moira should notify you about new metrics. 
-  If you check this box, Moira will send you ``NODATA`` → ``OK`` event for every new metric in the trigger.
+  Checkbox ``Mute new metrics notifications`` defines whether Moira should notify you about new metrics or mute those notifications. 
+  If box is unchecked, Moira will send you ``NODATA`` → ``OK`` event for every new metric in the trigger.
   
-  New metrics alerting is useful, for example when you want to receive messages about new server added in cluster.
+  Muting notifications about new metrics could be useful if you have trigger with lots of metric in it.
 
 You can also select DEL here to automatically delete all metrics that no longer provide data. A simple use case is when
 you often rename metrics and Moira quickly becomes flooded with old irrelevant metric names.
