@@ -13,6 +13,7 @@ Changelog
 - Remove redundant Graphite-metrics that counted the time of check of each single trigger `moira-alert/moira#117 <https://github.com/moira-alert/moira/pull/117>`_.
 - Add option to mute notifications about new metrics in the trigger `moira-alert/moira#120 <https://github.com/moira-alert/moira/pull/120>`_. See more: :doc:`/user_guide/nodata`.
 - Fix bug in trigger when specific schedule time didn't work if start time was bigger than end time `moira-alert/moira#119 <https://github.com/moira-alert/moira/pull/119>`_.
+- Avoid throttling of remote-triggers when trigger switches to ``EXCEPTION`` and back to ``OK`` `moira-alert/moira#121 <https://github.com/moira-alert/moira/pull/121>`_.
 
 2.3.1
 -----
