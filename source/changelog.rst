@@ -14,6 +14,7 @@ Changelog
 - Add option to mute notifications about new metrics in the trigger `moira-alert/moira#120 <https://github.com/moira-alert/moira/pull/120>`_. See more: :doc:`/user_guide/nodata`.
 - Fix bug in trigger when specific schedule time didn't work if start time was bigger than end time `moira-alert/moira#119 <https://github.com/moira-alert/moira/pull/119>`_.
 - Avoid throttling of remote-triggers when trigger switches to ``EXCEPTION`` and back to ``OK`` `moira-alert/moira#121 <https://github.com/moira-alert/moira/pull/121>`_.
+- Throw an exception if first target is no longer valid `moira-alert/moira#122 <https://github.com/moira-alert/moira/pull/122>`_.
 
 2.3.1
 -----
