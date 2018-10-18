@@ -17,6 +17,8 @@ Changelog
 - Throw an exception if first target is no longer valid `moira-alert/moira#122 <https://github.com/moira-alert/moira/pull/122>`_.
 - Allow user to remove all ``NODATA`` metrics from trigger `moira-alert/moira#124 <https://github.com/moira-alert/moira/pull/124>`_.
 - Fix bug in trigger schedule due to which triggers were considered suppressed between 23:59:00 and 00:00:59 `moira-alert/moira#127 <https://github.com/moira-alert/moira/pull/127>`_.
+- Fix Redis leakages: some data was not removed properly from Redis storage `moira-alert/moira#129 <https://github.com/moira-alert/moira/pull/129>`_.
+- Run single NODATA checker worker at single moment `moira-alert/moira#129 <https://github.com/moira-alert/moira/pull/129>`_.
 
 2.3.1
 -----
