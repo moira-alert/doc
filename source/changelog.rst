@@ -19,6 +19,7 @@ Changelog
 - Fix bug in trigger schedule due to which triggers were considered suppressed between 23:59:00 and 00:00:59 `moira-alert/moira#127 <https://github.com/moira-alert/moira/pull/127>`_.
 - Fix Redis leakages: some data was not removed properly from Redis storage `moira-alert/moira#129 <https://github.com/moira-alert/moira/pull/129>`_.
 - Run single NODATA checker worker at single moment `moira-alert/moira#129 <https://github.com/moira-alert/moira/pull/129>`_.
+- Show contact type icon on :doc:`/user_guide/hidden_pages` `moira-web2.0/moira#196 <https://github.com/moira-web2.0/moira/pull/196>`_.
 
 2.3.1
 -----
