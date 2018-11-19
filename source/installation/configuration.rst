@@ -39,6 +39,16 @@ Enabling Remote triggers Checker allows user to create triggers that relies on G
 
 .. warning:: Use this feature with caution, because it can create an extra load on Graphite HTTP API.
 
+.. _lazy-triggers-checker:
+
+Lazy Triggers Checker
+^^^^^^^^^^^^^^^^^^^^^^
+
+In Moira 2.4 we add a new entity - Lazy Trigger. This is a regular trigger but without any subscription for it.
+By default Moira treats any trigger equally regardless on its subscriptions number.
+You can change this behaviour using ``lazy_triggers_check_interval`` option in checker section. This can reduce CPU usage on your server.
+Lazy triggers checker works if ``lazy_triggers_check_interval`` > ``check_interval``. We recommend set it to ``10m`` (10 minutes).
+
 .. _notifier-configuration:
 
 Notifier

@@ -27,6 +27,11 @@ checker:
   nodata_check_interval: 60s
   # Min period to perform triggers re-check. Note: Reducing of this value leads to increasing of CPU and memory usage values
   check_interval: 10s
+  # In Moira 2.4 we add a new entity - Lazy Trigger. This is a regular trigger but without any subscription for it.
+  # By default Moira treats any trigger equally regardless on its subscriptions number.
+  # You can change this behaviour using option below. This can reduce CPU usage on your server.
+  # Lazy triggers checker works if lazy_triggers_check_interval > check_interval. We recommend setting it to 10m.
+  lazy_triggers_check_interval: 0
   # Time interval to store metrics. Note: Increasing of this value leads to increasing of Redis memory consumption value
   metrics_ttl: 3h
   # Period for every trigger to cancel forced check (greater than 'NoDataCheckInterval') if no metrics were received

@@ -23,6 +23,18 @@ Changelog
 - Add Moira-Notifier toggle on :doc:`/user_guide/hidden_pages` `moira-web2.0/moira#191 <https://github.com/moira-web2.0/moira/pull/191>`_.
   **Please, read** :doc:`/user_guide/selfstate` **first**.
 - Fix bug in ``Create and test`` button when add new subscription `moira-web2.0/moira#194 <https://github.com/moira-web2.0/moira/pull/194>`_.
+- Check Lazy triggers (triggers without any subscriptions) less frequently `moira-alert/moira#131 <https://github.com/moira-alert/moira/pull/131>`_. See more :ref:`lazy-triggers-checker`.
+
+.. important:: **Redis DB conversion is desirable.**
+
+  Moira 2.4 has some structure changes in Redis DB. 
+  It will work fluently out of the box, but we recommend you to run converter once Moira is updated.
+
+  1. Lazy Triggers checker
+
+    .. code-block:: bash
+
+      moira-cli --mark-triggers-unused --config=/etc/moira/cli.yml
 
 2.3.1
 -----
