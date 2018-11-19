@@ -22,6 +22,7 @@ Changelog
 - Show contact type icon on :doc:`/user_guide/hidden_pages` `moira-web2.0/moira#196 <https://github.com/moira-web2.0/moira/pull/196>`_.
 - Add Moira-Notifier toggle on :doc:`/user_guide/hidden_pages` `moira-web2.0/moira#191 <https://github.com/moira-web2.0/moira/pull/191>`_.
   **Please, read** :doc:`/user_guide/selfstate` **first**.
+- Fix bug in ``Create and test`` button when add new subscription `moira-web2.0/moira#194 <https://github.com/moira-web2.0/moira/pull/194>`_.
 
 2.3.1
 -----
