@@ -20,6 +20,8 @@ Changelog
 - Fix Redis leakages: some data was not removed properly from Redis storage `moira-alert/moira#129 <https://github.com/moira-alert/moira/pull/129>`_.
 - Run single NODATA checker worker at single moment `moira-alert/moira#129 <https://github.com/moira-alert/moira/pull/129>`_.
 - Show contact type icon on :doc:`/user_guide/hidden_pages` `moira-web2.0/moira#196 <https://github.com/moira-web2.0/moira/pull/196>`_.
+- Add Moira-Notifier toggle on :doc:`/user_guide/hidden_pages` `moira-web2.0/moira#191 <https://github.com/moira-web2.0/moira/pull/191>`_.
+  **Please, read** :doc:`/user_guide/selfstate` **first**.
 
 2.3.1
 -----

@@ -77,38 +77,16 @@ When you turn Self State Monitor on, it works this way:
 
 .. _notifier-state-api:
 
-Turn Moira-Notifier ON and OFF using API
------------------------------------------------
+Turn Moira-Notifier ON and OFF
+------------------------------------------------------------------------------------------------------------------
 
-You can get current Moira-Notifier state or update it using API.
-At the moment there are only two methods available.
+You can reveal current Moira-Notifier state or change it on a hidden ``/notifications`` page.
 
-1. Get current Moira-Notifier state:
+.. image:: ../_static/notifier-toggle.png
+ :alt: Notifier toggle
 
-  .. code-block:: html
+.. warning::
 
-      GET /api/health/notifier HTTP/1.1
-      Host: MOIRA-URL:8081
+  Please, note this toggle changes Moira-Notifier state, not user notifications preferences.
 
-  Returns JSON with Notifier state and a message of error. Message is omitted if state is ``OK``.
-
-    .. code-block:: JSON
-
-       {
-           "state": "ERROR",
-           "message": "Something unexpected happened with Moira, so we temporarily turned off the notification mailing. We are already working on the problem and will fix it in the near future."
-       }
-
-2. Update Moira-Notifier state:
-
-  .. code-block:: html
-
-      PUT /api/health/notifier HTTP/1.1
-      Host: MOIRA-URL:8081
-      Content-Type: application/json
-
-      {
-          "state": "OK"
-      }
-
-  Allowed state values: ``<OK|ERROR>``.
+  When you disable notifications with this toggle, Moira-Notifier stops sending messages to all users.

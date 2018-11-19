@@ -6,6 +6,7 @@ design decision to reduce visual clutter in the main UI.
 
 You need to type an address of a hidden page manually, like this: ``http://moira.example.com/hidden_page``.
 
+.. _notifications-hidden-page:
 
 Notifications
 -------------
