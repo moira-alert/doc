@@ -26,7 +26,9 @@ Tags
 
 Add required tags into subscription to receive notifications from triggers with these tags.
 
-Matching rules are:
+Matching rule is: Notification will be sent if trigger contains **ALL** of selected tags.
+
+For example:
 
 - If subscription has only one tag, you will receive notifications from any trigger with this tag.
 
