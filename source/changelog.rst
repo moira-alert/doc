@@ -24,6 +24,7 @@ Changelog
   **Please, read** :doc:`/user_guide/selfstate` **first**.
 - Fix bug in ``Create and test`` button when add new subscription `moira-web2.0/moira#194 <https://github.com/moira-web2.0/moira/pull/194>`_.
 - Check Lazy triggers (triggers without any subscriptions) less frequently `moira-alert/moira#131 <https://github.com/moira-alert/moira/pull/131>`_. See more :ref:`lazy-triggers-checker`.
+- Add extra maintenance intervals: 14 and 30 days `moira-web2.0/moira#198 <https://github.com/moira-web2.0/moira/pull/198>`_.
 
 .. important:: **Redis DB conversion is desirable.**
 
