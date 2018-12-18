@@ -32,19 +32,21 @@ Changelog
 .. important:: **Redis DB conversion is required.**
 
   Moira 2.4 has some structure changes in Redis DB. 
-  It will work fluently out of the box, but lazy triggers will still be checked every time on new metrics. 
+  It will work fluently out of the box, but lazy triggers will still be checked every time on new metrics.
 
-  1. From version 2.3
-
-    .. code-block:: bash
-
-      moira-cli --config=/etc/moira/cli.yml --update --from-version=2.3
-
-  2. From version 2.2
+  You can upgrade from moira 2.2 or 2.3 using corresponding flag in ``--from-version`` variable.
 
     .. code-block:: bash
 
-      moira-cli --config=/etc/moira/cli.yml --update --from-version=2.2
+      moira-cli --config=/etc/moira/cli.yml --update --from-version=2.2/2.3
+
+  If you would like to downgrade back to Moira 2.2 or 2.3, you should run CLI-converter.
+
+    .. code-block:: bash
+
+      moira-cli --config=/etc/moira/cli.yml --downgrade --to-version=2.2/2.3
+
+  Both cases imply usage of Moira-Cli v.2.4, you can find it on `Release Page <https://github.com/moira-alert/moira/releases>`_.
 
 2.3.1
 -----
