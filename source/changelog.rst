@@ -27,17 +27,24 @@ Changelog
 - Add extra maintenance intervals: 14 and 30 days `moira-web2.0/moira#198 <https://github.com/moira-web2.0/moira/pull/198>`_.
 - Show TTL and TTLState on a trigger page `moira-web2.0/moira#197 <https://github.com/moira-web2.0/moira/pull/197>`_.
 - Consider the status of the trigger when rendering the trigger status indicator `moira-web2.0/moira#195 <https://github.com/moira-web2.0/moira/pull/195>`_.
+- Refactor cli. Remove old converters, whiсh were written before moira 2.2 `moira-alert/moira#139 <https://github.com/moira-alert/moira/pull/139>`_.
 
-.. important:: **Redis DB conversion is desirable.**
+.. important:: **Redis DB conversion is required.**
 
   Moira 2.4 has some structure changes in Redis DB. 
-  It will work fluently out of the box, but we recommend you to run converter once Moira is updated.
+  It will work fluently out of the box, but lazy triggers will still be checked every time on new metrics. 
 
-  1. Lazy Triggers checker
+  1. From version 2.3
 
     .. code-block:: bash
 
-      moira-cli --mark-triggers-unused --config=/etc/moira/cli.yml
+      moira-cli --config=/etc/moira/cli.yml --update --from-version=2.3
+
+  2. From version 2.2
+
+    .. code-block:: bash
+
+      moira-cli --config=/etc/moira/cli.yml --update --from-version=2.2
 
 2.3.1
 -----
