@@ -9,6 +9,7 @@ Changelog
 2.4
 ---
 
+- Timeseries graphs in notifications `moira-alert/moira#148 <https://github.com/moira-alert/moira/pull/148>`_.
 - Flush trigger events when removing the trigger `moira-alert/moira#116 <https://github.com/moira-alert/moira/pull/116>`_.
 - Remove redundant Graphite-metrics that counted the time of check of each single trigger `moira-alert/moira#117 <https://github.com/moira-alert/moira/pull/117>`_.
 - Add option to mute notifications about new metrics in the trigger `moira-alert/moira#120 <https://github.com/moira-alert/moira/pull/120>`_. See more: :doc:`/user_guide/nodata`.
