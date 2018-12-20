@@ -29,6 +29,7 @@ Changelog
 - Show TTL and TTLState on a trigger page `moira-web2.0/moira#197 <https://github.com/moira-web2.0/moira/pull/197>`_.
 - Consider the status of the trigger when rendering the trigger status indicator `moira-web2.0/moira#195 <https://github.com/moira-web2.0/moira/pull/195>`_.
 - Refactor cli. Remove old converters, whiсh were written before moira 2.2 `moira-alert/moira#139 <https://github.com/moira-alert/moira/pull/139>`_.
+- Add maintenance for a whole trigger `moira-alert/moira#138 <https://github.com/moira-alert/moira/pull/138>`_, `moira-web2.0/moira#199 <https://github.com/moira-web2.0/moira/pull/199>`_.
 
 .. important:: **Redis DB conversion is required.**
 
