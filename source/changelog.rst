@@ -10,6 +10,7 @@ Changelog
 ---
 
 - Timeseries graphs in notifications `moira-alert/moira#148 <https://github.com/moira-alert/moira/pull/148>`_.
+- Add maintenance for a whole trigger `moira-alert/moira#138 <https://github.com/moira-alert/moira/pull/138>`_, `moira-web2.0/moira#199 <https://github.com/moira-web2.0/moira/pull/199>`_.
 - Flush trigger events when removing the trigger `moira-alert/moira#116 <https://github.com/moira-alert/moira/pull/116>`_.
 - Remove redundant Graphite-metrics that counted the time of check of each single trigger `moira-alert/moira#117 <https://github.com/moira-alert/moira/pull/117>`_.
 - Add option to mute notifications about new metrics in the trigger `moira-alert/moira#120 <https://github.com/moira-alert/moira/pull/120>`_. See more: :doc:`/user_guide/nodata`.
@@ -29,7 +30,10 @@ Changelog
 - Show TTL and TTLState on a trigger page `moira-web2.0/moira#197 <https://github.com/moira-web2.0/moira/pull/197>`_.
 - Consider the status of the trigger when rendering the trigger status indicator `moira-web2.0/moira#195 <https://github.com/moira-web2.0/moira/pull/195>`_.
 - Refactor cli. Remove old converters, whiсh were written before moira 2.2 `moira-alert/moira#139 <https://github.com/moira-alert/moira/pull/139>`_.
-- Add maintenance for a whole trigger `moira-alert/moira#138 <https://github.com/moira-alert/moira/pull/138>`_, `moira-web2.0/moira#199 <https://github.com/moira-web2.0/moira/pull/199>`_.
+- Update golang to version 1.11.2 `moira-alert/moira#147 <https://github.com/moira-alert/moira/pull/147>`_.
+- Fix bug that increases updated last checks count when user create or update trigger from api (or web) `moira-alert/moira#146 <https://github.com/moira-alert/moira/pull/146>`_.
+- Fix bug which allowed to use other people's contacts your in subscriptions `moira-alert/moira#145 <https://github.com/moira-alert/moira/pull/145>`_.
+- Fix bug that allowed to create and use an empty tag in subscriptions and triggers `moira-alert/moira#144 <https://github.com/moira-alert/moira/pull/144>`_.
 
 .. important:: **Redis DB conversion is required.**
 
