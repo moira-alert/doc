@@ -10,30 +10,33 @@ Changelog
 ---
 
 - Timeseries graphs in notifications `moira-alert/moira#148 <https://github.com/moira-alert/moira/pull/148>`_.
-- Add maintenance for a whole trigger `moira-alert/moira#138 <https://github.com/moira-alert/moira/pull/138>`_, `moira-web2.0/moira#199 <https://github.com/moira-web2.0/moira/pull/199>`_.
-- Flush trigger events when removing the trigger `moira-alert/moira#116 <https://github.com/moira-alert/moira/pull/116>`_.
-- Remove redundant Graphite-metrics that counted the time of check of each single trigger `moira-alert/moira#117 <https://github.com/moira-alert/moira/pull/117>`_.
+- Add maintenance for a whole trigger `moira-alert/moira#138 <https://github.com/moira-alert/moira/pull/138>`_, `moira-alert/web2.0#199 <https://github.com/moira-alert/web2.0/pull/199>`_.
+- Add extra maintenance intervals: 14 and 30 days `moira-alert/web2.0#198 <https://github.com/moira-alert/web2.0/pull/198>`_.
 - Add option to mute notifications about new metrics in the trigger `moira-alert/moira#120 <https://github.com/moira-alert/moira/pull/120>`_. See more: :doc:`/user_guide/nodata`.
-- Fix bug in trigger when specific schedule time didn't work if start time was bigger than end time `moira-alert/moira#119 <https://github.com/moira-alert/moira/pull/119>`_.
-- Avoid throttling of remote-triggers when trigger switches to ``EXCEPTION`` and back to ``OK`` `moira-alert/moira#121 <https://github.com/moira-alert/moira/pull/121>`_.
-- Throw an exception if first target is no longer valid `moira-alert/moira#122 <https://github.com/moira-alert/moira/pull/122>`_.
 - Allow user to remove all ``NODATA`` metrics from trigger `moira-alert/moira#124 <https://github.com/moira-alert/moira/pull/124>`_.
-- Fix bug in trigger schedule due to which triggers were considered suppressed between 23:59:00 and 00:00:59 `moira-alert/moira#127 <https://github.com/moira-alert/moira/pull/127>`_.
-- Fix Redis leakages: some data was not removed properly from Redis storage `moira-alert/moira#129 <https://github.com/moira-alert/moira/pull/129>`_.
-- Run single NODATA checker worker at single moment `moira-alert/moira#129 <https://github.com/moira-alert/moira/pull/129>`_.
-- Show contact type icon on :doc:`/user_guide/hidden_pages` `moira-web2.0/moira#196 <https://github.com/moira-web2.0/moira/pull/196>`_.
-- Add Moira-Notifier toggle on :doc:`/user_guide/hidden_pages` `moira-web2.0/moira#191 <https://github.com/moira-web2.0/moira/pull/191>`_.
-  **Please, read** :doc:`/user_guide/selfstate` **first**.
-- Fix bug in ``Create and test`` button when add new subscription `moira-web2.0/moira#194 <https://github.com/moira-web2.0/moira/pull/194>`_.
 - Check Lazy triggers (triggers without any subscriptions) less frequently `moira-alert/moira#131 <https://github.com/moira-alert/moira/pull/131>`_. See more :ref:`lazy-triggers-checker`.
-- Add extra maintenance intervals: 14 and 30 days `moira-web2.0/moira#198 <https://github.com/moira-web2.0/moira/pull/198>`_.
-- Show TTL and TTLState on a trigger page `moira-web2.0/moira#197 <https://github.com/moira-web2.0/moira/pull/197>`_.
-- Consider the status of the trigger when rendering the trigger status indicator `moira-web2.0/moira#195 <https://github.com/moira-web2.0/moira/pull/195>`_.
+- Run single NODATA checker worker at single moment `moira-alert/moira#129 <https://github.com/moira-alert/moira/pull/129>`_.
+- Avoid throttling of remote-triggers when trigger switches to ``EXCEPTION`` and back to ``OK`` `moira-alert/moira#121 <https://github.com/moira-alert/moira/pull/121>`_.
+- Consider the status of the trigger when rendering the trigger status indicator `moira-alert/web2.0#195 <https://github.com/moira-alert/web2.0/pull/195>`_.
+- Add Moira-Notifier toggle on :doc:`/user_guide/hidden_pages` `moira-alert/web2.0#191 <https://github.com/moira-alert/web2.0/pull/191>`_.
+  **Please, read** :doc:`/user_guide/selfstate` **first**.
+- Show contact type icon on :doc:`/user_guide/hidden_pages` `moira-alert/web2.0#196 <https://github.com/moira-alert/web2.0/pull/196>`_.
+- Show TTL and TTLState in Advanced mode `moira-alert/web2.0#197 <https://github.com/moira-alert/web2.0/pull/197>`_.
+- Throw an exception if first target is no longer valid `moira-alert/moira#122 <https://github.com/moira-alert/moira/pull/122>`_.
 - Refactor cli. Remove old converters, whiсh were written before moira 2.2 `moira-alert/moira#139 <https://github.com/moira-alert/moira/pull/139>`_.
 - Update golang to version 1.11.2 `moira-alert/moira#147 <https://github.com/moira-alert/moira/pull/147>`_.
+- Flush trigger events when removing the trigger `moira-alert/moira#116 <https://github.com/moira-alert/moira/pull/116>`_.
+- Remove redundant Graphite-metrics that counted the time of check of each single trigger `moira-alert/moira#117 <https://github.com/moira-alert/moira/pull/117>`_.
+- Fix Redis leakages: some data was not removed properly from Redis storage `moira-alert/moira#129 <https://github.com/moira-alert/moira/pull/129>`_.
+- Fix bug in trigger schedule due to which triggers were considered suppressed between 23:59:00 and 00:00:59 `moira-alert/moira#127 <https://github.com/moira-alert/moira/pull/127>`_.
+- Fix bug in trigger when specific schedule time didn't work if start time was bigger than end time `moira-alert/moira#119 <https://github.com/moira-alert/moira/pull/119>`_.
+- Fix bug in ``Create and test`` button when add new subscription `moira-alert/web2.0#194 <https://github.com/moira-alert/web2.0/pull/194>`_.
 - Fix bug that increases updated last checks count when user create or update trigger from api (or web) `moira-alert/moira#146 <https://github.com/moira-alert/moira/pull/146>`_.
 - Fix bug which allowed to use other people's contacts your in subscriptions `moira-alert/moira#145 <https://github.com/moira-alert/moira/pull/145>`_.
 - Fix bug that allowed to create and use an empty tag in subscriptions and triggers `moira-alert/moira#144 <https://github.com/moira-alert/moira/pull/144>`_.
+- Fix bug when senders didn't resolve ``EXCEPTION`` state `moira-alert/moira#156 <https://github.com/moira-alert/moira/pull/156>`_.
+- Update `Moira Client 2.4 <https://github.com/moira-alert/python-moira-client/releases/tag/2.4>`_.
+- Update `Moira Trigger Role 2.3 <https://galaxy.ansible.com/moira-alert/moira-trigger-role>`_.
 
 .. important:: **Redis DB conversion is required.**
 
