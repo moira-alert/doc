@@ -6,6 +6,60 @@ Changelog
 .. |supported Graphite functions| replace:: supported Graphite functions
 .. _supported Graphite functions: https://github.com/go-graphite/carbonapi/blob/ccac7217894801a5a6ceb8602a70ea0d79e975cf/cmd/carbonapi/COMPATIBILITY.md#functions
 
+2.4
+---
+
+- Timeseries graphs in notifications `moira-alert/moira#148 <https://github.com/moira-alert/moira/pull/148>`_. See more :ref:`subscriptions-plotting`.
+- Add api method ``GET trigger/{{triggerId}}/render`` to imlement timeseries plotting in api `moira-alert/moira#137 <https://github.com/moira-alert/moira/pull/137>`_.
+- Add maintenance for a whole trigger. Add new api method ``PUT trigger/{{triggerId}}/setMaintenance``. ``PUT trigger/{{triggerId}}/maintenance`` is deprecated now `moira-alert/moira#138 <https://github.com/moira-alert/moira/pull/138>`_, `moira-alert/web2.0#199 <https://github.com/moira-alert/web2.0/pull/199>`_.
+- Add extra maintenance intervals: 14 and 30 days `moira-alert/web2.0#198 <https://github.com/moira-alert/web2.0/pull/198>`_.
+- Add option to mute notifications about new metrics in the trigger `moira-alert/moira#120 <https://github.com/moira-alert/moira/pull/120>`_. See more: :doc:`/user_guide/nodata`.
+- Allow user to remove all ``NODATA`` metrics from trigger `moira-alert/moira#124 <https://github.com/moira-alert/moira/pull/124>`_.
+- Check Lazy triggers (triggers without any subscriptions) less frequently `moira-alert/moira#131 <https://github.com/moira-alert/moira/pull/131>`_. See more :ref:`lazy-triggers-checker`.
+- Run single NODATA checker worker at single moment `moira-alert/moira#129 <https://github.com/moira-alert/moira/pull/129>`_.
+- Avoid throttling of remote-triggers when trigger switches to ``EXCEPTION`` and back to ``OK`` `moira-alert/moira#121 <https://github.com/moira-alert/moira/pull/121>`_.
+- Consider the status of the trigger when rendering the trigger status indicator `moira-alert/web2.0#195 <https://github.com/moira-alert/web2.0/pull/195>`_.
+- Replace useless trigger export button with "Duplicate" `moira-alert/web2.0#189 <https://github.com/moira-alert/web2.0/pull/189>`_.
+- Add Moira-Notifier toggle on :doc:`/user_guide/hidden_pages` `moira-alert/web2.0#191 <https://github.com/moira-alert/web2.0/pull/191>`_.
+  **Please, read** :doc:`/user_guide/selfstate` **first**.
+- Show contact type icon on :doc:`/user_guide/hidden_pages` `moira-alert/web2.0#196 <https://github.com/moira-alert/web2.0/pull/196>`_.
+- Show TTL and TTLState in Advanced mode `moira-alert/web2.0#197 <https://github.com/moira-alert/web2.0/pull/197>`_.
+- Throw an exception if first target is no longer valid `moira-alert/moira#122 <https://github.com/moira-alert/moira/pull/122>`_.
+- Refactor cli. Remove old converters, whiсh were written before moira 2.2 `moira-alert/moira#139 <https://github.com/moira-alert/moira/pull/139>`_.
+- Update golang to version 1.11.2 `moira-alert/moira#147 <https://github.com/moira-alert/moira/pull/147>`_.
+- Flush trigger events when removing the trigger `moira-alert/moira#116 <https://github.com/moira-alert/moira/pull/116>`_.
+- Remove redundant Graphite-metrics that counted the time of check of each single trigger `moira-alert/moira#117 <https://github.com/moira-alert/moira/pull/117>`_.
+- Add api method ``GET trigger/search`` to implement full-text trigger search in api, ``GET trigger/page`` is deprecated now `moira-alert/moira#125 <https://github.com/moira-alert/moira/pull/125>`_.
+- Fix Redis leakages: some data was not removed properly from Redis storage `moira-alert/moira#129 <https://github.com/moira-alert/moira/pull/129>`_.
+- Fix bug in trigger schedule due to which triggers were considered suppressed between 23:59:00 and 00:00:59 `moira-alert/moira#127 <https://github.com/moira-alert/moira/pull/127>`_.
+- Fix bug in trigger when specific schedule time didn't work if start time was bigger than end time `moira-alert/moira#119 <https://github.com/moira-alert/moira/pull/119>`_.
+- Fix bug in ``Create and test`` button when add new subscription `moira-alert/web2.0#194 <https://github.com/moira-alert/web2.0/pull/194>`_.
+- Fix bug that increases updated last checks count when user create or update trigger from api (or web) `moira-alert/moira#146 <https://github.com/moira-alert/moira/pull/146>`_.
+- Fix bug which allowed to use other people's contacts your in subscriptions `moira-alert/moira#145 <https://github.com/moira-alert/moira/pull/145>`_.
+- Fix bug that allowed to create and use an empty tag in subscriptions and triggers `moira-alert/moira#144 <https://github.com/moira-alert/moira/pull/144>`_.
+- Fix bug when senders didn't resolve ``EXCEPTION`` state `moira-alert/moira#156 <https://github.com/moira-alert/moira/pull/156>`_.
+- Update `Moira Client 2.4 <https://github.com/moira-alert/python-moira-client/releases/tag/2.4>`_.
+- Update `Moira Trigger Role 2.4 <https://galaxy.ansible.com/moira-alert/moira-trigger-role>`_.
+
+.. important:: **Redis DB conversion is required.**
+
+  Moira 2.4 has some structure changes in Redis DB. 
+  It will work fluently out of the box, but lazy triggers will still be checked every time on new metrics.
+
+  You can upgrade from moira 2.2 or 2.3 using corresponding flag in ``--from-version`` variable.
+
+    .. code-block:: bash
+
+      moira-cli --config=/etc/moira/cli.yml --update --from-version=2.2/2.3
+
+  If you would like to downgrade back to Moira 2.2 or 2.3, you should run CLI-converter.
+
+    .. code-block:: bash
+
+      moira-cli --config=/etc/moira/cli.yml --downgrade --to-version=2.2/2.3
+
+  Both cases imply usage of Moira-Cli v.2.4, you can find it on `Release Page <https://github.com/moira-alert/moira/releases>`_.
+
 2.3.1
 -----
 
