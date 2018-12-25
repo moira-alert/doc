@@ -9,7 +9,7 @@ Changelog
 2.4
 ---
 
-- Timeseries graphs in notifications `moira-alert/moira#148 <https://github.com/moira-alert/moira/pull/148>`_. See more :ref:`subscriptions-plotting:`.
+- Timeseries graphs in notifications `moira-alert/moira#148 <https://github.com/moira-alert/moira/pull/148>`_. See more :ref:`subscriptions-plotting`.
 - Add api method ``GET trigger/{{triggerId}}/render`` to imlement timeseries plotting in api `moira-alert/moira#137 <https://github.com/moira-alert/moira/pull/137>`_.
 - Add maintenance for a whole trigger. Add new api method ``PUT trigger/{{triggerId}}/setMaintenance``. ``PUT trigger/{{triggerId}}/maintenance`` is deprecated now `moira-alert/moira#138 <https://github.com/moira-alert/moira/pull/138>`_, `moira-alert/web2.0#199 <https://github.com/moira-alert/web2.0/pull/199>`_.- Add extra maintenance intervals: 14 and 30 days `moira-alert/web2.0#198 <https://github.com/moira-alert/web2.0/pull/198>`_.
 - Add option to mute notifications about new metrics in the trigger `moira-alert/moira#120 <https://github.com/moira-alert/moira/pull/120>`_. See more: :doc:`/user_guide/nodata`.
