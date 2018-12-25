@@ -39,7 +39,7 @@ Changelog
 - Fix bug that allowed to create and use an empty tag in subscriptions and triggers `moira-alert/moira#144 <https://github.com/moira-alert/moira/pull/144>`_.
 - Fix bug when senders didn't resolve ``EXCEPTION`` state `moira-alert/moira#156 <https://github.com/moira-alert/moira/pull/156>`_.
 - Update `Moira Client 2.4 <https://github.com/moira-alert/python-moira-client/releases/tag/2.4>`_.
-- Update `Moira Trigger Role 2.3 <https://galaxy.ansible.com/moira-alert/moira-trigger-role>`_.
+- Update `Moira Trigger Role 2.4 <https://galaxy.ansible.com/moira-alert/moira-trigger-role>`_.
 
 .. important:: **Redis DB conversion is required.**
 
