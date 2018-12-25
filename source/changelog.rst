@@ -7,7 +7,7 @@ Changelog
 .. _supported Graphite functions: https://github.com/go-graphite/carbonapi/blob/ccac7217894801a5a6ceb8602a70ea0d79e975cf/cmd/carbonapi/COMPATIBILITY.md#functions
 
 2.4.0
----
+-----
 
 - Timeseries graphs in notifications `moira-alert/moira#148 <https://github.com/moira-alert/moira/pull/148>`_. See more :ref:`subscriptions-plotting`.
 - Add api method ``GET trigger/{{triggerId}}/render`` to imlement timeseries plotting in api `moira-alert/moira#137 <https://github.com/moira-alert/moira/pull/137>`_.
