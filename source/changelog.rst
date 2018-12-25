@@ -9,15 +9,16 @@ Changelog
 2.4
 ---
 
-- Timeseries graphs in notifications `moira-alert/moira#148 <https://github.com/moira-alert/moira/pull/148>`_.
-- Add maintenance for a whole trigger `moira-alert/moira#138 <https://github.com/moira-alert/moira/pull/138>`_, `moira-alert/web2.0#199 <https://github.com/moira-alert/web2.0/pull/199>`_.
-- Add extra maintenance intervals: 14 and 30 days `moira-alert/web2.0#198 <https://github.com/moira-alert/web2.0/pull/198>`_.
+- Timeseries graphs in notifications `moira-alert/moira#148 <https://github.com/moira-alert/moira/pull/148>`_. See more :ref:`subscriptions-plotting:`.
+- Add api method ``GET trigger/{{triggerId}}/render`` to imlement timeseries plotting in api `moira-alert/moira#137 <https://github.com/moira-alert/moira/pull/137>`_.
+- Add maintenance for a whole trigger. Add new api method ``PUT trigger/{{triggerId}}/setMaintenance``. ``PUT trigger/{{triggerId}}/maintenance`` is deprecated now `moira-alert/moira#138 <https://github.com/moira-alert/moira/pull/138>`_, `moira-alert/web2.0#199 <https://github.com/moira-alert/web2.0/pull/199>`_.- Add extra maintenance intervals: 14 and 30 days `moira-alert/web2.0#198 <https://github.com/moira-alert/web2.0/pull/198>`_.
 - Add option to mute notifications about new metrics in the trigger `moira-alert/moira#120 <https://github.com/moira-alert/moira/pull/120>`_. See more: :doc:`/user_guide/nodata`.
 - Allow user to remove all ``NODATA`` metrics from trigger `moira-alert/moira#124 <https://github.com/moira-alert/moira/pull/124>`_.
 - Check Lazy triggers (triggers without any subscriptions) less frequently `moira-alert/moira#131 <https://github.com/moira-alert/moira/pull/131>`_. See more :ref:`lazy-triggers-checker`.
 - Run single NODATA checker worker at single moment `moira-alert/moira#129 <https://github.com/moira-alert/moira/pull/129>`_.
 - Avoid throttling of remote-triggers when trigger switches to ``EXCEPTION`` and back to ``OK`` `moira-alert/moira#121 <https://github.com/moira-alert/moira/pull/121>`_.
 - Consider the status of the trigger when rendering the trigger status indicator `moira-alert/web2.0#195 <https://github.com/moira-alert/web2.0/pull/195>`_.
+- Replace useless trigger export button with "Duplicate" `moira-alert/web2.0#189 <https://github.com/moira-alert/web2.0/pull/189>`_.
 - Add Moira-Notifier toggle on :doc:`/user_guide/hidden_pages` `moira-alert/web2.0#191 <https://github.com/moira-alert/web2.0/pull/191>`_.
   **Please, read** :doc:`/user_guide/selfstate` **first**.
 - Show contact type icon on :doc:`/user_guide/hidden_pages` `moira-alert/web2.0#196 <https://github.com/moira-alert/web2.0/pull/196>`_.
@@ -27,6 +28,7 @@ Changelog
 - Update golang to version 1.11.2 `moira-alert/moira#147 <https://github.com/moira-alert/moira/pull/147>`_.
 - Flush trigger events when removing the trigger `moira-alert/moira#116 <https://github.com/moira-alert/moira/pull/116>`_.
 - Remove redundant Graphite-metrics that counted the time of check of each single trigger `moira-alert/moira#117 <https://github.com/moira-alert/moira/pull/117>`_.
+- Add api method ``GET trigger/search`` to implement full-text trigger search in api, ``GET trigger/page`` is deprecated now `moira-alert/moira#125 <https://github.com/moira-alert/moira/pull/125>`_.
 - Fix Redis leakages: some data was not removed properly from Redis storage `moira-alert/moira#129 <https://github.com/moira-alert/moira/pull/129>`_.
 - Fix bug in trigger schedule due to which triggers were considered suppressed between 23:59:00 and 00:00:59 `moira-alert/moira#127 <https://github.com/moira-alert/moira/pull/127>`_.
 - Fix bug in trigger when specific schedule time didn't work if start time was bigger than end time `moira-alert/moira#119 <https://github.com/moira-alert/moira/pull/119>`_.

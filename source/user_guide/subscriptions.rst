@@ -20,6 +20,7 @@ Once you have at least one channel, you can create a subscription. Press ``+ Add
 .. image:: ../_static/subscription_plotting.png
    :alt: subscription plotting settings
 
+.. _subscriptions-plotting:
 
 Plotting
 ----
