@@ -42,7 +42,7 @@ notifier:
     - type: slack
       # Api token for your moira notifications slack user, for more info see https://get.slack.help/hc/en-us/articles/215770388-Create-and-regenerate-API-tokens
       api_token: ...
-      # If true, notification will be sent with state-specific icon, for more info see :ref:`slack-icons`.
+      # If true, notification will be sent with state-specific icon, for more info see https://moira.readthedocs.io/en/latest/installation/configuration.html#slack-icons.
       use_emoji: false
     - type: telegram
       # Api token for your telegram bot, for more info about creating bot and get token see https://core.telegram.org/bots#3-how-do-i-create-a-bot
