@@ -11,6 +11,7 @@ Changelog
 
 - Fix advanced schedule in subscriptions `moira-alert/moira#162 <https://github.com/moira-alert/moira/pull/162>`_.
 - Remove deprecated method ``PUT trigger/{{triggerId}}/maintenance``, use ``PUT trigger/{{triggerId}}/setMaintenance`` instead `moira-alert/moira#161 <https://github.com/moira-alert/moira/pull/161>`_.
+- Upgrade NPM dependencies for security reasons `moira-alert/moira#194 <https://github.com/moira-alert/moira/issues/194>`_.
 
 2.4.0
 -----
