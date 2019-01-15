@@ -63,7 +63,9 @@ Slack icons
 ^^^^^^^^^^^
 
 .. image:: ../_static/slack-state-emoji.png
-   :alt: State-specific emoji 
+   :alt: State-specific emoji
+   :width: 534
+   :height: 226
 
 By default slack sender won't change default icon configured for your bot.
 To use state-specific icons in notifications:
