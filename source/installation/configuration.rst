@@ -67,14 +67,13 @@ Slack icons
    :width: 534
    :height: 226
 
-By default slack sender won't change default icon configured for your bot.
-To use state-specific icons in notifications:
+By default slack sender won't change default icon configured for your bot.| To use state-specific icons in notifications:
 
 .. image:: ../_static/slack-emoji.png
    :alt: Add custom emoji 
 
 - Download and unzip `notification icons <https://github.com/moira-alert/doc/blob/master/notification-icons.zip>`_.
-- Add icons from '..icons/slack' directory as custom emojis according to their filenames to `slack <https://get.slack.help/hc/en-us/articles/206870177-Add-custom-emoji>`_.
+- Add icons from ``..icons/slack`` directory as custom emojis according to their filenames to `slack <https://get.slack.help/hc/en-us/articles/206870177-Add-custom-emoji>`_.
 - Set ``use_emoji`` to ``true`` for slack sender section in notifier config
 
 Email template
