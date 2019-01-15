@@ -67,7 +67,7 @@ Slack icons
    :width: 534
    :height: 226
 
-By default slack sender won't change default icon configured for your bot.| To use state-specific icons in notifications:
+By default slack sender won't change default icon configured for your bot. |br|\ To use state-specific icons in notifications:
 
 .. image:: ../_static/slack-emoji.png
    :alt: Add custom emoji 
