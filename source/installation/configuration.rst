@@ -73,7 +73,7 @@ By default Slack sender won't change default icon configured for your bot. To us
    :alt: Add custom emoji 
 
 - Download and unzip `notification icons <https://github.com/moira-alert/doc/blob/master/notification-icons.zip>`_
-- Add icons from ``..icons/slack`` directory as custom emojis according to their filenames to `slack <https://get.slack.help/hc/en-us/articles/206870177-Add-custom-emoji>`_
+- Add icons from ``..icons/slack`` directory as custom emojis according to their filenames to `Slack <https://get.slack.help/hc/en-us/articles/206870177-Add-custom-emoji>`_
 - Set ``use_emoji`` to ``true`` for slack sender section in notifier configuration file
 
 Email template
