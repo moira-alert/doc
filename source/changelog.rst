@@ -9,7 +9,7 @@ Changelog
 2.5.0
 -----
 
-- Feature usage of icons in slack notifications `moira-alert/moira#180 <https://github.com/moira-alert/moira/issues/180>`_. See more: :ref:`slack-icons`.
+- Feature usage of icons in Slack notifications `moira-alert/moira#180 <https://github.com/moira-alert/moira/issues/180>`_. See more: :ref:`slack-icons`.
 - Improve plotting conditions to render non-empty timeseries only `moira-alert/moira#197 <https://github.com/moira-alert/moira/issues/197>`_.
 - Fix advanced schedule in subscriptions `moira-alert/moira#162 <https://github.com/moira-alert/moira/pull/162>`_.
 - Remove deprecated method ``PUT trigger/{{triggerId}}/maintenance``, use ``PUT trigger/{{triggerId}}/setMaintenance`` instead `moira-alert/moira#161 <https://github.com/moira-alert/moira/pull/161>`_.
