@@ -13,5 +13,6 @@ Contents
    user_guide/index
    development/index
    contacts
+   gsoc
 
 .. include:: overview.rst

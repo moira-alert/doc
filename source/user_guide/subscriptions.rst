@@ -1,5 +1,7 @@
 .. include:: <isonum.txt>
 
+.. _subscriptions:
+
 Setting Up Your Subscriptions
 =============================
 
