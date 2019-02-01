@@ -17,6 +17,8 @@ Changelog
 - Get rid of deprecated 2.2 related conversion code. Fixed a bug that turned old pseudo-tags ``ERROR`` ``DEGRADATION`` ``HIGH DEGRADATION`` to subscription settings checkboxes `moira-alert/moira#184 <https://github.com/moira-alert/moira/issues/184>`_.
 - Fix multibyte splitting bug in graph titles `moira-alert/moira#179 <https://github.com/moira-alert/moira/issues/179>`_.
 - Limit supported browser by Chrome, Firefox, Safari (all mobile and desktop) and Edge (only desktop). Only last 2 major versions `moira-alert/web2.0#210 <https://github.com/moira-alert/web2.0/pull/210>`_.
+- Add contact type icon in choose subscription contact combobox `moira-alert/moira#219 <https://github.com/moira-alert/moira/issues/219>`_.
+- Change remove subscription contact icon `moira-alert/moira#220 <https://github.com/moira-alert/moira/issues/220>`_.
 
 2.4.0
 -----
