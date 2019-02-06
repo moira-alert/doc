@@ -71,7 +71,7 @@ Moira's users are able to set up new delivery channels and contacts to be used w
 However Moira doesn't check if the channel configuration is valid and alerts can be actually sent.
 A user may provide a non-existent Slack user name, block Moira's bot in Telegram, etc. 
 As a result, such user wouldn't be able to receive alerts.
-The bad thing is that sometimes invalid confiuration would cause Moira's bots to be banned for a certain period of time.
+The bad thing is that sometimes invalid configuration would cause Moira's bots to be banned for a certain period of time.
 This effectively means a denial-of-service for alerts which is highly undesirable.
 
 The aim of this project is to implement health checks when delivery channels and contacts are set up.
