@@ -1,0 +1,7 @@
+2.1
+---
+
+- Throw an exception if any target except the first one resolves in more than one metric.
+- Fix Moira version detection in CI builds.
+- Add user login information to API request logs.
+- Fix long interval between creating a new trigger and getting data into that trigger.
