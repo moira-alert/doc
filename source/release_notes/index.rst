@@ -1,4 +1,4 @@
-Installation
+Release Notes
 ============
 
 .. toctree::
