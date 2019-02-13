@@ -11,3 +11,4 @@
 - Limit supported browser by Chrome, Firefox, Safari (all mobile and desktop) and Edge (only desktop). Only last 2 major versions `moira-alert/web2.0#210 <https://github.com/moira-alert/web2.0/pull/210>`_.
 - Add contact type icon in choose subscription contact combobox `moira-alert/moira#219 <https://github.com/moira-alert/moira/issues/219>`_.
 - Change remove subscription contact icon `moira-alert/moira#220 <https://github.com/moira-alert/moira/issues/220>`_.
+- Split code for PC and mobile version to different files. And load it only by request. Change mobile detect logic from "get window width" to "parse user agent and detect mobile browser" `moira-alert/web2.0#218 <https://github.com/moira-alert/web2.0/pull/218>`
