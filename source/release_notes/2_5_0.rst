@@ -1,8 +1,14 @@
 2.5.0
-===========================
+=====
 
-// Write about redis 3.2
-// Add about ConnectionLimin config
+Upgrading
+---------
+
+Please upgrade filter, checker, notifier, api and web - they contain valuable bugfixes and improvements.
+Note: checker has changes that are not compatible with redis version below 3.2, please upgrade your redis instance.
+
+Changelog
+---------
 
 - Fix advanced schedule in subscriptions `moira-alert/moira#162 <https://github.com/moira-alert/moira/pull/162>`_.
 - Remove deprecated method ``PUT trigger/{{triggerId}}/maintenance``, use ``PUT trigger/{{triggerId}}/setMaintenance`` instead `moira-alert/moira#161 <https://github.com/moira-alert/moira/pull/161>`_.
@@ -41,4 +47,4 @@
 - [CODE, BACKEND] Fix access to thread-shared fields `moira-alert/moira#248 <https://github.com/moira-alert/moira/pull/258>`_.
 - [LOGGING] No points found to render trigger in notifier now shows only in debug log `moira-alert/moira#249 <https://github.com/moira-alert/moira/pull/249>`_.
 - [CODE, BACKEND, UPDATE_LIBS] Update redis packages: redigo, redsync, sentinel `moira-alert/moira#239 <https://github.com/moira-alert/moira/pull/239>`_.
-- Split code for PC and mobile version to different files. And load it only by request. Change mobile detect logic from "get window width" to "parse user agent and detect mobile browser" `moira-alert/web2.0#218 <https://github.com/moira-alert/web2.0/pull/218>_`
+- Split code for PC and mobile version to different files. And load it only by request. Change mobile detect logic from "get window width" to "parse user agent and detect mobile browser" `moira-alert/web2.0#218 <https://github.com/moira-alert/web2.0/pull/218>`_.

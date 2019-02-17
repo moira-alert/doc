@@ -13,7 +13,7 @@ Manual Installation
 There are following components you need to install before running Moira microservices:
 
 1. golang_ version 1.9 or higher
-2. redis_ database version 2.8 or higher
+2. redis_ database version 3.2 or higher
 3. web server e.g. nginx_
 
 
