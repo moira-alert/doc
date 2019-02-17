@@ -1,4 +1,4 @@
-.. _important: https://moira.readthedocs.io/en/latest/installation/configuration.html#api
+.. _important: https://moira.readthedocs.io/en/release-2.5/release_notes/2_4_0.html
 
 2.5.0
 =====
@@ -20,10 +20,8 @@ Changelog
 ---------
 
 - Fix advanced schedule in subscriptions `moira-alert/moira#162 <https://github.com/moira-alert/moira/pull/162>`_.
-- Remove deprecated method ``PUT trigger/{{triggerId}}/maintenance``, use ``PUT trigger/{{triggerId}}/setMaintenance`` instead `moira-alert/moira#161 <https://github.com/moira-alert/moira/pull/161>`_.
 - Improve plotting conditions to render non-empty timeseries only `moira-alert/moira#197 <https://github.com/moira-alert/moira/issues/197>`_.
 - Upgrade NPM dependencies for security reasons `moira-alert/moira#194 <https://github.com/moira-alert/moira/issues/194>`_.
-- Remove deprecated 2.2 related conversion code. `moira-alert/moira#184 <https://github.com/moira-alert/moira/issues/184>`_.
 - Fix bug that turned old pseudo-tags ``ERROR`` ``DEGRADATION`` ``HIGH DEGRADATION`` to subscription settings checkboxes `moira-alert/moira#184 <https://github.com/moira-alert/moira/issues/184>`_.
 - [CODE, BACKEND] Replcase ```chan bool``` with ```chan struct{}``` for cancalation channels `moira-alert/moira#204 <https://github.com/moira-alert/moira/pull/204>`_.
 - [BREAKING, WEB] Limit supported browser by Chrome, Firefox, Safari (all mobile and desktop) and Edge (only desktop). Only last 2 major versions `moira-alert/web2.0#210 <https://github.com/moira-alert/web2.0/pull/210>`_.
