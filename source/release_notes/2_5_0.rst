@@ -13,45 +13,45 @@ For upgrade moira to version 2.5 from 2.2 and older please use moira-cli from of
 Incompatible changes
 --------------------
 
-- Remove deprecated method ``PUT trigger/{{triggerId}}/maintenance``. Use ``PUT trigger/{{triggerId}}/setMaintenance`` instead `moira#161 <https://github.com/moira-alert/moira/pull/161>`_.
-- Remove deprecated 2.2 related conversion code `moira#184 <https://github.com/moira-alert/moira/issues/184>`_.
+- Remove deprecated method ``PUT trigger/{{triggerId}}/maintenance``. Use ``PUT trigger/{{triggerId}}/setMaintenance`` instead `#161 <https://github.com/moira-alert/moira/pull/161>`_.
+- Remove deprecated version 2.2 related conversion code `#184 <https://github.com/moira-alert/moira/issues/184>`_.
 
 Changelog
 ---------
 
-- Fix advanced schedule in subscriptions `moira-alert/moira#162 <https://github.com/moira-alert/moira/pull/162>`_.
-- Improve plotting conditions to render non-empty timeseries only `moira-alert/moira#197 <https://github.com/moira-alert/moira/issues/197>`_.
-- Upgrade NPM dependencies for security reasons `moira-alert/moira#194 <https://github.com/moira-alert/moira/issues/194>`_.
-- Fix bug that turned old pseudo-tags ``ERROR`` ``DEGRADATION`` ``HIGH DEGRADATION`` to subscription settings checkboxes `moira-alert/moira#184 <https://github.com/moira-alert/moira/issues/184>`_.
-- [CODE, BACKEND] Replcase ```chan bool``` with ```chan struct{}``` for cancalation channels `moira-alert/moira#204 <https://github.com/moira-alert/moira/pull/204>`_.
-- [BREAKING, WEB] Limit supported browser by Chrome, Firefox, Safari (all mobile and desktop) and Edge (only desktop). Only last 2 major versions `moira-alert/web2.0#210 <https://github.com/moira-alert/web2.0/pull/210>`_.
-- [CODE, WEB, UPDATE_LIBS] Simplify webpack configs and remove unusable packages `moira-alert/web2.0#210 <https://github.com/moira-alert/web2.0/pull/210>`_.
-- Fix multibyte splitting bug in graph titles `moira-alert/moira#179 <https://github.com/moira-alert/moira/issues/179>`_.
-- Feature usage of icons in Slack notifications `moira-alert/moira#180 <https://github.com/moira-alert/moira/issues/180>`_. See more: :ref:`slack-icons`.
-- [CODE, BACKEND] Staticcheck linter fixes, all errors now in lower case `moira-alert/moira#210 <https://github.com/moira-alert/moira/pull/210>`_.
-- [CODE, BACKEND] Refactor metric sources logic, remove remote and target packages, move it to metric_source package `moira-alert/moira#213 <https://github.com/moira-alert/moira/pull/213>`_.
-- Create only one remote triggers graphite client on start instead of create on every fetch method call `moira-alert/moira#213 <https://github.com/moira-alert/moira/pull/213>`_.
-- Now close connection if subscribe to metric events failed `moira-alert/moira#229 <https://github.com/moira-alert/moira/pull/229>`_.
-- [CODE, WEB] Change linter rules to AirBnB style `moira-alert/moira#196 <https://github.com/moira-alert/moira/issues/196>`_.
-- Add contact type icon in choose subscription contact combobox `moira-alert/moira#219 <https://github.com/moira-alert/moira/issues/219>`_.
-- Change remove subscription contact icon `moira-alert/moira#220 <https://github.com/moira-alert/moira/issues/220>`_.
-- Process last-checks that do not have any metrics stored in remote or local storage `moira-alert/moira#166 <https://github.com/moira-alert/moira/issues/166>`_.
-- [CODE, BACKEND, UPDATE_LIBS] Update go.UUID package, that moved to new repository `moira-alert/moira#225 <https://github.com/moira-alert/moira/pull/225>`_.
-- [CODE, BACKEND] Do not select redis db manually, use redigo package built-in functions `moira-alert/moira#233 <https://github.com/moira-alert/moira/pull/233>`_.
-- [CODE, BACKEND] Refactor internal logic of exactly-once tasks, move telegram and nodata checker workers into this logic `moira-alert/moira#187 <https://github.com/moira-alert/moira/issues/187>`_.
-- Execute self-check only once, regardless of how many notifier instances are running `moira-alert/moira#186 <https://github.com/moira-alert/moira/issues/186>`_.
-- Always close remote triggers target response body `moira-alert/moira#237 <https://github.com/moira-alert/moira/pull/237>`_.
-- [CODE, BACKEND] Refactor moira senders, add tests on it `moira-alert/moira#237 <https://github.com/moira-alert/moira/pull/247>`_.
-- Right calculate Pushover message priority, when events count more than five `moira-alert/moira#237 <https://github.com/moira-alert/moira/pull/247>`_.
-- Now display only five events in twilio sms sender `moira-alert/moira#237 <https://github.com/moira-alert/moira/pull/247>`_.
-- [CODE, BACKEND] Use single worker for get trigger to check in remote and local trigger checkers and get triggerIDs by batches `moira-alert/moira#253 <https://github.com/moira-alert/moira/pull/253>`_.
-- Remove useless broken links in test and self-state notifications `moira-alert/moira#178 <https://github.com/moira-alert/moira/issues/178>`_.
-- Limit connection count in redis connection pool, add separate pool for remote locks, add ConnectionsLimit config field in redis configuration `moira-alert/moira#163 <https://github.com/moira-alert/moira/issues/163>`_.
-- Send telegram alert and plot in one message `moira-alert/moira#248 <https://github.com/moira-alert/moira/pull/248>`_.
-- Fix symbols counting bug in telegram messages `moira-alert/moira#248 <https://github.com/moira-alert/moira/pull/248>`_.
-- [CODE, BACKEND] Update go to version 1.11.5 `moira-alert/moira#248 <https://github.com/moira-alert/moira/pull/260>`_.
-- [CODE, BACKEND] Refactor moira states, move it to moira code package and use it everywere `moira-alert/moira#248 <https://github.com/moira-alert/moira/pull/259>`_.
-- [CODE, BACKEND] Fix access to thread-shared fields `moira-alert/moira#248 <https://github.com/moira-alert/moira/pull/258>`_.
-- [LOGGING] No points found to render trigger in notifier now shows only in debug log `moira-alert/moira#249 <https://github.com/moira-alert/moira/pull/249>`_.
-- [CODE, BACKEND, UPDATE_LIBS] Update redis packages: redigo, redsync, sentinel `moira-alert/moira#239 <https://github.com/moira-alert/moira/pull/239>`_.
-- Split code for PC and mobile version to different files. And load it only by request. Change mobile detect logic from "get window width" to "parse user agent and detect mobile browser" `moira-alert/web2.0#218 <https://github.com/moira-alert/web2.0/pull/218>`_.
+- Fix advanced schedule in subscriptions `#162 <https://github.com/moira-alert/moira/pull/162>`_.
+- Improve plotting conditions to render non-empty timeseries only `#197 <https://github.com/moira-alert/moira/issues/197>`_.
+- Upgrade NPM dependencies for security reasons `#194 <https://github.com/moira-alert/moira/issues/194>`_.
+- Fix bug that turned old pseudo-tags ``ERROR`` ``DEGRADATION`` ``HIGH DEGRADATION`` to subscription settings checkboxes `#184 <https://github.com/moira-alert/moira/issues/184>`_.
+- [CODE, BACKEND] Replcase ```chan bool``` with ```chan struct{}``` for cancalation channels `#204 <https://github.com/moira-alert/moira/pull/204>`_.
+- [BREAKING, WEB] Limit supported browser by Chrome, Firefox, Safari (all mobile and desktop) and Edge (only desktop). Only last 2 major versions `#210 <https://github.com/moira-alert/web2.0/pull/210>`_.
+- [CODE, WEB, UPDATE_LIBS] Simplify webpack configs and remove unusable packages `#210 <https://github.com/moira-alert/web2.0/pull/210>`_.
+- Fix multibyte splitting bug in graph titles `#179 <https://github.com/moira-alert/moira/issues/179>`_.
+- Feature usage of icons in Slack notifications `#180 <https://github.com/moira-alert/moira/issues/180>`_. See more: :ref:`slack-icons`.
+- [CODE, BACKEND] Staticcheck linter fixes, all errors now in lower case `#210 <https://github.com/moira-alert/moira/pull/210>`_.
+- [CODE, BACKEND] Refactor metric sources logic, remove remote and target packages, move it to metric_source package `#213 <https://github.com/moira-alert/moira/pull/213>`_.
+- Create only one remote triggers graphite client on start instead of create on every fetch method call `#213 <https://github.com/moira-alert/moira/pull/213>`_.
+- Now close connection if subscribe to metric events failed `#229 <https://github.com/moira-alert/moira/pull/229>`_.
+- [CODE, WEB] Change linter rules to AirBnB style `#196 <https://github.com/moira-alert/moira/issues/196>`_.
+- Add contact type icon in choose subscription contact combobox `#219 <https://github.com/moira-alert/moira/issues/219>`_.
+- Change remove subscription contact icon `#220 <https://github.com/moira-alert/moira/issues/220>`_.
+- Process last-checks that do not have any metrics stored in remote or local storage `#166 <https://github.com/moira-alert/moira/issues/166>`_.
+- [CODE, BACKEND, UPDATE_LIBS] Update go.UUID package, that moved to new repository `#225 <https://github.com/moira-alert/moira/pull/225>`_.
+- [CODE, BACKEND] Do not select redis db manually, use redigo package built-in functions `#233 <https://github.com/moira-alert/moira/pull/233>`_.
+- [CODE, BACKEND] Refactor internal logic of exactly-once tasks, move telegram and nodata checker workers into this logic `#187 <https://github.com/moira-alert/moira/issues/187>`_.
+- Execute self-check only once, regardless of how many notifier instances are running `#186 <https://github.com/moira-alert/moira/issues/186>`_.
+- Always close remote triggers target response body `#237 <https://github.com/moira-alert/moira/pull/237>`_.
+- [CODE, BACKEND] Refactor moira senders, add tests on it `#237 <https://github.com/moira-alert/moira/pull/247>`_.
+- Right calculate Pushover message priority, when events count more than five `#237 <https://github.com/moira-alert/moira/pull/247>`_.
+- Now display only five events in twilio sms sender `#237 <https://github.com/moira-alert/moira/pull/247>`_.
+- [CODE, BACKEND] Use single worker for get trigger to check in remote and local trigger checkers and get triggerIDs by batches `#253 <https://github.com/moira-alert/moira/pull/253>`_.
+- Remove useless broken links in test and self-state notifications `#178 <https://github.com/moira-alert/moira/issues/178>`_.
+- Limit connection count in redis connection pool, add separate pool for remote locks, add ConnectionsLimit config field in redis configuration `#163 <https://github.com/moira-alert/moira/issues/163>`_.
+- Send telegram alert and plot in one message `#248 <https://github.com/moira-alert/moira/pull/248>`_.
+- Fix symbols counting bug in telegram messages `#248 <https://github.com/moira-alert/moira/pull/248>`_.
+- [CODE, BACKEND] Update go to version 1.11.5 `#248 <https://github.com/moira-alert/moira/pull/260>`_.
+- [CODE, BACKEND] Refactor moira states, move it to moira code package and use it everywere `#248 <https://github.com/moira-alert/moira/pull/259>`_.
+- [CODE, BACKEND] Fix access to thread-shared fields `#248 <https://github.com/moira-alert/moira/pull/258>`_.
+- [LOGGING] No points found to render trigger in notifier now shows only in debug log `#249 <https://github.com/moira-alert/moira/pull/249>`_.
+- [CODE, BACKEND, UPDATE_LIBS] Update redis packages: redigo, redsync, sentinel `#239 <https://github.com/moira-alert/moira/pull/239>`_.
+- Split code for PC and mobile version to different files. And load it only by request. Change mobile detect logic from "get window width" to "parse user agent and detect mobile browser" `#218 <https://github.com/moira-alert/web2.0/pull/218>`_.
