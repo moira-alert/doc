@@ -6,6 +6,13 @@ Upgrading
 
 Please upgrade filter, checker, notifier, api and web - they contain valuable bugfixes and improvements.
 Note: checker has changes that are not compatible with redis version below 3.2, please upgrade your redis instance.
+For upgrade moira to version 2.5 from 2.2 and older please use moira-cli from :ref:`moira-cli-2-4-0`.
+
+Incompatible changes
+--------------------
+
+- Remove deprecated method ``PUT trigger/{{triggerId}}/maintenance``. Use ``PUT trigger/{{triggerId}}/setMaintenance`` instead.
+- Remove deprecated 2.2 related conversion code. For update to version 2.5 from 2.2 and older, please use moira-cli from `moira 2.4`
 
 Changelog
 ---------

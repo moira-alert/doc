@@ -33,6 +33,8 @@
 - Update `Moira Client 2.4 <https://github.com/moira-alert/python-moira-client/releases/tag/2.4>`_.
 - Update `Moira Trigger Role 2.4 <https://galaxy.ansible.com/moira-alert/moira-trigger-role>`_.
 
+.. _moira-cli-2-4-0:
+
 .. important:: **Redis DB conversion is required.**
 
   Moira 2.4 has some structure changes in Redis DB. 
