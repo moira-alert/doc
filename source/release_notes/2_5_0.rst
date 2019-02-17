@@ -1,3 +1,5 @@
+.. _important: https://moira.readthedocs.io/en/latest/installation/configuration.html#api
+
 2.5.0
 =====
 
@@ -6,13 +8,13 @@ Upgrading
 
 Please upgrade filter, checker, notifier, api and web - they contain valuable bugfixes and improvements.
 Note: checker has changes that are not compatible with redis version below 3.2, please upgrade your redis instance.
-For upgrade moira to version 2.5 from 2.2 and older please use moira-cli from :ref:`moira-cli-2-4-0`.
+For upgrade moira to version 2.5 from 2.2 and older please use moira-cli from of version 2.4 (see important_ note).
 
 Incompatible changes
 --------------------
 
-- Remove deprecated method ``PUT trigger/{{triggerId}}/maintenance``. Use ``PUT trigger/{{triggerId}}/setMaintenance`` instead.
-- Remove deprecated 2.2 related conversion code. For update to version 2.5 from 2.2 and older, please use moira-cli from `moira 2.4`
+- Remove deprecated method ``PUT trigger/{{triggerId}}/maintenance``. Use ``PUT trigger/{{triggerId}}/setMaintenance`` instead `moira#161 <https://github.com/moira-alert/moira/pull/161>`_.
+- Remove deprecated 2.2 related conversion code `moira#184 <https://github.com/moira-alert/moira/issues/184>`_.
 
 Changelog
 ---------
