@@ -15,7 +15,7 @@ Install dependencies.
 
    yarn build
 
-Starts dev server on port 9000. You'll have to run ```yarn fakeapi``` in separate terminal to provide mock API data. Mock API server starts on port 9002.
+Starts dev server on port 9000. You'll have to run ``yarn fakeapi`` in separate terminal to provide mock API data. Mock API server starts on port 9002.
 
 .. code-block:: bash
 
@@ -39,4 +39,4 @@ ESLint_ check. *Recommended to run before commit*.
 
    yarn flow
 
-Starts Flow_ server for checking types. You can also run ```yarn flow.status``` for status, yarn ```flow.check``` for errors report, ```yarn flow.coverage.html``` to export html report with cute UI.
+Starts Flow_ server for checking types. You can also run ``yarn flow.status`` for status, yarn ``flow.check`` for errors report, ``yarn flow.coverage.html`` to export html report with cute UI.
