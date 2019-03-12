@@ -106,15 +106,16 @@ WEB UI
 .. literalinclude:: ../../web.example.json
    :language: json
 
-- `type` — contact type: pushover, slack, mail, script, telegram, twilio sms, twilio voice;
-- `validation` — regular expression for user contact;
-- `title` — hint shown in input field;
-- `help` — help text in Markdown_ markup .
-- `remoteAllowed` — set to ``true`` if `Remote Triggers Checker`_ is enabled.
+- **type** (any uniq string) *required*  — contact type: pushover, slack, mail, script, telegram, twilio sms, twilio voice, etc.;
+- **label** *required* — contact label type. Uses in add/edit contact form in select control;
+- **validation** — regular expression for user contact, uses for validation in add/edit contact form;
+- **placeholder** — hint shown in input field;
+- **help** — help text in Markdown_ markup;
+- **remoteAllowed** — set to ``true`` if `Remote Triggers Checker`_ is enabled.
 
 .. image:: ../_static/web-ui-example.png
    :alt: WEB UI example
-   :width: 400
+   :width: 596
 
 .. _Markdown: https://daringfireball.net/projects/markdown/syntax
 .. _Seyren: https://github.com/scobal/seyren
