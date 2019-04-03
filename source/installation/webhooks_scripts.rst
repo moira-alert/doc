@@ -15,8 +15,8 @@ Next section describes how to implement this.
 Scripts
 -------
 
-You can specify executable path and arguments in notifier
-configuration file (see :doc:`/installation/configuration`).
+You can specify executable path and arguments in the notifier
+configuration file (see :doc:`/installation/configuration` for details).
 
 Add a separate section for each script:
 
@@ -54,8 +54,9 @@ Templated parameters
 --------------------
 
 You may have noted that we use templated parameters like
-${contact_value} in configuration examples. You can use these
-parameters in script as well as webhook contacts.
+``${contact_value}`` in configuration examples. You can use these
+parameters in script as well as webhook contacts. Notifier will
+replace them with actual values extracted from event.
 
 ================ ================================================
 Parameter        Value
