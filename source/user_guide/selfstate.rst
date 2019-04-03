@@ -5,18 +5,20 @@ Self State Monitor is a built-in mechanism designed to protect
 end user from false ``NODATA`` notifications and notify administrator
 about issues in Moira and/or Graphite systems.
 
+
 Why Self State Monitor
 -----------------------
 
-A situation is possible when Graphite Relay, Redis DB or Moira-Filter service breaks down.
-This leads to the fact that Moira doesn't receive any metrics from Graphite.
-In this case, Moira has no metrics on which it could check state of the triggers.
-According to the Moira logic, it should switch triggers to ``NODATA`` state
-and send alert messages to users.
+A situation is possible when Graphite Relay, Redis DB or Moira-Filter
+service breaks down. This leads to the fact that Moira doesn't receive
+any metrics from Graphite. In this case, Moira has no metrics on which
+it could check state of the triggers. According to the Moira logic,
+it should switch triggers to ``NODATA`` state and send alert messages to users.
 
-To handle this situation properly, we recommend turning on the Self State Monitor.
-In this case, Moira will **prevent itself from sending alert messages to end users
-but notify administrators of the existing problem**.
+To handle this situation properly, we recommend turning on the Self
+State Monitor. In this case, Moira will **prevent itself from sending
+alert messages to end users but notify administrators of the existing
+problem**.
 
 .. warning::
 
@@ -29,15 +31,18 @@ but notify administrators of the existing problem**.
 
   For a better understanding, look at the architecture of the :ref:`Moira microservices <microservices-architecture>`.
 
+
 .. _when-monitor-helps:
 
-When Self State Monitor helps
------------------------------------
+When Self State Monitor Helps
+-----------------------------
 
 Self state monitor checks these situations:
 
-1. If there is no connection between Moira and Redis for longer than ``redis_disconect_delay``.
-2. If Moira-Filter receive no metrics for longer than ``last_metric_received_delay``.
+1. If there is no connection between Moira and Redis for longer
+   than ``redis_disconect_delay``.
+2. If Moira-Filter receive no metrics for longer than
+   ``last_metric_received_delay``.
 3. If Moira-Checker checks no triggers for longer than ``last_check_delay``.
 
 .. seealso::
@@ -45,14 +50,17 @@ Self state monitor checks these situations:
   All the above configuration parametres can be found in the :ref:`Moira-Notifier section <notifier-configuration>`
   on configuration page.
 
-How Self State Monitor works
----------------------------------------
+
+How Self State Monitor Works
+----------------------------
 
 When you turn Self State Monitor on, it works this way:
 
-* Self State Monitor checks :ref:`Moira state <when-monitor-helps>` every 10 seconds.
+* Self State Monitor checks :ref:`Moira state <when-monitor-helps>`
+  every 10 seconds.
 
-* Something breaks down. It can be Graphite-Relay, connection to Redis DB or crashed Moira-Filter docker container.
+* Something breaks down. It can be Graphite-Relay, connection
+  to Redis DB or crashed Moira-Filter docker container.
 
 * Self State send alarm message to administrator with issue discription.
 
@@ -61,7 +69,8 @@ When you turn Self State Monitor on, it works this way:
     .. image:: ../_static/helth-check-email.png
      :alt: email alarm message
 
-* Self State Monitor turns Moira-Notifier service off, switching it in ``ERROR`` state.
+* Self State Monitor turns Moira-Notifier service off,
+  switching it in ``ERROR`` state.
 
   .. note::
 
@@ -77,10 +86,11 @@ When you turn Self State Monitor on, it works this way:
 
 .. _notifier-state-api:
 
-Turn Moira-Notifier ON and OFF
-------------------------------------------------------------------------------------------------------------------
+Turn Moira Notifier On and Off
+------------------------------
 
-You can reveal current Moira-Notifier state or change it on a hidden ``/notifications`` page.
+You can reveal current Moira-Notifier state or change it
+on a hidden ``/notifications`` page.
 
 .. image:: ../_static/notifier-toggle.png
  :alt: Notifier toggle

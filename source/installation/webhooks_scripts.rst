@@ -50,7 +50,7 @@ Then, in web UI configuration:
    }
 
 
-Templated parameters
+Templated Parameters
 --------------------
 
 You may have noted that we use templated parameters like
@@ -86,7 +86,7 @@ throttled Bool        True if notifications are throttled
 ========= =========== =====================================
 
 
-Fields description
+Fields Description
 ------------------
 
 Trigger

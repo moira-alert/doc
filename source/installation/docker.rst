@@ -4,7 +4,8 @@ Docker
 .. |Docker Hub| replace:: Docker Hub
 .. _Docker Hub: https://hub.docker.com/u/moira/
 
-You can quickly test a local Moira installation using Docker containers from |Docker Hub|_ and docker-compose file in documentation repository.
+You can quickly test a local Moira installation using Docker containers
+from |Docker Hub|_ and docker-compose file in documentation repository.
 
 .. code-block:: bash
 
@@ -13,4 +14,5 @@ You can quickly test a local Moira installation using Docker containers from |Do
   docker-compose pull
   docker-compose up
 
-Containers are preconfigured to serve Web UI at ``localhost:8080`` and accept graphite metrics at ``localhost:2003``.
+Containers are preconfigured to serve Web UI at ``localhost:8080``
+and accept graphite metrics at ``localhost:2003``.
