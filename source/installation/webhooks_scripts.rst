@@ -4,12 +4,12 @@ Webhooks and Custom Scripts
 Moira has two special kinds of senders: webhooks and scripts.
 
 Script runs an executable on the same machine that runs notifier instances.
-Webhook makes POST requests to a specified URL.
+Webhook makes POST requests to a specified URL. Scripts and webhooks are
+a flexible way to add integrations with services that are not supported
+in Moira natively.
 
-Scripts and webhooks are a flexible way to add integrations with
-services that are not supported in Moira natively. You may even want
-to add several different scripts for users to choose from. Next section
-describes how to implement this.
+You may want to add several different scripts for users to choose from.
+Next section describes how to implement this.
 
 
 Scripts
@@ -60,7 +60,7 @@ Webhooks
 
 Web UI users can specify a URL while creating webhook type contact.
 On each event, Moira will make a POST request to this URL with the
-following payload.
+following JSON payload.
 
 
 ========= =========== =====================================
