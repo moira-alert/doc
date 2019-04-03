@@ -15,7 +15,7 @@ Incompatible changes
 
 - Remove deprecated method ``PUT trigger/{{triggerId}}/maintenance``. Use ``PUT trigger/{{triggerId}}/setMaintenance`` instead `#161 <https://github.com/moira-alert/moira/pull/161>`_.
 - Remove deprecated version 2.2 related conversion code `#184 <https://github.com/moira-alert/moira/issues/184>`_.
-- Изменили контракт контактов в конфиге, чтобы исправить проблему захардкоженных типов контактов в форме добавления контакта на странице Уведомлений в веб-морде. Теперь список допустимых к добавлению контактов строится на основе конфига (как должно было быть изначально). А значение, введённое пользователем, валидируется по переданному регулярному выражению. Поле title было переименовано в правильное placeholder. А подпись у контакта строится не на type, а передаётся в label. Что делает настройку ещё гибче.
+- There was a long Russian text here, but Unicode symbols break build. See removed text here: https://github.com/moira-alert/doc/commit/7139c9f9a25475858c66ea5c03376df3ad16c2a8
 
 Changelog
 ---------
