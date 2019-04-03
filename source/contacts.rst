@@ -1,6 +1,6 @@
 Contact Moira Developers
 ========================
 
-.. _Gitter: https://gitter.im/moira-alert/moira
+.. _Telegram: https://t.me/moira_alert
 
-The best way to contact us is to visit our Gitter_ chat. We usually reply within a day, but sometimes immediately :)
+The best way to contact us is to visit our Telegram_ chat. We usually reply within a day, but sometimes immediately :)
