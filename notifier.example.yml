@@ -74,7 +74,7 @@ notifier:
     # Script and webhook senders support additional templated parameters:
     # ${contact_id}    contact ID
     # ${contact_value} contact value (as specified by user via web UI)
-    # ${contact_type}  contact type
+    # ${contact_type}  contact type (as specified in web UI config file)
     # ${trigger_id}    trigger ID
     - type: script
       name: ...

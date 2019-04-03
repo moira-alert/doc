@@ -15,15 +15,10 @@ Next section describes how to implement this.
 Scripts
 -------
 
-Web UI users are not allowed to specify which executable to run.
-It is unsafe to do so, and even if they could, there would be no way
-for them to put this executable on servers (or in containers) that
-run notifier instances.
-
-Instead, executable path and arguments are specified in notifier
+You can specify executable path and arguments in notifier
 configuration file (see :doc:`/installation/configuration`).
 
-You can specify several sections with different scripts:
+Add a separate section for each script:
 
 .. code-block:: yaml
 
@@ -55,12 +50,28 @@ Then, in web UI configuration:
    }
 
 
+Templated parameters
+--------------------
+
+You may have noted that we use templated parameters like
+${contact_value} in configuration examples. You can use these
+parameters in script as well as webhook contacts.
+
+================ ================================================
+Parameter        Value
+================ ================================================
+${contact_id}    Contact ID
+${contact_value} Contact value, as specified by user via web UI
+${contact_type}  Contact type, as specified in web UI config file
+${trigger_id}    Trigger ID
+================ ================================================
+
+
 Webhooks
 --------
 
-Web UI users can specify a URL while creating webhook type contact.
-On each event, Moira will make a POST request to this URL with the
-following JSON payload.
+On each event, Moira will make a POST request to the URL specified
+in notifier configuration file with the following JSON payload.
 
 
 ========= =========== =====================================
