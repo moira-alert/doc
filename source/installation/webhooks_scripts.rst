@@ -130,6 +130,17 @@ user      String Contact Author
 ========= ====== ==============
 
 
+HTTP Headers
+------------
+
+============ ================
+Name         Value
+============ ================
+User-Agent   Moira
+Content-Type application/json
+============ ================
+
+
 Example
 -------
 
