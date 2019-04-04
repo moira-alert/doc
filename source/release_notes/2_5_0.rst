@@ -20,7 +20,7 @@ Upgrading
 | Note: checker has changes that are not compatible with redis version below 3.2, please upgrade your redis instance.
 | For upgrade Moira to version 2.5 from 2.2 and older please use moira-cli |version 2.4|_ (see important_ note).
 | Please update your web configuration according to the following rules:
-- add **label** (new required field). You can see default type and label mappings in |default WEB UI configuration|_ 
+- add **label** (new required field). You can see default type and label field mappings in |default WEB UI configuration|_ 
 - **title** rename to "placeholder"
 See |WEB UI configuration guide|_ for more information.
 
