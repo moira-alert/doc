@@ -19,9 +19,9 @@
 Upgrading
 ---------
 
-| Please upgrade filter, checker, notifier, api and web - they contain valuable bugfixes and improvements.
-| Note: checker has changes that are not compatible with redis version below 3.2, please upgrade your redis instance.
-| For upgrade Moira to version 2.5 from 2.2 and older please use moira-cli |version 2.4|_ (see important_ note).
+| Please upgrade filter, checker, notifier, API, and web - they contain valuable bugfixes and improvements.
+| Note: checker has changes that are not compatible with Redis version below 3.2, please upgrade your Redis instance.
+| For upgrade Moira to version 2.5 from 2.2 and older please use Moira-cli |version 2.4|_ (see important_ note).
 | Please update your web configuration according to the following rules:
 - add **label** (new required field). You can see default type and label field mappings in |default WEB UI configuration|_ 
 - **title** rename to "placeholder"
@@ -31,73 +31,73 @@ Incompatible changes
 --------------------
 
 - Remove deprecated method ``PUT trigger/{{triggerId}}/maintenance``. Use ``PUT trigger/{{triggerId}}/setMaintenance`` instead (request body has not changed).
-- Remove deprecated version 2.2 related conversion code. Now if you want to updagrade Moira from version 2.2 and older use moira-cli |version 2.4|_ (see important_ note).
+- Remove deprecated version 2.2 related conversion code. Now if you want to upgrade Moira from version 2.2 and older use Moira-cli |version 2.4|_ (see important_ note).
 - Modified the contract of contacts in the config to fix the problem of hardcoded contact types in the form of adding a contact on the notifications page in the web interface.
-- Now list of contacts allowed to be added is based on the config (as it should have been originally).
-- The "title" field has been renamed to the correct "placeholder". A signature at the contact is not built on the "type", and is transferred to the "label". What makes the setting even more flexible. See upgrading_ guide for more information.  
+- Now a list of contacts allowed to be added is based on the config (as it should have been originally).
+- The "title" field has been renamed to the correct "placeholder". A signature at the contact is not built on the "type", and is transferred to the "label". What makes the setting even more flexible. See upgrading_ guide for more information.
 
 Changelog
 ---------
 
-- Remove deprecated method ``PUT trigger/{{triggerId}}/maintenance``. Use ``PUT trigger/{{triggerId}}/setMaintenance`` instead `#161 <https://github.com/moira-alert/moira/pull/161>`_.
+- Remove deprecated method ``PUT trigger/{{triggerId}}/maintenance``. `#161 <https://github.com/moira-alert/moira/pull/161>`_.
 - Remove deprecated version 2.2 related conversion code `#184 <https://github.com/moira-alert/moira/issues/184>`_.
 - Fix advanced schedule in subscriptions `#162 <https://github.com/moira-alert/moira/pull/162>`_.
 - Improve plotting conditions to render non-empty timeseries only `#197 <https://github.com/moira-alert/moira/issues/197>`_.
 - Upgrade NPM dependencies for security reasons `#194 <https://github.com/moira-alert/moira/issues/194>`_.
 - Fix bug that turned old pseudo-tags ``ERROR`` ``DEGRADATION`` ``HIGH DEGRADATION`` to subscription settings checkboxes `#184 <https://github.com/moira-alert/moira/issues/184>`_.
-- [CODE, BACKEND] Replcase ```chan bool``` with ```chan struct{}``` for cancalation channels `#204 <https://github.com/moira-alert/moira/pull/204>`_.
+- [CODE, BACKEND] Replaces ```chan bool``` with ```chan struct{}``` for cancellation channels `#204 <https://github.com/moira-alert/moira/pull/204>`_.
 - [BREAKING, WEB] Limit supported browser by Chrome, Firefox, Safari (all mobile and desktop) and Edge (only desktop). Only last 2 major versions `#210 <https://github.com/moira-alert/web2.0/pull/210>`_.
 - [CODE, WEB, UPDATE_LIBS] Simplify webpack configs and remove unusable packages `#210 <https://github.com/moira-alert/web2.0/pull/210>`_.
 - Fix multibyte splitting bug in graph titles `#179 <https://github.com/moira-alert/moira/issues/179>`_.
 - Feature usage of icons in Slack notifications `#180 <https://github.com/moira-alert/moira/issues/180>`_. See more: :ref:`slack-icons`.
 - [CODE, BACKEND] Staticcheck linter fixes, all errors now in lower case `#210 <https://github.com/moira-alert/moira/pull/210>`_.
 - [CODE, BACKEND] Refactor metric sources logic, remove remote and target packages, move it to metric_source package `#213 <https://github.com/moira-alert/moira/pull/213>`_.
-- Create only one remote triggers graphite client on start instead of create on every fetch method call `#213 <https://github.com/moira-alert/moira/pull/213>`_.
-- Now close connection if subscribe to metric events failed `#229 <https://github.com/moira-alert/moira/pull/229>`_.
+- Create only one remote triggers graphite client on start instead of creating on every fetch method call `#213 <https://github.com/moira-alert/moira/pull/213>`_.
+- Now close connection if subscribing to metric events failed `#229 <https://github.com/moira-alert/moira/pull/229>`_.
 - [CODE, WEB] Change linter rules to AirBnB style `#196 <https://github.com/moira-alert/moira/issues/196>`_.
 - Add contact type icon in choose subscription contact combobox `#219 <https://github.com/moira-alert/moira/issues/219>`_.
 - Change remove subscription contact icon `#220 <https://github.com/moira-alert/moira/issues/220>`_.
 - Process last-checks that do not have any metrics stored in remote or local storage `#166 <https://github.com/moira-alert/moira/issues/166>`_.
 - [CODE, BACKEND, UPDATE_LIBS] Update go.UUID package, that moved to new repository `#225 <https://github.com/moira-alert/moira/pull/225>`_.
-- [CODE, BACKEND] Do not select redis db manually, use redigo package built-in functions `#233 <https://github.com/moira-alert/moira/pull/233>`_.
-- [CODE, BACKEND] Refactor internal logic of exactly-once tasks, move telegram and nodata checker workers into this logic `#187 <https://github.com/moira-alert/moira/issues/187>`_.
+- [CODE, BACKEND] Do not select Redis DB manually, use redigo package built-in functions `#233 <https://github.com/moira-alert/moira/pull/233>`_.
+- [CODE, BACKEND] Refactor internal logic of exactly-once tasks, move telegram and NODATA checker workers into this logic `#187 <https://github.com/moira-alert/moira/issues/187>`_.
 - Execute self-check only once, regardless of how many notifier instances are running `#186 <https://github.com/moira-alert/moira/issues/186>`_.
 - Always close remote triggers target response body `#237 <https://github.com/moira-alert/moira/pull/237>`_.
 - [CODE, BACKEND] Refactor Moira senders, add tests on it `#237 <https://github.com/moira-alert/moira/pull/247>`_.
-- Right calculate Pushover message priority, when events count more than five `#237 <https://github.com/moira-alert/moira/pull/247>`_.
-- Now display only five events in twilio sms sender `#237 <https://github.com/moira-alert/moira/pull/247>`_.
-- [CODE, BACKEND] Use single worker for get trigger to check in remote and local trigger checkers and get triggerIDs by batches `#253 <https://github.com/moira-alert/moira/pull/253>`_.
+- Right, calculate Pushover message priority, when events count more than five `#237 <https://github.com/moira-alert/moira/pull/247>`_.
+- Now display only five events in Twilio SMS sender `#237 <https://github.com/moira-alert/moira/pull/247>`_.
+- [CODE, BACKEND] Use single worker to get trigger to check in remote and local trigger checkers and get triggerIDs by batches `#253 <https://github.com/moira-alert/moira/pull/253>`_.
 - Remove useless broken links in test and self-state notifications `#178 <https://github.com/moira-alert/moira/issues/178>`_.
-- Limit connection count in redis connection pool, add separate pool for remote locks, add ConnectionsLimit config field in redis configuration `#163 <https://github.com/moira-alert/moira/issues/163>`_.
+- Limit connection count in Redis connection pool, add a separate pool for remote locks, add ConnectionsLimit config field in Redis configuration `#163 <https://github.com/moira-alert/moira/issues/163>`_.
 - Send telegram alert and plot in one message `#248 <https://github.com/moira-alert/moira/pull/248>`_.
 - Fix symbols counting bug in telegram messages `#248 <https://github.com/moira-alert/moira/pull/248>`_.
 - [CODE, BACKEND] Update go to version 1.11.5 `#248 <https://github.com/moira-alert/moira/pull/260>`_.
-- [CODE, BACKEND] Refactor Moira states, move it to moira code package and use it everywere `#248 <https://github.com/moira-alert/moira/pull/259>`_.
+- [CODE, BACKEND] Refactor Moira states, move it to Moira code package and use it everywhere `#248 <https://github.com/moira-alert/moira/pull/259>`_.
 - [CODE, BACKEND] Fix access to thread-shared fields `#248 <https://github.com/moira-alert/moira/pull/258>`_.
 - [LOGGING] No points found to render trigger in notifier now shows only in debug log `#249 <https://github.com/moira-alert/moira/pull/249>`_.
-- [CODE, BACKEND, UPDATE_LIBS] Update redis packages: redigo, redsync, sentinel `#239 <https://github.com/moira-alert/moira/pull/239>`_.
+- [CODE, BACKEND, UPDATE_LIBS] Update Redis packages: redigo, redsync, sentinel `#239 <https://github.com/moira-alert/moira/pull/239>`_.
 - Split code for PC and mobile version to different files. And load it only by request. Change mobile detect logic from "get window width" to "parse user agent and detect mobile browser" `#218 <https://github.com/moira-alert/web2.0/pull/218>`_.
 - [CODE, WEB] Refactor contact types web components, refactor all fields that should have been used from the web config, but were hardcoded  `#280 <https://github.com/moira-alert/moira/issues/280>`_. See |incompatible changes|_ for more info.
-- Fix 500 status code then try to update subscrition if one of subscribed triggers was removed `#271 <https://github.com/moira-alert/moira/pull/271>`_.
+- Fix 500 status code then try to update subscrition if one of the subscribed triggers was removed `#271 <https://github.com/moira-alert/moira/pull/271>`_.
 - Small optimizations of metric parser in filter `#267 <https://github.com/moira-alert/moira/pull/267>`_.
-- Add meaningful title to all moira web pages `#177 <https://github.com/moira-alert/moira/issues/177>`_.
-- Properly encode parameters that passed in web to api requests `#174 <https://github.com/moira-alert/moira/issues/174>`_.
+- Add a meaningful title to all Moira web pages `#177 <https://github.com/moira-alert/moira/issues/177>`_.
+- Properly encode parameters that passed in a web to API requests `#174 <https://github.com/moira-alert/moira/issues/174>`_.
 - Fix layout with long words or URLs in name and description on the trigger web page `#176 <https://github.com/moira-alert/moira/issues/176>`_.
 - Fix showing tags that exist in the user local browser storage, but don't exist in server-side `#175 <https://github.com/moira-alert/moira/issues/175>`_.
-- Fix external loader on non-existing trigger page in mobile version of web `#168 <https://github.com/moira-alert/moira/issues/168>`_.
+- Fix external loader on non-existing trigger page in a mobile version of the web `#168 <https://github.com/moira-alert/moira/issues/168>`_.
 - Remove cancel button and restyle delete button in subscription modal `#221 <https://github.com/moira-alert/moira/issues/221>`_.
-- Correctly handle metric that received in filter with windows line breaks (/r/n) `#268 <https://github.com/moira-alert/moira/pull/268>`_.
+- Correctly handle metric that received in a filter with windows line breaks (/r/n) `#268 <https://github.com/moira-alert/moira/pull/268>`_.
 - Do not allow creating simple mode trigger with several targets via API `#171 <https://github.com/moira-alert/moira/issues/171>`_.
 - Now data source toggle is present in simple and advanced edit trigger mode `#236 <https://github.com/moira-alert/moira/issues/236>`_.
 - [CODE, WEB] Refactor contact types web components, refactor all fields that should have been used from the web config, but were hardcoded  `#280 <https://github.com/moira-alert/moira/issues/280>`_. See |incompatible changes|_ for more info.
 - Fix rising/falling mode selector when switching between simple and advanced modes `#172 <https://github.com/moira-alert/moira/issues/172>`_.
-- No more allow to use ``ERROR_VALUE`` and ``WARN_VALUE`` in expression as varables. Your old triggers with this variables will still work, but you can not update this triggers until you delete ``ERROR_VALUE`` and ``WARN_VALUE`` variables from expression `#172 <https://github.com/moira-alert/moira/issues/172>`_.
-- Not when you create or update trigger, api validate that only expression or `warn_value`, `error_value`. If you set both of this fields api will return 400 status code. In web interface update or create saves only the fields that are displayed in the open tab (simple mode or advanced mode) `#172 <https://github.com/moira-alert/moira/issues/172>`_.
+- No more allow using ``ERROR_VALUE`` and ``WARN_VALUE`` in expression as variables. Your old triggers with this variables will still work, but you can not update this triggers until you delete ``ERROR_VALUE`` and ``WARN_VALUE`` variables from the expression `#172 <https://github.com/moira-alert/moira/issues/172>`_.
+- Not when you create or update trigger, API validate that only expression or `warn_value`, `error_value`. If you set both of this fields API will return 400 status code. In web interface update or create saves only the fields that are displayed in the open tab (simple mode or advanced mode) `#172 <https://github.com/moira-alert/moira/issues/172>`_.
 - Get rid of old ugly mail template, now we use only new |email template|_. `#181 <https://github.com/moira-alert/moira/issues/181>`_.
 - Update and create trigger now returns status code 400 on invalid request `#323 <https://github.com/moira-alert/moira/pull/323>`_.
-- Add description for stop sending notifications log message, then self state monitor is turned on `#323 <https://github.com/moira-alert/moira/pull/323>`_.
+- Add description for stop sending notifications to log message, then self-state monitor is turned on `#323 <https://github.com/moira-alert/moira/pull/323>`_.
 - Add a hint near the metric and in maintenance metric message who put the metric in the maintenance and when `#192 <https://github.com/moira-alert/moira/issues/192>`_.
-- Fix sending a message "This metric changed its state..." if state does not change during maintenance interval `#328 <https://github.com/moira-alert/moira/issues/328>`_.
+- Fix sending a message "This metric changed its state..." if a state does not change during maintenance interval `#328 <https://github.com/moira-alert/moira/issues/328>`_.
 - Add Webhook sender `#123 <https://github.com/moira-alert/moira/issues/123>`_. For more info see documantation_.
-- Add to script sender new variables. Variable ${trigger_name} is deprecated, removed from documentation and will be removed in future versions of moira `#228 <https://github.com/moira-alert/moira/issues/228>`_. For more inforamation about new variables and script configuration see documantation_.
-- Fix update event timestamp on maintenance metric in changed suppressed state on every trigger check `#332 <https://github.com/moira-alert/moira/issues/332>`_.
+- Add to script sender new variables. Variable ${trigger_name} is deprecated, removed from documentation and will be removed in future versions of Moira `#228 <https://github.com/moira-alert/moira/issues/228>`_. For more information about new variables and script configuration see documantation_.
+- Fix update event timestamp on maintenance metric in a changed suppressed state on every trigger check `#332 <https://github.com/moira-alert/moira/issues/332>`_.
