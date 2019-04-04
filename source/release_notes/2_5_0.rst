@@ -1,4 +1,14 @@
 .. _important: https://moira.readthedocs.io/en/release-2.5/release_notes/2_4_0.html
+.. _upgrading: https://moira.readthedocs.io/en/release-2.5/release_notes/2_5_0.html#upgrading
+.. |incompatible changes| replace:: incompatible changes
+.. _incompatible changes: https://moira.readthedocs.io/en/release-2.5/release_notes/2_5_0.html#incompatible-changes
+.. |version 2.4| replace:: version 2.4
+.. _version 2.4: https://github.com/moira-alert/moira/releases/tag/v2.4.0
+.. |See WEB UI configuration guide| replace:: See WEB UI configuration guide
+.. _See WEB UI configuration guide: https://moira.readthedocs.io/en/release-2.5/installation/configuration.html#web-ui
+.. |default WEB UI configuration| replace:: default WEB UI configuration
+.. _default WEB UI configuration: https://github.com/moira-alert/moira/blob/b8523885f003fceeefe98ca30be2b42d70032794/pkg/api/web.json
+
 
 2.5.0
 =====
@@ -6,16 +16,22 @@
 Upgrading
 ---------
 
-Please upgrade filter, checker, notifier, api and web - they contain valuable bugfixes and improvements.
-Note: checker has changes that are not compatible with redis version below 3.2, please upgrade your redis instance.
-For upgrade moira to version 2.5 from 2.2 and older please use moira-cli from of version 2.4 (see important_ note).
+| Please upgrade filter, checker, notifier, api and web - they contain valuable bugfixes and improvements.
+| Note: checker has changes that are not compatible with redis version below 3.2, please upgrade your redis instance.
+| For upgrade Moira to version 2.5 from 2.2 and older please use moira-cli |version 2.4|_ (see important_ note).
+| Please update your web configuration according to the following rules:
+- add **label** (new required field). You can see default type and label mappings in |default WEB UI configuration|_ 
+- **title** rename to "placeholder"
+See |See WEB UI configuration guide|_ and for more information.
 
 Incompatible changes
 --------------------
 
 - Remove deprecated method ``PUT trigger/{{triggerId}}/maintenance``. Use ``PUT trigger/{{triggerId}}/setMaintenance`` instead `#161 <https://github.com/moira-alert/moira/pull/161>`_.
 - Remove deprecated version 2.2 related conversion code `#184 <https://github.com/moira-alert/moira/issues/184>`_.
-- There was a long Russian text here, but Unicode symbols break build. See removed text here: https://github.com/moira-alert/doc/commit/7139c9f9a25475858c66ea5c03376df3ad16c2a8
+- Modified the contract of contacts in the config to fix the problem of hardcoded contact types in the form of adding a contact on the notifications page in the web interface.
+- Now list of contacts allowed to be added is based on the config (as it should have been originally).
+- The "title" field has been renamed to the correct "placeholder". A signature at the contact is not built on the "type", and is transferred to the "label". What makes the setting even more flexible. See upgrading_ guide for more information.  
 
 Changelog
 ---------
@@ -42,7 +58,7 @@ Changelog
 - [CODE, BACKEND] Refactor internal logic of exactly-once tasks, move telegram and nodata checker workers into this logic `#187 <https://github.com/moira-alert/moira/issues/187>`_.
 - Execute self-check only once, regardless of how many notifier instances are running `#186 <https://github.com/moira-alert/moira/issues/186>`_.
 - Always close remote triggers target response body `#237 <https://github.com/moira-alert/moira/pull/237>`_.
-- [CODE, BACKEND] Refactor moira senders, add tests on it `#237 <https://github.com/moira-alert/moira/pull/247>`_.
+- [CODE, BACKEND] Refactor Moira senders, add tests on it `#237 <https://github.com/moira-alert/moira/pull/247>`_.
 - Right calculate Pushover message priority, when events count more than five `#237 <https://github.com/moira-alert/moira/pull/247>`_.
 - Now display only five events in twilio sms sender `#237 <https://github.com/moira-alert/moira/pull/247>`_.
 - [CODE, BACKEND] Use single worker for get trigger to check in remote and local trigger checkers and get triggerIDs by batches `#253 <https://github.com/moira-alert/moira/pull/253>`_.
@@ -51,8 +67,9 @@ Changelog
 - Send telegram alert and plot in one message `#248 <https://github.com/moira-alert/moira/pull/248>`_.
 - Fix symbols counting bug in telegram messages `#248 <https://github.com/moira-alert/moira/pull/248>`_.
 - [CODE, BACKEND] Update go to version 1.11.5 `#248 <https://github.com/moira-alert/moira/pull/260>`_.
-- [CODE, BACKEND] Refactor moira states, move it to moira code package and use it everywere `#248 <https://github.com/moira-alert/moira/pull/259>`_.
+- [CODE, BACKEND] Refactor Moira states, move it to moira code package and use it everywere `#248 <https://github.com/moira-alert/moira/pull/259>`_.
 - [CODE, BACKEND] Fix access to thread-shared fields `#248 <https://github.com/moira-alert/moira/pull/258>`_.
 - [LOGGING] No points found to render trigger in notifier now shows only in debug log `#249 <https://github.com/moira-alert/moira/pull/249>`_.
 - [CODE, BACKEND, UPDATE_LIBS] Update redis packages: redigo, redsync, sentinel `#239 <https://github.com/moira-alert/moira/pull/239>`_.
 - Split code for PC and mobile version to different files. And load it only by request. Change mobile detect logic from "get window width" to "parse user agent and detect mobile browser" `#218 <https://github.com/moira-alert/web2.0/pull/218>`_.
+- [CODE, WEB] Refactor contact types web components, refactor all fields that should have been used from the web config, but were hardcoded  `#280 <https://github.com/moira-alert/moira/issues/280>`_. See |incompatible changes|_ for more info.
