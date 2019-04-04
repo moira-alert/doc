@@ -27,7 +27,7 @@ See |WEB UI configuration guide|_ for more information.
 Incompatible changes
 --------------------
 
-- Remove deprecated method ``PUT trigger/{{triggerId}}/maintenance``. Use ``PUT trigger/{{triggerId}}/setMaintenance`` instead (contract not changed).
+- Remove deprecated method ``PUT trigger/{{triggerId}}/maintenance``. Use ``PUT trigger/{{triggerId}}/setMaintenance`` instead (request body has not changed).
 - Remove deprecated version 2.2 related conversion code. Now if you want to updagrade Moira from version 2.2 and older use moira-cli |version 2.4|_ (see important_ note).
 - Modified the contract of contacts in the config to fix the problem of hardcoded contact types in the form of adding a contact on the notifications page in the web interface.
 - Now list of contacts allowed to be added is based on the config (as it should have been originally).
