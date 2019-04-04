@@ -4,8 +4,8 @@
 .. _incompatible changes: https://moira.readthedocs.io/en/release-2.5/release_notes/2_5_0.html#incompatible-changes
 .. |version 2.4| replace:: version 2.4
 .. _version 2.4: https://github.com/moira-alert/moira/releases/tag/v2.4.0
-.. |See WEB UI configuration guide| replace:: See WEB UI configuration guide
-.. _See WEB UI configuration guide: https://moira.readthedocs.io/en/release-2.5/installation/configuration.html#web-ui
+.. |WEB UI configuration guide| replace:: WEB UI configuration guide
+.. _WEB UI configuration guide: https://moira.readthedocs.io/en/release-2.5/installation/configuration.html#web-ui
 .. |default WEB UI configuration| replace:: default WEB UI configuration
 .. _default WEB UI configuration: https://github.com/moira-alert/moira/blob/b8523885f003fceeefe98ca30be2b42d70032794/pkg/api/web.json
 
@@ -22,13 +22,13 @@ Upgrading
 | Please update your web configuration according to the following rules:
 - add **label** (new required field). You can see default type and label mappings in |default WEB UI configuration|_ 
 - **title** rename to "placeholder"
-See |See WEB UI configuration guide|_ and for more information.
+See |WEB UI configuration guide|_ and for more information.
 
 Incompatible changes
 --------------------
 
-- Remove deprecated method ``PUT trigger/{{triggerId}}/maintenance``. Use ``PUT trigger/{{triggerId}}/setMaintenance`` instead `#161 <https://github.com/moira-alert/moira/pull/161>`_.
-- Remove deprecated version 2.2 related conversion code `#184 <https://github.com/moira-alert/moira/issues/184>`_.
+- Remove deprecated method ``PUT trigger/{{triggerId}}/maintenance``. Use ``PUT trigger/{{triggerId}}/setMaintenance`` instead (contract not changed).
+- Remove deprecated version 2.2 related conversion code. Now if you want to updagrade Moira from version 2.2 and older use moira-cli |version 2.4|_ (see important_ note).
 - Modified the contract of contacts in the config to fix the problem of hardcoded contact types in the form of adding a contact on the notifications page in the web interface.
 - Now list of contacts allowed to be added is based on the config (as it should have been originally).
 - The "title" field has been renamed to the correct "placeholder". A signature at the contact is not built on the "type", and is transferred to the "label". What makes the setting even more flexible. See upgrading_ guide for more information.  
@@ -36,6 +36,8 @@ Incompatible changes
 Changelog
 ---------
 
+- Remove deprecated method ``PUT trigger/{{triggerId}}/maintenance``. Use ``PUT trigger/{{triggerId}}/setMaintenance`` instead `#161 <https://github.com/moira-alert/moira/pull/161>`_.
+- Remove deprecated version 2.2 related conversion code `#184 <https://github.com/moira-alert/moira/issues/184>`_.
 - Fix advanced schedule in subscriptions `#162 <https://github.com/moira-alert/moira/pull/162>`_.
 - Improve plotting conditions to render non-empty timeseries only `#197 <https://github.com/moira-alert/moira/issues/197>`_.
 - Upgrade NPM dependencies for security reasons `#194 <https://github.com/moira-alert/moira/issues/194>`_.
