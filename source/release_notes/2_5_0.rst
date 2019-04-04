@@ -22,7 +22,7 @@ Upgrading
 | Please update your web configuration according to the following rules:
 - add **label** (new required field). You can see default type and label mappings in |default WEB UI configuration|_ 
 - **title** rename to "placeholder"
-See |WEB UI configuration guide|_ and for more information.
+See |WEB UI configuration guide|_ for more information.
 
 Incompatible changes
 --------------------
