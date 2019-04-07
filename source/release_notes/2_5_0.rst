@@ -88,7 +88,7 @@ Changelog
 - Remove cancel button and restyle delete button in subscription modal `#221 <https://github.com/moira-alert/moira/issues/221>`_.
 - Correctly handle metric that received in a filter with windows line breaks (/r/n) `#268 <https://github.com/moira-alert/moira/pull/268>`_.
 - Do not allow creating simple mode trigger with several targets via API `#171 <https://github.com/moira-alert/moira/issues/171>`_.
-- Now data source toggle is present in simple and advanced edit trigger mode `#236 <https://github.com/moira-alert/moira/issues/236>`_.
+- Now data source toggle is present in simple and advanced edit trigger mode `#236 <https://github.com/moira-alert/moira/issues/297>`_.
 - [CODE, WEB] Refactor contact types web components, refactor all fields that should have been used from the web config, but were hardcoded  `#280 <https://github.com/moira-alert/moira/issues/280>`_. See |incompatible changes|_ for more info.
 - Fix rising/falling mode selector when switching between simple and advanced modes `#172 <https://github.com/moira-alert/moira/issues/172>`_.
 - No more allow using ``ERROR_VALUE`` and ``WARN_VALUE`` in expression as variables. Your old triggers with this variables will still work, but you can not update this triggers until you delete ``ERROR_VALUE`` and ``WARN_VALUE`` variables from the expression `#172 <https://github.com/moira-alert/moira/issues/172>`_.
