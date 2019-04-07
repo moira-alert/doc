@@ -100,4 +100,3 @@ Changelog
 - Fix sending a message "This metric changed its state..." if a state does not change during maintenance interval `#328 <https://github.com/moira-alert/moira/issues/328>`_.
 - Add Webhook sender `#123 <https://github.com/moira-alert/moira/issues/123>`_. For more info see documantation_.
 - Add to script sender new variables. Variable ${trigger_name} is deprecated, removed from documentation and will be removed in future versions of Moira `#228 <https://github.com/moira-alert/moira/issues/228>`_. For more information about new variables and script configuration see documantation_.
-- Fix update event timestamp on maintenance metric in a changed suppressed state on every trigger check `#332 <https://github.com/moira-alert/moira/issues/332>`_.
