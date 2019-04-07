@@ -19,7 +19,7 @@
 Upgrading
 ---------
 
-| Please upgrade filter, checker, notifier, API, and web - they contain valuable bugfixes and improvements.
+| Please upgrade filter, checker, notifier, API and web - they contain valuable features, bugfixes and improvements.
 | Note: checker has changes that are not compatible with Redis version below 3.2, please upgrade your Redis instance.
 | For upgrade Moira to version 2.5 from 2.2 and older please use Moira-cli |version 2.4|_ (see important_ note).
 | Please update your web configuration according to the following rules:
