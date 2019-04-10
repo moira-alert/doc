@@ -84,6 +84,6 @@ Changelog
 - Fixed sending a message "This metric changed its state..." if a state does not change during maintenance interval `#328 <https://github.com/moira-alert/moira/issues/328>`_.
 - Added Webhook sender `#123 <https://github.com/moira-alert/moira/issues/123>`_. For more info see documantation_.
 - Added new variables to script sender. Variable ${trigger_name} is now deprecated, removed from documentation and will be removed in the future versions of Moira `#228 <https://github.com/moira-alert/moira/issues/228>`_. For more information about new variables and script configuration see documantation_.
-- Reworked trigger search input control in web UI. Fulltext search is now available, as long as the old tag filters.
-- Added Graphite tags support.
-- Added environment variable that customizes api URL path for web UI Docker image.
+- Reworked trigger search input control in web UI. Fulltext search is now available, as long as the old tag filters `#185 <https://github.com/moira-alert/moira/issues/185>`_.
+- Added Graphite tags support `#142 <https://github.com/moira-alert/moira/issues/142>`_.
+- Added environment variable that customizes api URL path for web UI Docker image `#173 <https://github.com/moira-alert/moira/issues/173>`_.
