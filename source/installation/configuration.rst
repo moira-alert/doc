@@ -111,6 +111,14 @@ API
    :language: yaml
 
 
+Remote API
+----------
+
+By default, Web uses local API server (both containers are running on the same host).
+But if you need to reconfigure Web to interact with API running on remote server then simply set container environment variable MOIRA_API_URI equal to remote host URI:
+
+``MOIRA_API_URI: remoteapi.domain:8081``
+
 Web UI
 ------
 
