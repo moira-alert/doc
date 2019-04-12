@@ -11,6 +11,8 @@ redis:
   port: "6379"
   # Database id
   dbid: 0
+  # Redis client connection pool size
+  connection_limit: 512
 graphite:
   # If true, graphite sender will be enabled.
   enabled: true
@@ -42,6 +44,8 @@ notifier:
     - type: slack
       # Api token for your moira notifications slack user, for more info see https://get.slack.help/hc/en-us/articles/215770388-Create-and-regenerate-API-tokens
       api_token: ...
+      # If true, notification will be sent with state-specific icon, for more info see https://moira.readthedocs.io/en/latest/installation/configuration.html#slack-icons.
+      use_emoji: false
     - type: telegram
       # Api token for your telegram bot, for more info about creating bot and get token see https://core.telegram.org/bots#3-how-do-i-create-a-bot
       api_token: ...
@@ -67,12 +71,24 @@ notifier:
       api_asid: ...
       api_authtoken: ...
       api_fromphone: ...
+    # Script and webhook senders support additional templated parameters:
+    # ${contact_id}    contact ID
+    # ${contact_value} contact value (as specified by user via web UI)
+    # ${contact_type}  contact type (as specified in web UI config file)
+    # ${trigger_id}    trigger ID
     - type: script
       name: ...
       # Executable path. File must exist on all machines where notifier is running.
-      # You can use ${trigger_name} and ${contact_value} in command-line parameters,
-      # they will be replaced with trigger name and contact (as specified in web interface).
+      # You can use templated parameters here (see above), they will be replaced with appropriate values.
       exec: ...
+    - type: webhook
+      name: ...
+      # URL to send POST request (you can use templated parameters, see above)
+      url: ...
+      timeout: ...
+      # Basic authorization parameters (if required)
+      user: ...
+      password: ...
   # Self state monitor configuration section. Note: No inner subscriptions is required. Moira will use its notification mechanism to send messages.
   moira_selfstate:
     enabled: true

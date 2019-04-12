@@ -8,7 +8,7 @@ Contents
    :maxdepth: 2
 
    overview
-   changelog
+   release_notes/index
    installation/index
    user_guide/index
    development/index

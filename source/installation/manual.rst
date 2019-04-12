@@ -10,10 +10,11 @@ Manual Installation
 
 .. tip:: To get Moira running quickly, try :doc:`/installation/docker` version
 
-There are following components you need to install before running Moira microservices:
+There are following components you need to install
+before running Moira microservices:
 
 1. golang_ version 1.9 or higher
-2. redis_ database version 2.8 or higher
+2. redis_ database version 3.2 or higher
 3. web server e.g. nginx_
 
 
@@ -34,16 +35,19 @@ Download Web UI Application
 
 https://github.com/moira-alert/web2.0/releases/latest
 
-Download and unpack ``.tar.gz`` file into Nginx static files directory (e.g. ``/var/local/www/moira``).
+Download and unpack ``.tar.gz`` file into Nginx static
+files directory (e.g. ``/var/local/www/moira``).
 
 
 Configure
 ---------
 
-1. If you need to override default settings, place configuration files somewhere on your disk (e.g. ``/etc/moira/``).
-   You can dive into :doc:`/installation/configuration` syntax on a separate page.
+1. If you need to override default settings, place configuration
+   files somewhere on your disk (e.g. ``/etc/moira/``). You can dive into
+   :doc:`/installation/configuration` syntax on a separate page.
 
-2. Place nginx configuration file to proper location (e.g. ``/etc/nginx/conf.d/moira.conf``):
+2. Place nginx configuration file to proper location
+   (e.g. ``/etc/nginx/conf.d/moira.conf``):
 
 .. code-block:: text
 
@@ -59,7 +63,8 @@ Configure
         }
     }
 
-3. If you need to override UI settings, edit web.json_ file. You can find its location in API configuration_.
+3. If you need to override UI settings, edit web.json_ file.
+You can find its location in API configuration_.
 
 
 Run
@@ -75,4 +80,5 @@ Run
     $GOPATH/src/github.com/moira-alert/moira/build/notifier
     $GOPATH/src/github.com/moira-alert/moira/build/api
 
-Now you need to feed your metrics to Moira (see :doc:`/installation/feeding`) on port 2003 and to create alerts in UI (see :doc:`/user_guide/index`).
+Now you need to feed your metrics to Moira (see :doc:`/installation/feeding`)
+on port 2003 and to create alerts in UI (see :doc:`/user_guide/index`).

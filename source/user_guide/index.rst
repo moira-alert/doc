@@ -1,8 +1,8 @@
 User Guide
 ==========
 
-This user guide is based on a number of real-life scenarios, from simple and universal to complicated
-and specific.
+This user guide is based on a number of real-life scenarios,
+from simple and universal to complicated and specific.
 
 .. toctree::
    :maxdepth: 1

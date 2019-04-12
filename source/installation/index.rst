@@ -8,5 +8,6 @@ Installation
    docker
    packages
    configuration
+   webhooks_scripts
    feeding
    security
