@@ -33,7 +33,7 @@ checker:
   # By default Moira treats any trigger equally regardless on its subscriptions number.
   # You can change this behaviour using option below. This can reduce CPU usage on your server.
   # Lazy triggers checker works if lazy_triggers_check_interval > check_interval. We recommend setting it to 10m.
-  lazy_triggers_check_interval: 0
+  lazy_triggers_check_interval: 10m
   # Time interval to store metrics. Note: Increasing of this value leads to increasing of Redis memory consumption value
   metrics_ttl: 3h
   # Period for every trigger to cancel forced check (greater than 'NoDataCheckInterval') if no metrics were received
