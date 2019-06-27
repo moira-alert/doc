@@ -104,26 +104,13 @@ the number of triggers to be checked by Moira-Checker.
 
 See :doc:`../user_guide/selfstate` for more details.
 
-API
----
+API and Web
+-----------
 
 .. literalinclude:: ../../api.example.yml
    :language: yaml
 
-
-Remote API
-----------
-
-By default, Web uses local API server (both containers are running on the same host).
-But if you need to reconfigure Web to interact with API running on remote server then simply set container environment variable MOIRA_API_URI equal to required URI:
-
-``MOIRA_API_URI: remoteapi.domain:8081``
-
-Web UI
-------
-
-.. literalinclude:: ../../web.example.json
-   :language: json
+Contact fields:
 
 - **type** (any uniq string) *required* — contact type: pushover, slack, mail,
   script, telegram, twilio sms, twilio voice, etc.;
@@ -134,6 +121,14 @@ Web UI
 - **placeholder** — hint shown in input field;
 - **help** — help text in Markdown_ markup;
 - **remoteAllowed** — set to ``true`` if `Remote Triggers Checker`_ is enabled.
+
+Remote API
+----------
+
+By default, Web uses local API server (both containers are running on the same host).
+But if you need to reconfigure Web to interact with API running on remote server then simply set container environment variable MOIRA_API_URI equal to required URI:
+
+``MOIRA_API_URI: remoteapi.domain:8081``
 
 .. image:: ../_static/web-ui-example.png
    :alt: WEB UI example
