@@ -110,7 +110,7 @@ API and Web
 .. literalinclude:: ../../api.example.yml
    :language: yaml
 
-Contact fields:
+Web contact fields:
 
 - **type** (any uniq string) *required* — contact type: pushover, slack, mail,
   script, telegram, twilio sms, twilio voice, etc.;
@@ -120,7 +120,6 @@ Contact fields:
   uses for validation in add/edit contact form;
 - **placeholder** — hint shown in input field;
 - **help** — help text in Markdown_ markup;
-- **remoteAllowed** — set to ``true`` if `Remote Triggers Checker`_ is enabled.
 
 Remote API
 ----------
