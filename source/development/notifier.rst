@@ -5,14 +5,8 @@ Backend
 .. _GoConvey: http://goconvey.co
 
 Backend microservices are written in Go_.
-To run tests, first get all dependencies.
 
-.. code-block:: bash
-
-   go get github.com/kardianos/govendor
-   govendor sync
-
-Then, run GoConvey_ tests.
+Run GoConvey_ tests.
 
 .. code-block:: bash
 
