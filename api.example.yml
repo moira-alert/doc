@@ -38,17 +38,43 @@ web:
   contacts:
     - type: mail
       label: E-mail
+      validation: "^.+@.+\\..+$"
     - type: pushover
       label: Pushover
+      placeholder: "Pushover user key"
     - type: slack
       label: Slack
+      validation: "^[@#][a-zA-Z0-9-_]+"
+      placeholder: "Slack #channel or @user"
     - type: telegram
       label: Telegram
-      help: required to grant @MoiraBot admin privileges
+      placeholder: "#channel, @username or group"
+      help: "### To make things work you should:\n### In personal chat:\n - start conversation with bot [@YourMoiraBot](https://t.me/YourMoiraBot);\n - execute command `/start`;\n - type your login in above field as `@login`.\n\n### In group chat:\n - invite bot [@YourMoiraBot](https://t.me/YourMoiraBot) into chat;\n - execute command `/start@YourMoiraBot`;\n - bot will send you chat name, you should type it without extra characters in above field.\n\n### In channel:\n - add bot [@YourMoiraBot](https://t.me/YourMoiraBot) into channel;\n - promote bot as channel administrator;\n - type channel name in above field as `#channel`.\n"
     - type: twilio sms
       label: Twilio SMS
+      validation: "^\\+79\\d{9}$"
+      placeholder: "Phone number format +79*********"
     - type: twilio voice
       label: Twilio voice
+      validation: "^\\+79\\d{9}$"
+      placeholder: "Phone number format +79*********"
+    - type: webhook
+      label: My Webhook
+      validation: "^(http|https):\\/\\/.*(example.com|example.org)(:[0-9]{2,5})?\\/"
+      placeholder: "https://example.com/webhooks/moira"
+      help: "### Domains whitelist:\n - example.com\n - example.org"
+    - type: pagerduty
+      label: PagerDuty
+      placeholder: "Integration key"
+    - type: opsgenie
+      label: OpsGenie
+      placeholder: "Responder Name or ID"
+    - type: victorops
+      label: VictorOps
+      placeholder: "Routing key"
+    - type: discord
+      label: Discord
+      placeholder: "Discord channel (eg: general-text) or user (eg: @user)"
 log:
   log_file: stdout
   log_level: info
