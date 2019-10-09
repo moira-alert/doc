@@ -15,7 +15,8 @@ New features
 ------------
 
 - Added ability to subscribe for all triggers without specifying tags `#236 <https://github.com/moira-alert/moira/issues/236>`_.
-- Added ability to send markdown for discord, email, pushover, slack and telegram senders `#353 <https://github.com/moira-alert/moira/issues/353>`_.
+- Added ability to send markdown for email, fix markdown formatting in slack senders `#353 <https://github.com/moira-alert/moira/issues/353>`_.
+- Added new senders: Discord, VictorOps, PagerDuty, OpsGenie.
 - ⚡️✨💫🔥🔥🔥 Graphs now support emojis `#333 <https://github.com/moira-alert/moira/issues/333>`_.
 - Y-axis graph now uses algorithm to define "beautiful" ticks `#217 <https://github.com/moira-alert/moira/issues/217>`_.
 
