@@ -104,6 +104,8 @@ the number of triggers to be checked by Moira-Checker.
 
 See :doc:`../user_guide/selfstate` for more details.
 
+.. _api-and-web-config:
+
 API and Web
 -----------
 
