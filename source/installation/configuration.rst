@@ -121,6 +121,10 @@ Web contact fields:
 - **placeholder** — hint shown in input field;
 - **help** — help text in Markdown_ markup;
 
+.. image:: ../_static/web-ui-example.png
+   :alt: WEB UI example
+   :width: 596
+
 Remote API
 ----------
 
@@ -128,10 +132,6 @@ By default, Web uses local API server (both containers are running on the same h
 But if you need to reconfigure Web to interact with API running on remote server then simply set container environment variable MOIRA_API_URI equal to required URI:
 
 ``MOIRA_API_URI: remoteapi.domain:8081``
-
-.. image:: ../_static/web-ui-example.png
-   :alt: WEB UI example
-   :width: 596
 
 .. _Markdown: https://daringfireball.net/projects/markdown/syntax
 .. _Seyren: https://github.com/scobal/seyren
