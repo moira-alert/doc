@@ -1,0 +1,18 @@
+200:
+  type: object
+  properties:
+    id:
+      type: string
+      example: trigger_id
+    message:
+      type: string
+      example: trigger created
+400:
+  type: object
+  properties:
+    status:
+      type: string
+      example: Invalid request
+    error:
+      type: string
+      example: error_value is equal to warn_value, please set exactly one value

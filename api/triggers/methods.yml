@@ -1,0 +1,11 @@
+put:
+  summary: "Create new trigger"
+  description: ""
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ./schemas/req_put.yml
+  responses:
+    $ref: ./responses/put.yml
