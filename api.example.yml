@@ -39,6 +39,8 @@ web:
     - type: mail
       label: E-mail
       validation: "^.+@.+\\..+$"
+    - type: msteams
+      label: Microsoft Teams
     - type: pushover
       label: Pushover
       placeholder: "Pushover user key"
