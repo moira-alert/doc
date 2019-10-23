@@ -6,7 +6,7 @@ Backend
 
 Project Setup
 -------------
-Backend microservices are written in Go_, this is how you can get started writing your own:
+Backend microservices are written in Go_ (with module support, minimal Go lang required is 1.11), this is how you can get started writing your own:
 
 1. Create a fork of the project from GitHub
 2. Create a base directory to check out the project into e.g.
@@ -18,10 +18,9 @@ Backend microservices are written in Go_, this is how you can get started writin
 
         export GOPATH=/Development/go/moira/
         cd $GOPATH
-4. Get ``govendor`` for dependency management and GoConvey_ for tests
+4. Get GoConvey_ for tests
     .. code-block:: bash
 
-        go get github.com/kardianos/govendor
         go get github.com/smartystreets/goconvey
 5. Export your ``GOPATH``'s ``bin`` directory
     .. code-block:: bash
@@ -31,11 +30,9 @@ Backend microservices are written in Go_, this is how you can get started writin
     .. code-block:: bash
 
         git clone https://github.com/<your username>/moira $GOPATH/src/github.com/moira-alert/moira
-7. Change into the checked out project and sync your dependencies
-    .. code-block:: bash
 
-        cd $GOPATH/src/github.com/moira-alert/moira
-        govendor sync
+7. Go into ``$GOPATH/src/github.com/moira-alert/moira``
+
 8. Launch GoConvey_
     .. code-block:: bash
 
