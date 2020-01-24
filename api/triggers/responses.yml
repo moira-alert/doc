@@ -1,0 +1,27 @@
+put:
+  200:
+    description: "Trigger created"
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            id:
+              type: string
+              example: trigger_id
+            message:
+              type: string
+              example: trigger created
+  500:
+    description: "Invalid input"
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            status:
+              type: string
+              example: Invalid request
+            error:
+              type: string
+              example: error_value is equal to warn_value, please set exactly one value

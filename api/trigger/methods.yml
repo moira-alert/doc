@@ -1,0 +1,46 @@
+trigger:
+  put:
+    summary: "Update existing trigger"
+    tags:
+      - trigger
+    parameters:
+      - $ref: parameters.yml#/triggerID
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: ./requests.yml#/put
+    responses:
+      $ref: responses.yml#/put
+  get:
+    summary: "Update existing trigger"
+    tags:
+      - trigger
+    parameters:
+      - $ref: parameters.yml#/triggerID
+    responses:
+      $ref: ./responses.yml#/get
+render:
+  get:
+    summary: "Get rendered plot for trigger"
+    tags:
+      - trigger
+    parameters:
+      - $ref: parameters.yml#/triggerID
+      - $ref: parameters.yml#/targetID
+      - $ref: parameters.yml#/from
+      - $ref: parameters.yml#/to
+    responses:
+      $ref: ./responses.yml#/get_render
+metrics:
+  get:
+    summary: "Get metrics associated with certain trigger"
+    tags:
+      - trigger
+    parameters:
+      - $ref: parameters.yml#/triggerID
+      - $ref: parameters.yml#/from
+      - $ref: parameters.yml#/to
+    responses:
+      $ref: ./responses.yml#/get_metrics

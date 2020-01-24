@@ -1,0 +1,96 @@
+put:
+  200:
+    description: "Trigger updated"
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            id:
+              type: string
+              example: trigger_id
+            message:
+              type: string
+              example: trigger created
+  400:
+    description: "Invalid input"
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            status:
+              type: string
+              example: Invalid request
+            error:
+              type: string
+              example: error_value is equal to warn_value, please set exactly one value
+
+get:
+  200:
+    description: "Trigger data"
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            $ref: ../dto.yml#/Trigger
+  404:
+    description: "Trigger not found"
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            status:
+              type: string
+              example: Resource not found
+            error:
+              type: string
+              example: trigger not found
+
+get_render:
+  200:
+    description: "Plot for trigger"
+    content:
+      image/png:
+        schema:
+          type: string
+          format: binary
+  500:
+    description: "Server error"
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            status:
+              type: string
+              example: Internal Server Error
+            error:
+              type: string
+              example: "no points found to render trigger: 5A8AF369-86D2-44DD-B514-D47995ED6AF7"
+
+get_metrics:
+  200:
+    description: "Metrics for trigger"
+    content:
+      application/json:
+        type: object
+        additionalProperties:
+          type: array
+          items:
+            $ref: ../dto.yml#/MetricValue
+  500:
+    description: "Server error"
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            status:
+              type: string
+              example: Internal Server Error
+            error:
+              type: string
+              example: "no points found to render trigger: 5A8AF369-86D2-44DD-B514-D47995ED6AF7"
