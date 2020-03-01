@@ -109,7 +109,7 @@ The aim of this project is to migrate Moira's web UI source code from Flow to Ty
 To do so, one should analyze the code base, propose a migration strategy, actually rewrite the code, and change the build process if needed.
 
 **Code reference.**
-See `Moira's web UI <https://github.com/moira-alert/web>`_ source code.
+See `Moira's web UI <https://github.com/moira-alert/web2.0>`_ source code.
 
 **Required skills.**
 JavaScript and TypeScript skills. Familiarity with Flow would be a plus.
@@ -136,7 +136,7 @@ The aim of this project is to help Moira users identify noisy triggers.
 To do so, one should research and define a metric of trigger noisiness, and then create a UI page that demonstrates worst triggers to the user.
 
 **Code reference.**
-See `Moira's backend <https://github.com/moira-alert/moira>`_ source code and `Moira's web UI <https://github.com/moira-alert/web>`_ source code.
+See `Moira's backend <https://github.com/moira-alert/moira>`_ source code and `Moira's web UI <https://github.com/moira-alert/web2.0>`_ source code.
 
 **Required skills.**
 Basic Go and JavaScript skills.
