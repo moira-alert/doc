@@ -43,6 +43,8 @@ filter:
   # Defines number of threads to match incoming graphite-metrics.
   # Equals to the number of processor cores found on Moira host by default or when variable is defined as 0.
   max_parallel_matches: 0
+  # Period in which patterns will be reloaded from Redis
+  patterns_update_period: 1s
 log:
   log_file: stdout
   log_level: info
