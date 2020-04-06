@@ -13,6 +13,8 @@ redis:
   dbid: 0
   # Redis client connection pool size
   connection_limit: 512
+  # Allow reading data from slave replicas
+  allow_slave_reads: true
 telemetry:
   # Common port for all telemetry data: Prometheus scraping, pprof, etc.
   listen: ":8091"
