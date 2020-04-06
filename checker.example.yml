@@ -13,17 +13,23 @@ redis:
   dbid: 0
   # Redis client connection pool size
   connection_limit: 512
-graphite:
-  # If true, graphite sender will be enabled.
-  enabled: true
-  # If true, runtime stats will be captured and sent to graphite. Note: It takes to call stoptheworld() with configured "graphite.interval" to capture runtime stats (https://golang.org/src/runtime/mstats.go)
-  runtime_stats: false
-  # Graphite relay URI, format: ip:port
-  uri: "graphite-relay:2003"
-  # Moira metrics prefix. Use 'prefix: {hostname}' to use hostname autoresolver.
-  prefix: DevOps.moira
-  # Metrics sending interval
-  interval: 60s
+telemetry:
+  # Common port for all telemetry data: Prometheus scraping, pprof, etc.
+  listen: ":8091"
+  pprof:
+    # If true, pprof will be enabled on common telemetry port.
+    enabled: false
+  graphite:
+    # If true, graphite sender will be enabled.
+    enabled: true
+    # If true, runtime stats will be captured and sent to graphite. Note: It takes to call stoptheworld() with configured "graphite.interval" to capture runtime stats (https://golang.org/src/runtime/mstats.go)
+    runtime_stats: false
+    # Graphite relay URI, format: ip:port
+    uri: "graphite-relay:2003"
+    # Moira metrics prefix. Use 'prefix: {hostname}' to use hostname autoresolver.
+    prefix: DevOps.moira
+    # Metrics sending interval
+    interval: 60s
 checker:
   # Period for every trigger to perform forced check on
   nodata_check_interval: 60s
