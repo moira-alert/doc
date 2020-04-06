@@ -15,6 +15,8 @@ redis:
   connection_limit: 512
   # Allow reading data from slave replicas
   allow_slave_reads: true
+  # Delete metrics older than this value from Redis
+  metrics_ttl: 3h
 telemetry:
   # Common port for all telemetry data: Prometheus scraping, pprof, etc.
   listen: ":8091"
@@ -42,8 +44,6 @@ checker:
   # You can change this behaviour using option below. This can reduce CPU usage on your server.
   # Lazy triggers checker works if lazy_triggers_check_interval > check_interval. We recommend setting it to 10m.
   lazy_triggers_check_interval: 10m
-  # Time interval to store metrics. Note: Increasing of this value leads to increasing of Redis memory consumption value
-  metrics_ttl: 3h
   # Period for every trigger to cancel forced check (greater than 'NoDataCheckInterval') if no metrics were received
   stop_checking_interval: 30s
   # Equals to the number of processor cores found on Moira host by default or when variable is defined as 0.
@@ -65,6 +65,8 @@ remote:
   # Min period to perform triggers re-check. 
   # Note: Reducing of this value leads to increasing of CPU and memory usage values and extra load on Graphite HTTP API
   check_interval: 60s
+  # Don't fetch metrics older than this value from remote storage
+  metrics_ttl: 168h
   # Maximum timeout for HTTP-request made to Graphite HTTP API
   timeout: 60s
 log:
