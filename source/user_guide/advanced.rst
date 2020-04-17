@@ -36,6 +36,29 @@ You can use any govaluate_ expression with predefined constants here:
 
 Any incorrect expressions or bad syntax will result in EXCEPTION trigger state.
 
+
+Templates
+-------------
+
+The template is supported by Moira, the template implements data-driven templates for generating textual output.
+Information about how to program the templates themselves, see the `documentation. <https://golang.org/pkg/html/template/>`_
+
+Data you can use:
+
+| Trigger { Name }
+| Events  [ ] {
+|  Metric
+|  MetricElements [ ]string
+|  Timestamp
+|  Value
+|  State
+| }
+
+Example:
+
+``https://grafana.yourhost.com/some-dashboard{{ range $i, $v := .Events }}{{ if ne $i 0 }}&{{ else }}?{{ end }}var-host={{ $v.Metric }}{{ end }}``
+
+
 Data source
 ------------
 
