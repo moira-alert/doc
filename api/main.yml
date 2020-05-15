@@ -1,11 +1,13 @@
 openapi: 3.0.0
 info:
   description: "This is an API description for Moira Alert project. Please check https://github.com/moira-alert"
-  version: "2.6.0"
+  version: "2.5.1.47"
   title: "Moira Alert"
   license:
     name: "MIT"
 tags:
+  - name: "config"
+    description: "Runtime configuration of the API"
   - name: "triggers"
     description: "Triggers Collection Methods"
   - name: "trigger"
@@ -15,6 +17,8 @@ servers:
   - url: http://localhost:8080/api
     description: Localhost server
 paths:
+  /config:
+    $ref: ./config/methods.yml
   /trigger:
     $ref: ./triggers/methods.yml
   /trigger/{triggerId}:

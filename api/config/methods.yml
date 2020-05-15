@@ -1,0 +1,6 @@
+get:
+  summary: "Get available configuration"
+  tags:
+    - config
+  responses:
+    $ref: ./responses.yml#/get
