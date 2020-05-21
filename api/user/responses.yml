@@ -4,7 +4,7 @@ get:
     content:
       application/json:
         schema:
-          $ref: '../schemas/User.yml'
+          $ref: "../schemas/User.yml#/User"
 
 get_settings:
   200:
@@ -22,9 +22,9 @@ get_settings:
               type: array
               description: "user's contacts"
               items:
-                $ref: '../schemas/Contact.yml'
+                $ref: '../schemas/Contact.yml#/Contact'
             subscriptions:
               type: array
               description: "user's subscriptions"
               items:
-                $ref: '../schemas/Subscription.yml'
+                $ref: '../schemas/Subscription.yml#/Subscription'

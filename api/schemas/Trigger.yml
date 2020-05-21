@@ -1,43 +1,47 @@
-Subscription:
+Trigger:
   type: object
   properties:
-    contacts:
+    id:
+      type: string
+    name:
+      type: string
+    desc:
+      type: string
+    targets:
       items:
         type: string
       type: array
+    warn_value:
+      type: number
+    error_value:
+      type: number
+    trigger_type:
+      type: string
     tags:
       items:
         type: string
       type: array
+    ttl_state:
+      type: string
+    ttl:
+      type: integer
     sched:
       "$ref": "#/definitions/ScheduleData"
-    plotting:
-      "$ref": "#/definitions/PlottingData"
-    id:
+    expression:
       type: string
-    enabled:
+    patterns:
+      items:
+        type: string
+      type: array
+    is_remote:
       type: boolean
-    any_tags:
-      type: boolean
-    ignore_warnings:
-      type: boolean
-    ignore_recoverings:
+    mute_new_metrics:
       type: boolean
     throttling:
-      type: boolean
-    user:
-      type: string
+      type: integer
   additionalProperties: false
 
 definitions:
-  PlottingData:
-    properties:
-      enabled:
-        type: boolean
-      theme:
-        type: string
-    additionalProperties: false
-    type: object
   ScheduleData:
     properties:
       days:

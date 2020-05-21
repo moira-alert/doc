@@ -10,7 +10,7 @@ trigger:
       content:
         application/json:
           schema:
-            $ref: ./requests.yml#/put
+            $ref: "../schemas/Trigger.yml#/Trigger"
     responses:
       $ref: responses.yml#/put
   get:
@@ -40,7 +40,19 @@ metrics:
       - trigger
     parameters:
       - $ref: parameters.yml#/triggerID
-      - $ref: parameters.yml#/from
-      - $ref: parameters.yml#/to
+      - in: query
+        name: from
+        required: false
+        schema:
+          type: string
+        description: The start period of metrics to get
+        example: -1hour
+      - in: query
+        name: to
+        required: false
+        schema:
+          type: string
+        description: The end period of metrics to get
+        example: now
     responses:
       $ref: ./responses.yml#/get_metrics

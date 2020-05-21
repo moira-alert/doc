@@ -32,9 +32,7 @@ get:
     content:
       application/json:
         schema:
-          type: object
-          properties:
-            $ref: ../dto.yml#/Trigger
+          $ref: "../schemas/Trigger.yml#/Trigger"
   404:
     description: "Trigger not found"
     content:
@@ -81,7 +79,7 @@ get_metrics:
           additionalProperties:
             type: array
             items:
-              $ref: ../dto.yml#/MetricValue
+              $ref: "../schemas/MetricValue.yml#/MetricValue"
   500:
     description: "Server error"
     content:
