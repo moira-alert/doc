@@ -32,7 +32,6 @@ Trigger:
       - local.dice.roll
     description: Array of possible patterns to check values in simple mode
   sched:
-    $schema: "http://json-schema.org/draft-04/schema#"
     $ref: "#/ScheduleData"
   tags:
     items:
@@ -73,7 +72,6 @@ ScheduleData:
   properties:
     days:
       items:
-        $schema: "http://json-schema.org/draft-04/schema#"
         $ref: "#/ScheduleDataDay"
       type: array
     endOffset:

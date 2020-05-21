@@ -1,9 +1,10 @@
-get:
-  summary: "Gets the username of the authenticated user if it is available."
-  tags:
-    - user
-  responses:
-    $ref: ./responses.yml#/get
+user:
+  get:
+    summary: "Gets the username of the authenticated user if it is available."
+    tags:
+      - user
+    responses:
+      $ref: ./responses.yml#/get
 
 settings:
   get:

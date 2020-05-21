@@ -76,11 +76,12 @@ get_metrics:
     description: "Metrics for trigger"
     content:
       application/json:
-        type: object
-        additionalProperties:
-          type: array
-          items:
-            $ref: ../dto.yml#/MetricValue
+        schema:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: ../dto.yml#/MetricValue
   500:
     description: "Server error"
     content:
