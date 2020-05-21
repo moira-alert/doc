@@ -1,0 +1,7 @@
+type: object
+properties:
+  login:
+    type: string
+    description: "Username of the authenticated user. Blank if not available."
+    example: "petr"
+additionalProperties: false

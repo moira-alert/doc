@@ -1,0 +1,14 @@
+get:
+  summary: "Gets the username of the authenticated user if it is available."
+  tags:
+    - user
+  responses:
+    $ref: ./responses.yml#/get
+
+settings:
+  get:
+    summary: "Get the user's contacts and subscriptions."
+    tags:
+      - user
+    responses:
+      $ref: ./responses.yml#/get_settings
