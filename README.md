@@ -23,7 +23,7 @@ $ docker-compose up
 Once the containers are up, visit the URL at http://localhost:9900 to view the Redoc-rendered documentation or 
 http://localhost:9901 to view the SwaggerUI version.
 
-_**NOTE:** To use the "Try it out" feature on SwaggerUI, ensure that `enable_cors` is set o true in your
+_**NOTE:** To use the "Try it out" feature on SwaggerUI, ensure that `enable_cors` is set to true in your
 API config at `/etc/moira/api.yml`._
 ## Thanks
 
