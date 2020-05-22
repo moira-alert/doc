@@ -1,0 +1,30 @@
+get:
+  200:
+    description: "User name fetched successfully."
+    content:
+      application/json:
+        schema:
+          $ref: "../schemas/User.yml#/User"
+
+get_settings:
+  200:
+    description: "Settings fetched successfully."
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            login:
+              type: string
+              description: "username of the authenticated user."
+              example: "petr"
+            contacts:
+              type: array
+              description: "user's contacts"
+              items:
+                $ref: '../schemas/Contact.yml#/Contact'
+            subscriptions:
+              type: array
+              description: "user's subscriptions"
+              items:
+                $ref: '../schemas/Subscription.yml#/Subscription'

@@ -21,9 +21,20 @@ paths:
     $ref: ./config/methods.yml
   /trigger:
     $ref: ./triggers/methods.yml
-  /trigger/{triggerId}:
+  /trigger/{triggerID}:
     $ref: ./trigger/methods.yml#/trigger
-  /trigger/{triggerId}/render:
+  /trigger/{triggerID}/render:
     $ref: ./trigger/methods.yml#/render
-  /trigger/{triggerId}/metrics:
+  /trigger/{triggerID}/metrics:
     $ref: ./trigger/methods.yml#/metrics
+  /user:
+    $ref: ./user/methods.yml#/user
+  /user/settings:
+    $ref: ./user/methods.yml#/settings
+components:
+  schemas:
+    $ref: "./schemas/_index.yml"
+  # individual parameter file is included so they can be referenced in the bundled yml spec as
+  # "#/components/parameters/{param}"
+  parameters:
+    $ref: "./trigger/parameters.yml"

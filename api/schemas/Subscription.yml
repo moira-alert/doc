@@ -1,0 +1,62 @@
+Subscription:
+  type: object
+  properties:
+    contacts:
+      items:
+        type: string
+      type: array
+    tags:
+      items:
+        type: string
+      type: array
+    sched:
+      "$ref": "#/definitions/ScheduleData"
+    plotting:
+      "$ref": "#/definitions/PlottingData"
+    id:
+      type: string
+    enabled:
+      type: boolean
+    any_tags:
+      type: boolean
+    ignore_warnings:
+      type: boolean
+    ignore_recoverings:
+      type: boolean
+    throttling:
+      type: boolean
+    user:
+      type: string
+  additionalProperties: false
+
+definitions:
+  PlottingData:
+    properties:
+      enabled:
+        type: boolean
+      theme:
+        type: string
+    additionalProperties: false
+    type: object
+  ScheduleData:
+    properties:
+      days:
+        items:
+          "$ref": "#/definitions/ScheduleDataDay"
+        type: array
+      tzOffset:
+        type: integer
+      startOffset:
+        type: integer
+      endOffset:
+        type: integer
+    additionalProperties: false
+    type: object
+  ScheduleDataDay:
+    properties:
+      enabled:
+        type: boolean
+      name:
+        type: string
+    additionalProperties: false
+    type: object

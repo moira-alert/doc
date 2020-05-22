@@ -1,0 +1,66 @@
+Trigger:
+  type: object
+  properties:
+    id:
+      type: string
+    name:
+      type: string
+    desc:
+      type: string
+    targets:
+      items:
+        type: string
+      type: array
+    warn_value:
+      type: number
+    error_value:
+      type: number
+    trigger_type:
+      type: string
+    tags:
+      items:
+        type: string
+      type: array
+    ttl_state:
+      type: string
+    ttl:
+      type: integer
+    sched:
+      "$ref": "#/definitions/ScheduleData"
+    expression:
+      type: string
+    patterns:
+      items:
+        type: string
+      type: array
+    is_remote:
+      type: boolean
+    mute_new_metrics:
+      type: boolean
+    throttling:
+      type: integer
+  additionalProperties: false
+
+definitions:
+  ScheduleData:
+    properties:
+      days:
+        items:
+          "$ref": "#/definitions/ScheduleDataDay"
+        type: array
+      tzOffset:
+        type: integer
+      startOffset:
+        type: integer
+      endOffset:
+        type: integer
+    additionalProperties: false
+    type: object
+  ScheduleDataDay:
+    properties:
+      enabled:
+        type: boolean
+      name:
+        type: string
+    additionalProperties: false
+    type: object

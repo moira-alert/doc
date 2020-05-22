@@ -1,6 +1,7 @@
 trigger:
   put:
     summary: "Update existing trigger"
+    operationId: UpdateTrigger
     tags:
       - trigger
     parameters:
@@ -10,11 +11,12 @@ trigger:
       content:
         application/json:
           schema:
-            $ref: ./requests.yml#/put
+            $ref: "../schemas/Trigger.yml#/Trigger"
     responses:
       $ref: responses.yml#/put
   get:
-    summary: "Update existing trigger"
+    summary: "Get an existing trigger"
+    operationId: GetTrigger
     tags:
       - trigger
     parameters:
@@ -24,6 +26,7 @@ trigger:
 render:
   get:
     summary: "Get rendered plot for trigger"
+    operationId: GetTriggerPlot
     tags:
       - trigger
     parameters:
@@ -36,6 +39,7 @@ render:
 metrics:
   get:
     summary: "Get metrics associated with certain trigger"
+    operationId: GetTriggerMetrics
     tags:
       - trigger
     parameters:

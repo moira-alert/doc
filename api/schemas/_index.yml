@@ -1,0 +1,8 @@
+User:
+  $ref: "./User.yml#/User"
+Contact:
+  $ref: "./Contact.yml#/Contact"
+Subscription:
+  $ref: "./Subscription.yml#/Subscription"
+Trigger:
+  $ref: "./Trigger.yml#/Trigger"
