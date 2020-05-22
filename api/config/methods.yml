@@ -1,5 +1,6 @@
 get:
   summary: "Get available configuration"
+  operationId: GetConfig
   tags:
     - config
   responses:

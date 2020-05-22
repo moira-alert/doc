@@ -1,5 +1,6 @@
 put:
   summary: "Create new trigger"
+  operationId: CreateTrigger
   tags:
     - triggers
   requestBody:

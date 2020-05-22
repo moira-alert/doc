@@ -1,6 +1,7 @@
 trigger:
   put:
     summary: "Update existing trigger"
+    operationId: UpdateTrigger
     tags:
       - trigger
     parameters:
@@ -14,7 +15,8 @@ trigger:
     responses:
       $ref: responses.yml#/put
   get:
-    summary: "Update existing trigger"
+    summary: "Get an existing trigger"
+    operationId: GetTrigger
     tags:
       - trigger
     parameters:
@@ -24,6 +26,7 @@ trigger:
 render:
   get:
     summary: "Get rendered plot for trigger"
+    operationId: GetTriggerPlot
     tags:
       - trigger
     parameters:
@@ -36,23 +39,12 @@ render:
 metrics:
   get:
     summary: "Get metrics associated with certain trigger"
+    operationId: GetTriggerMetrics
     tags:
       - trigger
     parameters:
       - $ref: parameters.yml#/triggerID
-      - in: query
-        name: from
-        required: false
-        schema:
-          type: string
-        description: The start period of metrics to get
-        example: -1hour
-      - in: query
-        name: to
-        required: false
-        schema:
-          type: string
-        description: The end period of metrics to get
-        example: now
+      - $ref: parameters.yml#/from
+      - $ref: parameters.yml#/to
     responses:
       $ref: ./responses.yml#/get_metrics
