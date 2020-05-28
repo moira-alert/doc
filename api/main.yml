@@ -21,6 +21,10 @@ paths:
     $ref: ./config/methods.yml
   /contact:
     $ref: ./contact/methods.yml#/contacts
+  /contact/{contactId}:
+    $ref: ./contact/methods.yml#/contact
+  /contact/{contactId}/test:
+    $ref: ./contact/methods.yml#/testContact
   /trigger:
     $ref: ./triggers/methods.yml
   /trigger/{triggerID}:

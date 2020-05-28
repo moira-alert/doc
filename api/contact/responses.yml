@@ -20,6 +20,24 @@ new_contact:
         schema:
           $ref: "../schemas/Contact.yml#/Contact"
   400:
+    $ref: "#/errors/400"
+
+update_contact:
+  200:
+    description: "Contact has been updated"
+    content:
+      application/json:
+        schema:
+          $ref: "../schemas/Contact.yml#/Contact"
+  400:
+    $ref: "#/errors/400"
+
+delete_contact:
+  200:
+    description: "Contact has been deleted"
+
+errors:
+  400:
     description: "Bad request from client"
     content:
       application/json:
