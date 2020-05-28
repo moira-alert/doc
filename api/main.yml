@@ -19,6 +19,8 @@ servers:
 paths:
   /config:
     $ref: ./config/methods.yml
+  /contact:
+    $ref: ./contact/methods.yml#/contacts
   /trigger:
     $ref: ./triggers/methods.yml
   /trigger/{triggerID}:

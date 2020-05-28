@@ -1,0 +1,36 @@
+get_contacts:
+  200:
+    description: "Contacts fetched successfully"
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            list:
+              type: array
+              description: "List of all the retrieved Moira contacts."
+              items:
+                $ref: "../schemas/Contact.yml#/Contact"
+
+new_contact:
+  200:
+    description: "Contact created successfully."
+    content:
+      applicaton/json:
+        schema:
+          $ref: "../schemas/Contact.yml#/Contact"
+  400:
+    description: "Bad request from client"
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            status:
+              type: string
+              description: "The error status"
+              example: "Invalid request"
+            error:
+              type: string
+              description: "A bit more descriptive error message"
+              example: "contact type cannot be empty"

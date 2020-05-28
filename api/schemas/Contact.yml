@@ -1,12 +1,24 @@
-Contact:
+ContactRequest:
   type: object
   properties:
     type:
       type: string
+      example: "mail"
     value:
       type: string
-    id:
-      type: string
-    user:
-      type: string
+      example: "devops@example.com"
+  additionalProperties: false
+Contact:
+  allOf:
+    - $ref: "#/ContactRequest"
+    - type: object
+      properties:
+        id:
+          type: string
+          description: "ID of the contact"
+          example: "1dd38765-c5be-418d-81fa-7a5f879c2315"
+        user:
+          type: string
+          description: "Username of the user who created the contact"
+          example: ""
   additionalProperties: false
