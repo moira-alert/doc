@@ -36,6 +36,10 @@ delete_contact:
   200:
     description: "Contact has been deleted"
 
+test_contact_notification:
+  200:
+    description: "Test successful."
+    
 errors:
   400:
     description: "Bad request from client"

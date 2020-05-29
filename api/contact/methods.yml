@@ -52,3 +52,7 @@ testContact:
     operationId: TestContactNotification
     tags:
       - contact
+    parameters:
+      - $ref: ./parameters.yml#/contactId
+    responses:
+      $ref: ./responses.yml#/test_contact_notification
