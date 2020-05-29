@@ -5,7 +5,7 @@ trigger:
     tags:
       - trigger
     parameters:
-      - $ref: parameters.yml#/triggerID
+      - $ref: ../parameters/_index.yml#/triggerID
     requestBody:
       required: true
       content:
@@ -20,7 +20,7 @@ trigger:
     tags:
       - trigger
     parameters:
-      - $ref: parameters.yml#/triggerID
+      - $ref: ../parameters/_index.yml#/triggerID
     responses:
       $ref: ./responses.yml#/get
 render:
@@ -30,10 +30,10 @@ render:
     tags:
       - trigger
     parameters:
-      - $ref: parameters.yml#/triggerID
-      - $ref: parameters.yml#/targetID
-      - $ref: parameters.yml#/from
-      - $ref: parameters.yml#/to
+      - $ref: ../parameters/_index.yml#/triggerID
+      - $ref: ../parameters/_index.yml#/targetID
+      - $ref: ../parameters/_index.yml#/from
+      - $ref: ../parameters/_index.yml#/to
     responses:
       $ref: ./responses.yml#/get_render
 metrics:
@@ -43,8 +43,8 @@ metrics:
     tags:
       - trigger
     parameters:
-      - $ref: parameters.yml#/triggerID
-      - $ref: parameters.yml#/from
-      - $ref: parameters.yml#/to
+      - $ref: ../parameters/_index.yml#/triggerID
+      - $ref: ../parameters/_index.yml#/from
+      - $ref: ../parameters/_index.yml#/to
     responses:
       $ref: ./responses.yml#/get_metrics

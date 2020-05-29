@@ -1,0 +1,22 @@
+allEvents:
+  delete:
+    summary: "Deletes all notification events"
+    operationId: DeleteEvents
+    tags:
+      - event
+    responses:
+      200:
+        description: "Events removed successfully."
+
+eventForTrigger:
+  get:
+    summary: "Gets all trigger events for current page and their count"
+    operationId: GetTriggerEvents
+    tags:
+      - event
+    parameters:
+      - $ref: ../parameters/_index.yml#/triggerID
+      - $ref: ../parameters/_index.yml#/page
+      - $ref: ../parameters/_index.yml#/size
+    responses:
+      $ref: ./responses.yml#/get_trigger_events

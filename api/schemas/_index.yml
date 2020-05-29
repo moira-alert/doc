@@ -2,6 +2,8 @@ User:
   $ref: "./User.yml#/User"
 Contact:
   $ref: "./Contact.yml#/Contact"
+Event:
+  $ref: "./Event.yml#/Event"
 Subscription:
   $ref: "./Subscription.yml#/Subscription"
 Trigger:

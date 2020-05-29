@@ -1,0 +1,58 @@
+contacts:
+  get:
+    summary: "Gets all Moira contacts."
+    operationId: GetContacts
+    tags:
+      - contacts
+    responses:
+      $ref: ./responses.yml#/get_contacts
+  put:
+    summary: "Creates a new contact notification for the current user."
+    operationId: CreateNewContact
+    tags:
+      - contacts
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: ./requests.yml#/new_contact
+    responses:
+      $ref: ./responses.yml#/new_contact
+contact:
+  put:
+    summary: "Updates an existing notification contact to the values passed in the request body."
+    operationId: UpdateContact
+    tags:
+      - contact
+    parameters:
+      - $ref: ../parameters/_index.yml#/contactId
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: ./requests.yml#/update_contact
+    responses:
+      $ref: ./responses.yml#/update_contact
+  delete:
+    summary: "Deletes notification contact for the current user and remove the contact ID from all subscriptions."
+    operationId: DeleteContact
+    tags:
+      - contact
+    parameters:
+      - $ref: ../parameters/_index.yml#/contactId
+    responses:
+      $ref: ./responses.yml#/delete_contact
+
+
+testContact:
+  post:
+    summary: "Push a test notification to verify that the contact is properly set up."
+    operationId: TestContactNotification
+    tags:
+      - contact
+    parameters:
+      - $ref: ../parameters/_index.yml#/contactId
+    responses:
+      $ref: ./responses.yml#/test_contact_notification

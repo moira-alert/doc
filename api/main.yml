@@ -19,6 +19,16 @@ servers:
 paths:
   /config:
     $ref: ./config/methods.yml
+  /contact:
+    $ref: ./contact/methods.yml#/contacts
+  /contact/{contactId}:
+    $ref: ./contact/methods.yml#/contact
+  /contact/{contactId}/test:
+    $ref: ./contact/methods.yml#/testContact
+  /event/all:
+    $ref: ./event/methods.yml#/allEvents
+  /event/{triggerId}:
+    $ref: ./event/methods.yml#/eventForTrigger
   /trigger:
     $ref: ./triggers/methods.yml
   /trigger/{triggerID}:
@@ -37,4 +47,4 @@ components:
   # individual parameter file is included so they can be referenced in the bundled yml spec as
   # "#/components/parameters/{param}"
   parameters:
-    $ref: "./trigger/parameters.yml"
+    $ref: "./parameters/_index.yml"
