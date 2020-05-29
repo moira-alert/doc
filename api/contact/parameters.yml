@@ -1,9 +1,0 @@
-contactId:
-  in: path
-  name: contactId
-  required: true
-  schema:
-    type: string
-    format: uuid
-  description: The ID of the target contact
-  example: "bcba82f5-48cf-44c0-b7d6-e1d32c64a88c"

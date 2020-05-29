@@ -47,5 +47,4 @@ components:
   # individual parameter file is included so they can be referenced in the bundled yml spec as
   # "#/components/parameters/{param}"
   parameters:
-    - $ref: "./trigger/parameters.yml"
-    - $ref: "./event/parameters.yml"
+    $ref: "./parameters/_index.yml"

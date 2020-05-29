@@ -26,7 +26,7 @@ contact:
     tags:
       - contact
     parameters:
-      - $ref: ./parameters.yml#/contactId
+      - $ref: ../parameters/_index.yml#/contactId
     requestBody:
       required: true
       content:
@@ -41,7 +41,7 @@ contact:
     tags:
       - contact
     parameters:
-      - $ref: ./parameters.yml#/contactId
+      - $ref: ../parameters/_index.yml#/contactId
     responses:
       $ref: ./responses.yml#/delete_contact
 
@@ -53,6 +53,6 @@ testContact:
     tags:
       - contact
     parameters:
-      - $ref: ./parameters.yml#/contactId
+      - $ref: ../parameters/_index.yml#/contactId
     responses:
       $ref: ./responses.yml#/test_contact_notification

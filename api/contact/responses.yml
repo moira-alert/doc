@@ -20,7 +20,20 @@ new_contact:
         schema:
           $ref: "../schemas/Contact.yml#/Contact"
   400:
-    $ref: "#/errors/400"
+    description: "Bad request from client"
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            status:
+              type: string
+              description: "The error status"
+              example: "Invalid request"
+            error:
+              type: string
+              description: "A bit more descriptive error message"
+              example: "contact type cannot be empty"
 
 update_contact:
   200:
@@ -29,18 +42,6 @@ update_contact:
       application/json:
         schema:
           $ref: "../schemas/Contact.yml#/Contact"
-  400:
-    $ref: "#/errors/400"
-
-delete_contact:
-  200:
-    description: "Contact has been deleted"
-
-test_contact_notification:
-  200:
-    description: "Test successful."
-    
-errors:
   400:
     description: "Bad request from client"
     content:
@@ -56,3 +57,11 @@ errors:
               type: string
               description: "A bit more descriptive error message"
               example: "contact type cannot be empty"
+
+delete_contact:
+  200:
+    description: "Contact has been deleted"
+
+test_contact_notification:
+  200:
+    description: "Test successful."
