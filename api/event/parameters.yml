@@ -1,0 +1,27 @@
+triggerId:
+  in: path
+  name: triggerId
+  required: true
+  schema:
+    type: string
+    format: uuid
+  description: ID of the target trigger
+  example: "5A8AF369-86D2-44DD-B514-D47995ED6AF7"
+
+page:
+  in: query
+  name: page
+  required: false
+  schema:
+    type: int
+  description: "Defines the number of the displayed page. E.g, page=2 would display the 2nd page."
+  example: 1
+
+size:
+  in: query
+  name: size
+  required: false
+  schema:
+    type: int
+  description: "Number of items to be displayed on one page."
+  example: 15

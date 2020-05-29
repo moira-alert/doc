@@ -1,0 +1,25 @@
+get_trigger_events:
+  200:
+    description: "Events fetched successfully."
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            page:
+              type: int
+              description: "Current page being displayed. Pages are zero-indexed."
+              example: 0
+            size:
+              type: int
+              description: "Maximum number of items displayed per page."
+              example: 100
+            total:
+              type: int
+              description: "Total number of available events for the trigger"
+              example: 10
+            list:
+              type: array
+              description: "List of trigger events"
+              items:
+                $ref: "../schemas/Event.yml#/Event"
