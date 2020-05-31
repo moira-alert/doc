@@ -1,0 +1,42 @@
+BadRequest:
+  description: "Bad request from client"
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          status:
+            type: string
+            description: "The error status"
+            example: "Invalid request"
+          error:
+            type: string
+            description: "A bit more descriptive error message"
+
+NotFound:
+  description: "Trigger not found"
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          status:
+            type: string
+            example: Resource not found
+          error:
+            type: string
+            example: trigger not found
+
+ServerError:
+  description: "Server error"
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          status:
+            type: string
+            example: Internal Server Error
+          error:
+            type: string
+            example: "no points found to render trigger: 5A8AF369-86D2-44DD-B514-D47995ED6AF7"

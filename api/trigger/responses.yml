@@ -13,18 +13,7 @@ put:
               type: string
               example: trigger created
   400:
-    description: "Invalid input"
-    content:
-      application/json:
-        schema:
-          type: object
-          properties:
-            status:
-              type: string
-              example: Invalid request
-            error:
-              type: string
-              example: error_value is equal to warn_value, please set exactly one value
+    $ref: "../responses/_index.yml#/BadRequest"
 
 get:
   200:
@@ -34,18 +23,7 @@ get:
         schema:
           $ref: "../schemas/Trigger.yml#/Trigger"
   404:
-    description: "Trigger not found"
-    content:
-      application/json:
-        schema:
-          type: object
-          properties:
-            status:
-              type: string
-              example: Resource not found
-            error:
-              type: string
-              example: trigger not found
+    $ref: "../responses/_index.yml#/NotFound"
 
 get_render:
   200:
@@ -56,18 +34,7 @@ get_render:
           type: string
           format: binary
   500:
-    description: "Server error"
-    content:
-      application/json:
-        schema:
-          type: object
-          properties:
-            status:
-              type: string
-              example: Internal Server Error
-            error:
-              type: string
-              example: "no points found to render trigger: 5A8AF369-86D2-44DD-B514-D47995ED6AF7"
+    $ref: "../responses/_index.yml#/ServerError"
 
 get_metrics:
   200:
@@ -81,15 +48,4 @@ get_metrics:
             items:
               $ref: "../schemas/MetricValue.yml#/MetricValue"
   500:
-    description: "Server error"
-    content:
-      application/json:
-        schema:
-          type: object
-          properties:
-            status:
-              type: string
-              example: Internal Server Error
-            error:
-              type: string
-              example: "no points found to render trigger: 5A8AF369-86D2-44DD-B514-D47995ED6AF7"
+    $ref: "../responses/_index.yml#/ServerError"
