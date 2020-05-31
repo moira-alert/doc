@@ -44,7 +44,7 @@ paths:
 components:
   schemas:
     $ref: "./schemas/_index.yml"
-  # individual parameter file is included so they can be referenced in the bundled yml spec as
-  # "#/components/parameters/{param}"
   parameters:
     $ref: "./parameters/_index.yml"
+  responses:
+    $ref: "./responses/_index.yml"
