@@ -1,0 +1,32 @@
+notifier:
+  get:
+    summary: "Get notifier state"
+    operationId: GetNotifierState
+    tags:
+      - health
+    responses:
+      $ref: ./responses.yml#/get_notifier
+
+  put:
+    summary: "Update notifier state"
+    operationId: UpdateNotifierState
+    tags:
+      - health
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/NotifierState.yml#/NotifierState"
+          examples:
+            error:
+              description: "Put the service in an ERROR state"
+              value:
+                state: "ERROR"
+                message: "Moira has been turned off for maintenance"
+            ok:
+              description: "Put the service in an OK state"
+              value:
+                state: "OK"
+    responses:
+      $ref: ./responses.yml#/update_notifier

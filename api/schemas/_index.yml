@@ -8,3 +8,5 @@ Subscription:
   $ref: "./Subscription.yml#/Subscription"
 Trigger:
   $ref: "./Trigger.yml#/Trigger"
+NotifierState:
+  $ref: "./NotifierState.yml#/NotifierState"

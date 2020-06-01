@@ -29,6 +29,8 @@ paths:
     $ref: ./event/methods.yml#/allEvents
   /event/{triggerId}:
     $ref: ./event/methods.yml#/eventForTrigger
+  /health/notifier:
+    $ref: ./health/methods.yml#/notifier
   /trigger:
     $ref: ./triggers/methods.yml
   /trigger/{triggerID}:

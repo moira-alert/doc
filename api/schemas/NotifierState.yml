@@ -1,0 +1,12 @@
+NotifierState:
+  type: object
+  properties:
+    state:
+      type: string
+      description: "value for OK state"
+    message:
+      type: string
+      description: "Detailed description of the current state. This field is non-existent if the state is OK"
+  example:
+    error:
+      state: "OK"

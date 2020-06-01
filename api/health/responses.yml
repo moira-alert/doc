@@ -1,0 +1,15 @@
+get_notifier:
+  200:
+    description: "Notifier state retrieved"
+    content:
+      application/json:
+        schema:
+          $ref: "../schemas/NotifierState.yml#/NotifierState"
+
+update_notifier:
+  200:
+    description: "Update state of the Moira service"
+    content:
+      application/json:
+        schema:
+          $ref: "../schemas/NotifierState.yml#/NotifierState"
