@@ -31,6 +31,10 @@ paths:
     $ref: ./event/methods.yml#/eventForTrigger
   /health/notifier:
     $ref: ./health/methods.yml#/notifier
+  /pattern:
+    $ref: ./pattern/methods.yml#/patterns
+  /pattern/{pattern}:
+    $ref: ./pattern/methods.yml#/pattern
   /trigger:
     $ref: ./triggers/methods.yml
   /trigger/{triggerID}:

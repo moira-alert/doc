@@ -62,3 +62,12 @@ triggerID:
     format: uuid
   description: The ID of updated trigger
   example: 5A8AF369-86D2-44DD-B514-D47995ED6AF7
+  
+pattern:
+  in: path
+  name: pattern
+  required: true
+  schema:
+    type: string
+  example: "DevOps.my_server.hdd.freespace_mbytes"
+  description: "Trigger pattern to operate on."

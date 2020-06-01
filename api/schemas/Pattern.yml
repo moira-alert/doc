@@ -1,0 +1,19 @@
+Pattern:
+  type: object
+  properties:
+    metrics:
+      type: array
+      items:
+        type: string
+      example:
+        - "DevOps.my_server.hdd.freespace_mbytes"
+        - "DevOps.my_server.hdd.usedspace_mbytes"
+        - "DevOps.my_server.db.*"
+    pattern:
+      type: string
+      example: "Devops.my_server.*"
+    triggers:
+      type: array
+      items:
+        "$ref": "./Trigger.yml#/Trigger"
+  additionalProperties: false
