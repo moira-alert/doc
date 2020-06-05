@@ -7,15 +7,15 @@ get_trigger_events:
           type: object
           properties:
             page:
-              type: int
+              type: integer
               description: "Current page being displayed. Pages are zero-indexed."
               example: 0
             size:
-              type: int
+              type: integer
               description: "Maximum number of items displayed per page."
               example: 100
             total:
-              type: int
+              type: integer
               description: "Total number of available events for the trigger"
               example: 10
             list:

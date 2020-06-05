@@ -22,7 +22,7 @@ page:
   name: page
   required: false
   schema:
-    type: int
+    type: integer
   description: "Defines the number of the displayed page. E.g, page=2 would display the 2nd page."
   example: 1
 
@@ -31,7 +31,7 @@ size:
   name: size
   required: false
   schema:
-    type: int
+    type: integer
   description: "Number of items to be displayed on one page."
   example: 15
 
