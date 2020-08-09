@@ -1,0 +1,26 @@
+name: Delete spec version from SwaggerHub
+
+on:
+  [delete]
+
+jobs:
+  removespec:
+    name: Remove the corresponding spec from SwaggerHub
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: set output for versioning
+        id: vars
+        run: echo ::set-output name=tag::${GITHUB_REF#refs/*/}
+
+      - name: remove spec from swaggerhub
+        env:
+          AUTH_TOKEN: ${{secrets.SGH_TOKEN}}
+          RELEASE_VERSION: ${{ github.event.ref }}
+        shell: bash
+        run: |
+          version=${RELEASE_VERSION}
+          version=`echo $version|sed 's#[^a-zA-Z0-9_\.\-]#_#g'`
+          echo "removing API spec: ${version} from swaggerhub"
+          curl -X DELETE "https://api.swaggerhub.com/apis/idoko/moira-alert/${version}" -H "content-type: application/yaml" -H "Authorization: ${AUTH_TOKEN}"

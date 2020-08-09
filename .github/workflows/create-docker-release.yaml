@@ -1,0 +1,32 @@
+name: Create and publish docker image
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Login to registry
+        run: echo ${{secrets.DOCKERHUB_PASSWORD}} | docker login -u ${{secrets.DOCKERHUB_USERNAME}} --password-stdin
+
+      - name: Get the tag to use
+        id: vars
+        run: echo ::set-output name=tag::${GITHUB_REF#refs/*/}
+
+      - name: build docker image
+        run: docker build . --file Dockerfile --tag idoko/moira-oas:${{steps.vars.outputs.tag}}
+
+      - name: push to docker hub
+        run: docker push idoko/moira-oas:${{steps.vars.outputs.tag}}
+
+      - name: build as latest
+        run: docker build . --file Dockerfile --tag idoko/moira-oas:latest
+
+      - name: push latest image to registry
+        run: docker push idoko/moira-oas:latest
