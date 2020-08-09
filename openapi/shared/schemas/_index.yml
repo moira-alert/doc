@@ -1,0 +1,29 @@
+User:
+  $ref: "./User.yml#/User"
+Contact:
+  $ref: "./Contact.yml#/Contact"
+ContactRequest:
+  $ref: "./Contact.yml#/ContactRequest"
+Event:
+  $ref: "./Event.yml#/Event"
+Subscription:
+  $ref: "./Subscription.yml#/Subscription"
+TagStatistics:
+  $ref: "./TagStatistics.yml#/TagStatistics"
+Trigger:
+  $ref: "./Trigger.yml#/Trigger"
+TriggerCheck:
+  $ref: "./TriggerCheck.yml#/TriggerCheck"
+MaintenanceInfo:
+  $ref: "./TriggerCheck.yml#/MaintenanceInfo"
+MetricState:
+  $ref: "./TriggerCheck.yml#/MetricState"
+NotificationsList:
+  $ref: "./NotificationsList.yml#/NotificationsList"
+NotifierState:
+  $ref: "./NotifierState.yml#/NotifierState"
+
+# Errors are added here as opposed to adding them in responses so that
+# each operation can override them and provide its own examples
+ErrorBadRequest:
+  $ref: "./Errors.yml#/ErrorBadRequest"

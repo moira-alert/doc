@@ -1,0 +1,11 @@
+# ErrorBadRequest is an extensible error schema for when you need to
+# send a 400 error, but with custom examples.
+ErrorBadRequest:
+  type: object
+  properties:
+    status:
+      description: "The corresponding error status"
+      type: string
+    error:
+      type: string
+      description: "Message telling why the error occurred"

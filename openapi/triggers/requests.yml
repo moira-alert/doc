@@ -1,6 +1,0 @@
-put:
-  $schema: "http://json-schema.org/draft-04/schema#"
-  properties:
-    $ref: ../dto.yml#/Trigger
-  additionalProperties: false
-  type: object

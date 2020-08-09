@@ -1,96 +1,219 @@
-put:
-  200:
-    description: "Trigger updated"
-    content:
-      application/json:
-        schema:
-          type: object
-          properties:
-            id:
-              type: string
-              example: trigger_id
-            message:
-              type: string
-              example: trigger created
-  400:
-    description: "Invalid input"
-    content:
-      application/json:
-        schema:
-          type: object
-          properties:
-            status:
-              type: string
-              example: Invalid request
-            error:
-              type: string
-              example: error_value is equal to warn_value, please set exactly one value
+triggers:
+  get_triggers:
+    200:
+      description: "fetched all triggers"
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              list:
+                type: array
+                description: "list of available triggers"
+                items:
+                  $ref: "../shared/schemas/Trigger.yml#/Trigger"
 
-get:
-  200:
-    description: "Trigger data"
-    content:
-      application/json:
-        schema:
-          type: object
-          properties:
-            $ref: ../dto.yml#/Trigger
-  404:
-    description: "Trigger not found"
-    content:
-      application/json:
-        schema:
-          type: object
-          properties:
-            status:
-              type: string
-              example: Resource not found
-            error:
-              type: string
-              example: trigger not found
+  create_trigger:
+    200:
+      description: "Trigger created"
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              id:
+                type: string
+                example: trigger_id
+              message:
+                type: string
+                example: trigger created
+    400:
+      description: "Failed to create trigger due to invalid request body"
+      content:
+        application/json:
+          schema:
+            $ref: "../shared/schemas/Errors.yml#/ErrorBadRequest"
+          examples:
+            targetRequired:
+              description: "no value passed for 'target' field"
+              value:
+                status: "Invalid request"
+                error: "targets is required"
 
-get_render:
-  200:
-    description: "Plot for trigger"
-    content:
-      image/png:
-        schema:
-          type: string
-          format: binary
-  500:
-    description: "Server error"
-    content:
-      application/json:
-        schema:
-          type: object
-          properties:
-            status:
-              type: string
-              example: Internal Server Error
-            error:
-              type: string
-              example: "no points found to render trigger: 5A8AF369-86D2-44DD-B514-D47995ED6AF7"
+render:
+  get:
+    200:
+      description: "Plot for trigger"
+      content:
+        image/png:
+          schema:
+            type: string
+            format: binary
+    400:
+      $ref: "../shared/responses/_index.yml#/BadRequest"
+    404:
+      $ref: "../shared/responses/_index.yml#/NotFound"
+    500:
+      $ref: "../shared/responses/_index.yml#/ServerError"
 
-get_metrics:
+trigger:
+  delete:
+    200:
+      description: "Trigger has been deleted"
+    400:
+      $ref: "../shared/responses/_index.yml#/BadRequest"
+
+  put:
+    200:
+      description: "Trigger updated"
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              id:
+                type: string
+                example: trigger_id
+              message:
+                type: string
+                example: trigger created
+    400:
+      $ref: "../shared/responses/_index.yml#/BadRequest"
+
+  get:
+    200:
+      description: "Trigger data"
+      content:
+        application/json:
+          schema:
+            $ref: "../shared/schemas/Trigger.yml#/Trigger"
+    400:
+      $ref: "../shared/responses/_index.yml#/BadRequest"
+    404:
+      $ref: "../shared/responses/_index.yml#/NotFound"
+
+metrics:
+  delete_metric:
+    200:
+      description: "Trigger metric has been deleted"
+    400:
+      $ref: "../shared/responses/_index.yml#/BadRequest"
+
+  get_metrics:
+    200:
+      description: "Metrics for trigger"
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties:
+              type: array
+              items:
+                $ref: "../shared/schemas/MetricValue.yml#/MetricValue"
+    400:
+      $ref: "../shared/responses/_index.yml#/BadRequest"
+    500:
+      $ref: "../shared/responses/_index.yml#/ServerError"
+
+metrics_nodata:
+   delete:
+     200:
+       description: "NODATA metrics have been deleted"
+     400:
+       $ref: "../shared/responses/_index.yml#/BadRequest"
+
+page_triggers:
   200:
-    description: "Metrics for trigger"
-    content:
-      application/json:
-        type: object
-        additionalProperties:
-          type: array
-          items:
-            $ref: ../dto.yml#/MetricValue
-  500:
-    description: "Server error"
+    description: "fetched matching triggers"
     content:
       application/json:
         schema:
           type: object
           properties:
-            status:
-              type: string
-              example: Internal Server Error
-            error:
-              type: string
-              example: "no points found to render trigger: 5A8AF369-86D2-44DD-B514-D47995ED6AF7"
+            page:
+              type: number
+              description: "current item page"
+              example: 0
+            size:
+              type: number
+              description: "number of triggers shown per page"
+              example: 10
+            total:
+              type: number
+              description: "total number of matching results"
+              example: 5
+            list:
+              type: array
+              description: "list of matching triggers"
+              items:
+                $ref: "../shared/schemas/Trigger.yml#/Trigger"
+
+search_triggers:
+  200:
+    description: "fetched matching triggers"
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            page:
+              type: number
+              description: "current item page"
+              example: 0
+            size:
+              type: number
+              description: "number of triggers shown per page"
+              example: 10
+            total:
+              type: number
+              description: "total number of matching results"
+              example: 5
+            list:
+              type: array
+              description: "list of matching triggers"
+              items:
+                $ref: "../shared/schemas/Trigger.yml#/Trigger"
+
+state:
+  get:
+    200:
+      description: "trigger state fetched successfully"
+      content:
+        application/json:
+          schema:
+            $ref: "../shared/schemas/TriggerCheck.yml#/TriggerCheck"
+    400:
+      $ref: "../shared/responses/_index.yml#/BadRequest"
+
+setMaintenance:
+  put:
+    200:
+      description: "trigger or metric have been scheduled for maintenance"
+    400:
+      $ref: "../shared/responses/_index.yml#/BadRequest"
+
+throttling:
+  get:
+    200:
+      description: "trigger throttle info retrieved"
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              throttling:
+                type: integer
+                description: "unix timestamp to show next allowed time, defaults to 0"
+                example: 0
+    400:
+      $ref: "../shared/responses/_index.yml#/BadRequest"
+    404:
+      $ref: "../shared/responses/_index.yml#/NotFound"
+
+  delete:
+    200:
+      description: "trigger throttling has been deleted"
+    404:
+      $ref: "../shared/responses/_index.yml#/NotFound"
+    400:
+      $ref: "../shared/responses/_index.yml#/BadRequest"

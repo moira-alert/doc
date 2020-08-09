@@ -1,25 +1,98 @@
 openapi: 3.0.0
 info:
   description: "This is an API description for Moira Alert project. Please check https://github.com/moira-alert"
-  version: "2.6.0"
+  version: "2.5.1.48"
   title: "Moira Alert"
   license:
     name: "MIT"
 tags:
-  - name: "triggers"
-    description: "Triggers Collection Methods"
+  - name: "config"
+    description: "APIs for interacting with the Moira runtime configuration"
+  - name: "contact"
+    description: "APIs for working with Moira contacts"
+  - name: "event"
+    description: "APIs for interacting with notification events"
+  - name: "health"
+    description: "interact with Moira states/health status"
+  - name: "notifications"
+    description: "manage notifications that are currently in queue"
+  - name: "pattern"
+    description: "APIs for interacting with graphite patterns in Moira"
+  - name: "subscription"
+    description: "APIs for managing a user's subscription(s)"
+  - name: "tag"
+    description: "APIs for managing tags (a grouping of tags and subscriptions)"
   - name: "trigger"
-    description: "One Trigger Methods"
+    description: "APIs for interacting with Moira triggers"
+  - name: "user"
+    description: "APIs for interacting with on-disk Moira users"
 
 servers:
   - url: http://localhost:8080/api
     description: Localhost server
 paths:
+  /config:
+    $ref: ./config/methods.yml
+  /contact:
+    $ref: ./contact/methods.yml#/contacts
+  /contact/{contactId}:
+    $ref: ./contact/methods.yml#/contact
+  /contact/{contactId}/test:
+    $ref: ./contact/methods.yml#/testContact
+  /event/all:
+    $ref: ./event/methods.yml#/events
+  /event/{triggerID}:
+    $ref: ./event/methods.yml#/eventForTrigger
+  /health/notifier:
+    $ref: ./health/methods.yml#/notifier
+  /notification:
+    $ref: ./notification/methods.yml#/notifications
+  /notification/all:
+    $ref: ./notification/methods.yml#/all
+  /pattern:
+    $ref: ./pattern/methods.yml#/patterns
+  /pattern/{pattern}:
+    $ref: ./pattern/methods.yml#/pattern
+  /tag:
+    $ref: ./tag/methods.yml#/tags
+  /tag/{tag}:
+    $ref: ./tag/methods.yml#/tag
+  /tag/stats:
+    $ref: ./tag/methods.yml#/stats
+  /subscription:
+    $ref: ./subscription/methods.yml#/subscriptions
+  /subscription/{subscriptionId}:
+    $ref: ./subscription/methods.yml#/subscription
+  /subscription/{subscriptionId}/test:
+    $ref: ./subscription/methods.yml#/test
   /trigger:
-    $ref: ./triggers/methods.yml
-  /trigger/{triggerId}:
+    $ref: ./trigger/methods.yml#/triggers
+  /trigger/page:
+    $ref: ./trigger/methods.yml#/page
+  /trigger/search:
+    $ref: ./trigger/methods.yml#/search
+  /trigger/{triggerID}:
     $ref: ./trigger/methods.yml#/trigger
-  /trigger/{triggerId}/render:
-    $ref: ./trigger/methods.yml#/render
-  /trigger/{triggerId}/metrics:
+  /trigger/{triggerID}/metrics:
     $ref: ./trigger/methods.yml#/metrics
+  /trigger/{triggerID}/metrics/nodata:
+    $ref: ./trigger/methods.yml#/metrics_nodata
+  /trigger/{triggerID}/render:
+    $ref: ./trigger/methods.yml#/render
+  /trigger/{triggerID}/setMaintenance:
+    $ref: ./trigger/methods.yml#/setMaintenance
+  /trigger/{triggerID}/state:
+    $ref: ./trigger/methods.yml#/state
+  /trigger/{triggerID}/throttling:
+    $ref: ./trigger/methods.yml#/throttling
+  /user:
+    $ref: ./user/methods.yml#/user
+  /user/settings:
+    $ref: ./user/methods.yml#/settings
+components:
+  schemas:
+    $ref: "./shared/schemas/_index.yml"
+  parameters:
+    $ref: "./shared/parameters/_index.yml"
+  responses:
+    $ref: "./shared/responses/_index.yml"

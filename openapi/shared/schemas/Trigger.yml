@@ -1,0 +1,101 @@
+Trigger:
+  type: object
+  properties:
+    id:
+      type: string
+      format: uuid
+    name:
+      type: string
+      description: "name of the trigger"
+    desc:
+      type: string
+      description: "informative description of the trigger"
+    targets:
+      type: array
+      description: "graphite metric to cause this trigger"
+      items:
+        type: string
+    warn_value:
+      type: number
+      description: "value at which Moira should send a WARNING alert"
+    error_value:
+      type: number
+      description: "value at which Moira should send an ERROR alert"
+    trigger_type:
+      type: string
+      description: "Value is either 'rising' or 'falling'. Dictates when alerts are sent for `warn_value` and `error_value`"
+    tags:
+      type: array
+      description: "the tags associated with this trigger. New tags are automatically created"
+      items:
+        type: string
+    ttl_state:
+      type: string
+      description: "state to put the metric in if Moira doesn't receive new data for it from graphite. See <https://moira.readthedocs.io/en/latest/development/architecture.html?highlight=ttl#state/>"
+    ttl:
+      type: integer
+      description: "number of seconds to wait for metric update from Graphite before changing the metric state"
+    sched:
+      "$ref": "#/definitions/ScheduleData"
+    expression:
+      type: string
+    patterns:
+      type: array
+      description: "optional Graphite pattern is a single dot-separated metric name, possibly containing one or more wildcards"
+      items:
+        type: string
+    is_remote:
+      type: boolean
+      description: "dictates if trigger should be added to Graphite instead of Redis. See <https://moira.readthedocs.io/en/latest/installation/configuration.html#remote-triggers-checker/>"
+      example: false
+    mute_new_metrics:
+      type: boolean
+      description: "if true, Moira will notify you each time the metric state changes, e.g NODATA -> OK"
+    throttling:
+      type: integer
+      description: "See <https://moira.readthedocs.io/en/latest/user_guide/throttling.html/>"
+  required:
+    - name
+    - desc
+    - error_value
+    - ttl_state
+    - ttl
+    - mute_new_metrics
+  example:
+    name: "Not enough disk space left"
+    desc: "check the size of /var/log"
+    items:
+      - "devOps.my_server.hdd.freespace_mbytes"
+    warn_value: 5000
+    error_value: 1000
+    trigger_type: "falling"
+    tags:
+      - "disk"
+    ttl_state: "NODATA"
+    ttl: 600
+    expression: ""
+    patterns:
+      - ""
+    mute_new_metrics: false
+
+definitions:
+  ScheduleData:
+    properties:
+      days:
+        items:
+          "$ref": "#/definitions/ScheduleDataDay"
+        type: array
+      tzOffset:
+        type: integer
+      startOffset:
+        type: integer
+      endOffset:
+        type: integer
+    type: object
+  ScheduleDataDay:
+    properties:
+      enabled:
+        type: boolean
+      name:
+        type: string
+    type: object

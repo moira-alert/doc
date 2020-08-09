@@ -1,0 +1,41 @@
+NotificationsList:
+  type: object
+  properties:
+    total:
+      type: integer
+    list:
+      type: array
+      items:
+        "$ref": "#/ScheduledNotification"
+
+ScheduledNotification:
+  type: object
+  properties:
+    event:
+      $ref: "./Event.yml#/Event"
+    trigger:
+      $ref: "./Trigger.yml#/Trigger"
+    contact:
+      $ref: "./Contact.yml#/Contact"
+    plotting:
+      $ref: "#/Plotting"
+    throttled:
+      type: boolean
+      description: "boolean flag to check if a notification is throttled or not"
+      example: false
+    send_fail:
+      type: integer
+      description: "count of failed attempts to send the notification"
+      example: 0
+    timestamp:
+      type: integer
+      description: "unix timestamp of the time the notification was created"
+      example: 1594471927
+
+Plotting:
+  type: object
+  properties:
+    enabled:
+      type: boolean
+    theme:
+      type: string

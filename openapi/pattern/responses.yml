@@ -1,0 +1,17 @@
+get_patterns:
+  200:
+    description: "Patterns fetched successfully"
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            list:
+              type: array
+              description: "List of fetched patterns"
+              items:
+                $ref: "../shared/schemas/Pattern.yml#/Pattern"
+
+delete_pattern:
+  200:
+    description: "Pattern delete successfully"

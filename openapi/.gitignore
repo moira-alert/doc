@@ -1,0 +1,4 @@
+build/
+# hypothesis cache folder
+.hypothesis
+.vscode

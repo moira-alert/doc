@@ -1,0 +1,19 @@
+patterns:
+  get:
+    summary: "Get all patterns"
+    operationId: GetAllPatterns
+    tags:
+      - pattern
+    responses:
+      $ref: ./responses.yml#/get_patterns
+
+pattern:
+  delete:
+    summary: "Deletes a Moira pattern"
+    operationId: DeletePattern
+    tags:
+      - pattern
+    parameters:
+      - $ref: ../shared/parameters/_index.yml#/pattern
+    responses:
+      $ref: ./responses.yml#/delete_pattern

@@ -1,0 +1,2 @@
+update_notifier_state:
+  $ref: "../shared/schemas/NotifierState.yml#/NotifierState"

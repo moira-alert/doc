@@ -1,0 +1,47 @@
+get_tags:
+  200:
+    description: "Tags fetched successfully"
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            list:
+              type: array
+              description: "List of all the tags"
+              items:
+                type: string
+                example: "cpu"
+
+delete_tag:
+  200:
+    description: "Tag has been deleted"
+  400:
+    description: "Could not delete tag"
+    content:
+      application/json:
+        schema:
+          $ref: "../shared/schemas/Errors.yml#/ErrorBadRequest"
+        examples:
+          tagInUse:
+            description: "no trigger with the ID was found"
+            value:
+              status: "Invalid request"
+              error: "this tag is assigned to 1 triggers. Remove tag from triggers first"
+      text/html:
+        schema:
+          type: string
+
+get_tags_subscriptions:
+  200:
+    description: "Successful"
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            list:
+              type: array
+              description: "list of available Moira tags, their triggers and their subscriptions"
+              items:
+                $ref: "../shared/schemas/TagStatistics.yml#/TagStatistics"

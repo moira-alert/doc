@@ -1,0 +1,46 @@
+# BadRequest response is an extension/wrapper of the ErrorBadRequest model.
+# It can be used for 400 errors when custom examples are not needed
+BadRequest:
+  description: "Bad request from client"
+  content:
+    application/json:
+      schema:
+        $ref: "../schemas/Errors.yml#/ErrorBadRequest"
+      examples:
+        missingID:
+          description: "no resource with the provided ID was found"
+          value:
+            status: "invalid request"
+            error: "resource with the ID does not exist"
+    text/html:
+      schema:
+        type: string
+
+NotFound:
+  description: "Trigger not found"
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          status:
+            type: string
+            example: Resource not found
+          error:
+            type: string
+            example: "resource with ID '66741a8c-c2ba-4357-a2c9-ee78e0e7' does not exist"
+
+ServerError:
+  description: "Server error"
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          status:
+            type: string
+            example: Internal Server Error
+          error:
+            type: string
+            example: "no points found to render trigger: 5A8AF369-86D2-44DD-B514-D47995ED6AF7"
+

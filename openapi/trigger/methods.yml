@@ -1,46 +1,184 @@
-trigger:
-  put:
-    summary: "Update existing trigger"
+triggers:
+  get:
+    summary: "get all triggers"
+    operationId: GetTriggers
     tags:
       - trigger
-    parameters:
-      - $ref: parameters.yml#/triggerID
+    responses:
+      $ref: ./responses.yml#/triggers/get_triggers
+
+  put:
+    summary: "create new trigger"
+    operationId: CreateTrigger
+    tags:
+      - trigger
     requestBody:
       required: true
       content:
         application/json:
           schema:
-            $ref: ./requests.yml#/put
+            $ref: ./requests.yml#/create_trigger
     responses:
-      $ref: responses.yml#/put
-  get:
+      $ref: ./responses.yml#/triggers/create_trigger
+
+trigger:
+  put:
     summary: "Update existing trigger"
+    operationId: UpdateTrigger
     tags:
       - trigger
     parameters:
-      - $ref: parameters.yml#/triggerID
+      - $ref: ../shared/parameters/_index.yml#/triggerID
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: "../shared/schemas/Trigger.yml#/Trigger"
     responses:
-      $ref: ./responses.yml#/get
+      $ref: responses.yml#/trigger/put
+
+  get:
+    summary: "Get an existing trigger"
+    operationId: GetTrigger
+    tags:
+      - trigger
+    parameters:
+      - $ref: ../shared/parameters/_index.yml#/triggerID
+    responses:
+      $ref: ./responses.yml#/trigger/get
+
+  delete:
+    summary: "remove a trigger"
+    operationId: DeleteTrigger
+    tags:
+      - trigger
+    parameters:
+      - $ref: ../shared/parameters/_index.yml#/triggerID
+    responses:
+      $ref: ./responses.yml#/trigger/delete
+
 render:
   get:
     summary: "Get rendered plot for trigger"
+    operationId: GetTriggerPlot
     tags:
       - trigger
     parameters:
-      - $ref: parameters.yml#/triggerID
-      - $ref: parameters.yml#/targetID
-      - $ref: parameters.yml#/from
-      - $ref: parameters.yml#/to
+      - $ref: ../shared/parameters/_index.yml#/triggerID
+      - $ref: ../shared/parameters/_index.yml#/targetID
+      - $ref: ../shared/parameters/_index.yml#/from
+      - $ref: ../shared/parameters/_index.yml#/to
     responses:
-      $ref: ./responses.yml#/get_render
+      $ref: ./responses.yml#/render/get
+
+setMaintenance:
+  put:
+    summary: "sets metrics and the trigger itself to maintenance mode"
+    operationId: SetTriggerMaintenance
+    tags:
+      - trigger
+    parameters:
+      - $ref: ../shared/parameters/_index.yml#/triggerID
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            anyOf:
+              - $ref: ./requests.yml#/setMaintenance/trigger
+              - $ref: ./requests.yml#/setMaintenance/metrics
+    responses:
+      $ref: ./responses.yml#/setMaintenance/put
+
 metrics:
   get:
     summary: "Get metrics associated with certain trigger"
+    operationId: GetTriggerMetrics
     tags:
       - trigger
     parameters:
-      - $ref: parameters.yml#/triggerID
-      - $ref: parameters.yml#/from
-      - $ref: parameters.yml#/to
+      - $ref: ../shared/parameters/_index.yml#/triggerID
+      - $ref: ../shared/parameters/_index.yml#/from
+      - $ref: ../shared/parameters/_index.yml#/to
     responses:
-      $ref: ./responses.yml#/get_metrics
+      $ref: ./responses.yml#/metrics/get_metrics
+  delete:
+    summary: "deletes metric from last check and all trigger pattern metrics"
+    operationId: DeleteTriggerMetric
+    tags:
+      - trigger
+    parameters:
+      - $ref: ../shared/parameters/_index.yml#/triggerID
+      - $ref: ../shared/parameters/_index.yml#/metricName
+    responses:
+      $ref: ./responses.yml#/metrics/delete_metric
+
+metrics_nodata:
+  delete:
+    summary: "deletes all metrics from last data which are in NODATA state. It also deletes all trigger patterns of those metrics"
+    operationId: DeleteTriggerNoDataMetrics
+    tags:
+      - trigger
+    parameters:
+      - $ref: ../shared/parameters/_index.yml#/triggerID
+    responses:
+      $ref: ./responses.yml#/metrics_nodata/delete
+
+page:
+  get:
+    summary: "Search triggers. Deprecated, use the `search` endpoint instead"
+    deprecated: true
+    operationId: SearchTriggersPage
+    tags:
+      - trigger
+    parameters:
+      - $ref: ../shared/parameters/_index.yml#/onlyProblems
+      - $ref: ../shared/parameters/_index.yml#/page
+      - $ref: ../shared/parameters/_index.yml#/text
+    responses:
+      $ref: ./responses.yml#/page_triggers
+
+search:
+  get:
+    summary: "Search triggers. Replaces the deprecated `page` path"
+    operationId: SearchTriggers
+    tags:
+      - trigger
+    parameters:
+      - $ref: ../shared/parameters/_index.yml#/onlyProblems
+      - $ref: ../shared/parameters/_index.yml#/page
+      - $ref: ../shared/parameters/_index.yml#/text
+    responses:
+      $ref: ./responses.yml#/search_triggers
+
+state:
+  get:
+    summary: "Get the trigger state as at last check"
+    operationId: GetTriggerState
+    tags:
+      - trigger
+    parameters:
+      - $ref: ../shared/parameters/_index.yml#/triggerID
+    responses:
+      $ref: ./responses.yml#/state/get
+
+throttling:
+  get:
+    summary: "Get a trigger with its throttling i.e its next allowed message time"
+    operationId: GetTriggerThrottling
+    tags:
+      - trigger
+    parameters:
+      - $ref: ../shared/parameters/_index.yml#/triggerID
+    responses:
+      $ref: ./responses.yml#/throttling/get
+  delete:
+    summary: "Deletes throttling for a trigger"
+    operationId: DeleteTriggerThrottling
+    tags:
+      - trigger
+    parameters:
+      - $ref: ../shared/parameters/_index.yml#/triggerID
+    responses:
+      $ref: ./responses.yml#/throttling/delete

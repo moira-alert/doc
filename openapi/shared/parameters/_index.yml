@@ -1,0 +1,147 @@
+contactId:
+  in: path
+  name: contactId
+  required: true
+  schema:
+    type: string
+    format: uuid
+  description: The ID of the target contact
+  example: "bcba82f5-48cf-44c0-b7d6-e1d32c64a88c"
+
+from:
+  in: query
+  name: from
+  required: false
+  schema:
+    type: string
+  description: The start period of metrics to get
+  example: -1hour
+
+metricName:
+  in: query
+  name: name
+  required: true
+  schema:
+    type: string
+  description: Name of the target metric
+  example: "DevOps.my_server.hdd.freespace_mbytes"
+
+notificationId:
+  in: query
+  name: notificationId
+  required: true
+  schema:
+    type: string
+    format: uuid
+  description: The ID of updated trigger
+  example: 5A8AF369-86D2-44DD-B514-D47995ED6AF7
+
+onlyProblems:
+  in: query
+  name: onlyProblems
+  required: false
+  schema:
+    type: boolean
+  description: Restricts the result to errors only
+  example: false
+
+page:
+  in: query
+  name: page
+  required: false
+  schema:
+    type: integer
+  description: "Defines the number of the displayed page. E.g, page=2 would display the 2nd page."
+  example: 1
+
+pattern:
+  in: path
+  name: pattern
+  required: true
+  schema:
+    type: string
+  example: "DevOps.my_server.hdd.freespace_mbytes"
+  description: "Trigger pattern to operate on."
+
+size:
+  in: query
+  name: size
+  required: false
+  schema:
+    type: integer
+  description: "Number of items to be displayed on one page."
+  example: 15
+
+start:
+  in: query
+  name: start
+  required: false
+  schema:
+    type: integer
+    default: 0
+  example: 1
+
+end:
+  in: query
+  name: end
+  required: false
+  schema:
+    type: integer
+    default: -1
+  example: 15
+
+subscriptionId:
+  in: path
+  name: subscriptionId
+  required: true
+  schema:
+    type: string
+    format: uuid
+  example: "bcba82f5-48cf-44c0-b7d6-e1d32c64a88c"
+
+tag:
+  in: path
+  name: tag
+  required: true
+  schema:
+    type: string
+  description: "name of the tag"
+  example: "cpu"
+
+targetID:
+  in: query
+  name: targetID
+  required: false
+  schema:
+    type: string
+  description: The ID of updated target to print plot for
+  example: t1
+
+text:
+  in: query
+  name: text
+  required: true
+  schema:
+    type: string
+  description: query to perform a search for
+  example: cpu
+
+to:
+  in: query
+  name: to
+  required: false
+  schema:
+    type: string
+  description: The end period of metrics to get
+  example: now
+
+triggerID:
+  in: path
+  name: triggerID
+  required: true
+  schema:
+    type: string
+    format: uuid
+  description: The ID of updated trigger
+  example: 5A8AF369-86D2-44DD-B514-D47995ED6AF7
+
