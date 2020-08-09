@@ -1,7 +1,7 @@
 Google Summer of Code
 =====================
 
-Here is the ideas page for Google Summer of Code 2019.
+Here is the ideas page for Google Summer of Code 2020.
 
 We encourage interested students to contact mentors to discuss these ideas or propose
 new ones. The Moira team would appreciate your contributions.
@@ -30,38 +30,13 @@ The source code is licensed under MIT.
 Mentors
 -------
 
-* Alexander Sushko (`sashasushko <https://github.com/sashasushko>`_), web UI developer
-* Alexey Kirpichnikov (`beevee <https://github.com/beevee>`_), core contributor
-* Arkady Borovsky (`borovskyav <https://github.com/borovskyav>`_), core developer
-* Timur Kamaev (`kamaev <https://github.com/kamaev>`_), core developer
+* Alexey Kirpichnikov (`beevee <https://github.com/beevee>`_)
+* Arkady Borovsky (`borovskyav <https://github.com/borovskyav>`_)
+* Emil Sharifullin (`litleleprikon <https://github.com/litleleprikon>`_)
+* Nikolay Kudrin (`nixolay <https://github.com/Nixolay>`_)
 
 Ideas
 -----
-
-Support for additional delivery channels
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-**Explanation.**
-Moira supports a number of delivery channels such as email, Slack, Telegram, etc. to inform users that a certain trigger was activated (see :ref:`subscriptions`).
-
-The aim of this project is to provide support for a number of additional delivery channels.
-To do so, one should talk to community and research possible channels to be added, contribute corresponding `senders <https://github.com/moira-alert/moira/tree/master/senders>`_, and tune the web UI to allow users to create subscriptions using new channels.
-
-.. image:: ./_static/gsoc-moira-delivery-channels.png
-
-**Code reference.**
-See `email sender <https://github.com/moira-alert/moira/blob/master/senders/mail/mail.go>`_ source code or `Pushover sender <https://github.com/moira-alert/moira/blob/master/senders/pushover/pushover.go>`_ source code.
-
-**Required skills.**
-Go skills to add senders, a bit of JavaScript and React to tune the web UI.
-
-**Expected outcome.**
-Some qualitative or quantitative data on channel popularity is collected.
-Several delivery channels are added to Moira and released.
-
-**Mentors.**
-Alexey Kirpichnokov (alexkir@kontur.ru),
-Alexander Sushko (sushko@kontur.ru).
 
 Health checks for delivery channels and contacts
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -91,7 +66,7 @@ Health checks are implemented and released.
 
 **Mentors.**
 Arkady Borovsky (borovskyav@kontur.ru),
-Timur Kamaev (kamaev@kontur.ru).
+Emil Sharifullin (e.sharifullin@kontur.ru).
 
 OpenAPI description of Moira's API
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -119,34 +94,8 @@ Client libraries are released (not required).
 There's a process in place to update the documentation and the clients on API changes.
 
 **Mentors.**
-Arkady Borovsky (borovskyav@kontur.ru),
-Alexey Kirpichnokov (alexkir@kontur.ru).
-
-Integration with Grafana
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-**Explanation.**
-Moira is based on `Graphite <https://graphiteapp.org>`_ data, and Graphite is often used with `Grafana <https://grafana.com>`_ to visualize metrics.
-When a `graph <http://docs.grafana.org/features/panels/graph/>`_ for a certain metric is set up in Grafana and some `thresholds <http://docs.grafana.org/features/panels/graph/#thresholds>`_ are specified, users would like to be able to create a corresponding trigger for this metric in Moira.
-
-The aim of this project is to provide a way to create triggers in Moira from Grafana's web UI with the minimum effort possible.
-To do so, one should create a Grafana plugin which changes its web UI and provides controls to send trigger data to Moira.
-Certain modifications of Moira's trigger creation interface would be required.
-
-.. image:: ./_static/gsoc-grafana.png
-
-**Code reference.**
-See `Moira's web UI <https://github.com/moira-alert/web>`_ source code.
-
-**Required skills.**
-General front-end, JavaScript and React skills to tune Grafana's and Moira's web UIs.
-
-**Expected outcome.**
-The plugin is implemented and contributed to `Grafana plugin directory <https://grafana.com/plugins>`_.
-
-**Mentors.**
-Arkady Borovsky (borovskyav@kontur.ru),
-Alexander Sushko (sushko@kontur.ru).
+Emil Sharifullin (e.sharifullin@kontur.ru),
+Alexey Kirpichnikov (alexkir@kontur.ru).
 
 Flow to TypeScript migration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -160,7 +109,7 @@ The aim of this project is to migrate Moira's web UI source code from Flow to Ty
 To do so, one should analyze the code base, propose a migration strategy, actually rewrite the code, and change the build process if needed.
 
 **Code reference.**
-See `Moira's web UI <https://github.com/moira-alert/web>`_ source code.
+See `Moira's web UI <https://github.com/moira-alert/web2.0>`_ source code.
 
 **Required skills.**
 JavaScript and TypeScript skills. Familiarity with Flow would be a plus.
@@ -170,34 +119,64 @@ Moira's web UI source code is migrated to TypeScript.
 A new major version of Moira's web UI is released.
 
 **Mentors.**
-Alexander Sushko (sushko@kontur.ru),
-Arkady Borovsky (borovskyav@kontur.ru).
+Alexey Kirpichnikov (alexkir@kontur.ru),
+Nikolay Kudrin (n.kudrin@kontur.ru).
 
-Migration to native UI controls
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Noisy trigger analysis tools
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Explanation.**
-Nowadays, Moira's web UI uses the `Retail UI <https://github.com/skbkontur/retail-ui>`_ library of React controls.
-This library is open source but has a certain niche as it was developed for products of `Kontur <https://kontur.ru/eng/about>`_, a large B2B SaaS company from Russia.
-This approach has a number of advantages: controls are designed, implemented and documented very well, there's a handy validations library which comes with them.
-It also has a number of disadvantages: the design of controls is hard to tune (thus, no chance to have UI themes in Moira), the controls have bullet-proof implementations with polyfills (thus, no chance to reduce bundle size), and only few controls are actually used in Moira. 
+On-call engineers are badly affected by noisy triggers that generate alerts multiple times a day.
+Attention to alerts reduces greatly, and chances to miss one important alert grow.
+One badly configured flapping trigger can affect the entire workflow.
+Our documentation contains an `entire page <./user_guide/efficient.html>`_ dedicated to this problem with some tips on mitigation.
+But we can do more.
 
-The aim of this project is to migrate Moira's web UI to native controls.
-To do so, one should analyze the code base, understand the pros and cons, and actually migrate the code if it's better for Moira.
-
-.. image:: ./_static/gsoc-retail-ui.png
+The aim of this project is to help Moira users identify noisy triggers.
+To do so, one should research and define a metric of trigger noisiness, and then create a UI page that demonstrates worst triggers to the user.
 
 **Code reference.**
-See `Moira's web UI <https://github.com/moira-alert/web>`_ source code.
+See `Moira's backend <https://github.com/moira-alert/moira>`_ source code and `Moira's web UI <https://github.com/moira-alert/web2.0>`_ source code.
 
 **Required skills.**
-General JavaScript and React skills.
+Basic Go and JavaScript skills.
 
 **Expected outcome.**
-Moira's web UI is modified to use native UI controls.
-There's no dependency on the `Retail UI <https://github.com/skbkontur/retail-ui>`_ library.
-A new major version of Moira's web UI is released.
+Moira's web UI allows user to see noisy trigger list, optionally filtered by tags.
 
 **Mentors.**
-Alexander Sushko (sushko@kontur.ru),
-Arkady Borovsky (borovskyav@kontur.ru).
+Alexey Kirpichnikov (alexkir@kontur.ru),
+Emil Sharifullin (e.sharifullin@kontur.ru).
+
+Done in previous years
+----------------------
+
+.. warning::
+   Following projects are no longer available.
+
+Support for additional delivery channels
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Done in 2019 by `Aswin <https://github.com/aswinmprabhu>`_.
+
+**Explanation.**
+Moira supports a number of delivery channels such as email, Slack, Telegram, etc. to inform users that a certain trigger was activated (see :ref:`subscriptions`).
+
+The aim of this project is to provide support for a number of additional delivery channels.
+To do so, one should talk to community and research possible channels to be added, contribute corresponding `senders <https://github.com/moira-alert/moira/tree/master/senders>`_, and tune the web UI to allow users to create subscriptions using new channels.
+
+.. image:: ./_static/gsoc-moira-delivery-channels.png
+
+**Code reference.**
+See `email sender <https://github.com/moira-alert/moira/blob/master/senders/mail/mail.go>`_ source code or `Pushover sender <https://github.com/moira-alert/moira/blob/master/senders/pushover/pushover.go>`_ source code.
+
+**Required skills.**
+Go skills to add senders, a bit of JavaScript and React to tune the web UI.
+
+**Expected outcome.**
+Some qualitative or quantitative data on channel popularity is collected.
+Several delivery channels are added to Moira and released.
+
+**Mentors.**
+Alexey Kirpichnikov (alexkir@kontur.ru),
+Alexander Sushko (sushko@kontur.ru).
