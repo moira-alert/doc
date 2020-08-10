@@ -4,46 +4,61 @@ Trigger:
     id:
       type: string
       format: uuid
+      description: "ID of the trigger"
+      example: "292516ed-4924-4154-a62c-ebe312431fce"
     name:
       type: string
       description: "name of the trigger"
+      example: "Not enough disk space left"
     desc:
       type: string
       description: "informative description of the trigger"
+      example: "check the size of /var/log"
     targets:
       type: array
       description: "graphite metric to cause this trigger"
       items:
         type: string
+      example: ["devOps.my_server.hdd.freespace_mbytes"]
     warn_value:
-      type: number
+      type: integer
       description: "value at which Moira should send a WARNING alert"
+      example: 5000
     error_value:
-      type: number
+      type: integer
       description: "value at which Moira should send an ERROR alert"
+      example: 1000
     trigger_type:
       type: string
+      enum: ["rising", "falling"]
       description: "Value is either 'rising' or 'falling'. Dictates when alerts are sent for `warn_value` and `error_value`"
+      example: "rising"
     tags:
       type: array
       description: "the tags associated with this trigger. New tags are automatically created"
       items:
         type: string
+      example: ["server", "disk"]
     ttl_state:
       type: string
+      enum: ["OK", "WARN", "ERROR", "NODATA", "EXCEPTION"]
       description: "state to put the metric in if Moira doesn't receive new data for it from graphite. See <https://moira.readthedocs.io/en/latest/development/architecture.html?highlight=ttl#state/>"
+      example: "NODATA"
     ttl:
       type: integer
       description: "number of seconds to wait for metric update from Graphite before changing the metric state"
+      example: 600
     sched:
       "$ref": "#/definitions/ScheduleData"
     expression:
       type: string
+      example: ""
     patterns:
       type: array
       description: "optional Graphite pattern is a single dot-separated metric name, possibly containing one or more wildcards"
       items:
         type: string
+      example: [""]
     is_remote:
       type: boolean
       description: "dictates if trigger should be added to Graphite instead of Redis. See <https://moira.readthedocs.io/en/latest/installation/configuration.html#remote-triggers-checker/>"
@@ -51,9 +66,11 @@ Trigger:
     mute_new_metrics:
       type: boolean
       description: "if true, Moira will notify you each time the metric state changes, e.g NODATA -> OK"
+      example: false
     throttling:
       type: integer
       description: "See <https://moira.readthedocs.io/en/latest/user_guide/throttling.html/>"
+      example: 0
   required:
     - name
     - desc
@@ -61,25 +78,10 @@ Trigger:
     - ttl_state
     - ttl
     - mute_new_metrics
-  example:
-    name: "Not enough disk space left"
-    desc: "check the size of /var/log"
-    items:
-      - "devOps.my_server.hdd.freespace_mbytes"
-    warn_value: 5000
-    error_value: 1000
-    trigger_type: "falling"
-    tags:
-      - "disk"
-    ttl_state: "NODATA"
-    ttl: 600
-    expression: ""
-    patterns:
-      - ""
-    mute_new_metrics: false
-
+  
 definitions:
   ScheduleData:
+    type: object
     properties:
       days:
         items:
@@ -87,15 +89,24 @@ definitions:
         type: array
       tzOffset:
         type: integer
+        description: "Timezone offset in seconds (wrt GMT)"
+        example: -60
       startOffset:
         type: integer
+        example: 0
       endOffset:
         type: integer
-    type: object
+        example: 1439
+    
   ScheduleDataDay:
+    type: object
     properties:
       enabled:
         type: boolean
+        description: "Indicates if notifications should be sent on this day of the week."
+        example: true
       name:
         type: string
-    type: object
+        description: "Shortened name of the weekday"
+        enum: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+        example: "Mon"
