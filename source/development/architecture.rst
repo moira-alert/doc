@@ -92,7 +92,6 @@ Some targets produce several metrics, for example:
 
    movingAverage(server.web*.load, 10)
 
-
 State
 ^^^^^
 
@@ -141,8 +140,7 @@ Triggers consist of:
 - One or more targets.
 - WARN and ERROR value limits, or a Python expression to calculate state.
 - One or more tags.
-- TTL value. Metrics switch to NODATA state when new data
-  doesn't arrive for TTL seconds.
+- TTL value. When new data doesn't arrive for TTL seconds, the metric will switch to the `State`_ set by the user.
 - Check schedule. For example, a trigger can be set
   to check only during business hours.
 
