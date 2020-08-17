@@ -12,16 +12,16 @@ jobs:
       - uses: actions/checkout@v2
       - name: set output for versioning
         id: vars
-        run: echo ::set-output name=tag::${GITHUB_REF#refs/*/}
+        run: echo ::set-output name=tag::"${GITHUB_REF#refs/*/}"
 
       - name: remove spec from swaggerhub
         env:
-          AUTH_TOKEN: ${{secrets.SWAGGERHUB_TOKEN}}
-          RELEASE_VERSION: ${{ github.event.ref }}
-          SWAGGERHUB_URL: "https://api.swaggerhub.com/apis/idoko/moira-alert"
+          auth_token: ${{secrets.SWAGGERHUB_TOKEN}}
+          release_version: ${{ github.event.ref }}
+          swaggerhub_url: "https://api.swaggerhub.com/apis/idoko/moira-alert"
         shell: bash
         run: |
-          version=${RELEASE_VERSION}
+          version=${release_version}
           version=`echo $version|sed 's#[^a-zA-Z0-9_\.\-]#_#g'`
           echo "removing API spec: ${version} from swaggerhub"
-          curl -X DELETE "${SWAGGERHUB_URL}/${version}" -H "content-type: application/yaml" -H "Authorization: ${AUTH_TOKEN}"
+          curl -X DELETE "${swaggerhub_url}/${version}" -H "content-type: application/yaml" -H "Authorization: ${auth_token}"
