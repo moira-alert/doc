@@ -1,0 +1,26 @@
+get:
+  200:
+    description: "Configuration fetched successfully."
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            remoteAllowed:
+              type: boolean
+              description: Flag for determining if Moira is accessible remotely.
+              example: false
+            contacts:
+              type: array
+              description: List of enabled contact types
+              items:
+                type: object
+                properties:
+                  type:
+                    type: string
+                    description: The type of contact
+                    example: telegram
+                  label:
+                    type: string
+                    description: Human readable label of the contact
+                    example: Telegram
