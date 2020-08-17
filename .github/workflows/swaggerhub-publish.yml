@@ -23,7 +23,6 @@ jobs:
           node-version: '14'
       - run: npm install -g swagger-cli
       - run: make spec
-      - run: pwd
 
       - name: Save build artifact
         uses: actions/upload-artifact@v1
@@ -54,13 +53,13 @@ jobs:
 
       - name: Upload spec file to swaggerhub
         env:
-          AUTH_TOKEN: ${{secrets.SGH_TOKEN}}
+          AUTH_TOKEN: ${{secrets.SWAGGERHUB_TOKEN}}
           RELEASE_VERSION: ${{steps.vars.outputs.tag}}
+          SWAGGERHUB_URL: "https://api.swaggerhub.com/apis/idoko/moira-alert"
         shell: bash
         run: |
           version=${RELEASE_VERSION}
           version=`echo $version|sed 's#[^a-zA-Z0-9_\.\-]#_#g'`
           echo "Uploading OpenAPI spec v ${RELEASE_VERSION}"
-          pwd
           def=`cat ./build/openapi.yml`
-          curl -d "$def" "https://api.swaggerhub.com/apis/idoko/moira-alert/?isPrivate=false&version=${version}&oas=3.0.0&force=true" -H "content-type: application/yaml" -H "Authorization: ${AUTH_TOKEN}"
+          curl -d "$def" "${SWAGGERHUB_URL}/?isPrivate=false&version=${version}&oas=3.0.0&force=true" -H "content-type: application/yaml" -H "Authorization: ${AUTH_TOKEN}"
