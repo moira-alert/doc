@@ -53,13 +53,11 @@ jobs:
 
       - name: Upload spec file to swaggerhub
         env:
-          auth_token: ${{secrets.SWAGGERHUB_TOKEN}}
-          release_version: ${{steps.vars.outputs.tag}}
-          swaggerhub_url: "https://api.swaggerhub.com/apis/idoko/moira-alert"
+          AUTH_TOKEN: ${{secrets.SWAGGERHUB_TOKEN}}
+          BRANCH_NAME: ${{steps.vars.outputs.tag}}
+          SWAGGERHUB_URL: "https://api.swaggerhub.com/apis/moira/moira-alert"
         shell: bash
         run: |
-          version=${RELEASE_VERSION}
-          version=`echo $version|sed 's#[^a-zA-Z0-9_\.\-]#_#g'`
-          echo "Uploading OpenAPI spec v ${RELEASE_VERSION}"
-          def=`cat ./build/openapi.yml`
-          curl -d "$def" "${swaggerhub_url}/?isPrivate=false&version=${version}&oas=3.0.0&force=true" -H "content-type: application/yaml" -H "Authorization: ${auth_token}"
+          VERSION=`echo ${BRANCH_NAME}|sed 's#[^a-zA-Z0-9_\.\-]#_#g'`
+          DEFINITION=`cat ./build/openapi.yml`
+          curl -d "$DEFINITION" "${SWAGGERHUB_URL}/?isPrivate=false&version=${VERSION}&oas=3.0.0&force=true" -H "content-type: application/yaml" -H "Authorization: ${AUTH_TOKEN}"
