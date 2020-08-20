@@ -1,13 +1,13 @@
 openapi: 3.0.0
 info:
-  description: "This is an API description for Moira Alert project. Please check https://github.com/moira-alert"
+  description: "This is an API description for [Moira Alert API](https://moira.readthedocs.io/en/latest/overview.html). Check us out on [Github](https://github.com/moira-alert) or look up our [guide on getting started with Moira](https://moira.readthedocs.io)."
   version: "2.5.1.48"
   title: "Moira Alert"
   license:
     name: "MIT"
 tags:
   - name: "config"
-    description: "View Moira's runtime configuration"
+    description: "View Moira's runtime configuration. For more details, see <https://moira.readthedocs.io/en/latest/installation/configuration.html/>"
  
 
 servers:

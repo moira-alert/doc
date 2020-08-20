@@ -1,5 +1,5 @@
 get:
-  summary: "Get available configuration"
+  summary: "Get the runtime configuration."
   operationId: GetConfig
   tags:
     - config
