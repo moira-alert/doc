@@ -63,7 +63,7 @@ jobs:
       - name: Upload spec file to swaggerhub
         env:
           AUTH_TOKEN: ${{secrets.SWAGGERHUB_TOKEN}}
-          SWAGGERHUB_URL: "https://api.swaggerhub.com/apis/moira/moira-alert"
+          SWAGGERHUB_URL: "https://api.swaggerhub.com/apis/Moira/moira-alert"
         shell: bash
         run: |
           VERSION=`echo ${BRANCH_NAME}|sed 's#[^a-zA-Z0-9_\.\-]#_#g'`
