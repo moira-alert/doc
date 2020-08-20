@@ -1,0 +1,29 @@
+ContactRequest:
+  type: object
+  description: "Format of the request body for POST/PUT requests to `/contacts` and related sub-paths."
+  properties:
+    type:
+      type: string
+      example: "mail"
+    value:
+      type: string
+      example: "devops@example.com"
+
+Contact:
+  type: object
+  description: "Format for responses that gives a contact object."
+  properties:
+    id:
+      type: string
+      description: "ID of the contact"
+      example: "1dd38765-c5be-418d-81fa-7a5f879c2315"
+    user:
+      type: string
+      description: "Username of the user who created the contact"
+      example: ""
+    type:
+      type: string
+      example: "mail"
+    value:
+      type: string
+      example: "devops@example.com"

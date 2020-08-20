@@ -8,7 +8,8 @@ info:
 tags:
   - name: "config"
     description: "View Moira's runtime configuration. For more details, see <https://moira.readthedocs.io/en/latest/installation/configuration.html/>"
- 
+  - name: "contact"
+    description: "APIs for working with Moira contacts. For more details, see <https://moira.readthedocs.io/en/latest/installation/webhooks_scripts.html#contact/>"
 
 servers:
   - url: http://localhost:8080/api
@@ -16,4 +17,19 @@ servers:
 paths:
   /config:
     $ref: ./config/methods.yml
+  /contact:
+    $ref: ./contact/methods.yml#/contacts
+  /contact/{contactId}:
+    $ref: ./contact/methods.yml#/contact
+  /contact/{contactId}/test:
+    $ref: ./contact/methods.yml#/testContact
+
+components:
+  schemas:
+    $ref: "./shared/schemas/_index.yml"
+  parameters:
+    $ref: "./shared/parameters/_index.yml"
+  responses:
+    $ref: "./shared/responses/_index.yml"
+
   
