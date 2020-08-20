@@ -1,6 +1,9 @@
 name: Publish spec version to SwaggerHub
 
 on:
+  pull_request:
+    branches:
+      - master
   push:
     branches:
       - master
@@ -40,9 +43,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: set output for versioning
-        id: vars
-        run: echo ::set-output name=tag::"${GITHUB_REF#refs/*/}"
+
+      - name: Extract branch name on push
+        if: github.event_name != 'pull_request'
+        run: echo "::set-env name=BRANCH_NAME::$(echo ${GITHUB_REF#refs/heads/})"
+
+      - name: Extract branch name on PR
+        if: github.event_name == 'pull_request'
+        run: echo "::set-env name=BRANCH_NAME::$(echo ${GITHUB_HEAD_REF})"
+
 
       - run: mkdir build/
       - name: Download spec file artifact
@@ -54,7 +63,6 @@ jobs:
       - name: Upload spec file to swaggerhub
         env:
           AUTH_TOKEN: ${{secrets.SWAGGERHUB_TOKEN}}
-          BRANCH_NAME: ${{steps.vars.outputs.tag}}
           SWAGGERHUB_URL: "https://api.swaggerhub.com/apis/moira/moira-alert"
         shell: bash
         run: |
