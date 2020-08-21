@@ -1,9 +1,6 @@
 name: Publish spec version to SwaggerHub
 
 on:
-  pull_request:
-    branches:
-      - master
   push:
     branches:
       - master
@@ -24,8 +21,9 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '14'
-      - run: npm install -g swagger-cli
+      - run: npm install -g swagger-cli @openapitools/openapi-generator-cli
       - run: make spec
+      - run: make validate-spec
 
       - name: Save build artifact
         uses: actions/upload-artifact@v1
@@ -47,11 +45,6 @@ jobs:
       - name: Extract branch name on push
         if: github.event_name != 'pull_request'
         run: echo "::set-env name=BRANCH_NAME::$(echo ${GITHUB_REF#refs/heads/})"
-
-      - name: Extract branch name on PR
-        if: github.event_name == 'pull_request'
-        run: echo "::set-env name=BRANCH_NAME::$(echo ${GITHUB_HEAD_REF})"
-
 
       - run: mkdir build/
       - name: Download spec file artifact
