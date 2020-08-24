@@ -1,0 +1,59 @@
+BadRequest:
+  description: "Bad request from client"
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          status:
+            description: "Generic error status text"
+            type: string
+          error:
+            type: string
+            description: "Message telling why the error occurred"
+      examples:
+        missingID:
+          description: "no resource with the provided ID was found"
+          value:
+            status: "invalid request"
+            error: "resource with the ID does not exist"
+
+NotFound:
+  description: "Trigger not found"
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          status:
+            description: "Generic error status text"
+            type: string
+          error:
+            description: "Error message that describes the missing resource."
+            type: string
+      examples:
+        missingTrigger:
+          description: "Trigger with given ID not found"
+          value:
+            status: "resource not found"
+            example: "trigger with ID '66741a8c-c2ba-4357-a2c9-ee78e0e7' does not exist"
+
+ServerError:
+  description: "Server error"
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          status:
+            description: "Generic error status text"
+            type: string
+          error:
+            description: "Message describing the error that occurred."
+            type: string
+      examples:
+        renderingFailed:
+          description: "Failed to render trigger chart"
+          value:
+            status: "Internal Server Error"
+            error: "no points found to render trigger: 5A8AF369-86D2-44DD-B514-D47995ED6AF7"
