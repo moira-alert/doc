@@ -1,0 +1,10 @@
+NotifierState:
+  type: object
+  properties:
+    state:
+      type: string
+      description: "New state of the notifier service. Should be either OK or ERROR"
+      example: "OK"
+    message:
+      type: string
+      description: "Optional description for the state change"
