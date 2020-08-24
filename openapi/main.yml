@@ -13,7 +13,9 @@ tags:
   - name: "event"
     description: "APIs for interacting with notification events. See <https://moira.readthedocs.io/en/latest/user_guide/trigger_page.html#event-history/> for details"
   - name: "health"
-    description: "interact with Moira states/health status. See <https://moira.readthedocs.io/en/latest/user_guide/selfstate.html?highlight=health#self-state-monitor/> for details."
+    description: "interact with Moira states/health status. See <https://moira.readthedocs.io/en/latest/user_guide/selfstate.html#self-state-monitor/> for details."
+  - name: "notifications"
+    description: "manage notifications that are currently in queue. See <https://moira.readthedocs.io/en/latest/user_guide/hidden_pages.html#notifications/>"
 
 servers:
   - url: http://localhost:8080/api
@@ -33,6 +35,10 @@ paths:
     $ref: ./event/methods.yml#/eventForTrigger
   /health/notifier:
     $ref: ./health/methods.yml#/notifier
+  /notification:
+    $ref: ./notification/methods.yml#/notifications
+  /notification/all:
+    $ref: ./notification/methods.yml#/all
 
 components:
   schemas:
