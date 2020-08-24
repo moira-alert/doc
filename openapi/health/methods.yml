@@ -1,0 +1,33 @@
+notifier:
+  get:
+    summary: "Get notifier state"
+    operationId: GetNotifierState
+    tags:
+      - health
+    responses:
+      $ref: ./responses.yml#/getNotifierState
+
+  put:
+    summary: "Update notifier state"
+    operationId: UpdateNotifierState
+    tags:
+      - health
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: ./requests.yml#/updateNotifierState
+          examples:
+            ok:
+              summary: "change the notifier state to OK"
+              value:
+                state: "OK"
+                message: ""
+            error:
+              summary: "put the notifier service in an ERROR state"
+              value:
+                state: "ERROR"
+                message: "Turned off for maintenance"
+    responses:
+      $ref: ./responses.yml#/updateNotifierState
