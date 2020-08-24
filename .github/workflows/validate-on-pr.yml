@@ -1,0 +1,30 @@
+name: Validate OpenAPI spec on new PR
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  mergespec:
+    name: Bundle spec files and validate it.
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: openapi
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '14'
+      - run: npm install -g swagger-cli @openapitools/openapi-generator-cli
+      - run: make spec
+      - run: make validate-spec
+
+      - name: Save build artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: specfile
+          path: openapi/build/openapi.yml

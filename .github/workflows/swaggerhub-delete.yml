@@ -1,7 +1,16 @@
 name: Delete spec version from SwaggerHub
+defaults:
+  run:
+    working-directory: openapi
 
 on:
-  [delete]
+  pull_request:
+    types: [closed]
+  delete:
+    branches:
+      - master
+      - v[0-9]+.[0-9]+.[0-9]+
+      - feature/*
 
 jobs:
   removespec:
@@ -10,14 +19,18 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: set output for versioning
-        id: vars
-        run: echo ::set-output name=tag::"${GITHUB_REF#refs/*/}"
+      - name: Extract branch name on branch delete
+        if: github.event_name != 'pull_request'
+        id: extract_branch_name
+        run: echo "::set-env name=BRANCH_NAME::$(echo ${{ github.event.ref }})"
+
+      - name: Extract branch name on PR closed or merged
+        if: github.event_name == 'pull_request'
+        run: echo "::set-env name=BRANCH_NAME::$(echo ${GITHUB_HEAD_REF})"
 
       - name: remove spec from swaggerhub
         env:
           AUTH_TOKEN: ${{secrets.SWAGGERHUB_TOKEN}}
-          BRANCH_NAME: ${{ github.event.ref }}
           SWAGGERHUB_URL: "https://api.swaggerhub.com/apis/Moira/moira-alert"
         shell: bash
         run: |
