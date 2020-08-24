@@ -4,5 +4,9 @@ ContactRequest:
   $ref: "./Contact.yml#/ContactRequest"
 Event:
   $ref: "./Event.yml#/Event"
+NotificationsList:
+  $ref: "./NotificationsList.yml#/NotificationsList"
 NotifierState:
   $ref: "./NotifierState.yml#/NotifierState"
+Trigger:
+  $ref: "./Trigger.yml#/Trigger"
