@@ -1,0 +1,4 @@
+Contact:
+  $ref: "./Contact.yml#/Contact"
+ContactRequest:
+  $ref: "./Contact.yml#/ContactRequest"
