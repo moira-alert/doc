@@ -10,6 +10,8 @@ tags:
     description: "View Moira's runtime configuration. For more details, see <https://moira.readthedocs.io/en/latest/installation/configuration.html/>"
   - name: "contact"
     description: "APIs for working with Moira contacts. For more details, see <https://moira.readthedocs.io/en/latest/installation/webhooks_scripts.html#contact/>"
+  - name: "event"
+    description: "APIs for interacting with notification events. see <https://moira.readthedocs.io/en/latest/user_guide/trigger_page.html#event-history/> for details"
 
 servers:
   - url: http://localhost:8080/api
@@ -23,6 +25,10 @@ paths:
     $ref: ./contact/methods.yml#/contact
   /contact/{contactId}/test:
     $ref: ./contact/methods.yml#/testContact
+  /event/all:
+    $ref: ./event/methods.yml#/events
+  /event/{triggerID}:
+    $ref: ./event/methods.yml#/eventForTrigger
 
 components:
   schemas:
