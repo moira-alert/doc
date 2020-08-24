@@ -8,6 +8,25 @@ contactId:
   description: The ID of the target contact
   example: "bcba82f5-48cf-44c0-b7d6-e1d32c64a88c"
 
+end:
+  in: query
+  name: end
+  required: false
+  schema:
+    type: integer
+    default: -1
+  example: 15
+
+notificationId:
+  in: query
+  name: notificationId
+  required: true
+  schema:
+    type: string
+    format: uuid
+  description: The ID of updated trigger
+  example: 5A8AF369-86D2-44DD-B514-D47995ED6AF7
+
 page:
   in: query
   name: page
@@ -25,6 +44,15 @@ size:
     type: integer
   description: "Number of items to be displayed on one page."
   example: 15
+
+start:
+  in: query
+  name: start
+  required: false
+  schema:
+    type: integer
+    default: 0
+  example: 1
 
 triggerID:
   in: path

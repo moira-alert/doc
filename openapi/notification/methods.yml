@@ -1,0 +1,30 @@
+notifications:
+  get:
+    summary: "gets a paginated list of notifications, all notifications are fetched if end = -1 and start = 0"
+    operationId: GetNotifications
+    tags:
+      - notifications
+    parameters:
+      - $ref: ../shared/parameters/_index.yml#/start
+      - $ref: ../shared/parameters/_index.yml#/end
+    responses:
+      $ref: ./responses.yml#/notifications/getNotification
+
+  delete:
+    summary: "delete a notification by id"
+    operationId: DeleteNotification
+    tags:
+      - notifications
+    parameters:
+      - $ref: ../shared/parameters/_index.yml#/notificationId
+    responses:
+      $ref: ./responses.yml#/notifications/deleteNotification
+
+all:
+  delete:
+    summary: "deletes all available notifications"
+    operationId: DeleteAllNotification
+    tags:
+      - notifications
+    responses:
+      $ref: ./responses.yml#/all/deleteAllNotifications
