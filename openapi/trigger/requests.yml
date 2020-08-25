@@ -1,0 +1,2 @@
+createTrigger:
+  $ref: "../shared/schemas/Trigger.yml#/Trigger"

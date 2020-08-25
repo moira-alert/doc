@@ -27,6 +27,15 @@ notificationId:
   description: The ID of updated trigger
   example: 5A8AF369-86D2-44DD-B514-D47995ED6AF7
 
+onlyProblems:
+  in: query
+  name: onlyProblems
+  required: false
+  schema:
+    type: boolean
+  description: Restricts the result to errors only
+  example: false
+
 page:
   in: query
   name: page
@@ -80,6 +89,15 @@ tag:
     type: string
   description: "name of the tag"
   example: "cpu"
+
+text:
+  in: query
+  name: text
+  required: true
+  schema:
+    type: string
+  description: query to perform a search for
+  example: cpu
 
 triggerID:
   in: path
