@@ -1,0 +1,90 @@
+Subscription:
+  type: object
+  properties:
+    contacts:
+      type: array
+      description: "ID of contacts that are part of this subscription"
+      items:
+        type: string
+        format: uuid
+      example: ["acd2db98-1659-4a2f-b227-52d71f6e3ba1"]
+    tags:
+      type: array
+      description: "The tags for this subscription"
+      items:
+        type: string
+      example: ["server", "cpu"]
+    sched:
+      "$ref": "#/definitions/ScheduleData"
+    plotting:
+      "$ref": "#/definitions/PlottingData"
+    id:
+      type: string
+      description: "ID of this subscription"
+      example: "292516ed-4924-4154-a62c-ebe312431fce"
+    enabled:
+      type: boolean
+      description: "If false, notifications due for thsi subscription will not be sent"
+      example: true
+    any_tags:
+      type: boolean
+      example: false
+    ignore_warnings:
+      type: boolean
+      description: "If true, notifications will not be sent for warning values."
+      example: false
+    ignore_recoverings:
+      type: boolean
+      example: false
+    throttling:
+      type: boolean
+      example: false
+    user:
+      type: string
+      description: "ID of the user that created the subscription"
+      example: ""
+
+definitions:
+  PlottingData:
+    type: object
+    properties:
+      enabled:
+        type: boolean
+        example: true
+      theme:
+        type: string
+        enum: ["light", "dark"]
+        description: "Theme of the chart. Should be either 'light' or 'dark'"
+        example: "dark"
+
+  ScheduleData:
+    type: object
+    properties:
+      days:
+        items:
+          "$ref": "#/definitions/ScheduleDataDay"
+        type: array
+      tzOffset:
+        type: integer
+        description: "Timezone offset in seconds (wrt GMT)"
+        example: -60
+      startOffset:
+        type: integer
+        example: 0
+      endOffset:
+        type: integer
+        example: 1439
+
+  ScheduleDataDay:
+    type: object
+    properties:
+      enabled:
+        type: boolean
+        description: "Indicates if notifications should be sent on this day of the week."
+        example: true
+      name:
+        type: string
+        description: "Shortened name of the weekday"
+        enum: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+        example: "Mon"
+

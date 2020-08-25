@@ -63,6 +63,15 @@ start:
     default: 0
   example: 1
 
+subscriptionId:
+  in: path
+  name: subscriptionId
+  required: true
+  schema:
+    type: string
+    format: uuid
+  example: "bcba82f5-48cf-44c0-b7d6-e1d32c64a88c"
+
 triggerID:
   in: path
   name: triggerID
