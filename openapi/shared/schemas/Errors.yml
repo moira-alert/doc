@@ -1,0 +1,12 @@
+# Error is an extensible error schema and allows individual operations
+# to customize for their use
+Error:
+  type: object
+  description: "This represents the format of a generic Moira error response."
+  properties:
+    status:
+      description: "The corresponding error status"
+      type: string
+    error:
+      type: string
+      description: "Message telling why the error occurred"

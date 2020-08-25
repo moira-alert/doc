@@ -10,5 +10,11 @@ NotifierState:
   $ref: "./NotifierState.yml#/NotifierState"
 Pattern:
   $ref: "./Pattern.yml#/Pattern"
+Subscription:
+  $ref: "./Subscription.yml#/Subscription"
 Trigger:
   $ref: "./Trigger.yml#/Trigger"
+
+# Include generic error schema, that way operations can override them and provide custom examples
+Error:
+  $ref: "./Errors.yml#/Error"

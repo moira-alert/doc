@@ -3,14 +3,7 @@ BadRequest:
   content:
     application/json:
       schema:
-        type: object
-        properties:
-          status:
-            description: "Generic error status text"
-            type: string
-          error:
-            type: string
-            description: "Message telling why the error occurred"
+        $ref: "../schemas/Errors.yml#/Error"
       examples:
         missingID:
           description: "no resource with the provided ID was found"
@@ -23,14 +16,7 @@ NotFound:
   content:
     application/json:
       schema:
-        type: object
-        properties:
-          status:
-            description: "Generic error status text"
-            type: string
-          error:
-            description: "Error message that describes the missing resource."
-            type: string
+        $ref: "../schemas/Errors.yml#/Error"
       examples:
         missingTrigger:
           description: "Trigger with given ID not found"
@@ -43,14 +29,7 @@ ServerError:
   content:
     application/json:
       schema:
-        type: object
-        properties:
-          status:
-            description: "Generic error status text"
-            type: string
-          error:
-            description: "Message describing the error that occurred."
-            type: string
+        $ref: "../schemas/Errors.yml#/Error"
       examples:
         renderingFailed:
           description: "Failed to render trigger chart"
