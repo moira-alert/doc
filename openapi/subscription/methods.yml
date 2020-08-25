@@ -1,0 +1,59 @@
+subscriptions:
+  get:
+    summary: "get all subscriptions"
+    operationId: GetSubscriptions
+    tags:
+      - subscription
+    responses:
+      $ref: ./responses.yml#/getSubscription
+  put:
+    summary: "create a new subscription"
+    operationId: CreateSubscription
+    tags:
+      - subscription
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: "../shared/schemas/Subscription.yml#/Subscription"
+    responses:
+      $ref: ./responses.yml#/createSubscription
+subscription:
+  put:
+    summary: "update a subscription"
+    operationId: UpdateSubscription
+    tags:
+      - subscription
+    parameters:
+      - $ref: "../shared/parameters/_index.yml#/subscriptionId"
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: "../shared/schemas/Subscription.yml#/Subscription"
+    responses:
+      $ref: ./responses.yml#/updateSubscription
+
+  delete:
+    summary: "deletes a subscription"
+    operationId: DeleteSubscription
+    tags:
+      - subscription
+    parameters:
+      - $ref: "../shared/parameters/_index.yml#/subscriptionId"
+    responses:
+      $ref: ./responses.yml#/deleteSubscription
+
+test:
+  put:
+    summary: "send test notification for a subscription"
+    operationId: TestSubscriptionNotification
+    tags:
+      - subscription
+    parameters:
+      - $ref: "../shared/parameters/_index.yml#/subscriptionId"
+    responses:
+      $ref: ./responses.yml#/testSubscriptionNotification
+

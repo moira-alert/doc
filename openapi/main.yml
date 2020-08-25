@@ -18,6 +18,8 @@ tags:
     description: "manage notifications that are currently in queue. See <https://moira.readthedocs.io/en/latest/user_guide/hidden_pages.html#notifications/>"
   - name: "pattern"
     description: "APIs for interacting with graphite patterns in Moira. See <https://moira.readthedocs.io/en/latest/development/architecture.html#pattern/>"
+  - name: "subscription"
+    description: "APIs for managing a user's subscription(s). See <https://moira.readthedocs.io/en/latest/development/architecture.html#subscription/> to learn about Moira subscriptions."
 
 servers:
   - url: http://localhost:8080/api
@@ -45,6 +47,13 @@ paths:
     $ref: ./pattern/methods.yml#/patterns
   /pattern/{pattern}:
     $ref: ./pattern/methods.yml#/pattern
+  /subscription:
+    $ref: ./subscription/methods.yml#/subscriptions
+  /subscription/{subscriptionId}:
+    $ref: ./subscription/methods.yml#/subscription
+  /subscription/{subscriptionId}/test:
+    $ref: ./subscription/methods.yml#/test
+
 
 components:
   schemas:

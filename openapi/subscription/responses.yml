@@ -1,0 +1,82 @@
+getSubscription:
+  200:
+    description: "subscriptions fetched successfully"
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            list:
+              type: array
+              description: "list of all the available subscriptions"
+              items:
+                $ref: "../shared/schemas/Subscription.yml#/Subscription"
+
+createSubscription:
+  200:
+    description: "subscription created"
+    content:
+      application/json:
+        schema:
+          $ref: "../shared/schemas/Subscription.yml#/Subscription"
+  400:
+    description: "Invalid request data"
+    content:
+      application/json:
+        schema:
+          $ref: "../shared/schemas/Errors.yml#/Error"
+        examples:
+          missingField:
+            description: "a required field isn't in the request body"
+            value:
+              status: "Invalid request"
+              message: "subscription must have tags"
+      text/html:
+        schema:
+          type: string
+
+updateSubscription:
+  200:
+    description: "subscription updated"
+    content:
+      application/json:
+        schema:
+          $ref: "../shared/schemas/Subscription.yml#/Subscription"
+  400:
+    description: "invalid request data"
+    content:
+      application/json:
+        schema:
+          $ref: "../shared/schemas/Errors.yml#/Error"
+        examples:
+          missingField:
+            description: "a required field isn't in the request body"
+            value:
+              status: "Invalid request"
+              message: "subscription must have tags"
+          subscriptionNotFound:
+            description: "no subscription with the given ID was found"
+            value:
+              status: "Invalid request"
+              message: "subscription with ID '00' does not exist"
+      text/html:
+        schema:
+          type: string
+  404:
+    $ref: "../shared/responses/_index.yml#/NotFound"
+
+deleteSubscription:
+  200:
+    description: "subscription deleted"
+  400:
+    $ref: "../shared/responses/_index.yml#/BadRequest"
+  404:
+    $ref: "../shared/responses/_index.yml#/NotFound"
+
+testSubscriptionNotification:
+  200:
+    description: "test notification sent successfully"
+  400:
+    $ref: "../shared/responses/_index.yml#/BadRequest"
+  404:
+    $ref: "../shared/responses/_index.yml#/NotFound"
