@@ -72,6 +72,15 @@ subscriptionId:
     format: uuid
   example: "bcba82f5-48cf-44c0-b7d6-e1d32c64a88c"
 
+tag:
+  in: path
+  name: tag
+  required: true
+  schema:
+    type: string
+  description: "name of the tag"
+  example: "cpu"
+
 triggerID:
   in: path
   name: triggerID
