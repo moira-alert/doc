@@ -20,6 +20,8 @@ tags:
     description: "APIs for interacting with graphite patterns in Moira. See <https://moira.readthedocs.io/en/latest/development/architecture.html#pattern/>"
   - name: "subscription"
     description: "APIs for managing a user's subscription(s). See <https://moira.readthedocs.io/en/latest/development/architecture.html#subscription/> to learn about Moira subscriptions."
+  - name: "tag"
+    description: "APIs for managing tags (a grouping of tags and subscriptions). See <https://moira.readthedocs.io/en/latest/user_guide/subscriptions.html#tags/>"
 
 servers:
   - url: http://localhost:8080/api
@@ -53,6 +55,13 @@ paths:
     $ref: ./subscription/methods.yml#/subscription
   /subscription/{subscriptionId}/test:
     $ref: ./subscription/methods.yml#/test
+  /tag:
+    $ref: ./tag/methods.yml#/tags
+  /tag/{tag}:
+    $ref: ./tag/methods.yml#/tag
+  /tag/stats:
+    $ref: ./tag/methods.yml#/stats
+
 
 
 components:

@@ -1,0 +1,26 @@
+tags:
+  get:
+    summary: "get all tags"
+    operationId: GetTags
+    tags:
+      - tag
+    responses:
+      $ref: ./responses.yml#/getTags
+tag:
+  delete:
+    summary: "remove a tag"
+    operationId: DeleteTag
+    tags:
+      - tag
+    parameters:
+      - $ref: ../shared/parameters/_index.yml#/tag
+    responses:
+      $ref: ./responses.yml#/deleteTag
+stats:
+  get:
+    summary: "get all tags and subscriptions"
+    operationId: GetTagsSubscriptions
+    tags:
+      - tag
+    responses:
+      $ref: ./responses.yml#/getTagSubscriptions
