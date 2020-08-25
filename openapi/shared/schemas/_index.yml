@@ -8,5 +8,7 @@ NotificationsList:
   $ref: "./NotificationsList.yml#/NotificationsList"
 NotifierState:
   $ref: "./NotifierState.yml#/NotifierState"
+Pattern:
+  $ref: "./Pattern.yml#/Pattern"
 Trigger:
   $ref: "./Trigger.yml#/Trigger"

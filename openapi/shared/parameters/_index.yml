@@ -36,6 +36,15 @@ page:
   description: "Defines the number of the displayed page. E.g, page=2 would display the 2nd page."
   example: 1
 
+pattern:
+  in: path
+  name: pattern
+  required: true
+  schema:
+    type: string
+  example: "DevOps.my_server.hdd.freespace_mbytes"
+  description: "Trigger pattern to operate on."
+
 size:
   in: query
   name: size
