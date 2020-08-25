@@ -1,0 +1,86 @@
+triggers:
+  get:
+    summary: "get all triggers"
+    operationId: GetTriggers
+    tags:
+      - trigger
+    responses:
+      $ref: ./responses.yml#/triggers/getTriggers
+
+  put:
+    summary: "create new trigger"
+    operationId: CreateTrigger
+    tags:
+      - trigger
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: ./requests.yml#/createTrigger
+    responses:
+      $ref: ./responses.yml#/triggers/createTrigger
+
+trigger:
+  put:
+    summary: "Update existing trigger"
+    operationId: UpdateTrigger
+    tags:
+      - trigger
+    parameters:
+      - $ref: ../shared/parameters/_index.yml#/triggerID
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: "../shared/schemas/Trigger.yml#/Trigger"
+    responses:
+      $ref: responses.yml#/trigger/updateTrigger
+
+  get:
+    summary: "Get an existing trigger"
+    operationId: GetTrigger
+    tags:
+      - trigger
+    parameters:
+      - $ref: ../shared/parameters/_index.yml#/triggerID
+    responses:
+      $ref: ./responses.yml#/trigger/getTrigger
+
+  delete:
+    summary: "remove a trigger"
+    operationId: DeleteTrigger
+    tags:
+      - trigger
+    parameters:
+      - $ref: ../shared/parameters/_index.yml#/triggerID
+    responses:
+      $ref: ./responses.yml#/trigger/deleteTrigger
+
+page:
+  get:
+    summary: "Search triggers. Deprecated, use the `search` endpoint instead"
+    deprecated: true
+    operationId: SearchTriggersPage
+    tags:
+      - trigger
+    parameters:
+      - $ref: ../shared/parameters/_index.yml#/onlyProblems
+      - $ref: ../shared/parameters/_index.yml#/page
+      - $ref: ../shared/parameters/_index.yml#/text
+    responses:
+      $ref: ./responses.yml#/pageTriggers
+
+search:
+  get:
+    summary: "Search triggers. Replaces the deprecated `page` path"
+    operationId: SearchTriggers
+    tags:
+      - trigger
+    parameters:
+      - $ref: ../shared/parameters/_index.yml#/onlyProblems
+      - $ref: ../shared/parameters/_index.yml#/page
+      - $ref: ../shared/parameters/_index.yml#/text
+    responses:
+      $ref: ./responses.yml#/searchTriggers
