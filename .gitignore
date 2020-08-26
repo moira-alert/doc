@@ -4,3 +4,4 @@ build
 source/_build_html
 source/_build
 .vscode
+openapi/.hypothesis
