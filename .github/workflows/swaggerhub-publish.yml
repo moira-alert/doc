@@ -42,7 +42,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          repository: moira-alert/moira
+          repository: moira-alert/docker-compose
       - name: Set up docker services
         run: docker-compose up -d
 
