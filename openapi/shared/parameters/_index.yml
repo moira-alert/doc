@@ -17,6 +17,25 @@ end:
     default: -1
   example: 15
 
+from:
+  in: query
+  name: from
+  required: false
+  schema:
+    type: string
+  description: The start period of metrics to get
+  example: -1hour
+
+metricName:
+  in: query
+  name: name
+  required: true
+  schema:
+    type: string
+  description: Name of the target metric
+  example: "DevOps.my_server.hdd.freespace_mbytes"
+
+
 notificationId:
   in: query
   name: notificationId
@@ -89,6 +108,24 @@ tag:
     type: string
   description: "name of the tag"
   example: "cpu"
+
+targetID:
+  in: query
+  name: targetID
+  required: false
+  schema:
+    type: string
+  description: The ID of updated target to print plot for
+  example: t1
+
+to:
+  in: query
+  name: to
+  required: false
+  schema:
+    type: string
+  description: The end period of metrics to get
+  example: now
 
 text:
   in: query

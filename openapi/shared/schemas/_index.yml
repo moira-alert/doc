@@ -4,6 +4,10 @@ ContactRequest:
   $ref: "./Contact.yml#/ContactRequest"
 Event:
   $ref: "./Event.yml#/Event"
+MaintenanceInfo:
+  $ref: "./TriggerCheck.yml#/MaintenanceInfo"
+MetricState:
+  $ref: "./TriggerCheck.yml#/MetricState"
 NotificationsList:
   $ref: "./NotificationsList.yml#/NotificationsList"
 NotifierState:
@@ -14,7 +18,8 @@ Subscription:
   $ref: "./Subscription.yml#/Subscription"
 Trigger:
   $ref: "./Trigger.yml#/Trigger"
-
+TriggerCheck:
+  $ref: "./TriggerCheck.yml#/TriggerCheck"
 # Include generic error schema, that way operations can override them and provide custom examples
 Error:
   $ref: "./Errors.yml#/Error"

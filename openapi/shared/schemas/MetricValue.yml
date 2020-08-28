@@ -1,0 +1,9 @@
+MetricValue:
+  type: object
+  properties:
+    step:
+      type: integer
+    ts:
+      type: integer
+    value:
+      type: number

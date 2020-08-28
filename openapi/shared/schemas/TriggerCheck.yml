@@ -1,0 +1,71 @@
+TriggerCheck:
+  properties:
+    metrics:
+      "$ref": "#/MetricState"
+    score:
+      type: integer
+      example: 100
+    state:
+      type: string
+      example: "OK"
+    maintenance:
+      type: integer
+    maintenance_info:
+      "$ref": "#/MaintenanceInfo"
+    timestamp:
+      type: integer
+      example: 1590741916
+    event_timestamp:
+      type: integer
+      example: 1590741878
+    last_successful_check_timestamp:
+      type: integer
+      example: 1590741916
+    suppressed:
+      type: boolean
+    suppressed_state:
+      type: string
+    msg:
+      type: string
+    trigger_id:
+      type: string
+  additionalProperties: false
+  type: object
+
+MaintenanceInfo:
+  type: object
+  properties:
+    setup_user:
+      type: string
+    setup_time:
+      type: integer
+    remove_user:
+      type: string
+    remove_time:
+      type: integer
+
+MetricState:
+  properties:
+    event_timestamp:
+      type: integer
+      example: 1590741878
+    state:
+      type: string
+      example: "OK"
+    suppressed:
+      type: boolean
+      example: false
+    suppressed_state:
+      type: string
+    timestamp:
+      type: integer
+      example: 1590741878
+    value:
+      type: number
+      example: 70
+    maintenance:
+      type: integer
+    maintenance_info:
+      "$ref": "#/MaintenanceInfo"
+  additionalProperties: false
+  type: object
