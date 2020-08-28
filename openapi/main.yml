@@ -75,8 +75,8 @@ paths:
     $ref: ./trigger/methods.yml#/metrics
   /trigger/{triggerID}/metrics/nodata:
     $ref: ./trigger/methods.yml#/metricsNoData
-  /trigger/{triggerID}/render:
-    $ref: ./trigger/methods.yml#/render
+  #/trigger/{triggerID}/render:
+  #  $ref: ./trigger/methods.yml#/render
   /trigger/{triggerID}/setMaintenance:
     $ref: ./trigger/methods.yml#/setMaintenance
   /trigger/{triggerID}/state:
