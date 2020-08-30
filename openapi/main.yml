@@ -71,9 +71,10 @@ paths:
     $ref: ./trigger/methods.yml#/search
   /trigger/{triggerID}:
     $ref: ./trigger/methods.yml#/trigger
-
-
-
+  /user:
+    $ref: ./user/methods.yml#/user
+  /user/settings:
+    $ref: ./user/methods.yml#/settings
 
 components:
   schemas:

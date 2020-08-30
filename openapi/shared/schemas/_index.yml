@@ -14,6 +14,8 @@ Subscription:
   $ref: "./Subscription.yml#/Subscription"
 Trigger:
   $ref: "./Trigger.yml#/Trigger"
+User:
+  $ref: "./User.yml#/User"
 
 # Include generic error schema, that way operations can override them and provide custom examples
 Error:
