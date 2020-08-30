@@ -1,0 +1,65 @@
+name: Build client libraries from OpenAPI spec
+defaults:
+  run:
+    working-directory: openapi
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  bundlespec:
+    name: Bundle multiple spec files and validate it
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '14'
+      - run: npm install -g swagger-cli @openapitools/openapi-generator-cli
+      - run: make spec
+      - run: make validate-spec
+
+      - name: Save build artifcat
+        uses: actions/upload-artifact@v1
+        with:
+          name: specfile
+          path: openapi/build/openapi.yml
+
+  build-ts-library:
+    name: Build client libraries and push to their repos
+    runs-on: ubuntu-latest
+    needs: bundlespec
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - run: mkdir build/
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '14'
+      - run: npm install -g @openapitools/openapi-generator-cli
+      - name: Download OpenAPI spec file
+        uses: actions/download-artifact@v1
+        with:
+          name: specfile
+          path: openapi/build
+
+      - name: Build client libraries
+        run: |
+          make generate-py
+          make generate-go
+          make generate-ts
+          make generate-cs
+
+      - name: Commit generated client libraries
+        run: |
+          git config user.email "${{ secrets.GIT_EMAIL }}"
+          git config user.name "${{ secrets.GIT_USERNAME }}"
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          git add clients
+          git commit -m "automated build for client libraries"
+          git push
