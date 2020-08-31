@@ -71,6 +71,18 @@ paths:
     $ref: ./trigger/methods.yml#/search
   /trigger/{triggerID}:
     $ref: ./trigger/methods.yml#/trigger
+  /trigger/{triggerID}/metrics:
+    $ref: ./trigger/methods.yml#/metrics
+  /trigger/{triggerID}/metrics/nodata:
+    $ref: ./trigger/methods.yml#/metricsNoData
+  #/trigger/{triggerID}/render:
+  #  $ref: ./trigger/methods.yml#/render
+  /trigger/{triggerID}/setMaintenance:
+    $ref: ./trigger/methods.yml#/setMaintenance
+  /trigger/{triggerID}/state:
+    $ref: ./trigger/methods.yml#/state
+  /trigger/{triggerID}/throttling:
+    $ref: ./trigger/methods.yml#/throttling
   /user:
     $ref: ./user/methods.yml#/user
   /user/settings:
