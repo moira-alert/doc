@@ -59,7 +59,7 @@ jobs:
         run: |
           git config user.email "${{ secrets.GIT_EMAIL }}"
           git config user.name "${{ secrets.GIT_USERNAME }}"
-          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ secrets.CLIENT_LIBRARY_REPOSITORY }}
           git add clients
           git commit -m "automated build for client libraries"
           git push
