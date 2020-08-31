@@ -1,2 +1,18 @@
 createTrigger:
   $ref: "../shared/schemas/Trigger.yml#/Trigger"
+
+setMaintenance:
+  trigger:
+    type: object
+    properties:
+      trigger:
+        type: integer
+        description: "Unix timestamp for when the maintenance should be over"
+        example: 1594225165
+  metrics:
+    type: object
+    properties:
+      metrics:
+        type: object
+        description: "JSON object (i.e key value pair) of the metric and the unix time to end the scheduled maintenance"
+        example: '{"devops.*": 1594225165}'
