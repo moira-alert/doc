@@ -125,7 +125,7 @@ Web contact fields:
 
 .. image:: ../_static/web-ui-example.png
    :alt: WEB UI example
-   :width: 596
+   :width: 575
 
 Remote API
 ----------
