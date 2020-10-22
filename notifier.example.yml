@@ -34,6 +34,13 @@ telemetry:
     prefix: DevOps.moira
     # Metrics sending interval
     interval: 60s
+image_store:
+  # AWS S3 bucket to store images
+  s3:
+    access_key_id: "myaccesskeyid"
+    access_key: "myaccesskey"
+    region: "eu-central-1"
+    bucket: "moira"
 notifier:
   # Soft timeout to start retrying to send notification after single failed attempt
   sender_timeout: 10s
@@ -103,6 +110,8 @@ notifier:
       user: ...
       password: ...
     - type: pagerduty
+      # Configured image storage to store plots images
+      image_store: "s3"
     - type: opsgenie
       api_key: ...
     - type: victorops
