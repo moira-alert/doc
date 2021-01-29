@@ -40,3 +40,5 @@ filter:
 log:
   log_file: stdout
   log_level: info
+  # Enable human-readable console output
+  log_pretty_format: true
