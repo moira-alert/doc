@@ -7,7 +7,7 @@ spec:
 	swagger-cli bundle main.yml -o $(SPEC_FILE) -t yaml
 
 validate-spec:
-	openapi-generator validate -i $(SPEC_FILE)
+	openapi-generator-cli validate -i $(SPEC_FILE)
 
 test-spec:
 	schemathesis run \
