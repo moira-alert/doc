@@ -38,7 +38,7 @@ metricName:
 
 notificationId:
   in: query
-  name: notificationId
+  name: id
   required: true
   schema:
     type: string
