@@ -69,7 +69,7 @@ Trigger:
       example: false
     throttling:
       type: integer
-      description: "See <https://moira.readthedocs.io/en/latest/user_guide/throttling.html/>"
+      description: "See <https://moira.readthedocs.io/en/latest/user_guide/throttling.html>"
       example: 0
     alone_metrics:
       type: object

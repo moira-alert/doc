@@ -7,7 +7,7 @@ info:
     name: "MIT"
 tags:
   - name: "config"
-    description: "View Moira's runtime configuration. For more details, see <https://moira.readthedocs.io/en/latest/installation/configuration.html/>"
+    description: "View Moira's runtime configuration. For more details, see <https://moira.readthedocs.io/en/latest/installation/configuration.html>"
   - name: "contact"
     description: "APIs for working with Moira contacts. For more details, see <https://moira.readthedocs.io/en/latest/installation/webhooks_scripts.html#contact/>"
   - name: "event"
