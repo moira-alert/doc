@@ -71,6 +71,12 @@ Trigger:
       type: integer
       description: "See <https://moira.readthedocs.io/en/latest/user_guide/throttling.html/>"
       example: 0
+    alone_metrics:
+      type: object
+      additionalProperties:
+        type: boolean
+      description: // JSON object (i.e key-value pair) of targets where 'true' means that have only alone metrics
+      example: '{"t1": true}'
   required:
     - name
     - desc
@@ -78,6 +84,7 @@ Trigger:
     - ttl_state
     - ttl
     - mute_new_metrics
+    - alone_metrics
 
 definitions:
   ScheduleData:
