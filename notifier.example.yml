@@ -121,13 +121,12 @@ notifier:
         value: devopsteam@example.com
     # Adjusting minimal log level with concrete fields
     set_log_level:
-      level: "debug"
-      contacts: [
-          id: "111",
-          id: "222"
-      ]
+      triggers:
+        - id: "111"
+          level: "debug"
       subscriptions:
         - id: "999"
+          level: "warn"
 log:
   log_file: stdout
   log_level: info
