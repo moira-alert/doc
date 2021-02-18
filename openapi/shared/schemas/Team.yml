@@ -1,0 +1,19 @@
+Team:
+  type: object
+  properties:
+    id:
+      type: string
+      format: uuid
+      description: "ID of the team"
+      example: "d5d98eb3-ee18-4f75-9364-244f67e23b54"
+    name:
+      type: string
+      description: "Name of the team"
+      example: "Infrastructure Team"
+    description:
+      type: string
+      description: "Description of the team"
+      example: "Team that holds all members of infrastructure division"
+  required:
+    - name
+    - desc

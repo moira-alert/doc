@@ -1,0 +1,69 @@
+getTeams:
+  200:
+    description: "Teams fetched successfully"
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            teams:
+              type: array
+              description: "List of all the teams"
+              items:
+                $ref: "../shared/schemas/Team.yml#/Team"
+  404:
+    $ref: "../shared/responses/_index.yml#/NotFound"
+  500:
+    $ref: "../shared/responses/_index.yml#/ServerError"
+
+createTeam:
+  200:
+    description: "Team created successfully"
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            id:
+              type: string
+              description: "Id of created team"
+              format: uuid
+              example: "d5d98eb3-ee18-4f75-9364-244f67e23b54"
+  500:
+    $ref: "../shared/responses/_index.yml#/ServerError"
+
+getTeam:
+  200:
+    description: "Team updated successfully"
+    content:
+      application/json:
+        schema:
+          $ref: ../shared/schemas/Team.yml#/Team
+  400:
+    $ref: "../shared/responses/_index.yml#/BadRequest"
+  404:
+    $ref: "../shared/responses/_index.yml#/NotFound"
+  500:
+    $ref: "../shared/responses/_index.yml#/ServerError"
+
+updateTeam:
+  200:
+    description: "Team updated successfully"
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            id:
+              type: string
+              description: "Id of updated team"
+              format: uuid
+              example: "d5d98eb3-ee18-4f75-9364-244f67e23b54"
+  400:
+    $ref: "../shared/responses/_index.yml#/BadRequest"
+  404:
+    $ref: "../shared/responses/_index.yml#/NotFound"
+  500:
+    $ref: "../shared/responses/_index.yml#/ServerError"
+
+users:

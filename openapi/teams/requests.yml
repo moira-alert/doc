@@ -1,0 +1,9 @@
+createTeam:
+  type: object
+  properties:
+    name:
+      type: string
+      example: "Infrastructure Team"
+    description:
+      type: string
+      example: "Team that holds all members of infrastructure division"
