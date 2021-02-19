@@ -154,3 +154,12 @@ teamID:
     format: uuid
   description: The ID of team
   example: d5d98eb3-ee18-4f75-9364-244f67e23b54
+
+teamUserID:
+  in: path
+  name: teamUserID
+  required: true
+  schema:
+    type: string
+  description: User login in methods related to teams manipulation
+  example: anonymous

@@ -30,6 +30,10 @@ tags:
     description: "APIs for interacting with Moira triggers. See <https://moira.readthedocs.io/en/latest/development/architecture.html#trigger/> to learn about Triggers."
   - name: "team"
     description: "APIs for interacting with Moira teams."
+  - name: "teamSubscription"
+    description: "APIs for interacting with Moira subscriptions owned by certain team."
+  - name: "teamContact"
+    description: "APIs for interacting with Moira contacts owned by certain team."
 
 servers:
   - url: http://localhost:8080/api
@@ -75,6 +79,12 @@ paths:
     $ref: ./teams/methods.yml#/team
   /team/{teamID}/users:
     $ref: ./teams/methods.yml#/teamUsers
+  /team/{teamID}/users/{teamUserID}:
+    $ref: ./teams/methods.yml#/teamUser
+  /team/{teamID}/subscriptions:
+    $ref: ./subscription/methods.yml#/teamSubscriptions
+  /team/{teamID}/contacts:
+    $ref: ./contact/methods.yml#/teamContacts
   /trigger:
     $ref: ./trigger/methods.yml#/triggers
   /trigger/page:

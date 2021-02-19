@@ -45,7 +45,6 @@ contact:
     responses:
       $ref: ./responses.yml#/deleteContact
 
-
 testContact:
   post:
     summary: "Push a test notification to verify that the contact is properly set up."
@@ -56,3 +55,20 @@ testContact:
       - $ref: ../shared/parameters/_index.yml#/contactId
     responses:
       $ref: ./responses.yml#/testContactNotification
+
+teamContacts:
+  post:
+    summary: "Creates a new contact notification for the current team."
+    operationId: CreateNewTeamContact
+    tags:
+      - teamContact
+    parameters:
+      - $ref: ../shared/parameters/_index.yml#/teamID
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: ./requests.yml#/newContact
+    responses:
+      $ref: ./responses.yml#/newContact

@@ -50,16 +50,16 @@ team:
 teamUsers:
   get:
     summary: "Get team users"
-    operationId: GetTeam
+    operationId: GetTeamUsers
     tags:
       - team
     parameters:
       - $ref: "../shared/parameters/_index.yml#/teamID"
     responses:
-      $ref: responses.yml#/getTeam
-  patch:
-    summary: "Update existing team"
-    operationId: UpdateTrigger
+      $ref: responses.yml#/getTeamUsers
+  post:
+    summary: "Add users to a team"
+    operationId: AddTeamUsers
     tags:
       - team
     parameters:
@@ -69,6 +69,18 @@ teamUsers:
       content:
         application/json:
           schema:
-            $ref: ../shared/schemas/Team.yml#/Team
+            $ref: ../shared/schemas/Team.yml#/TeamMembers
+    responses:
+      $ref: responses.yml#/updateTeam
+
+teamUser:
+  delete:
+    summary: "Remove user from a team"
+    operationId: DeleteTeamUser
+    tags:
+      - team
+    parameters:
+      - $ref: ../shared/parameters/_index.yml#/teamID
+      - $ref: ../shared/parameters/_index.yml#/teamUserID
     responses:
       $ref: responses.yml#/updateTeam

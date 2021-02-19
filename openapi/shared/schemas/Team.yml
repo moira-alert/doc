@@ -17,3 +17,15 @@ Team:
   required:
     - name
     - desc
+
+TeamMembers:
+  type: object
+  properties:
+    usernames:
+      type: array
+      description: "List of all users in team"
+      items:
+        type: string
+        example: "anonymous"
+  required:
+    - usernames
