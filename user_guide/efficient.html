@@ -1,0 +1,383 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Efficient Triggers &mdash; Moira 2.5.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinxcontrib-images/LightBox2/lightbox2/css/lightbox.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinxcontrib-images/LightBox2/lightbox2/js/jquery-1.11.0.min.js"></script>
+        <script src="../_static/sphinxcontrib-images/LightBox2/lightbox2/js/lightbox.min.js"></script>
+        <script src="../_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Schedules" href="schedule.html" />
+    <link rel="prev" title="Setting Up Your Subscriptions" href="subscriptions.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Moira
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.5
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">User Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="simple.html">Simple Threshold Trigger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="subscriptions.html">Setting Up Your Subscriptions</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Efficient Triggers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#states">States</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ok">OK</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#warn">WARN</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#error">ERROR</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nodata">NODATA</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#exception">EXCEPTION</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#dealing-with-false-positives">Dealing With False Positives</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#use-graphite-functions">Use Graphite Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#draw-first-monitor-later">Draw First, Monitor Later</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="schedule.html">Schedules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trigger_page.html">Current State and Event History</a></li>
+<li class="toctree-l2"><a class="reference internal" href="throttling.html">Throttling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nodata.html">Dealing with NODATA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advanced.html">Advanced Mode Trigger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hidden_pages.html">Hidden Pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maintenance.html">Maintenance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="selfstate.html">Self State Monitor</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contacts.html">Contact Moira Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gsoc.html">Google Summer of Code</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Moira</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">User Guide</a> &raquo;</li>
+        
+      <li>Efficient Triggers</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/user_guide/efficient.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="efficient-triggers">
+<h1>Efficient Triggers<a class="headerlink" href="#efficient-triggers" title="Permalink to this headline">¶</a></h1>
+<p>To use Moira efficiently, you should understand its underlying
+design decisions.</p>
+<p>We often notice that when new users create their first triggers,
+they set thresholds at random, or by intuition. It happens because
+when you configure your first 24/7/365 automated monitoring system,
+you don’t really know how your system works. If you have at least
+hundreds of metrics, it’s impossible to watch all of them with
+your eyes. What are the limits of your system? How often does your
+system reach critical resource consumption during a day? Should you
+immediately react when metric X reaches value N, or is it a fluctuation
+that passes by itself?</p>
+<p>Later, when you learn to understand you system, you will need to adjust
+your triggers. And that’s when you need to understand Moira.</p>
+<div class="section" id="states">
+<h2>States<a class="headerlink" href="#states" title="Permalink to this headline">¶</a></h2>
+<p>Unlike many other tools providing several distinct level systems like
+“priority” and “severity”, Moira supports a single set of states.
+Every state has a well-defined meaning, and you should use these states
+accordingly.</p>
+<div class="section" id="ok">
+<h3>OK<a class="headerlink" href="#ok" title="Permalink to this headline">¶</a></h3>
+<p>This is a basic state, in which all your metrics must spend most of their
+time. Just like you keep your autotests green, you should keep your
+metrics green.</p>
+</div>
+<div class="section" id="warn">
+<h3>WARN<a class="headerlink" href="#warn" title="Permalink to this headline">¶</a></h3>
+<p>This state means that you should do something to prevent ERRORs in the future.
+Not immediately: maybe you should order more hardware from your vendor,
+or plan to optimize code in the next iteration. You can configure less
+intrusive delivery channels here, like email.</p>
+<p>Metrics can be in this state for days or even weeks.</p>
+</div>
+<div class="section" id="error">
+<h3>ERROR<a class="headerlink" href="#error" title="Permalink to this headline">¶</a></h3>
+<p>This is a critical condition that requires immediate intervention. Your
+datacenter is on fire. All application processes shut down. There is no
+disk space left on your database server to process million-dollar
+transactions. These notifications are important enough to wake you up
+at night. You can still configure schedules to assign shifts to several
+engineers, though (see <a class="reference internal" href="schedule.html"><span class="doc">Schedules</span></a>). You should configure
+more intrusive delivery channels here, like Pushover.</p>
+<p>Metrics should not be in this state for more than several hours.</p>
+<p>Moira will send you reminders every 24 hours if some of your metrics
+remain in this state.</p>
+<p>If a delivery channel supports high-priority messages (like Pushover does),
+Moira will try to use them for ERRORs.</p>
+</div>
+<div class="section" id="nodata">
+<h3>NODATA<a class="headerlink" href="#nodata" title="Permalink to this headline">¶</a></h3>
+<p>This state means that Moira hasn’t been receiving data points for a metric
+for some time. See <a class="reference internal" href="nodata.html"><span class="doc">Dealing with NODATA</span></a> for details. This state
+is considered as bad as an ERROR in Moira (because it can actually be
+an ERROR - we don’t receive any data, so we don’t know for sure).
+It may be even worse than an ERROR, because users tend to ignore metrics
+in this state and leave them hanging in the web interface, greatly
+increasing the chance to miss something actually important. You should
+delete old unused metrics from Moira when they stop providing data points:</p>
+<a class=""
+               data-lightbox="group-da9e84f8-f468-435e-92e0-3b961d4b89b8"
+               href="../_images/delete_metric1.png"
+               title=""
+               data-title=""
+               ><img src="../_images/delete_metric1.png"
+                     class=""
+                     width="100%"
+                     height="auto"
+                     alt="delete unused metrics"/>
+                </a><p>In the beginning every metric is in this state. You will receive one
+NODATA → OK notification when the first data point arrives.</p>
+<p>Moira will send you reminders every 24 hours if some of your metrics remain
+in this state.</p>
+<p>Moira will set NODATA state only for known metrics - i.e. for metrics that
+have sent at least one data point to Moira.</p>
+</div>
+<div class="section" id="exception">
+<h3>EXCEPTION<a class="headerlink" href="#exception" title="Permalink to this headline">¶</a></h3>
+<p>This is an error inside Moira. Unless you have bad syntax in your
+<a class="reference internal" href="advanced.html"><span class="doc">Advanced Mode Trigger</span></a> trigger, this has nothing to do with your
+metric state. You should try to fix or update Moira, or contact Moira
+developers (see <a class="reference internal" href="../contacts.html"><span class="doc">Contact Moira Developers</span></a>).</p>
+</div>
+</div>
+<div class="section" id="dealing-with-false-positives">
+<h2>Dealing With False Positives<a class="headerlink" href="#dealing-with-false-positives" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes it’s hard to maintain strict rule of keeping your metrics
+green, if your triggers switch OK → ERROR → OK → ERROR
+for short periods of time several times a day. It can lead to alarm
+fatigue and missing actual failures.</p>
+<p>There is no single recipe for eliminating false positives, but here
+are some tips.</p>
+<div class="section" id="use-graphite-functions">
+<h3>Use Graphite Functions<a class="headerlink" href="#use-graphite-functions" title="Permalink to this headline">¶</a></h3>
+<p>Graphite provides tons of useful <a class="reference external" href="http://graphite.readthedocs.org/en/latest/functions.html">functions</a> to process data, and Moira
+understands all of them. For example:</p>
+<ul>
+<li><p>If you are experiencing peaks on you graphs that lead to unnecessary
+state switches, you can alleviate these peaks with <code class="docutils literal notranslate"><span class="pre">movingAverage</span></code> or
+<code class="docutils literal notranslate"><span class="pre">movingMedian</span></code>.</p>
+<a class=""
+               data-lightbox="group-90093363-f7f8-4985-9af2-2377b11ff260"
+               href="../_images/moving_average1.png"
+               title=""
+               data-title=""
+               ><img src="../_images/moving_average1.png"
+                     class=""
+                     width="100%"
+                     height="auto"
+                     alt="moving average Graphite function"/>
+                </a></li>
+<li><p>If you are interested in aggregate 10-minute values, not single minute
+values, use <code class="docutils literal notranslate"><span class="pre">movingSum</span></code>.</p></li>
+<li><p>If you want zeros instead of missing data points, use <code class="docutils literal notranslate"><span class="pre">transformNull</span></code>.
+Also, <code class="docutils literal notranslate"><span class="pre">keepLastValue</span></code> is useful when dealing with missing points.</p></li>
+<li><p>Avoid functions that show and hide metrics, like <code class="docutils literal notranslate"><span class="pre">averageAbove</span></code>.
+Moira does not consider hidden metrics to be in NODATA state. Instead,
+Moira retains last state that the metric had when it was visible.</p></li>
+</ul>
+</div>
+<div class="section" id="draw-first-monitor-later">
+<h3>Draw First, Monitor Later<a class="headerlink" href="#draw-first-monitor-later" title="Permalink to this headline">¶</a></h3>
+<p>Always draw a graph of target(s) you are planning to monitor. Use generic
+Graphite web interface or something like Grafana. Look for minumum and maximum
+values. Notice, how often and for how long the graph crosses your
+planned thresholds. Try to correlate the graph with previous system failures.
+Then, copy and paste corrected target to Moira.</p>
+<p>Of course, you may and should remove any functions that make no sense in Moira
+(like <code class="docutils literal notranslate"><span class="pre">sortByTotal</span></code>) and can generate unwanted side effects
+(like <code class="docutils literal notranslate"><span class="pre">averageAbove</span></code>).</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="schedule.html" class="btn btn-neutral float-right" title="Schedules" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="subscriptions.html" class="btn btn-neutral float-left" title="Setting Up Your Subscriptions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2019, SKB Kontur.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

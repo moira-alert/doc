@@ -1,0 +1,721 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Configuration &mdash; Moira 2.5.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinxcontrib-images/LightBox2/lightbox2/css/lightbox.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinxcontrib-images/LightBox2/lightbox2/js/jquery-1.11.0.min.js"></script>
+        <script src="../_static/sphinxcontrib-images/LightBox2/lightbox2/js/lightbox.min.js"></script>
+        <script src="../_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Webhooks and Custom Scripts" href="webhooks_scripts.html" />
+    <link rel="prev" title="RPM and DEB Packages" href="packages.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Moira
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.5
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Release Notes</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Installation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="manual.html">Manual Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker.html">Docker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="packages.html">RPM and DEB Packages</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#filter">Filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#checker">Checker</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#remote-triggers-checker">Remote Triggers Checker</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lazy-triggers-checker">Lazy Triggers Checker</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#notifier">Notifier</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#slack-icons">Slack icons</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#email-template">Email Template</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#self-state-monitor">Self State Monitor</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#api-and-web">API and Web</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#remote-api">Remote API</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="webhooks_scripts.html">Webhooks and Custom Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feeding.html">Feeding Metrics to Moira</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html">Security</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contacts.html">Contact Moira Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gsoc.html">Google Summer of Code</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Moira</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Installation</a> &raquo;</li>
+        
+      <li>Configuration</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/installation/configuration.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="configuration">
+<h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h1>
+<p>By default, microservices will look for <code class="docutils literal notranslate"><span class="pre">/etc/moira/&lt;servicename&gt;.yml</span></code>,
+but you can change this location by passing your path as a command-line
+parameter <code class="docutils literal notranslate"><span class="pre">--config</span></code>.</p>
+<p>On this page you can find examples of configuration files
+for Moira microservices.</p>
+<div class="section" id="filter">
+<span id="filter-configuration"></span><h2>Filter<a class="headerlink" href="#filter" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use fields MasterName and SentinelAddrs to enable Redis Sentinel support,</span>
+<span class="c1"># use Host and Port fields otherwise.</span>
+<span class="nt">redis</span><span class="p">:</span>
+  <span class="c1"># Sentinel cluster name</span>
+  <span class="nt">master_name</span><span class="p">:</span> <span class="s">&quot;&quot;</span>
+  <span class="c1"># Sentinel address list, format: {host1_name:port};{ip:port}</span>
+  <span class="nt">sentinel_addrs</span><span class="p">:</span> <span class="s">&quot;&quot;</span>
+  <span class="c1"># Node ip-address or host name</span>
+  <span class="nt">host</span><span class="p">:</span> <span class="s">&quot;moira-redis&quot;</span>
+  <span class="c1"># Node port</span>
+  <span class="nt">port</span><span class="p">:</span> <span class="s">&quot;6379&quot;</span>
+  <span class="c1"># Database id</span>
+  <span class="nt">dbid</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0</span>
+  <span class="c1"># Redis client connection pool size</span>
+  <span class="nt">connection_limit</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">512</span>
+<span class="nt">graphite</span><span class="p">:</span>
+  <span class="c1"># If true, graphite sender will be enabled.</span>
+  <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+  <span class="c1"># If true, runtime stats will be captured and sent to graphite. Note: It takes to call stoptheworld() with configured &quot;graphite.interval&quot; to capture runtime stats (https://golang.org/src/runtime/mstats.go)</span>
+  <span class="nt">runtime_stats</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+  <span class="c1"># Graphite relay URI, format: ip:port</span>
+  <span class="nt">uri</span><span class="p">:</span> <span class="s">&quot;graphite-relay:2003&quot;</span>
+  <span class="c1"># Moira metrics prefix. Use &#39;prefix: {hostname}&#39; to use hostname autoresolver.</span>
+  <span class="nt">prefix</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">DevOps.moira</span>
+  <span class="c1"># Metrics sending interval</span>
+  <span class="nt">interval</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">60s</span>
+<span class="nt">filter</span><span class="p">:</span>
+  <span class="c1"># Metrics listener uri</span>
+  <span class="nt">listen</span><span class="p">:</span> <span class="s">&quot;:2003&quot;</span>
+  <span class="c1"># Retentions config file path. Simply use your original storage-schemas.conf or create new if you&#39;re using Moira without existing Graphite installation.</span>
+  <span class="nt">retention_config</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/moira/storage-schemas.conf</span>
+  <span class="c1"># Number of metrics to cache before checking them.</span>
+  <span class="c1"># Note: As this value increases, Redis CPU usage decreases.</span>
+  <span class="c1"># Normally, this value must be an order of magnitude less than graphite.prefix.filter.recevied.matching.count | nonNegativeDerivative() | scaleToSeconds(1)</span>
+  <span class="c1"># For example: with 100 matching metrics, set cache_capacity to 10. With 1000 matching metrics, increase cache_capacity up to 100.</span>
+  <span class="nt">cache_capacity</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10</span>
+  <span class="c1"># Defines number of threads to match incoming graphite-metrics.</span>
+  <span class="c1"># Equals to the number of processor cores found on Moira host by default or when variable is defined as 0.</span>
+  <span class="nt">max_parallel_matches</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="nt">log</span><span class="p">:</span>
+  <span class="nt">log_file</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">stdout</span>
+  <span class="nt">log_level</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">info</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="http://graphite.readthedocs.io/en/latest/config-carbon.html#storage-schemas-conf">storage-schemas.conf</a> is graphite carbon configuration file that
+should match similarly-named file in your Graphite installation.</p>
+</div>
+<div class="section" id="checker">
+<h2>Checker<a class="headerlink" href="#checker" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use fields MasterName and SentinelAddrs to enable Redis Sentinel support,</span>
+<span class="c1"># use Host and Port fields otherwise.</span>
+<span class="nt">redis</span><span class="p">:</span>
+  <span class="c1"># Sentinel cluster name</span>
+  <span class="nt">master_name</span><span class="p">:</span> <span class="s">&quot;&quot;</span>
+  <span class="c1"># Sentinel address list, format: {host1_name:port};{ip:port}</span>
+  <span class="nt">sentinel_addrs</span><span class="p">:</span> <span class="s">&quot;&quot;</span>
+  <span class="c1"># Node ip-address or host name</span>
+  <span class="nt">host</span><span class="p">:</span> <span class="s">&quot;moira-redis&quot;</span>
+  <span class="c1"># Node port</span>
+  <span class="nt">port</span><span class="p">:</span> <span class="s">&quot;6379&quot;</span>
+  <span class="c1"># Database id</span>
+  <span class="nt">dbid</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0</span>
+  <span class="c1"># Redis client connection pool size</span>
+  <span class="nt">connection_limit</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">512</span>
+<span class="nt">graphite</span><span class="p">:</span>
+  <span class="c1"># If true, graphite sender will be enabled.</span>
+  <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+  <span class="c1"># If true, runtime stats will be captured and sent to graphite. Note: It takes to call stoptheworld() with configured &quot;graphite.interval&quot; to capture runtime stats (https://golang.org/src/runtime/mstats.go)</span>
+  <span class="nt">runtime_stats</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+  <span class="c1"># Graphite relay URI, format: ip:port</span>
+  <span class="nt">uri</span><span class="p">:</span> <span class="s">&quot;graphite-relay:2003&quot;</span>
+  <span class="c1"># Moira metrics prefix. Use &#39;prefix: {hostname}&#39; to use hostname autoresolver.</span>
+  <span class="nt">prefix</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">DevOps.moira</span>
+  <span class="c1"># Metrics sending interval</span>
+  <span class="nt">interval</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">60s</span>
+<span class="nt">checker</span><span class="p">:</span>
+  <span class="c1"># Period for every trigger to perform forced check on</span>
+  <span class="nt">nodata_check_interval</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">60s</span>
+  <span class="c1"># Min period to perform triggers re-check. Note: Reducing of this value leads to increasing of CPU and memory usage values</span>
+  <span class="nt">check_interval</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10s</span>
+  <span class="c1"># In Moira 2.4 we add a new entity - Lazy Trigger. This is a regular trigger but without any subscription for it.</span>
+  <span class="c1"># By default Moira treats any trigger equally regardless on its subscriptions number.</span>
+  <span class="c1"># You can change this behaviour using option below. This can reduce CPU usage on your server.</span>
+  <span class="c1"># Lazy triggers checker works if lazy_triggers_check_interval &gt; check_interval. We recommend setting it to 10m.</span>
+  <span class="nt">lazy_triggers_check_interval</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10m</span>
+  <span class="c1"># Time interval to store metrics. Note: Increasing of this value leads to increasing of Redis memory consumption value</span>
+  <span class="nt">metrics_ttl</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3h</span>
+  <span class="c1"># Period for every trigger to cancel forced check (greater than &#39;NoDataCheckInterval&#39;) if no metrics were received</span>
+  <span class="nt">stop_checking_interval</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">30s</span>
+  <span class="c1"># Equals to the number of processor cores found on Moira host by default or when variable is defined as 0.</span>
+  <span class="nt">max_parallel_checks</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0</span>
+  <span class="c1"># Is related with remote triggers (see remote section)</span>
+  <span class="c1"># Equals to the number of processor cores found on Moira host by default or when variable is defined as 0.</span>
+  <span class="nt">max_parallel_remote_checks</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="c1"># This section configures remote triggers Checker.</span>
+<span class="c1"># See https://moira.readthedocs.io/en/latest/installation/configuration.html#remote-triggers-checker for futher information</span>
+<span class="nt">remote</span><span class="p">:</span>
+  <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+  <span class="c1"># URL of Graphite HTTP API: graphite-web, carbonapi, etc.</span>
+  <span class="c1"># Specify full URL including &#39;/render&#39;</span>
+  <span class="nt">url</span><span class="p">:</span> <span class="s">&quot;http://graphite.example.com/render&quot;</span>
+  <span class="c1"># Auth username. Only Basic-auth supported</span>
+  <span class="nt">user</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">devops</span>
+  <span class="c1"># Auth password. Only Basic-auth supported</span>
+  <span class="nt">password</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">verySecurePassword</span>
+  <span class="c1"># Min period to perform triggers re-check. </span>
+  <span class="c1"># Note: Reducing of this value leads to increasing of CPU and memory usage values and extra load on Graphite HTTP API</span>
+  <span class="nt">check_interval</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">60s</span>
+  <span class="c1"># Maximum timeout for HTTP-request made to Graphite HTTP API</span>
+  <span class="nt">timeout</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">60s</span>
+<span class="nt">log</span><span class="p">:</span>
+  <span class="nt">log_file</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">stdout</span>
+  <span class="nt">log_level</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">info</span>
+</pre></div>
+</div>
+<div class="section" id="remote-triggers-checker">
+<span id="id1"></span><h3>Remote Triggers Checker<a class="headerlink" href="#remote-triggers-checker" title="Permalink to this headline">¶</a></h3>
+<p>One of Moira key feature is Graphite independance. Some Graphite queries
+are <em>very</em> ineffective. Tools like <a class="reference external" href="https://github.com/scobal/seyren">Seyren</a> multiply this effect every
+minute making lots of ineffective queries and overloading your cluster.
+Moira relies on the incoming metric stream, and has its own fast cache
+for recent data.</p>
+<p>Enabling Remote triggers Checker allows user to create triggers
+that relies on Graphite Storage instead of Redis DB.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Use this feature with caution, because it can create an extra load on Graphite HTTP API.</p>
+</div>
+</div>
+<div class="section" id="lazy-triggers-checker">
+<span id="id2"></span><h3>Lazy Triggers Checker<a class="headerlink" href="#lazy-triggers-checker" title="Permalink to this headline">¶</a></h3>
+<p>In Moira 2.4 we add a new entity - Lazy Trigger. This is a regular trigger
+but without any subscription for it. By default Moira treats any trigger
+equally regardless on its subscriptions number. You can change this behaviour
+using <code class="docutils literal notranslate"><span class="pre">lazy_triggers_check_interval</span></code> option in checker section. This can
+reduce CPU usage on your server. Lazy triggers checker works if
+<code class="docutils literal notranslate"><span class="pre">lazy_triggers_check_interval</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">check_interval</span></code>. We recommend set
+it to <code class="docutils literal notranslate"><span class="pre">10m</span></code> (10 minutes).</p>
+</div>
+</div>
+<div class="section" id="notifier">
+<span id="notifier-configuration"></span><h2>Notifier<a class="headerlink" href="#notifier" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use fields MasterName and SentinelAddrs to enable Redis Sentinel support,</span>
+<span class="c1"># use Host and Port fields otherwise.</span>
+<span class="nt">redis</span><span class="p">:</span>
+  <span class="c1"># Sentinel cluster name</span>
+  <span class="nt">master_name</span><span class="p">:</span> <span class="s">&quot;&quot;</span>
+  <span class="c1"># Sentinel address list, format: {host1_name:port};{ip:port}</span>
+  <span class="nt">sentinel_addrs</span><span class="p">:</span> <span class="s">&quot;&quot;</span>
+  <span class="c1"># Node ip-address or host name</span>
+  <span class="nt">host</span><span class="p">:</span> <span class="s">&quot;moira-redis&quot;</span>
+  <span class="c1"># Node port</span>
+  <span class="nt">port</span><span class="p">:</span> <span class="s">&quot;6379&quot;</span>
+  <span class="c1"># Database id</span>
+  <span class="nt">dbid</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0</span>
+  <span class="c1"># Redis client connection pool size</span>
+  <span class="nt">connection_limit</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">512</span>
+<span class="nt">graphite</span><span class="p">:</span>
+  <span class="c1"># If true, graphite sender will be enabled.</span>
+  <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+  <span class="c1"># If true, runtime stats will be captured and sent to graphite. Note: It takes to call stoptheworld() with configured &quot;graphite.interval&quot; to capture runtime stats (https://golang.org/src/runtime/mstats.go)</span>
+  <span class="nt">runtime_stats</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+  <span class="c1"># Graphite relay URI, format: ip:port</span>
+  <span class="nt">uri</span><span class="p">:</span> <span class="s">&quot;graphite-relay:2003&quot;</span>
+  <span class="c1"># Moira metrics prefix. Use &#39;prefix: {hostname}&#39; to use hostname autoresolver.</span>
+  <span class="nt">prefix</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">DevOps.moira</span>
+  <span class="c1"># Metrics sending interval</span>
+  <span class="nt">interval</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">60s</span>
+<span class="nt">notifier</span><span class="p">:</span>
+  <span class="c1"># Soft timeout to start retrying to send notification after single failed attempt</span>
+  <span class="nt">sender_timeout</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10s</span>
+  <span class="c1"># Hard timeout to stop retrying to send notification after multiple failed attempts</span>
+  <span class="nt">resending_timeout</span><span class="p">:</span> <span class="s">&quot;1:00&quot;</span>
+  <span class="c1"># Web-UI uri prefix for trigger links in notifications. For example: with &#39;http://localhost&#39; every notification will contain link like &#39;http://localhost/trigger/triggerId&#39;</span>
+  <span class="nt">front_uri</span><span class="p">:</span> <span class="s">&quot;https://moira.example.com&quot;</span>
+  <span class="c1"># Timezone to use to convert ticks. Default is UTC. See https://golang.org/pkg/time/#LoadLocation for more details.</span>
+  <span class="nt">timezone</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Europe/Moscow</span>
+  <span class="c1"># Format for email sender. Default is &quot;15:04 02.01.2006&quot;. See https://golang.org/pkg/time/#Time.Format for more details about golang time formatting.</span>
+  <span class="nt">date_time_format</span><span class="p">:</span> <span class="s">&quot;15:04</span><span class="nv"> </span><span class="s">02.01.2006&quot;</span>
+  <span class="c1"># Amount of messages notifier reads from Redis per iteration, -1 for unlimited</span>
+  <span class="nt">read_batch_size</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">-1</span>
+  <span class="c1"># List of senders, every element has &quot;type&quot; field (one of [&quot;pushover&quot;, &quot;slack&quot;, &quot;mail&quot;, &quot;telegram&quot;, &quot;twilio sms&quot;, &quot;twilio voice&quot;, &quot;script&quot;])</span>
+  <span class="c1"># Every type of sender has additional config fields</span>
+  <span class="nt">senders</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">pushover</span>
+      <span class="c1"># Api token for your pushover channel, for more info see https://pushover.net/api#registration</span>
+      <span class="nt">api_token</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">...</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">slack</span>
+      <span class="c1"># Api token for your moira notifications slack user, for more info see https://get.slack.help/hc/en-us/articles/215770388-Create-and-regenerate-API-tokens</span>
+      <span class="nt">api_token</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">...</span>
+      <span class="c1"># If true, notification will be sent with state-specific icon, for more info see https://moira.readthedocs.io/en/latest/installation/configuration.html#slack-icons.</span>
+      <span class="nt">use_emoji</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">telegram</span>
+      <span class="c1"># Api token for your telegram bot, for more info about creating bot and get token see https://core.telegram.org/bots#3-how-do-i-create-a-bot</span>
+      <span class="nt">api_token</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">...</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mail</span>
+      <span class="nt">mail_from</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">...</span>
+      <span class="nt">smtp_host</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">...</span>
+      <span class="nt">smtp_port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">...</span>
+      <span class="c1"># Skip SMTP server certificate chain validation if false</span>
+      <span class="nt">insecure_tls</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+      <span class="c1"># Uses &quot;mail_from&quot; if empty</span>
+      <span class="nt">smtp_user</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">...</span>
+      <span class="nt">smtp_pass</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">...</span>
+      <span class="c1"># Email template file path (standard Go templates). By default use &#39;Fancy&#39; template (see screenshot below). If empty, use build-in template with no markups and styles.</span>
+      <span class="nt">template_file</span><span class="p">:</span> <span class="s">&#39;/etc/moira/fancy-template.html&#39;</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">twilio voice</span>
+      <span class="nt">api_asid</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">...</span>
+      <span class="nt">api_authtoken</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">...</span>
+      <span class="nt">api_fromphone</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">...</span>
+      <span class="c1"># URL that responds with TwiML config for voice message generation, see https://www.twilio.com/docs/api/twiml/voice-overview</span>
+      <span class="nt">voiceurl</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">...</span>
+      <span class="nt">append_message</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">twilio sms</span>
+      <span class="nt">api_asid</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">...</span>
+      <span class="nt">api_authtoken</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">...</span>
+      <span class="nt">api_fromphone</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">...</span>
+    <span class="c1"># Script and webhook senders support additional templated parameters:</span>
+    <span class="c1"># ${contact_id}    contact ID</span>
+    <span class="c1"># ${contact_value} contact value (as specified by user via web UI)</span>
+    <span class="c1"># ${contact_type}  contact type (as specified in web UI config file)</span>
+    <span class="c1"># ${trigger_id}    trigger ID</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">script</span>
+      <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">...</span>
+      <span class="c1"># Executable path. File must exist on all machines where notifier is running.</span>
+      <span class="c1"># You can use templated parameters here (see above), they will be replaced with appropriate values.</span>
+      <span class="nt">exec</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">...</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">webhook</span>
+      <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">...</span>
+      <span class="c1"># URL to send POST request (you can use templated parameters, see above)</span>
+      <span class="nt">url</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">...</span>
+      <span class="nt">timeout</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">...</span>
+      <span class="c1"># Basic authorization parameters (if required)</span>
+      <span class="nt">user</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">...</span>
+      <span class="nt">password</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">...</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">pagerduty</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">opsgenie</span>
+      <span class="nt">api_key</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">...</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">victorops</span>
+      <span class="nt">routing_url</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">...</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">discord</span>
+      <span class="nt">token</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">...</span>
+  <span class="c1"># Self state monitor configuration section. Note: No inner subscriptions is required. Moira will use its notification mechanism to send messages.</span>
+  <span class="nt">moira_selfstate</span><span class="p">:</span>
+    <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+    <span class="c1"># If true, Moira selfstate will check remote triggers checker works properly and notify admin if remote checker fails</span>
+    <span class="c1"># See https://moira.readthedocs.io/en/latest/installation/configuration.html#remote-triggers-checker for futher information</span>
+    <span class="nt">remote_triggers_enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+    <span class="c1"># Max Redis disconnect delay to send alert when reached</span>
+    <span class="nt">redis_disconect_delay</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">60s</span>
+    <span class="c1"># Max Filter metrics receive delay to send alert when reached</span>
+    <span class="nt">last_metric_received_delay</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">120s</span>
+    <span class="c1"># Max Checker checks perform delay to send alert when reached</span>
+    <span class="nt">last_check_delay</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">120s</span>
+    <span class="c1"># Max Remote triggers Checker checks perform delay to send alert when reached</span>
+    <span class="c1"># See https://moira.readthedocs.io/en/latest/installation/configuration.html#remote-triggers-checker for futher information</span>
+    <span class="nt">last_remote_check_delay</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">300s</span>
+    <span class="c1"># Self state monitor alerting interval</span>
+    <span class="nt">notice_interval</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">300s</span>
+    <span class="c1"># Contact list for Self state monitor alerts, use this like delivery channels in web-ui</span>
+    <span class="nt">contacts</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mail</span>
+        <span class="nt">value</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">devopsteam@example.com</span>
+<span class="nt">log</span><span class="p">:</span>
+  <span class="nt">log_file</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">stdout</span>
+  <span class="nt">log_level</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">info</span>
+<span class="c1"># This section configures remote triggers Checker.</span>
+<span class="c1"># See https://moira.readthedocs.io/en/latest/installation/configuration.html#remote-triggers-checker for futher information</span>
+<span class="nt">remote</span><span class="p">:</span>
+  <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+  <span class="c1"># URL of Graphite HTTP API: graphite-web, carbonapi, etc.</span>
+  <span class="c1"># Specify full URL including &#39;/render&#39;</span>
+  <span class="nt">url</span><span class="p">:</span> <span class="s">&quot;http://graphite.example.com/render&quot;</span>
+  <span class="c1"># Auth username. Only Basic-auth supported</span>
+  <span class="nt">user</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">devops</span>
+  <span class="c1"># Auth password. Only Basic-auth supported</span>
+  <span class="nt">password</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">verySecurePassword</span>
+  <span class="c1"># Min period to perform triggers re-check. </span>
+  <span class="c1"># Note: Reducing of this value leads to increasing of CPU and memory usage values and extra load on Graphite HTTP API</span>
+  <span class="nt">check_interval</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">60s</span>
+  <span class="c1"># Maximum timeout for HTTP-request made to Graphite HTTP API</span>
+  <span class="nt">timeout</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">60s</span>
+</pre></div>
+</div>
+<div class="section" id="slack-icons">
+<span id="id3"></span><h3>Slack icons<a class="headerlink" href="#slack-icons" title="Permalink to this headline">¶</a></h3>
+<a class=""
+               data-lightbox="group-40fb6298-3f9a-4291-93f9-40b3e465ac72"
+               href="../_images/slack-state-emoji1.png"
+               title=""
+               data-title=""
+               ><img src="../_images/slack-state-emoji1.png"
+                     class=""
+                     width="534"
+                     height="226"
+                     alt="State-specific emoji"/>
+                </a><p>By default Slack sender won’t change default icon configured for your bot.
+To use state-specific icons in notifications:</p>
+<a class=""
+               data-lightbox="group-9cc1426f-0b34-43c2-a188-711c636af695"
+               href="../_images/slack-emoji1.png"
+               title=""
+               data-title=""
+               ><img src="../_images/slack-emoji1.png"
+                     class=""
+                     width="100%"
+                     height="auto"
+                     alt="Add custom emoji"/>
+                </a><ul class="simple">
+<li><p>Download and unzip <a class="reference external" href="https://github.com/moira-alert/doc/blob/master/notification-icons.zip">notification icons</a></p></li>
+<li><p>Add icons from <code class="docutils literal notranslate"><span class="pre">..icons/slack</span></code> directory as custom emojis according to their filenames to <a class="reference external" href="https://get.slack.help/hc/en-us/articles/206870177-Add-custom-emoji">Slack</a></p></li>
+<li><p>Set <code class="docutils literal notranslate"><span class="pre">use_emoji</span></code> to <code class="docutils literal notranslate"><span class="pre">true</span></code> for Slack sender section in
+notifier configuration file</p></li>
+</ul>
+</div>
+<div class="section" id="email-template">
+<h3>Email Template<a class="headerlink" href="#email-template" title="Permalink to this headline">¶</a></h3>
+<p>By default mail sender will use ‘Fancy’ template:</p>
+<a class=""
+               data-lightbox="group-e5659355-0d0f-4744-b296-f6d72cb35790"
+               href="../_images/fancy-email-template1.png"
+               title=""
+               data-title=""
+               ><img src="../_images/fancy-email-template1.png"
+                     class=""
+                     width="400"
+                     height="auto"
+                     alt="Fancy email template"/>
+                </a></div>
+<div class="section" id="self-state-monitor">
+<h3>Self State Monitor<a class="headerlink" href="#self-state-monitor" title="Permalink to this headline">¶</a></h3>
+<p>If self state monitor is enabled, Moira will periodically check the Redis
+connection, the number of incoming metrics in the Moira-Filter and
+the number of triggers to be checked by Moira-Checker.</p>
+<p>See <a class="reference internal" href="../user_guide/selfstate.html"><span class="doc">Self State Monitor</span></a> for more details.</p>
+</div>
+</div>
+<div class="section" id="api-and-web">
+<span id="api-and-web-config"></span><h2>API and Web<a class="headerlink" href="#api-and-web" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use fields MasterName and SentinelAddrs to enable Redis Sentinel support,</span>
+<span class="c1"># use Host and Port fields otherwise.</span>
+<span class="nt">redis</span><span class="p">:</span>
+  <span class="c1"># Sentinel cluster name</span>
+  <span class="nt">master_name</span><span class="p">:</span> <span class="s">&quot;&quot;</span>
+  <span class="c1"># Sentinel address list, format: {host1_name:port};{ip:port}</span>
+  <span class="nt">sentinel_addrs</span><span class="p">:</span> <span class="s">&quot;&quot;</span>
+  <span class="c1"># Node ip-address or host name</span>
+  <span class="nt">host</span><span class="p">:</span> <span class="s">&quot;moira-redis&quot;</span>
+  <span class="c1"># Node port</span>
+  <span class="nt">port</span><span class="p">:</span> <span class="s">&quot;6379&quot;</span>
+  <span class="c1"># Database id</span>
+  <span class="nt">dbid</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0</span>
+  <span class="c1"># Redis client connection pool size</span>
+  <span class="nt">connection_limit</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">512</span>
+<span class="nt">graphite</span><span class="p">:</span>
+  <span class="c1"># If true, graphite sender will be enabled.</span>
+  <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+  <span class="c1"># If true, runtime stats will be captured and sent to graphite. Note: It takes to call stoptheworld() with configured &quot;graphite.interval&quot; to capture runtime stats (https://golang.org/src/runtime/mstats.go)</span>
+  <span class="nt">runtime_stats</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+  <span class="c1"># Graphite relay URI, format: ip:port</span>
+  <span class="nt">uri</span><span class="p">:</span> <span class="s">&quot;graphite-relay:2003&quot;</span>
+  <span class="c1"># Moira metrics prefix. Use &#39;prefix: {hostname}&#39; to use hostname autoresolver.</span>
+  <span class="nt">prefix</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">DevOps.moira</span>
+  <span class="c1"># Metrics sending interval</span>
+  <span class="nt">interval</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">60s</span>
+<span class="nt">api</span><span class="p">:</span>
+  <span class="c1"># Api local network address. Default is &#39;:8081&#39; so api will be available at http://moira.company.com:8081/api</span>
+  <span class="nt">listen</span><span class="p">:</span> <span class="s">&quot;:8081&quot;</span>
+  <span class="c1"># If true, CORS for cross-domain requests will be enabled. This option can be used only for debugging purposes.</span>
+  <span class="nt">enable_cors</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+  <span class="c1"># Web_UI config file path. If file not found, api will return 404 in response to &quot;api/config&quot;</span>
+  <span class="nt">web_config_path</span><span class="p">:</span> <span class="s">&quot;/etc/moira/web.json&quot;</span>
+<span class="nt">web</span><span class="p">:</span>
+  <span class="c1"># Moira administrator email address</span>
+  <span class="nt">supportEmail</span><span class="p">:</span> <span class="s">&quot;devops@example.com&quot;</span>
+  <span class="c1"># List of enabled contact types</span>
+  <span class="nt">contacts</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mail</span>
+      <span class="nt">label</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">E-mail</span>
+      <span class="nt">validation</span><span class="p">:</span> <span class="s">&quot;^.+@.+\\..+$&quot;</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">pushover</span>
+      <span class="nt">label</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Pushover</span>
+      <span class="nt">placeholder</span><span class="p">:</span> <span class="s">&quot;Pushover</span><span class="nv"> </span><span class="s">user</span><span class="nv"> </span><span class="s">key&quot;</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">slack</span>
+      <span class="nt">label</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Slack</span>
+      <span class="nt">validation</span><span class="p">:</span> <span class="s">&quot;^[@#][a-zA-Z0-9-_]+&quot;</span>
+      <span class="nt">placeholder</span><span class="p">:</span> <span class="s">&quot;Slack</span><span class="nv"> </span><span class="s">#channel</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">@user&quot;</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">telegram</span>
+      <span class="nt">label</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Telegram</span>
+      <span class="nt">placeholder</span><span class="p">:</span> <span class="s">&quot;#channel,</span><span class="nv"> </span><span class="s">@username</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">group&quot;</span>
+      <span class="nt">help</span><span class="p">:</span> <span class="s">&quot;###</span><span class="nv"> </span><span class="s">To</span><span class="nv"> </span><span class="s">make</span><span class="nv"> </span><span class="s">things</span><span class="nv"> </span><span class="s">work</span><span class="nv"> </span><span class="s">you</span><span class="nv"> </span><span class="s">should:\n###</span><span class="nv"> </span><span class="s">In</span><span class="nv"> </span><span class="s">personal</span><span class="nv"> </span><span class="s">chat:\n</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">start</span><span class="nv"> </span><span class="s">conversation</span><span class="nv"> </span><span class="s">with</span><span class="nv"> </span><span class="s">bot</span><span class="nv"> </span><span class="s">[@YourMoiraBot](https://t.me/YourMoiraBot);\n</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">execute</span><span class="nv"> </span><span class="s">command</span><span class="nv"> </span><span class="s">`/start`;\n</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">type</span><span class="nv"> </span><span class="s">your</span><span class="nv"> </span><span class="s">login</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">above</span><span class="nv"> </span><span class="s">field</span><span class="nv"> </span><span class="s">as</span><span class="nv"> </span><span class="s">`@login`.\n\n###</span><span class="nv"> </span><span class="s">In</span><span class="nv"> </span><span class="s">group</span><span class="nv"> </span><span class="s">chat:\n</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">invite</span><span class="nv"> </span><span class="s">bot</span><span class="nv"> </span><span class="s">[@YourMoiraBot](https://t.me/YourMoiraBot)</span><span class="nv"> </span><span class="s">into</span><span class="nv"> </span><span class="s">chat;\n</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">execute</span><span class="nv"> </span><span class="s">command</span><span class="nv"> </span><span class="s">`/start@YourMoiraBot`;\n</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">bot</span><span class="nv"> </span><span class="s">will</span><span class="nv"> </span><span class="s">send</span><span class="nv"> </span><span class="s">you</span><span class="nv"> </span><span class="s">chat</span><span class="nv"> </span><span class="s">name,</span><span class="nv"> </span><span class="s">you</span><span class="nv"> </span><span class="s">should</span><span class="nv"> </span><span class="s">type</span><span class="nv"> </span><span class="s">it</span><span class="nv"> </span><span class="s">without</span><span class="nv"> </span><span class="s">extra</span><span class="nv"> </span><span class="s">characters</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">above</span><span class="nv"> </span><span class="s">field.\n\n###</span><span class="nv"> </span><span class="s">In</span><span class="nv"> </span><span class="s">channel:\n</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">add</span><span class="nv"> </span><span class="s">bot</span><span class="nv"> </span><span class="s">[@YourMoiraBot](https://t.me/YourMoiraBot)</span><span class="nv"> </span><span class="s">into</span><span class="nv"> </span><span class="s">channel;\n</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">promote</span><span class="nv"> </span><span class="s">bot</span><span class="nv"> </span><span class="s">as</span><span class="nv"> </span><span class="s">channel</span><span class="nv"> </span><span class="s">administrator;\n</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">type</span><span class="nv"> </span><span class="s">channel</span><span class="nv"> </span><span class="s">name</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">above</span><span class="nv"> </span><span class="s">field</span><span class="nv"> </span><span class="s">as</span><span class="nv"> </span><span class="s">`#channel`.\n&quot;</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">twilio sms</span>
+      <span class="nt">label</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Twilio SMS</span>
+      <span class="nt">validation</span><span class="p">:</span> <span class="s">&quot;^\\+79\\d{9}$&quot;</span>
+      <span class="nt">placeholder</span><span class="p">:</span> <span class="s">&quot;Phone</span><span class="nv"> </span><span class="s">number</span><span class="nv"> </span><span class="s">format</span><span class="nv"> </span><span class="s">+79*********&quot;</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">twilio voice</span>
+      <span class="nt">label</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Twilio voice</span>
+      <span class="nt">validation</span><span class="p">:</span> <span class="s">&quot;^\\+79\\d{9}$&quot;</span>
+      <span class="nt">placeholder</span><span class="p">:</span> <span class="s">&quot;Phone</span><span class="nv"> </span><span class="s">number</span><span class="nv"> </span><span class="s">format</span><span class="nv"> </span><span class="s">+79*********&quot;</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">webhook</span>
+      <span class="nt">label</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">My Webhook</span>
+      <span class="nt">validation</span><span class="p">:</span> <span class="s">&quot;^(http|https):\\/\\/.*(example.com|example.org)(:[0-9]{2,5})?\\/&quot;</span>
+      <span class="nt">placeholder</span><span class="p">:</span> <span class="s">&quot;https://example.com/webhooks/moira&quot;</span>
+      <span class="nt">help</span><span class="p">:</span> <span class="s">&quot;###</span><span class="nv"> </span><span class="s">Domains</span><span class="nv"> </span><span class="s">whitelist:\n</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">example.com\n</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">example.org&quot;</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">pagerduty</span>
+      <span class="nt">label</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">PagerDuty</span>
+      <span class="nt">placeholder</span><span class="p">:</span> <span class="s">&quot;Integration</span><span class="nv"> </span><span class="s">key&quot;</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">opsgenie</span>
+      <span class="nt">label</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">OpsGenie</span>
+      <span class="nt">placeholder</span><span class="p">:</span> <span class="s">&quot;Responder</span><span class="nv"> </span><span class="s">Name</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">ID&quot;</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">victorops</span>
+      <span class="nt">label</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">VictorOps</span>
+      <span class="nt">placeholder</span><span class="p">:</span> <span class="s">&quot;Routing</span><span class="nv"> </span><span class="s">key&quot;</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">discord</span>
+      <span class="nt">label</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Discord</span>
+      <span class="nt">placeholder</span><span class="p">:</span> <span class="s">&quot;Discord</span><span class="nv"> </span><span class="s">channel</span><span class="nv"> </span><span class="s">(eg:</span><span class="nv"> </span><span class="s">general-text)</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">user</span><span class="nv"> </span><span class="s">(eg:</span><span class="nv"> </span><span class="s">@user)&quot;</span>
+<span class="nt">log</span><span class="p">:</span>
+  <span class="nt">log_file</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">stdout</span>
+  <span class="nt">log_level</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">info</span>
+<span class="c1"># This section configures remote triggers Checker.</span>
+<span class="c1"># See https://moira.readthedocs.io/en/latest/installation/configuration.html#remote-triggers-checker for futher information</span>
+<span class="nt">remote</span><span class="p">:</span>
+  <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+  <span class="c1"># URL of Graphite HTTP API: graphite-web, carbonapi, etc.</span>
+  <span class="c1"># Specify full URL including &#39;/render&#39;</span>
+  <span class="nt">url</span><span class="p">:</span> <span class="s">&quot;http://graphite.example.com/render&quot;</span>
+  <span class="c1"># Auth username. Only Basic-auth supported</span>
+  <span class="nt">user</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">devops</span>
+  <span class="c1"># Auth password. Only Basic-auth supported</span>
+  <span class="nt">password</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">verySecurePassword</span>
+  <span class="c1"># Min period to perform triggers re-check. </span>
+  <span class="c1"># Note: Reducing of this value leads to increasing of CPU and memory usage values and extra load on Graphite HTTP API</span>
+  <span class="nt">check_interval</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">60s</span>
+  <span class="c1"># Maximum timeout for HTTP-request made to Graphite HTTP API</span>
+  <span class="nt">timeout</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">60s</span>
+</pre></div>
+</div>
+<p>Web contact fields:</p>
+<ul class="simple">
+<li><p><strong>type</strong> (any uniq string) <em>required</em> — contact type: pushover, slack, mail,
+script, telegram, twilio sms, twilio voice, etc.;</p></li>
+<li><p><strong>label</strong> <em>required</em> — contact label type. Uses in add/edit
+contact form in select control;</p></li>
+<li><p><strong>validation</strong> — regular expression for user contact,
+uses for validation in add/edit contact form;</p></li>
+<li><p><strong>placeholder</strong> — hint shown in input field;</p></li>
+<li><p><strong>help</strong> — help text in <a class="reference external" href="https://daringfireball.net/projects/markdown/syntax">Markdown</a> markup;</p></li>
+</ul>
+<a class=""
+               data-lightbox="group-3e661242-4135-4dbc-800b-cbb3018a805f"
+               href="../_images/web-ui-example1.png"
+               title=""
+               data-title=""
+               ><img src="../_images/web-ui-example1.png"
+                     class=""
+                     width="596"
+                     height="auto"
+                     alt="WEB UI example"/>
+                </a></div>
+<div class="section" id="remote-api">
+<h2>Remote API<a class="headerlink" href="#remote-api" title="Permalink to this headline">¶</a></h2>
+<p>By default, Web uses local API server (both containers are running on the same host).
+But if you need to reconfigure Web to interact with API running on remote server then simply set container environment variable MOIRA_API_URI equal to required URI:</p>
+<p><code class="docutils literal notranslate"><span class="pre">MOIRA_API_URI:</span> <span class="pre">remoteapi.domain:8081</span></code></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="webhooks_scripts.html" class="btn btn-neutral float-right" title="Webhooks and Custom Scripts" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="packages.html" class="btn btn-neutral float-left" title="RPM and DEB Packages" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2019, SKB Kontur.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

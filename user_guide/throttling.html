@@ -1,0 +1,328 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Throttling &mdash; Moira 2.5.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinxcontrib-images/LightBox2/lightbox2/css/lightbox.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinxcontrib-images/LightBox2/lightbox2/js/jquery-1.11.0.min.js"></script>
+        <script src="../_static/sphinxcontrib-images/LightBox2/lightbox2/js/lightbox.min.js"></script>
+        <script src="../_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Dealing with NODATA" href="nodata.html" />
+    <link rel="prev" title="Current State and Event History" href="trigger_page.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Moira
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.5
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">User Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="simple.html">Simple Threshold Trigger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="subscriptions.html">Setting Up Your Subscriptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="efficient.html">Efficient Triggers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="schedule.html">Schedules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trigger_page.html">Current State and Event History</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Throttling</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#disabling-throttling">Disabling Throttling</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="nodata.html">Dealing with NODATA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advanced.html">Advanced Mode Trigger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hidden_pages.html">Hidden Pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maintenance.html">Maintenance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="selfstate.html">Self State Monitor</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contacts.html">Contact Moira Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gsoc.html">Google Summer of Code</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Moira</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">User Guide</a> &raquo;</li>
+        
+      <li>Throttling</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/user_guide/throttling.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="throttling">
+<h1>Throttling<a class="headerlink" href="#throttling" title="Permalink to this headline">¶</a></h1>
+<p>Throttling is a distinctive and controversial feature of Moira.
+If you are experiencing a delay or any other strange behavior
+of notifications, chances are, it is because of throttling.</p>
+<p>To understand throttling, imagine two triggers:</p>
+<ol class="arabic simple">
+<li><p>Send notification if CPU load on any of your servers is more than 75%.</p></li>
+<li><p>Send notification if there is a fire in your server room.</p></li>
+</ol>
+<p>It is a busy day, your servers are overloaded, and you are receiving
+a ton of notifications about CPU load. Probably, you already have several
+dozens of notifications in your inbox. You will likely delete all of them
+at once, and you probably won’t notice that one of these hundreds of letters
+was about a fire in your server room.</p>
+<p>So, the problem is: one misconfigured trigger spoils everything by spamming
+your inbox with irrelevant notifications. Moira provides a protection
+mechanism called throttling. Simple rules:</p>
+<ol class="arabic simple">
+<li><p>If a trigger sends more than 10 notifications per 1 hour,
+limit this trigger to 1 message per 30 minutes.</p></li>
+<li><p>If a trigger sends more than 20 notifications per 3 hours,
+limit this trigger to 1 message per 1 hour.</p></li>
+</ol>
+<p>It works like this:</p>
+<ul class="simple">
+<li><p>First notification is delivered immediately.</p></li>
+<li><p>Second notification is delivered immediately.</p></li>
+<li><p>…</p></li>
+<li><p>Tenth notification is delivered immediately, and you get a warning:
+“Please, fix your system or tune this trigger to generate less events.”</p></li>
+<li><p>Next notifications are delayed so that you receive one message
+per 30 minutes/1 hour. Nothing is lost, you just receive one message
+with a pack of events. Every message contains a warning: “Please, fix
+your system or tune this trigger to generate less events.”</p></li>
+</ul>
+<p><em>Moira will enable and disable throttling automatically based
+on frequency of events.</em></p>
+<div class="section" id="disabling-throttling">
+<h2>Disabling Throttling<a class="headerlink" href="#disabling-throttling" title="Permalink to this headline">¶</a></h2>
+<p>There are four ways to disable throttling for a specific trigger:</p>
+<ol class="arabic simple">
+<li><p>Obey the warning message. That is, fix your system to generate less events.
+Or change trigger thresholds. Or use Graphite functions like
+<code class="docutils literal notranslate"><span class="pre">movingAverage</span></code> to remove spikes from your metric graph. This is the best
+method to deal with throttling.</p></li>
+<li><p>Enable <a class="reference internal" href="maintenance.html"><span class="doc">Maintenance</span></a> mode for some of your metrics. This will
+temporarily disable checking of a metric and give you time to fix
+the system:</p></li>
+</ol>
+<a class=""
+               data-lightbox="group-77506684-3abf-4101-b325-3fa95a65ed66"
+               href="../_images/maintenance1.png"
+               title=""
+               data-title=""
+               ><img src="../_images/maintenance1.png"
+                     class=""
+                     width="100%"
+                     height="auto"
+                     alt="maintenance mode"/>
+                </a><ol class="arabic simple" start="3">
+<li><p>Manually reset throttling for your trigger. This basically means that
+you’ve fixed the system and would like to resume operation normally.
+It won’t help if your trigger is still spamming notifications:</p></li>
+</ol>
+<a class=""
+               data-lightbox="group-900d7ac5-cb0e-4de8-81d6-356772dc88bb"
+               href="../_images/reset_throttling1.png"
+               title=""
+               data-title=""
+               ><img src="../_images/reset_throttling1.png"
+                     class=""
+                     width="100%"
+                     height="auto"
+                     alt="reset throttling"/>
+                </a><ol class="arabic simple" start="4">
+<li><p>Entirely disable throttling for a subscription. <em>This is not recommended</em>,
+unless you really know what you are doing:</p></li>
+</ol>
+<a class=""
+               data-lightbox="group-03840831-524d-4276-82cb-ccaa7667c14e"
+               href="../_images/throttling1.png"
+               title=""
+               data-title=""
+               ><img src="../_images/throttling1.png"
+                     class=""
+                     width="400"
+                     height="auto"
+                     alt="disable throttling"/>
+                </a></div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="nodata.html" class="btn btn-neutral float-right" title="Dealing with NODATA" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="trigger_page.html" class="btn btn-neutral float-left" title="Current State and Event History" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2019, SKB Kontur.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

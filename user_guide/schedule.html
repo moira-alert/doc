@@ -1,0 +1,288 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Schedules &mdash; Moira 2.5.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinxcontrib-images/LightBox2/lightbox2/css/lightbox.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinxcontrib-images/LightBox2/lightbox2/js/jquery-1.11.0.min.js"></script>
+        <script src="../_static/sphinxcontrib-images/LightBox2/lightbox2/js/lightbox.min.js"></script>
+        <script src="../_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Current State and Event History" href="trigger_page.html" />
+    <link rel="prev" title="Efficient Triggers" href="efficient.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Moira
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.5
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">User Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="simple.html">Simple Threshold Trigger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="subscriptions.html">Setting Up Your Subscriptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="efficient.html">Efficient Triggers</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Schedules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#subscription-schedule">Subscription Schedule</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#trigger-watch-time">Trigger Watch Time</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="trigger_page.html">Current State and Event History</a></li>
+<li class="toctree-l2"><a class="reference internal" href="throttling.html">Throttling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nodata.html">Dealing with NODATA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advanced.html">Advanced Mode Trigger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hidden_pages.html">Hidden Pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maintenance.html">Maintenance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="selfstate.html">Self State Monitor</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contacts.html">Contact Moira Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gsoc.html">Google Summer of Code</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Moira</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">User Guide</a> &raquo;</li>
+        
+      <li>Schedules</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/user_guide/schedule.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="schedules">
+<h1>Schedules<a class="headerlink" href="#schedules" title="Permalink to this headline">¶</a></h1>
+<p>Moira provides two ways of defining allowed time intervals for notifications.</p>
+<div class="section" id="subscription-schedule">
+<h2>Subscription Schedule<a class="headerlink" href="#subscription-schedule" title="Permalink to this headline">¶</a></h2>
+<p>If a metric is not that important to wake you up in the middle of the night,
+you can set a schedule for subscription:</p>
+<a class=""
+               data-lightbox="group-737edb22-0bb1-49f5-877d-87faaf0d3ba3"
+               href="../_images/schedule_subscription1.png"
+               title=""
+               data-title=""
+               ><img src="../_images/schedule_subscription1.png"
+                     class=""
+                     width="400"
+                     height="auto"
+                     alt="subscription schedule"/>
+                </a><p>Notifications generated by this subscription will arrive only on weekdays,
+from 08:00 to 17:59 local time.</p>
+<p>If an event happens on weekend, you will receive a notification at 08:00
+on Monday. So notifications are not skipped, you just receive them later.
+Events will still appear on the event history page at the time when they
+happened (see <a class="reference internal" href="trigger_page.html"><span class="doc">Current State and Event History</span></a>).</p>
+</div>
+<div class="section" id="trigger-watch-time">
+<h2>Trigger Watch Time<a class="headerlink" href="#trigger-watch-time" title="Permalink to this headline">¶</a></h2>
+<p>Let’s say, you have a popular website, that serves over 1000 page views
+per second during a day. You can set up a trigger to notify you when you
+have less than 50 page views per second - obviously, something is wrong.
+You also need to disable this trigger for the night, because at night
+all of your users sleep, and this metric is irrelevant.</p>
+<p>Of course, you can set up a subscription schedule - but your history will
+become riddled with false night “events”, and you will still receive
+notifications in the morning. In this case, you need to set up a trigger
+watch time:</p>
+<a class=""
+               data-lightbox="group-3e2e8972-09d8-4512-8da7-c4b34358658e"
+               href="../_images/schedule_trigger1.png"
+               title=""
+               data-title=""
+               ><img src="../_images/schedule_trigger1.png"
+                     class=""
+                     width="400"
+                     height="auto"
+                     alt="trigger schedule"/>
+                </a><p>No events will be recorded for this trigger outside of watch time - you will
+receive no notifications, and the event history page will be empty
+(see <a class="reference internal" href="trigger_page.html"><span class="doc">Current State and Event History</span></a>).</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="trigger_page.html" class="btn btn-neutral float-right" title="Current State and Event History" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="efficient.html" class="btn btn-neutral float-left" title="Efficient Triggers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2019, SKB Kontur.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

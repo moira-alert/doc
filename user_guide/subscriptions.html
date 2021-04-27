@@ -1,0 +1,361 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Setting Up Your Subscriptions &mdash; Moira 2.5.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinxcontrib-images/LightBox2/lightbox2/css/lightbox.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinxcontrib-images/LightBox2/lightbox2/js/jquery-1.11.0.min.js"></script>
+        <script src="../_static/sphinxcontrib-images/LightBox2/lightbox2/js/lightbox.min.js"></script>
+        <script src="../_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Efficient Triggers" href="efficient.html" />
+    <link rel="prev" title="Simple Threshold Trigger" href="simple.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Moira
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.5
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">User Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="simple.html">Simple Threshold Trigger</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Setting Up Your Subscriptions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#plotting">Plotting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tags">Tags</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ignore-specific-states-transitions">Ignore Specific States Transitions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-and-test">Create and Test</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="efficient.html">Efficient Triggers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="schedule.html">Schedules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trigger_page.html">Current State and Event History</a></li>
+<li class="toctree-l2"><a class="reference internal" href="throttling.html">Throttling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nodata.html">Dealing with NODATA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advanced.html">Advanced Mode Trigger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hidden_pages.html">Hidden Pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maintenance.html">Maintenance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="selfstate.html">Self State Monitor</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contacts.html">Contact Moira Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gsoc.html">Google Summer of Code</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Moira</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">User Guide</a> &raquo;</li>
+        
+      <li>Setting Up Your Subscriptions</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/user_guide/subscriptions.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="setting-up-your-subscriptions">
+<span id="subscriptions"></span><h1>Setting Up Your Subscriptions<a class="headerlink" href="#setting-up-your-subscriptions" title="Permalink to this headline">¶</a></h1>
+<p>By now you should have at least one trigger saved. If you don’t,
+go back to the <a class="reference internal" href="simple.html"><span class="doc">Simple Threshold Trigger</span></a> page.</p>
+<p>First, add some delivery channels:</p>
+<a class=""
+               data-lightbox="group-d6274653-1dc0-46dd-b4fe-a7a683751062"
+               href="../_images/channels1.png"
+               title=""
+               data-title=""
+               ><img src="../_images/channels1.png"
+                     class=""
+                     width="100%"
+                     height="auto"
+                     alt="delivery channel settings"/>
+                </a><p>If your Moira installation is configured with separate user accounts,
+you will see only your channels and subscriptions on this page. Otherwise,
+every user will see the same page with the same channels and subscriptions.</p>
+<p>Consult <a class="reference internal" href="../installation/security.html"><span class="doc">Security</span></a> page for instructions on separating
+user accounts.</p>
+<p>Once you have at least one channel, you can create a subscription.
+Press <code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">Add</span> <span class="pre">subscription</span></code> button:</p>
+<a class=""
+               data-lightbox="group-73babef9-05bd-4f0c-9c06-4c1c675a3c8a"
+               href="../_images/subscription_plotting1.png"
+               title=""
+               data-title=""
+               ><img src="../_images/subscription_plotting1.png"
+                     class=""
+                     width="100%"
+                     height="auto"
+                     alt="subscription plotting settings"/>
+                </a><div class="section" id="plotting">
+<span id="subscriptions-plotting"></span><h2>Plotting<a class="headerlink" href="#plotting" title="Permalink to this headline">¶</a></h2>
+<p>According to two existing polling approaches:</p>
+<ul class="simple">
+<li><p>Local triggers are best to analyze realtime metrics</p></li>
+<li><p>Remote triggers allows to use wider time windows to fetch
+historical data directly from Graphite</p></li>
+</ul>
+<p>there is also two different time ranges will be used according to trigger type:</p>
+<ul class="simple">
+<li><p>Notification based on events generated by local trigger will contain
+graph with timeseries for the last 30 minuntes wheter is throttled
+or it was scheduled earlier because of subscription’s own time limits.</p></li>
+<li><p>Notification based on events generated by remote trigger will contain
+graph with timeseries for not less than 30 minuntes until last event occured.
+Otherwise first and last events times will form the window.</p></li>
+</ul>
+<a class=""
+               data-lightbox="group-6dd5f608-260c-4515-9dd9-879694f6e700"
+               href="../_images/subscription_tags1.png"
+               title=""
+               data-title=""
+               ><img src="../_images/subscription_tags1.png"
+                     class=""
+                     width="100%"
+                     height="auto"
+                     alt="subscription tags"/>
+                </a></div>
+<div class="section" id="tags">
+<h2>Tags<a class="headerlink" href="#tags" title="Permalink to this headline">¶</a></h2>
+<p>Add required tags into subscription to receive notifications
+from triggers with these tags.</p>
+<p>Matching rule is: Notification will be sent if trigger
+contains <strong>ALL</strong> of selected tags.</p>
+<p>For example:</p>
+<ul>
+<li><p>If subscription has only one tag, you will receive notifications
+from any trigger with this tag.</p>
+<ul>
+<li><p>Create Triggger1 with tags: <code class="docutils literal notranslate"><span class="pre">[&quot;DevOps&quot;,</span> <span class="pre">&quot;Moira-duty&quot;]</span></code></p></li>
+<li><p>Create Triggger2 with tags: <code class="docutils literal notranslate"><span class="pre">[&quot;DevOps&quot;]</span></code></p></li>
+<li><p>Create Subscription1 with tags: <code class="docutils literal notranslate"><span class="pre">[&quot;DevOps&quot;]</span></code></p>
+<p>By using Subscription1 you will receive events for
+both Triggger1 and Triggger2</p>
+</li>
+</ul>
+</li>
+<li><p>If subscription has multiple tags, you will receive notifications
+only from triggers which include all these tags.</p>
+<ul>
+<li><p>Create Subscription2 with tags: <code class="docutils literal notranslate"><span class="pre">[&quot;DevOps&quot;,</span> <span class="pre">&quot;Moira-duty&quot;]</span></code></p>
+<p>By using Subscription2 you will receive events only for Trigger1</p>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="ignore-specific-states-transitions">
+<span id="subscription-states-transitions"></span><h2>Ignore Specific States Transitions<a class="headerlink" href="#ignore-specific-states-transitions" title="Permalink to this headline">¶</a></h2>
+<p>You also can reduce number of notifications ignoring unnecessary event.
+For this purpose use following check boxes:</p>
+<ul>
+<li><p>Send notifications when triggers degraded only</p>
+<p>Only following states transitions will require notifications:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">OK</span></code> → <code class="docutils literal notranslate"><span class="pre">WARN</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OK</span></code> → <code class="docutils literal notranslate"><span class="pre">ERROR</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OK</span></code> → <code class="docutils literal notranslate"><span class="pre">NODATA</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WARN</span></code> → <code class="docutils literal notranslate"><span class="pre">ERROR</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WARN</span></code> → <code class="docutils literal notranslate"><span class="pre">NODATA</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ERROR</span></code> → <code class="docutils literal notranslate"><span class="pre">NODATA</span></code></p></li>
+</ul>
+</li>
+<li><p>Do not send WARN notifications</p>
+<p>Following states transitions will be ignored:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">OK</span></code> → <code class="docutils literal notranslate"><span class="pre">WARN</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WARN</span></code> → <code class="docutils literal notranslate"><span class="pre">OK</span></code></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="create-and-test">
+<h2>Create and Test<a class="headerlink" href="#create-and-test" title="Permalink to this headline">¶</a></h2>
+<p>You can just save your subscription, but if you want to be 100% sure
+it works, you should immediately test it. Dummy notification message
+will arrive shortly.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="efficient.html" class="btn btn-neutral float-right" title="Efficient Triggers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="simple.html" class="btn btn-neutral float-left" title="Simple Threshold Trigger" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2019, SKB Kontur.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,289 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Security &mdash; Moira 2.5.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinxcontrib-images/LightBox2/lightbox2/css/lightbox.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinxcontrib-images/LightBox2/lightbox2/js/jquery-1.11.0.min.js"></script>
+        <script src="../_static/sphinxcontrib-images/LightBox2/lightbox2/js/lightbox.min.js"></script>
+        <script src="../_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="User Guide" href="../user_guide/index.html" />
+    <link rel="prev" title="Feeding Metrics to Moira" href="feeding.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Moira
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.5
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Release Notes</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Installation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="manual.html">Manual Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker.html">Docker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="packages.html">RPM and DEB Packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhooks_scripts.html">Webhooks and Custom Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feeding.html">Feeding Metrics to Moira</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Security</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#example-of-nginx-configuration">Example of Nginx Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#webhooks-and-custom-scripts">Webhooks and Custom Scripts</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contacts.html">Contact Moira Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gsoc.html">Google Summer of Code</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Moira</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Installation</a> &raquo;</li>
+        
+      <li>Security</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/installation/security.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="security">
+<h1>Security<a class="headerlink" href="#security" title="Permalink to this headline">¶</a></h1>
+<p>Typically, internal DevOps tools like Graphite are deployed in intranet
+without any external access, so you can skip authentication and leave
+everything accessible to everyone. But powerful Moira features, like
+separate subscriptions for tags, work best when you have some way
+to tell apart users.</p>
+<p>Moira doesn’t provide any authentication mechanism. It is hard to find
+one that fits all situations. Instead, Moira accepts <code class="docutils literal notranslate"><span class="pre">X-WebAuth-User</span></code>
+header with some user id, like login name. You are free to set up any
+reverse proxy and configure it to provide this header.</p>
+<p>If you don’t, Moira will assume that user id is “anonymous”.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Even if you do provide authentication header, please note that most parts of Moira are
+read and write accessible to every user, and there is no meaningful way of authorization
+in Moira. This is by design, because Moira is an internal DevOps tool. Separating users
+is a convenience, not protection feature.</p>
+</div>
+<div class="section" id="example-of-nginx-configuration">
+<h2>Example of Nginx Configuration<a class="headerlink" href="#example-of-nginx-configuration" title="Permalink to this headline">¶</a></h2>
+<p>Assuming that Moira UI static files are in <code class="docutils literal notranslate"><span class="pre">/var/www/moira-web</span></code>
+and API is running on port 8081</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>server {
+  auth_basic &quot;Moira&quot;;
+  auth_basic_user_file /etc/nginx/htpasswd;
+
+  listen 0.0.0.0:80 default_server;
+
+  location / {
+    root /var/www/moira;
+    index index.html;
+    try_files $uri $uri/ /index.html;
+  }
+
+  location /api/ {
+    proxy_pass http://127.0.0.1:8081;
+    proxy_set_header X-WebAuth-User $remote_user;
+  }
+}
+</pre></div>
+</div>
+<p>Look at <a class="reference external" href="http://nginx.org/en/docs/http/ngx_http_auth_basic_module.html">auth_basic_module</a> if you need more details of Nginx
+basic authentication.</p>
+</div>
+<div class="section" id="webhooks-and-custom-scripts">
+<h2>Webhooks and Custom Scripts<a class="headerlink" href="#webhooks-and-custom-scripts" title="Permalink to this headline">¶</a></h2>
+<p>When configuring <a class="reference internal" href="webhooks_scripts.html"><span class="doc">Webhooks and Custom Scripts</span></a>, note that
+<code class="docutils literal notranslate"><span class="pre">${contact_value}</span></code> is substituted with user input value from web UI.
+It means that a malicious user can potentially run anything or make
+arbitrary web requests on a server that runs Moira notifier.
+Always make sure you can trust your users if you use <code class="docutils literal notranslate"><span class="pre">${contact_value}</span></code>
+templated parameter in your scripts or webhooks.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../user_guide/index.html" class="btn btn-neutral float-right" title="User Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="feeding.html" class="btn btn-neutral float-left" title="Feeding Metrics to Moira" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2019, SKB Kontur.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

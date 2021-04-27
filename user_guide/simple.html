@@ -1,0 +1,310 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Simple Threshold Trigger &mdash; Moira 2.5.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinxcontrib-images/LightBox2/lightbox2/css/lightbox.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinxcontrib-images/LightBox2/lightbox2/js/jquery-1.11.0.min.js"></script>
+        <script src="../_static/sphinxcontrib-images/LightBox2/lightbox2/js/lightbox.min.js"></script>
+        <script src="../_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Setting Up Your Subscriptions" href="subscriptions.html" />
+    <link rel="prev" title="User Guide" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Moira
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.5
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">User Guide</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Simple Threshold Trigger</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#graphite-target">Graphite Target</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#thresholds">Thresholds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tags">Tags</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#subscriptions">Subscriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="subscriptions.html">Setting Up Your Subscriptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="efficient.html">Efficient Triggers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="schedule.html">Schedules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trigger_page.html">Current State and Event History</a></li>
+<li class="toctree-l2"><a class="reference internal" href="throttling.html">Throttling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nodata.html">Dealing with NODATA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advanced.html">Advanced Mode Trigger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hidden_pages.html">Hidden Pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maintenance.html">Maintenance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="selfstate.html">Self State Monitor</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contacts.html">Contact Moira Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gsoc.html">Google Summer of Code</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Moira</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">User Guide</a> &raquo;</li>
+        
+      <li>Simple Threshold Trigger</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/user_guide/simple.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="simple-threshold-trigger">
+<h1>Simple Threshold Trigger<a class="headerlink" href="#simple-threshold-trigger" title="Permalink to this headline">¶</a></h1>
+<p>Let’s say you measure how much free space is left on your HDD and store
+this value as <code class="docutils literal notranslate"><span class="pre">DevOps.my_server.hdd.freespace_mbytes</span></code> in Graphite.
+Maybe you want to get an email when you have less than 50 GB left (it’s not
+a big problem), and a Pushover notification when you have less than
+1 GB left (you really need to delete something asap).</p>
+<p>You can easily accomplish this by adding a trigger in Moira’s Simple Mode:</p>
+<a class=""
+               data-lightbox="group-02e3bf25-e7ed-4ef4-bfa7-26de60eae335"
+               href="../_images/simple1.png"
+               title=""
+               data-title=""
+               ><img src="../_images/simple1.png"
+                     class=""
+                     width="100%"
+                     height="auto"
+                     alt="simple trigger"/>
+                </a><div class="section" id="graphite-target">
+<h2>Graphite Target<a class="headerlink" href="#graphite-target" title="Permalink to this headline">¶</a></h2>
+<p>You can specify a single metric like we did here:
+<code class="docutils literal notranslate"><span class="pre">DevOps.my_server.hdd.freespace_mbytes</span></code>.</p>
+<p>You can also specify multiple metrics like <code class="docutils literal notranslate"><span class="pre">DevOps.*.hdd.freespace_mbytes</span></code>.
+All metrics will be monitored separately, and you will get separate
+notifications for each metric.</p>
+<p>You can even use Graphite functions like
+<code class="docutils literal notranslate"><span class="pre">movingAverage(DevOps.my_server.hdd.freespace_mbytes,</span> <span class="pre">10)</span></code>. Moira understands
+everything that Graphite itself understands. See appropriate <a class="reference external" href="http://graphite.readthedocs.org/en/latest/functions.html">documentation</a>.</p>
+</div>
+<div class="section" id="thresholds">
+<h2>Thresholds<a class="headerlink" href="#thresholds" title="Permalink to this headline">¶</a></h2>
+<p>In simple mode you need to at least one threshold values: WARNING and ERROR.
+In our example we set both, lower values are bad, so we set warning threshold
+greater than error threshold. In this case, Moira will consider any value less
+than 50000 a warning and less than 1000 an error, which is what we want.
+In other cases, you may need to consider large values a problem - then you
+should make error threshold greater than warning and select
+<code class="docutils literal notranslate"><span class="pre">Watch</span> <span class="pre">for</span> <span class="pre">value</span> <span class="pre">rising</span></code> option.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>You can set only one threshold. For example, you can set WARNING equal to 50000, omit ERROR and select <code class="docutils literal notranslate"><span class="pre">Watch</span> <span class="pre">for</span> <span class="pre">value</span> <span class="pre">falling</span></code>.
+In this case you will receive only WARNING messages when free space goes under 50GB and never receive ERROR messages.
+You can also do vise versa: set ERROR and omit WARNING.</p>
+</div>
+</div>
+<div class="section" id="tags">
+<h2>Tags<a class="headerlink" href="#tags" title="Permalink to this headline">¶</a></h2>
+<p>In Moira, you cannot subscribe to a single trigger. Instead, you should
+categorize your triggers by tags and subscribe to a tag. It may look like
+an overkill here, but when you have dozens of triggers, you are much better
+off with tags, because you don’t have to enter your contact information over
+and over again. Tags also help to filter information on main screen:</p>
+<a class=""
+               data-lightbox="group-a861dba5-f91f-410a-b3be-a186481ff039"
+               href="../_images/main_screen1.png"
+               title=""
+               data-title=""
+               ><img src="../_images/main_screen1.png"
+                     class=""
+                     width="100%"
+                     height="auto"
+                     alt="main screen with filter"/>
+                </a><p>You can add as many tags as you want.</p>
+</div>
+<div class="section" id="subscriptions">
+<h2>Subscriptions<a class="headerlink" href="#subscriptions" title="Permalink to this headline">¶</a></h2>
+<p>Proceed to the <a class="reference internal" href="subscriptions.html"><span class="doc">Setting Up Your Subscriptions</span></a> page to learn how to
+set up a subscription to your trigger.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="subscriptions.html" class="btn btn-neutral float-right" title="Setting Up Your Subscriptions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="User Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2019, SKB Kontur.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

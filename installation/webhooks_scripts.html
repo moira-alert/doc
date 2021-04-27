@@ -1,0 +1,542 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Webhooks and Custom Scripts &mdash; Moira 2.5.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinxcontrib-images/LightBox2/lightbox2/css/lightbox.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinxcontrib-images/LightBox2/lightbox2/js/jquery-1.11.0.min.js"></script>
+        <script src="../_static/sphinxcontrib-images/LightBox2/lightbox2/js/lightbox.min.js"></script>
+        <script src="../_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Feeding Metrics to Moira" href="feeding.html" />
+    <link rel="prev" title="Configuration" href="configuration.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Moira
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.5
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Release Notes</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Installation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="manual.html">Manual Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker.html">Docker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="packages.html">RPM and DEB Packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Webhooks and Custom Scripts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#scripts">Scripts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#templated-parameters">Templated Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#webhooks">Webhooks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fields-description">Fields Description</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#trigger">Trigger</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#event">Event</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#contact">Contact</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#http-headers">HTTP Headers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="feeding.html">Feeding Metrics to Moira</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html">Security</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contacts.html">Contact Moira Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gsoc.html">Google Summer of Code</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Moira</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Installation</a> &raquo;</li>
+        
+      <li>Webhooks and Custom Scripts</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/installation/webhooks_scripts.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="webhooks-and-custom-scripts">
+<h1>Webhooks and Custom Scripts<a class="headerlink" href="#webhooks-and-custom-scripts" title="Permalink to this headline">¶</a></h1>
+<p>Moira has two special kinds of senders: webhooks and scripts.</p>
+<p>Script runs an executable on the same machine that runs notifier instances.
+Webhook makes POST requests to a specified URL. Scripts and webhooks are
+a flexible way to add integrations with services that are not supported
+in Moira natively.</p>
+<p>You may want to add several different scripts for users to choose from.
+Next section describes how to implement this.</p>
+<div class="section" id="scripts">
+<h2>Scripts<a class="headerlink" href="#scripts" title="Permalink to this headline">¶</a></h2>
+<p>You can specify executable path and arguments in the notifier
+configuration file (see <a class="reference internal" href="configuration.html"><span class="doc">Configuration</span></a> for details).</p>
+<p>Add a separate section for each script:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">script</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">jira</span>
+  <span class="nt">exec</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/usr/bin/post_to_jira --project=${contact_value}</span>
+<span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">script</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">irc</span>
+  <span class="nt">exec</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/opt/myscripts/irc_adapter ${contact_value} ${trigger_id}</span>
+</pre></div>
+</div>
+<p>Then, in web UI configuration:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>{
+    &quot;contacts&quot;: [
+        {
+            &quot;type&quot;: &quot;jira&quot;,
+            &quot;label&quot;: &quot;Create JIRA issue&quot;,
+            &quot;placeholder&quot;: &quot;Project name&quot;
+        },
+        {
+            &quot;type&quot;: &quot;irc&quot;,
+            &quot;label&quot;: &quot;Post to IRC channel&quot;,
+            &quot;placeholder&quot;: &quot;Channel name&quot;
+        }
+    ],
+    ...
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="templated-parameters">
+<h2>Templated Parameters<a class="headerlink" href="#templated-parameters" title="Permalink to this headline">¶</a></h2>
+<p>You may have noted that we use templated parameters like
+<code class="docutils literal notranslate"><span class="pre">${contact_value}</span></code> in configuration examples. You can use these
+parameters in script as well as webhook contacts. Notifier will
+replace them with actual values extracted from event.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>${contact_id}</p></td>
+<td><p>Contact ID</p></td>
+</tr>
+<tr class="row-odd"><td><p>${contact_value}</p></td>
+<td><p>Contact value, as specified by user via web UI</p></td>
+</tr>
+<tr class="row-even"><td><p>${contact_type}</p></td>
+<td><p>Contact type, as specified in web UI config file</p></td>
+</tr>
+<tr class="row-odd"><td><p>${trigger_id}</p></td>
+<td><p>Trigger ID</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="webhooks">
+<h2>Webhooks<a class="headerlink" href="#webhooks" title="Permalink to this headline">¶</a></h2>
+<p>On each event, Moira will make a POST request to the URL specified
+in notifier configuration file with the following JSON payload.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 19%" />
+<col style="width: 65%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>trigger</p></td>
+<td><p>Trigger</p></td>
+<td><p>Trigger data</p></td>
+</tr>
+<tr class="row-odd"><td><p>events</p></td>
+<td><p>Event Array</p></td>
+<td><p>List of events</p></td>
+</tr>
+<tr class="row-even"><td><p>contact</p></td>
+<td><p>Contact</p></td>
+<td><p>Contact data</p></td>
+</tr>
+<tr class="row-odd"><td><p>plot</p></td>
+<td><p>String</p></td>
+<td><p>Base64 string containing trigger plot</p></td>
+</tr>
+<tr class="row-even"><td><p>throttled</p></td>
+<td><p>Bool</p></td>
+<td><p>True if notifications are throttled</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="fields-description">
+<h2>Fields Description<a class="headerlink" href="#fields-description" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="trigger">
+<h3>Trigger<a class="headerlink" href="#trigger" title="Permalink to this headline">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 26%" />
+<col style="width: 28%" />
+<col style="width: 47%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>id</p></td>
+<td><p>String</p></td>
+<td><p>Trigger ID</p></td>
+</tr>
+<tr class="row-odd"><td><p>name</p></td>
+<td><p>String</p></td>
+<td><p>Trigger name</p></td>
+</tr>
+<tr class="row-even"><td><p>description</p></td>
+<td><p>String</p></td>
+<td><p>Trigger description</p></td>
+</tr>
+<tr class="row-odd"><td><p>tags</p></td>
+<td><p>String Array</p></td>
+<td><p>List of trigger tags</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="event">
+<h3>Event<a class="headerlink" href="#event" title="Permalink to this headline">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 32%" />
+<col style="width: 17%" />
+<col style="width: 51%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>metric</p></td>
+<td><p>String</p></td>
+<td><p>Metric name</p></td>
+</tr>
+<tr class="row-odd"><td><p>value</p></td>
+<td><p>Float64</p></td>
+<td><p>Metric value</p></td>
+</tr>
+<tr class="row-even"><td><p>timestamp</p></td>
+<td><p>Int64</p></td>
+<td><p>Event timestamp</p></td>
+</tr>
+<tr class="row-odd"><td><p>trigger_event</p></td>
+<td><p>Bool</p></td>
+<td><p>Event type</p></td>
+</tr>
+<tr class="row-even"><td><p>state</p></td>
+<td><p>String</p></td>
+<td><p>Current metric state</p></td>
+</tr>
+<tr class="row-odd"><td><p>old_state</p></td>
+<td><p>String</p></td>
+<td><p>Previous metric state</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="contact">
+<h3>Contact<a class="headerlink" href="#contact" title="Permalink to this headline">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 21%" />
+<col style="width: 48%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>type</p></td>
+<td><p>String</p></td>
+<td><p>Contact type</p></td>
+</tr>
+<tr class="row-odd"><td><p>value</p></td>
+<td><p>String</p></td>
+<td><p>Contact value</p></td>
+</tr>
+<tr class="row-even"><td><p>id</p></td>
+<td><p>String</p></td>
+<td><p>Contact ID</p></td>
+</tr>
+<tr class="row-odd"><td><p>user</p></td>
+<td><p>String</p></td>
+<td><p>Contact Author</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="http-headers">
+<h2>HTTP Headers<a class="headerlink" href="#http-headers" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 43%" />
+<col style="width: 57%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>User-Agent</p></td>
+<td><p>Moira</p></td>
+</tr>
+<tr class="row-odd"><td><p>Content-Type</p></td>
+<td><p>application/json</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;trigger&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;triggerID&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;triggerName&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;triggerDescription&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;tags&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;triggerTag1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;triggerTag2&quot;</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;events&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;metric&quot;</span><span class="p">:</span> <span class="s2">&quot;metricName1&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="nt">&quot;timestamp&quot;</span><span class="p">:</span> <span class="mi">499165200</span><span class="p">,</span>
+            <span class="nt">&quot;trigger_event&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;OK&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;old_state&quot;</span><span class="p">:</span> <span class="s2">&quot;ERROR&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;metric&quot;</span><span class="p">:</span> <span class="s2">&quot;triggerName&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="nt">&quot;timestamp&quot;</span><span class="p">:</span> <span class="mi">1445412480</span><span class="p">,</span>
+            <span class="nt">&quot;trigger_event&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;OK&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;old_state&quot;</span><span class="p">:</span> <span class="s2">&quot;ERROR&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;metric&quot;</span><span class="p">:</span> <span class="s2">&quot;metricName2&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="nt">&quot;timestamp&quot;</span><span class="p">:</span> <span class="mi">-446145720</span><span class="p">,</span>
+            <span class="nt">&quot;trigger_event&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;OK&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;old_state&quot;</span><span class="p">:</span> <span class="s2">&quot;ERROR&quot;</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;contact&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;webhookContactName&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;https://localhost/webhooks/moira&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;9728adae-1487-4e5b-80f6-8496f59b223e&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;author&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;plot&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;throttled&quot;</span><span class="p">:</span> <span class="kc">false</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="feeding.html" class="btn btn-neutral float-right" title="Feeding Metrics to Moira" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="configuration.html" class="btn btn-neutral float-left" title="Configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2019, SKB Kontur.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
