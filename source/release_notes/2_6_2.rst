@@ -1,0 +1,234 @@
+2.6.2
+=====
+
+What’s Changed
+--------------
+
+-  Changed naming for feature docker images by @litleleprikon in
+   https://github.com/moira-alert/moira/pull/440
+-  Added subscription transfer and contact deletion to CLI by @Nixolay
+   in https://github.com/moira-alert/moira/pull/443
+-  Added Msteams support by @imavroukakis in
+   https://github.com/moira-alert/moira/pull/432
+-  Upgraded golangci-lint to v1.21.0 by @titusjaka in
+   https://github.com/moira-alert/moira/pull/439
+-  Fixed memory leak in Scorch-type index in Bleve by @Nixolay in
+   https://github.com/moira-alert/moira/pull/444
+-  Made image cli by @Nixolay in
+   https://github.com/moira-alert/moira/pull/454
+-  Checked nil pointer by @Nixolay in
+   https://github.com/moira-alert/moira/pull/455
+-  Fixed nil pointer dereference in notifier by @litleleprikon in
+   https://github.com/moira-alert/moira/pull/452
+-  Added twimlets support for Twilio sender by @prizov in
+   https://github.com/moira-alert/moira/pull/450
+-  Panic in filter by @Nixolay in
+   https://github.com/moira-alert/moira/pull/467
+-  Added cleaning moira from fired users by @Nixolay in
+   https://github.com/moira-alert/moira/pull/458
+-  Cleaned up metrics interface by @Pliner in
+   https://github.com/moira-alert/moira/pull/475
+-  Run goimports by @Pliner in
+   https://github.com/moira-alert/moira/pull/478
+-  Metrics facade by @Pliner in
+   https://github.com/moira-alert/moira/pull/477
+-  Reworked Counter.Inc and drop NewMetersCollection from Registry by
+   @Pliner in https://github.com/moira-alert/moira/pull/479
+-  Set up metrics prefix at start up by @Pliner in
+   https://github.com/moira-alert/moira/pull/480
+-  Added CODEOWNERS by @Pliner in
+   https://github.com/moira-alert/moira/pull/483
+-  Extracted telemetry config and setup telemetry server by @Pliner in
+   https://github.com/moira-alert/moira/pull/482
+-  Added Prometheus endpoint for internal metrics by @Pliner in
+   https://github.com/moira-alert/moira/pull/474
+-  Fixed incorrect parsing of multiple equal signs in label by @idoqo in
+   https://github.com/moira-alert/moira/pull/490
+-  Added community guides by @litleleprikon in
+   https://github.com/moira-alert/moira/pull/485
+-  Moved plot boundaries by @A1bemuth in
+   https://github.com/moira-alert/moira/pull/495
+-  Reduced nodes slice capacity by @A1bemuth in
+   https://github.com/moira-alert/moira/pull/496
+-  Implemented stable pagination by @litleleprikon in
+   https://github.com/moira-alert/moira/pull/498
+-  Enabled pprof heap handler by @A1bemuth in
+   https://github.com/moira-alert/moira/pull/497
+-  Handled pager params on /page url by @litleleprikon in
+   https://github.com/moira-alert/moira/pull/502
+-  Made filter optimizations by @A1bemuth in
+   https://github.com/moira-alert/moira/pull/503
+-  Upgraded to Go 1.14 by @beevee in
+   https://github.com/moira-alert/moira/pull/504
+-  Updated golang/mock to 1.4.1 by @A1bemuth in
+   https://github.com/moira-alert/moira/pull/507
+-  Updated GolangCI Lint version by @litleleprikon in
+   https://github.com/moira-alert/moira/pull/509
+-  Added reviewdog by @litleleprikon in
+   https://github.com/moira-alert/moira/pull/468
+-  Improved docker-compose by @litleleprikon in
+   https://github.com/moira-alert/moira/pull/515
+-  Fixed pattern matching in filter by @beevee in
+   https://github.com/moira-alert/moira/pull/517
+-  Added slave replicas read by @A1bemuth in
+   https://github.com/moira-alert/moira/pull/510
+-  Added cap on metric fetching to prevent checker OOM by @beevee in
+   https://github.com/moira-alert/moira/pull/519
+-  Added metrics for every possible state transition by @beevee in
+   https://github.com/moira-alert/moira/pull/527
+-  Metrics mixed up in graph legend by @Nixolay in
+   https://github.com/moira-alert/moira/pull/526
+-  Test on a non-primary database by @Nixolay in
+   https://github.com/moira-alert/moira/pull/529
+-  Added templates to trigger description #484 by @Nixolay in
+   https://github.com/moira-alert/moira/pull/487
+-  Added limit to FetchNotifications function for read notifications
+   from db by @ifireice in https://github.com/moira-alert/moira/pull/505
+-  Improved advanced mode by @litleleprikon in
+   https://github.com/moira-alert/moira/pull/470
+-  Rewrote self-state check by @Nixolay in
+   https://github.com/moira-alert/moira/pull/417
+-  Changed regexp submatch index by @litleleprikon in
+   https://github.com/moira-alert/moira/pull/534
+-  Added alone metrics to get trigger reply by @litleleprikon in
+   https://github.com/moira-alert/moira/pull/538
+-  Rewrote validation for empty targets by @litleleprikon in
+   https://github.com/moira-alert/moira/pull/540
+-  Now we save all evaluated metrics not only from T1 target to compere
+   it then save trigger by @borovskyav in
+   https://github.com/moira-alert/moira/pull/541
+-  Do not use t1: prefix in trigger alerts that have only one target by
+   @borovskyav in https://github.com/moira-alert/moira/pull/539
+-  Fixed alone metrics check error message by @borovskyav in
+   https://github.com/moira-alert/moira/pull/543
+-  Improved performance of check by @litleleprikon in
+   https://github.com/moira-alert/moira/pull/542
+-  Added test selfstate by @Nixolay in
+   https://github.com/moira-alert/moira/pull/546
+-  Improved alone metrics error message by @litleleprikon in
+   https://github.com/moira-alert/moira/pull/547
+-  Allowed stale read for pattern metrics by @litleleprikon in
+   https://github.com/moira-alert/moira/pull/549
+-  Changed default metric name to T1 by @litleleprikon in
+   https://github.com/moira-alert/moira/pull/548
+-  Denied usage of asterisk pattern by @litleleprikon in
+   https://github.com/moira-alert/moira/pull/555
+-  Added debug exception by @Nixolay in
+   https://github.com/moira-alert/moira/pull/552
+-  Fixed goroutines leak in filter by @litleleprikon in
+   https://github.com/moira-alert/moira/pull/562
+-  Added tagging current master branch with latest tag by @beevee in
+   https://github.com/moira-alert/moira/pull/565
+-  Fixed incorrect shutdown and conflict of data types during output in
+   MetricsMatcher. by @JIexa24 in
+   https://github.com/moira-alert/moira/pull/566
+-  Fixed multiple connections closing in Moira-Filter caused by PR-562.
+   by @JIexa24 in https://github.com/moira-alert/moira/pull/570
+-  Updated golang by @Nixolay in
+   https://github.com/moira-alert/moira/pull/571
+-  Added return ‘not found’ when rendering non-existing trigger chart by
+   @idoqo in https://github.com/moira-alert/moira/pull/572
+-  Added more linters by @zhelyabuzhsky in
+   https://github.com/moira-alert/moira/pull/573
+-  Fixed full-text search if the text is in uppercase by @zhelyabuzhsky
+   in https://github.com/moira-alert/moira/pull/574
+-  Added private channels support by @zhelyabuzhsky in
+   https://github.com/moira-alert/moira/pull/578
+-  Updated Go to 1.15.2 by @zhelyabuzhsky in
+   https://github.com/moira-alert/moira/pull/579
+-  Fixed Telegram group chat response message by @zhelyabuzhsky in
+   https://github.com/moira-alert/moira/pull/582
+-  Improved sendAsAlbum Telegram function by @zhelyabuzhsky in
+   https://github.com/moira-alert/moira/pull/581
+-  Fixed sending of plots in notifications by @zhelyabuzhsky in
+   https://github.com/moira-alert/moira/pull/580
+-  Added support of Slack user-group mentioning in the alert message by
+   @ArXa1L in https://github.com/moira-alert/moira/pull/585
+-  Fixed CarbonAPI pow function by @zhelyabuzhsky in
+   https://github.com/moira-alert/moira/pull/586
+-  Bumped golangci-lint version by @beevee in
+   https://github.com/moira-alert/moira/pull/587
+-  Updated templates by @Nixolay in
+   https://github.com/moira-alert/moira/pull/536
+-  Removed “parse” post message argument by @ArXa1L in
+   https://github.com/moira-alert/moira/pull/588
+-  Fixed Telegram group chat response message by @zhelyabuzhsky in
+   https://github.com/moira-alert/moira/pull/589
+-  Made responding only to messages beginning with /start in Telegram by
+   @beevee in https://github.com/moira-alert/moira/pull/590
+-  Allowed targets be single if it not declared by @litleleprikon in
+   https://github.com/moira-alert/moira/pull/554
+-  Marked all dangerous Graphite functions as such by @Nixolay in
+   https://github.com/moira-alert/moira/pull/531
+-  Improved logging by @androndo in
+   https://github.com/moira-alert/moira/pull/599
+-  Cleaned last check on trigger update by @litleleprikon in
+   https://github.com/moira-alert/moira/pull/596
+-  Removed populate check in trigger update by @litleleprikon in
+   https://github.com/moira-alert/moira/pull/602
+-  Added error logging in notifier by @litleleprikon in
+   https://github.com/moira-alert/moira/pull/604
+-  Cloned logger by @androndo in
+   https://github.com/moira-alert/moira/pull/605
+-  Fixed logging place by @litleleprikon in
+   https://github.com/moira-alert/moira/pull/606
+-  Updated Slack client by @androndo in
+   https://github.com/moira-alert/moira/pull/608
+-  Switched to github actions instead of travis CI by @litleleprikon in
+   https://github.com/moira-alert/moira/pull/610
+-  Detailed logs by @androndo in
+   https://github.com/moira-alert/moira/pull/600
+-  Disabled excluded logs if plots by @androndo in
+   https://github.com/moira-alert/moira/pull/612
+-  Changed trigger/check method to PUT and body params by @androndo in
+   https://github.com/moira-alert/moira/pull/611
+-  Detected broken contacts by @androndo in
+   https://github.com/moira-alert/moira/pull/615
+-  Added metrics export by @litleleprikon in
+   https://github.com/moira-alert/moira/pull/613
+-  Made expression not in uppercase only by @balalay12 in
+   https://github.com/moira-alert/moira/pull/622
+-  **Added team subscriptions and contacts** by @litleleprikon in
+   https://github.com/moira-alert/moira/pull/537
+-  Added pager deletion by @litleleprikon in
+   https://github.com/moira-alert/moira/pull/623
+-  Added strings methods to templating functions by @androndo in
+   https://github.com/moira-alert/moira/pull/624
+-  Fixed api bugs by @litleleprikon in
+   https://github.com/moira-alert/moira/pull/628
+-  Fixed http schema escaping when build url in webhook sender by
+   @androndo in https://github.com/moira-alert/moira/pull/627
+-  Moved coverage to codecov by @androndo in
+   https://github.com/moira-alert/moira/pull/630
+-  Fixed checker bugs by @litleleprikon in
+   https://github.com/moira-alert/moira/pull/621
+-  Fixed prepare test by @litleleprikon in
+   https://github.com/moira-alert/moira/pull/644
+-  Simplified ConvertForCheck function by @litleleprikon in
+   https://github.com/moira-alert/moira/pull/645
+-  Bumped go to 1.16.5 by @litleleprikon in
+   https://github.com/moira-alert/moira/pull/642
+-  Improved speed of metrics matching in filter by @KiskachiMaria in
+   https://github.com/moira-alert/moira/pull/682
+-  Added performance test for matching of tagged metrics by
+   @dmitryanchikov in https://github.com/moira-alert/moira/pull/686
+-  Updated module github.com/golang/snappy by @zhelyabuzhsky in
+   https://github.com/moira-alert/moira/pull/698
+-  Changed Kontur logo by @zhelyabuzhsky in
+   https://github.com/moira-alert/moira/pull/704
+-  Added shared test configuration for GoLand by @zhelyabuzhsky in
+   https://github.com/moira-alert/moira/pull/703
+-  Updated bleve package by @zhelyabuzhsky in
+   https://github.com/moira-alert/moira/pull/706
+-  Fixed redis port exposing by @zhelyabuzhsky in
+   https://github.com/moira-alert/moira/pull/711
+-  Added automaxprocs package to filter by @zhelyabuzhsky in
+   https://github.com/moira-alert/moira/pull/712
+-  Decreased level of logging for broken contact errors to ‘warning’ by
+   @dmitryanchikov in https://github.com/moira-alert/moira/pull/716
+-  Added automaxprocs package to api, checker, cli, notifier by
+   @zhelyabuzhsky in https://github.com/moira-alert/moira/pull/719
+-  Added CodeQL analysis by @zhelyabuzhsky in
+   https://github.com/moira-alert/moira/pull/705
+-  Fixed plotting error in notifier by @dmitryanchikov in
+   https://github.com/moira-alert/moira/pull/724
