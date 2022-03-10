@@ -1,0 +1,33 @@
+2.7.0
+=====
+
+Upgrading
+---------
+
+.. important:: **Redis config section update is required.**
+
+  Please update redis section in your config files according to the `examples <https://moira.readthedocs.io/en/release-2.7/installation/configuration.html>`_.
+
+.. important:: **Redis DB conversion is required.**
+
+  Moira 2.7 has some structure changes in Redis DB.
+
+  You can upgrade from moira 2.6.2 using corresponding flag in ``--from-version`` variable.
+
+    .. code-block:: bash
+
+      moira-cli --config=/etc/moira/cli.yml --update --from-version=2.6
+
+  If you would like to downgrade back to Moira 2.6.2, you should run CLI-converter.
+
+    .. code-block:: bash
+
+      moira-cli --config=/etc/moira/cli.yml --downgrade --to-version=2.6
+
+  Both cases imply usage of Moira-Cli v.2.7, you can find it on `Release Page <https://github.com/moira-alert/moira/releases>`_.
+
+What’s Changed
+--------------
+
+-  Added Redis Cluster support by @zhelyabuzhsky
+   in https://github.com/moira-alert/moira/pull/696
