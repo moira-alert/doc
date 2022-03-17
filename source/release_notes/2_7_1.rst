@@ -1,0 +1,12 @@
+2.7.1
+=====
+
+What’s Changed
+--------------
+
+-  Updated golang to 1.17.7 by @zhelyabuzhsky
+   in https://github.com/moira-alert/moira/pull/732
+-  Extended list of broken contact errors by @dmitryanchikov
+   in https://github.com/moira-alert/moira/pull/729
+-  Improved speed of tagged metrics matching in filter by @KiskachiMaria
+   in https://github.com/moira-alert/moira/pull/726
