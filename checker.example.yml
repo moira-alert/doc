@@ -75,8 +75,16 @@ remote:
   check_interval: 60s
   # Don't fetch metrics older than this value from remote storage
   metrics_ttl: 168h
-  # Maximum timeout for HTTP-request made to Graphite HTTP API
+  # Maximum timeout for HTTP-request made to Graphite HTTP API, default is 60s
   timeout: 60s
+  # Retry seconds for remote requests divided by spaces,
+  # default is empty, i.e. no retries on trigger checks
+  retry_seconds: "1 10 30 300"
+  # Maximum timeout for remote api health check requests, default is 60s
+  health_check_timeout: "5s"
+  # Retry seconds for remote api health check requests divided by spaces,
+  # default is "1 1", i.e. three attempts separated by 1s
+  health_check_retry_seconds: "1 1 1"`
 log:
   log_file: stdout
   log_level: info
