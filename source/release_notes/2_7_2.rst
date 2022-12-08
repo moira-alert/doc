@@ -1,0 +1,37 @@
+2.7.2
+=====
+
+What’s Changed
+--------------
+
+*Added*
+
+-  Click action on tags in trigger list & view by @sol-un
+   in https://github.com/moira-alert/web2.0/pull/384
+-  Mattermost as a delivery channel option by @sol-un and @Dimedrolity
+   in https://github.com/moira-alert/web2.0/pull/396
+   and https://github.com/moira-alert/moira/pull/791
+-  Don't write into Redis old metrics by @kissken
+   in https://github.com/moira-alert/moira/pull/757
+-  Moira will ignore tag order in tag metrics by @zhelyabuzhsky
+   in https://github.com/moira-alert/moira/pull/758
+-  Checker can run in multiple instances by @maksgalimz
+   in https://github.com/moira-alert/moira/pull/802
+
+
+*Fixed*
+
+-  Markdown not working in the mobile version by @OAPrilepa
+   in https://github.com/moira-alert/web2.0/pull/374
+-  Interface inconsistencies in some modals by @sol-un
+   in https://github.com/moira-alert/web2.0/pull/376
+   and https://github.com/moira-alert/web2.0/pull/383
+-  Last event date format by @sol-un #389
+   in https://github.com/moira-alert/web2.0/pull/389
+-  Search by non-existent tags by @HolyPrapor and @sol-un
+   in https://github.com/moira-alert/web2.0/pull/353
+   and https://github.com/moira-alert/web2.0/pull/394
+-  Trigger list item styles on hover by @sol-un
+   in https://github.com/moira-alert/web2.0/pull/390
+-  A bottleneck in trigger list rendering by @sol-un
+   in https://github.com/moira-alert/web2.0/pull/391
