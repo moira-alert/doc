@@ -7,7 +7,7 @@ What’s Changed
 *Added*
 
 -  ⚠️ Cleanup (to clean users) named cleanup-users now
--  ‼️ Moira will ignore tag order in tag metrics and will sort them alphabetically by @zhelyabuzhsky
+-  ⚠️ Moira will ignore tag order in tag metrics and will sort them alphabetically by @zhelyabuzhsky
    in https://github.com/moira-alert/moira/pull/758
 -  Click action on tags in trigger list & view by @sol-un
    in https://github.com/moira-alert/web2.0/pull/384
