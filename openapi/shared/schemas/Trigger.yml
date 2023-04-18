@@ -79,6 +79,50 @@ Trigger:
     - ttl
     - mute_new_metrics
 
+CheckResult:
+  type: object
+  properties:
+    targets:
+      type: array
+      items:
+        type: object
+        properties:
+          syntax_ok:
+            type: boolean
+          tree_of_problems:
+            type: object
+            properties:
+              argument:
+                type: integer
+              type:
+                type: integer
+              description:
+                type: integer
+              problems:
+                type: array
+                items:
+                  $ref: "#/definitions/targetProblems"
+  example:
+    targets:
+      - syntax_ok: true
+        tree_of_problems:
+          argument: summarize
+          type: bad
+          description: 'This function is unstable: it can return different historical values
+          with each evaluation. Moira will show unexpected values that you don''t see
+          on your graphs.'
+          position: 0
+          problems:
+            - argument: movingWindow
+              position: 0
+              problems:
+                - argument: summarize
+                  type: bad
+                  description: 'This function is unstable: it can return different historical
+              values with each evaluation. Moira will show unexpected values that you
+              don''t see on your graphs.'
+                  position: 0
+
 definitions:
   ScheduleData:
     type: object
@@ -110,3 +154,17 @@ definitions:
         description: "Shortened name of the weekday"
         enum: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
         example: "Mon"
+
+  targetProblems:
+    type: object
+    properties:
+      argument:
+        type: integer
+      type:
+        type: integer
+      description:
+        type: integer
+      problems:
+        type: array
+        items:
+          $ref: "#/definitions/targetProblems"
