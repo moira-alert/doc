@@ -93,9 +93,10 @@ CheckResult:
             type: object
             properties:
               argument:
-                type: integer
+                type: string
               type:
-                type: integer
+                type: string
+                description: "'bad' or 'warn' value indicates error and warning correspondingly"
               description:
                 type: integer
               problems:
@@ -106,21 +107,17 @@ CheckResult:
     targets:
       - syntax_ok: true
         tree_of_problems:
-          argument: summarize
-          type: bad
-          description: 'This function is unstable: it can return different historical values
-          with each evaluation. Moira will show unexpected values that you don''t see
-          on your graphs.'
+          argument: consolidateBy
+          type: warn
+          description: 'This function affects only visual graph representation. It is meaningless in Moira.'
           position: 0
           problems:
             - argument: movingWindow
               position: 0
               problems:
-                - argument: summarize
-                  type: bad
-                  description: 'This function is unstable: it can return different historical
-              values with each evaluation. Moira will show unexpected values that you
-              don''t see on your graphs.'
+                - argument: consolidateBy
+                  type: warn
+                  description: 'This function affects only visual graph representation. It is meaningless in Moira.'
                   position: 0
 
 definitions:
