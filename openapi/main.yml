@@ -65,6 +65,8 @@ paths:
     $ref: ./tag/methods.yml#/stats
   /trigger:
     $ref: ./trigger/methods.yml#/triggers
+  /trigger/check:
+    $ref: ./trigger/methods.yml#/check
   /trigger/page:
     $ref: ./trigger/methods.yml#/page
   /trigger/search:

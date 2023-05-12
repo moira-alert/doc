@@ -118,6 +118,21 @@ setMaintenance:
     responses:
       $ref: ./responses.yml#/setMaintenance/scheduleMaintenance
 
+check:
+  put:
+    summary: "validates trigger target"
+    operationId: CheckTrigger
+    tags:
+      - trigger
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: "../shared/schemas/Trigger.yml#/Trigger"
+    responses:
+      $ref: ./responses.yml#/triggers/check
+
 metrics:
   get:
     summary: "Get metrics associated with certain trigger"

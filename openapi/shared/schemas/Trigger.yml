@@ -79,6 +79,47 @@ Trigger:
     - ttl
     - mute_new_metrics
 
+CheckResult:
+  type: object
+  properties:
+    targets:
+      type: array
+      items:
+        type: object
+        properties:
+          syntax_ok:
+            type: boolean
+          tree_of_problems:
+            type: object
+            properties:
+              argument:
+                type: string
+              type:
+                type: string
+                description: "'bad' or 'warn' value indicates error and warning correspondingly"
+              description:
+                type: integer
+              problems:
+                type: array
+                items:
+                  $ref: "#/definitions/targetProblems"
+  example:
+    targets:
+      - syntax_ok: true
+        tree_of_problems:
+          argument: consolidateBy
+          type: warn
+          description: 'This function affects only visual graph representation. It is meaningless in Moira.'
+          position: 0
+          problems:
+            - argument: movingWindow
+              position: 0
+              problems:
+                - argument: consolidateBy
+                  type: warn
+                  description: 'This function affects only visual graph representation. It is meaningless in Moira.'
+                  position: 0
+
 definitions:
   ScheduleData:
     type: object
@@ -110,3 +151,17 @@ definitions:
         description: "Shortened name of the weekday"
         enum: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
         example: "Mon"
+
+  targetProblems:
+    type: object
+    properties:
+      argument:
+        type: integer
+      type:
+        type: integer
+      description:
+        type: integer
+      problems:
+        type: array
+        items:
+          $ref: "#/definitions/targetProblems"
