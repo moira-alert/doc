@@ -78,9 +78,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Extract branch name on push
-        if: github.event_name != 'pull_request'
-        run: echo "::set-env name=BRANCH_NAME::$(echo ${GITHUB_REF#refs/heads/})"
+    #  - name: Extract branch name on push
+    #    if: github.event_name != 'pull_request'
+    #    run: echo "::set-env name=BRANCH_NAME::$(echo ${GITHUB_REF#refs/heads/})"
 
       - run: mkdir build/
       - name: Download spec file artifact
@@ -95,6 +95,6 @@ jobs:
           SWAGGERHUB_URL: "https://api.swaggerhub.com/apis/Moira/moira-alert"
         shell: bash
         run: |
-          VERSION=`echo ${BRANCH_NAME}|sed 's#[^a-zA-Z0-9_\.\-]#_#g'`
+          VERSION=`echo ${GITHUB_REF_NAME}| sed 's#[^a-zA-Z0-9_\.\-]#_#g'`
           DEFINITION=`cat ./build/openapi.yml`
           curl -d "$DEFINITION" "${SWAGGERHUB_URL}/?isPrivate=false&version=${VERSION}&oas=3.0.0&force=true" -H "content-type: application/yaml" -H "Authorization: ${AUTH_TOKEN}"
