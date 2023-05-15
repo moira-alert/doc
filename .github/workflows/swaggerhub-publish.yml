@@ -30,7 +30,7 @@ jobs:
         with:
           name: specfile
           path: openapi/build/openapi.yml
-
+          
   #testspec:
   #  name: Test generated spec against the Moira API
   #  runs-on: ubuntu-latest
