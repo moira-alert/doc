@@ -4,30 +4,22 @@ defaults:
     working-directory: openapi
 
 on:
-  pull_request:
-    types: [closed]
+  push
 
 jobs:
   removespec:
-    name: Remove the corresponding spec from SwaggerHub
+    name: Unpublish api from SwaggerHub
     runs-on: ubuntu-22.04
 
     steps:
-      - uses: actions/checkout@v2
-      #- name: Extract branch name on branch delete
-      #  if: github.event_name != 'pull_request'
-      #  id: extract_branch_name
-      #  run: echo "::set-env name=BRANCH_NAME::$(echo ${{ github.event.ref }})"
-
-      #- name: Extract branch name on PR closed or merged
-      #  if: github.event_name == 'pull_request'
-      #  run: echo "::set-env name=BRANCH_NAME::$(echo ${GITHUB_HEAD_REF})"
-
-      - name: remove spec from swaggerhub
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16.16.0'
         env:
-          AUTH_TOKEN: ${{secrets.SWAGGERHUB_TOKEN}}
-          SWAGGERHUB_URL: "https://api.swaggerhub.com/apis/Moira/moira-alert"
-        shell: bash
-        run: |
+          SWAGGERHUB_API_KEY: ${{secrets.SWAGGERHUB_TOKEN}}
+          SWAGGERHUB_URL: "https://api.swaggerhub.com/"
+      - run: npm i --location=global swaggerhub-cli
+      - run: |
           VERSION=`echo ${GITHUB_REF_NAME} | sed 's#[^a-zA-Z0-9_\.\-]#_#g'`
-          curl -X DELETE "${SWAGGERHUB_URL}/${VERSION}" -H "content-type: application/yaml" -H "Authorization: ${AUTH_TOKEN}"
+          swaggerhub api:unpublish "Moira/Moira/${VERSION}"
