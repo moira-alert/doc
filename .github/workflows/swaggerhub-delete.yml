@@ -9,19 +9,16 @@ on:
 
 jobs:
   removespec:
-    name: Remove the corresponding spec from SwaggerHub
+    name: Unpublish api from SwaggerHub
     runs-on: ubuntu-22.04
 
     steps:
-      - uses: actions/checkout@v2
-      #- name: Extract branch name on branch delete
-      #  if: github.event_name != 'pull_request'
-      #  id: extract_branch_name
-      #  run: echo "::set-env name=BRANCH_NAME::$(echo ${{ github.event.ref }})"
-
-      #- name: Extract branch name on PR closed or merged
-      #  if: github.event_name == 'pull_request'
-      #  run: echo "::set-env name=BRANCH_NAME::$(echo ${GITHUB_HEAD_REF})"
+      - name: setup swaggerhub cli
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.16.0'
+          cache: 'npm'
+        run: npm i -g swaggerhub-cli
 
       - name: remove spec from swaggerhub
         env:
