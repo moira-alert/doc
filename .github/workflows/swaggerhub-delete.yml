@@ -20,6 +20,6 @@ jobs:
           SWAGGERHUB_API_KEY: ${{secrets.SWAGGERHUB_TOKEN}}
           SWAGGERHUB_URL: "https://api.swaggerhub.com/"
       - run: |
-          npm i -g swaggerhub-cli
+          npm i swaggerhub-cli
           VERSION=`echo ${GITHUB_REF_NAME} | sed 's#[^a-zA-Z0-9_\.\-]#_#g'`
-          swaggerhub-cli api:unpublish "Moira/moira-alert/${VERSION}"
+          swaggerhub api:unpublish "Moira/moira-alert/${VERSION}"
