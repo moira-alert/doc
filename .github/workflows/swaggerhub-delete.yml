@@ -16,13 +16,10 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '16.16.0'
-      - run: npm i -g swaggerhub-cli
-
-      - name: remove spec from swaggerhub
         env:
           SWAGGERHUB_API_KEY: ${{secrets.SWAGGERHUB_TOKEN}}
           SWAGGERHUB_URL: "https://api.swaggerhub.com/"
-        shell: bash
-        run: |
+      - run: |
+          npm i -g swaggerhub-cli
           VERSION=`echo ${GITHUB_REF_NAME} | sed 's#[^a-zA-Z0-9_\.\-]#_#g'`
           swaggerhub-cli api:unpublish "Moira/moira-alert/${VERSION}"
