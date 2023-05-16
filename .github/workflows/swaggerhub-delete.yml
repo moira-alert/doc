@@ -12,18 +12,18 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
-      - name: setup swaggerhub cli
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: '16.16.0'
           cache: 'npm'
-        run: npm i -g swaggerhub-cli
+      - run: npm i -g swaggerhub-cli
 
       - name: remove spec from swaggerhub
         env:
-          AUTH_TOKEN: ${{secrets.SWAGGERHUB_TOKEN}}
-          SWAGGERHUB_URL: "https://api.swaggerhub.com/apis/Moira/moira-alert"
+          SWAGGERHUB_API_KEY: ${{secrets.SWAGGERHUB_TOKEN}}
+          SWAGGERHUB_URL: "https://api.swaggerhub.com/"
         shell: bash
         run: |
           VERSION=`echo ${GITHUB_REF_NAME} | sed 's#[^a-zA-Z0-9_\.\-]#_#g'`
-          curl -X DELETE "${SWAGGERHUB_URL}/${VERSION}" -H "content-type: application/yaml" -H "Authorization: ${AUTH_TOKEN}"
+          swaggerhub-cli api:unpublish "Moira/moira-alert/${VERSION}"
