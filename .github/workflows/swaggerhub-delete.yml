@@ -4,8 +4,7 @@ defaults:
     working-directory: openapi
 
 on:
-  pull_request:
-    types: [closed]
+  push
 
 jobs:
   removespec:
