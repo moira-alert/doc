@@ -70,7 +70,7 @@ jobs:
   publishspec:
     name: Upload generated OpenAPI description
     runs-on: ubuntu-22.04
-  # needs: testspec
+    needs: mergespec
     defaults:
       run:
         working-directory: openapi
@@ -92,7 +92,7 @@ jobs:
       - name: Upload spec file to swaggerhub
         env:
           AUTH_TOKEN: ${{secrets.SWAGGERHUB_TOKEN}}
-          SWAGGERHUB_URL: "https://api.swaggerhub.com/apis/Moira/moira-alert"
+          SWAGGERHUB_URL: "https://api.swaggerhub.com/apis/Moira/Moira"
         shell: bash
         run: |
           VERSION=`echo ${GITHUB_REF_NAME}| sed 's#[^a-zA-Z0-9_\.\-]#_#g'`
