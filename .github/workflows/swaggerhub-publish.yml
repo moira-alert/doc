@@ -18,7 +18,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v3
         with:
           node-version: "16"
       - run: npm install -g swagger-cli @openapitools/openapi-generator-cli
@@ -76,7 +76,7 @@ jobs:
         working-directory: openapi
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
     #  - name: Extract branch name on push
     #    if: github.event_name != 'pull_request'
@@ -89,12 +89,9 @@ jobs:
           name: specfile
           path: openapi/build
 
-      - name: Upload spec file to swaggerhub
-        env:
-          AUTH_TOKEN: ${{secrets.SWAGGERHUB_TOKEN}}
-          SWAGGERHUB_URL: "https://api.swaggerhub.com/apis/Moira/moira-alert"
-        shell: bash
-        run: |
+      - uses: actions/setup-node@v3
+      - run: npm i --location=global swaggerhub-cli
+      - run: |
           VERSION=`echo ${GITHUB_REF_NAME}| sed 's#[^a-zA-Z0-9_\.\-]#_#g'`
-          DEFINITION=`cat ./build/openapi.yml`
-          curl -d "$DEFINITION" "${SWAGGERHUB_URL}/?isPrivate=false&version=${VERSION}&oas=3.0.0&force=true" -H "content-type: application/yaml" -H "Authorization: ${AUTH_TOKEN}"
+          SWAGGERHUB_API_KEY=${{secrets.SWAGGERHUB_TOKEN}}
+          swaggerhub api:create "Moira/moira-alert/${VERSION}" -f ./build/openapi.yml --published=publish --visibility=public
