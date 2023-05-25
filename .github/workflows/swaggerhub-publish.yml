@@ -88,9 +88,10 @@ jobs:
         with:
           name: specfile
           path: openapi/build
-
+          
       - uses: actions/setup-node@v3
       - run: npm i --location=global swaggerhub-cli
       - run: |
           VERSION=`echo ${GITHUB_REF_NAME}| sed 's#[^a-zA-Z0-9_\.\-]#_#g'`
           SWAGGERHUB_API_KEY=${{secrets.SWAGGERHUB_TOKEN}} swaggerhub api:create "Moira/moira-alert/${VERSION}" -f ./build/openapi.yml --published=publish --visibility=public
+
