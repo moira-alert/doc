@@ -18,13 +18,13 @@ jobs:
 
       - uses: actions/setup-node@v3
         with:
-          node-version: '16'
-      - run: npm install -g swagger-cli @openapitools/openapi-generator-cli
+          node-version: '16.16.0'
+      - run: npm install --location=global swagger-cli @openapitools/openapi-generator-cli
       - run: make spec
       - run: make validate-spec
 
       - name: Save build artifact
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v3
         with:
           name: specfile
           path: openapi/build/openapi.yml
