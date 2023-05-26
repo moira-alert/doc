@@ -5,7 +5,10 @@ build:
   tools:
     python: "3.8"
 
+sphinx:
+   configuration: source/conf.py
+
 python:
   install:
-    - method: pip
-      path: .
+    - requirements: ./requirements.txt
+    
