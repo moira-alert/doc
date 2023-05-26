@@ -67,6 +67,8 @@ Strings manipulations
 - ``{{ stringsToUpper .Trigger.Name }}``
 - ``{{ stringsTrimPrefix .Trigger.Name "remove_me" }}``
 - ``{{ stringsTrimSuffix .Trigger.Name "remove_me" }}``
+- ``{{ stringsSplit .Trigger.Name "sep" }}``
+  
 
 See more about functions and args in golang `strings <https://golang.org/pkg/strings>`.
 
