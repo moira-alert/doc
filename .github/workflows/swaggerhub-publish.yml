@@ -84,7 +84,7 @@ jobs:
 
       - run: mkdir build/
       - name: Download spec file artifact
-        uses: actions/download-artifact@v1
+        uses: actions/download-artifact@v3
         with:
           name: specfile
           path: openapi/build
