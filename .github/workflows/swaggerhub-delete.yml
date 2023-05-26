@@ -7,6 +7,9 @@ on:
     types: [closed]
     branches:
     - master
+  push:
+    branches:
+    - feature/*
     - v[0-9]+.[0-9]+.[0-9]+
 
 jobs:
