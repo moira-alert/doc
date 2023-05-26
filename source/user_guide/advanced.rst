@@ -44,19 +44,49 @@ The template is supported by Moira, the template implements data-driven template
 Information about how to program the templates themselves, see the `documentation. <https://golang.org/pkg/html/template/>`_
 
 Data you can use:
+~~~~~~~~~~~~~~~~~
 
-| Trigger { Name }
-| Events  [ ] {
-|  Metric
-|  MetricElements [ ]string
-|  Timestamp
-|  Value
-|  State
-| }
+.. code-block:: text
+
+  Trigger { Name }
+  Events  [ ] {
+   Metric
+   MetricElements [ ]string
+   Timestamp
+   Value
+   State
+  }
 
 Example:
-
 ``https://grafana.yourhost.com/some-dashboard{{ range $i, $v := .Events }}{{ if ne $i 0 }}&{{ else }}?{{ end }}var-host={{ $v.Metric }}{{ end }}``
+
+Strings manipulations
+~~~~~~~~~~~~~~~~~~~~~
+- ``{{ stringsReplace .Trigger.Name "." "_" -1 }}``
+- ``{{ stringsToLower .Trigger.Name }}``
+- ``{{ stringsToUpper .Trigger.Name }}``
+- ``{{ stringsTrimPrefix .Trigger.Name "remove_me" }}``
+- ``{{ stringsTrimSuffix .Trigger.Name "remove_me" }}``
+- ``{{ stringsSplit .Trigger.Name "sep" }}``
+  
+
+See more about functions and args in golang `strings <https://golang.org/pkg/strings>`.
+
+Date manipulations
+~~~~~~~~~~~~~~~~~~
+- ``{{ date $v.Timestamp }}`` print date timestamp.
+- ``{{ formatDate $v.Timestamp "Mon Jan _2 15:04:05 2006" }}`` format timestamp by pattern, see `more <https://golang.org/pkg/time/#Time.Format>`_.
+
+Also you can use some methods for events:
+
+.. code-block:: text
+
+  {{ range $event:= .Events }}
+  {{ $event.TimestampDecrease 5 }}
+  {{ end }}
+
+- ``{{ $event.TimestampDecrease 5 }}`` - decrease event timestamp.
+- ``{{ $event.TimestampIncrease 5 }}`` - increase event timestamp.
 
 
 Data source
