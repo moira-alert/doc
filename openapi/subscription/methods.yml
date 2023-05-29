@@ -57,3 +57,19 @@ test:
     responses:
       $ref: ./responses.yml#/testSubscriptionNotification
 
+teamSubscriptions:
+  post:
+    summary: "create a new subscription for team"
+    operationId: CreateTeamSubscription
+    tags:
+      - teamSubscription
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: "../shared/schemas/Subscription.yml#/Subscription"
+    parameters:
+      - $ref: ../shared/parameters/_index.yml#/teamID
+    responses:
+      $ref: ./responses.yml#/createSubscription

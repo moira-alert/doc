@@ -1,0 +1,86 @@
+teams:
+  get:
+    summary: "Get all teams"
+    operationId: GetTeams
+    tags:
+      - team
+    responses:
+      $ref: ./responses.yml#/getTeams
+
+  post:
+    summary: "Create new team"
+    operationId: CreateTeam
+    tags:
+      - team
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: ../shared/schemas/Team.yml#/Team
+    responses:
+      $ref: ./responses.yml#/createTeam
+
+team:
+  get:
+    summary: "Get existing team"
+    operationId: GetTeam
+    tags:
+      - team
+    parameters:
+      - $ref: "../shared/parameters/_index.yml#/teamID"
+    responses:
+      $ref: responses.yml#/getTeam
+  patch:
+    summary: "Update existing team"
+    operationId: UpdateTrigger
+    tags:
+      - team
+    parameters:
+      - $ref: ../shared/parameters/_index.yml#/teamID
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: ../shared/schemas/Team.yml#/Team
+    responses:
+      $ref: responses.yml#/updateTeam
+
+teamUsers:
+  get:
+    summary: "Get team users"
+    operationId: GetTeamUsers
+    tags:
+      - team
+    parameters:
+      - $ref: "../shared/parameters/_index.yml#/teamID"
+    responses:
+      $ref: responses.yml#/getTeamUsers
+  post:
+    summary: "Add users to a team"
+    operationId: AddTeamUsers
+    tags:
+      - team
+    parameters:
+      - $ref: ../shared/parameters/_index.yml#/teamID
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: ../shared/schemas/Team.yml#/TeamMembers
+    responses:
+      $ref: responses.yml#/updateTeam
+
+teamUser:
+  delete:
+    summary: "Remove user from a team"
+    operationId: DeleteTeamUser
+    tags:
+      - team
+    parameters:
+      - $ref: ../shared/parameters/_index.yml#/teamID
+      - $ref: ../shared/parameters/_index.yml#/teamUserID
+    responses:
+      $ref: responses.yml#/updateTeam

@@ -19,10 +19,10 @@ NotFound:
         $ref: "../schemas/Errors.yml#/Error"
       examples:
         missingTrigger:
-          description: "Trigger with given ID not found"
+          description: "Resource with given ID not found"
           value:
             status: "resource not found"
-            example: "trigger with ID '66741a8c-c2ba-4357-a2c9-ee78e0e7' does not exist"
+            example: "resource with ID '66741a8c-c2ba-4357-a2c9-ee78e0e7' does not exist"
 
 ServerError:
   description: "Server error"
@@ -32,7 +32,7 @@ ServerError:
         $ref: "../schemas/Errors.yml#/Error"
       examples:
         renderingFailed:
-          description: "Failed to render trigger chart"
+          description: "Failed to render resource"
           value:
             status: "Internal Server Error"
-            error: "no points found to render trigger: 5A8AF369-86D2-44DD-B514-D47995ED6AF7"
+            error: "server error during request handling"
