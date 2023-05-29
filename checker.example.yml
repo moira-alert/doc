@@ -59,6 +59,11 @@ checker:
   # Is related with remote triggers (see remote section)
   # Equals to the number of processor cores found on Moira host by default or when variable is defined as 0.
   max_parallel_remote_checks: 0
+  # Adjusting minimal log level with concrete fields
+  set_log_level:
+    triggers:
+      - id: "111"
+        level: "debug"
 # This section configures remote triggers Checker.
 # See https://moira.readthedocs.io/en/latest/installation/configuration.html#remote-triggers-checker for futher information
 remote:
@@ -80,3 +85,5 @@ remote:
 log:
   log_file: stdout
   log_level: info
+  # Enable human-readable console output
+  log_pretty_format: true

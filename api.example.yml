@@ -120,6 +120,8 @@ web:
 log:
   log_file: stdout
   log_level: info
+  # Enable human-readable console output
+  log_pretty_format: true
 # This section configures remote triggers Checker.
 # See https://moira.readthedocs.io/en/latest/installation/configuration.html#remote-triggers-checker for futher information
 remote:

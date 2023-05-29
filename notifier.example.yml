@@ -140,9 +140,19 @@ notifier:
     contacts:
       - type: mail
         value: devopsteam@example.com
+    # Adjusting minimal log level with concrete fields
+    set_log_level:
+      triggers:
+        - id: "111"
+          level: "debug"
+      subscriptions:
+        - id: "999"
+          level: "warn"
 log:
   log_file: stdout
   log_level: info
+  # Enable human-readable console output
+  log_pretty_format: true
 # This section configures remote triggers Checker.
 # See https://moira.readthedocs.io/en/latest/installation/configuration.html#remote-triggers-checker for futher information
 remote:
