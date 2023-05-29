@@ -230,9 +230,6 @@ A new major version of Moira's web UI is released.
 Alexey Kirpichnikov (alexkir@kontur.ru),
 Nikolay Kudrin (n.kudrin@kontur.ru).
 
-Noisy trigger analysis tools
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
 Support for additional delivery channels
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
