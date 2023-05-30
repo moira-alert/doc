@@ -33,7 +33,7 @@ team:
       $ref: responses.yml#/getTeam
   patch:
     summary: "Update existing team"
-    operationId: UpdateTrigger
+    operationId: UpdateTeam
     tags:
       - team
     parameters:
