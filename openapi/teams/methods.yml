@@ -71,7 +71,26 @@ teamUsers:
           schema:
             $ref: ../shared/schemas/Team.yml#/TeamMembers
     responses:
-      $ref: ./responses.yml#/updateTeam
+    #Hardcode updateTeam responce, because I don't know why ref doesn't work in this place.
+    #Use '$ref: /responses.yml#/updateTeam' leads to error: attribute paths.'/team/{teamID}/users'(post).responses.$ref is not of type `object`
+      200:
+        description: "Team updated successfully"
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: "Id of updated team"
+                  format: uuid
+                  example: "d5d98eb3-ee18-4f75-9364-244f67e23b54"
+      400:
+        $ref: "../shared/responses/_index.yml#/BadRequest"
+      404:
+        $ref: "../shared/responses/_index.yml#/NotFound"
+      500:
+        $ref: "../shared/responses/_index.yml#/ServerError"
 
 teamUser:
   delete:
@@ -83,4 +102,23 @@ teamUser:
       - $ref: ../shared/parameters/_index.yml#/teamID
       - $ref: ../shared/parameters/_index.yml#/teamUserID
     responses:
-       $ref: ./responses.yml#/updateTeam
+    #Hardcode updateTeam responce, because I don't know why ref doesn't work in this place.
+    #Use '$ref: /responses.yml#/updateTeam' leads to error:/team/{teamID}/users/{teamUserID}'(delete) is not of type `object`
+      200:
+        description: "Team updated successfully"
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: "Id of updated team"
+                  format: uuid
+                  example: "d5d98eb3-ee18-4f75-9364-244f67e23b54"
+      400:
+        $ref: "../shared/responses/_index.yml#/BadRequest"
+      404:
+        $ref: "../shared/responses/_index.yml#/NotFound"
+      500:
+        $ref: "../shared/responses/_index.yml#/ServerError"
