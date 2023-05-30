@@ -71,10 +71,4 @@ teamContacts:
           schema:
             $ref: ./requests.yml#/newContact
     responses:
-      200:
-        description: "Contact created successfully."
-        content:
-          application/json:
-            schema:
-              $ref: "../shared/schemas/Contact.yml#/Contact"
-
+      - $ref: ./responses.yml#/newContact
