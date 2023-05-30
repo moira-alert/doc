@@ -19,7 +19,7 @@ teams:
           schema:
             $ref: ../shared/schemas/Team.yml#/Team
     responses:
-      - $ref: ./responses.yml#/createTeam
+      $ref: ./responses.yml#/createTeam
 
 team:
   get:
@@ -45,7 +45,7 @@ team:
           schema:
             $ref: ../shared/schemas/Team.yml#/Team
     responses:
-      - $ref: ./responses.yml#/updateTeam
+      $ref: ./responses.yml#/updateTeam
 
 teamUsers:
   get:
@@ -71,7 +71,7 @@ teamUsers:
           schema:
             $ref: ../shared/schemas/Team.yml#/TeamMembers
     responses:
-      - $ref: ./responses.yml#/updateTeam
+      $ref: ./responses.yml#/updateTeam
 
 teamUser:
   delete:
@@ -83,4 +83,4 @@ teamUser:
       - $ref: ../shared/parameters/_index.yml#/teamID
       - $ref: ../shared/parameters/_index.yml#/teamUserID
     responses:
-      - $ref: ./responses.yml#/updateTeam
+       $ref: ./responses.yml#/updateTeam

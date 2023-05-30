@@ -71,4 +71,15 @@ teamContacts:
           schema:
             $ref: ./requests.yml#/newContact
     responses:
-      - $ref: ./responses.yml#/newContact
+    #Hardcode newContact responce, because I don't know why ref doesn't work in this place.
+    #Use '$ref: /responses.yml#/newContact' leads to error atribute paths.'/team/{teamID}/contacts'(post).responses.$ref is not of type `object`
+      newContact:
+        200:
+          description: "Contact created successfully."
+          content:
+            application/json:
+            schema:
+              $ref: "../shared/schemas/Contact.yml#/Contact"
+
+        400:
+          $ref: "../shared/responses/_index.yml#/BadRequest"
