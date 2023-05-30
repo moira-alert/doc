@@ -3,6 +3,7 @@ BadRequest:
   content:
     application/json:
       schema:
+        type: object
         $ref: "../schemas/Errors.yml#/Error"
       examples:
         missingID:
@@ -16,6 +17,7 @@ NotFound:
   content:
     application/json:
       schema:
+        type: object
         $ref: "../schemas/Errors.yml#/Error"
       examples:
         missingTrigger:
@@ -29,6 +31,7 @@ ServerError:
   content:
     application/json:
       schema:
+        type: object
         $ref: "../schemas/Errors.yml#/Error"
       examples:
         renderingFailed:

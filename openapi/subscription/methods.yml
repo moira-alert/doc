@@ -72,4 +72,26 @@ teamSubscriptions:
     parameters:
       - $ref: ../shared/parameters/_index.yml#/teamID
     responses:
-      $ref: ./responses.yml#/createSubscription
+    #Hardcode createSubscription responce, because I don't know why ref doesn't work in this place.
+    #Use '$ref: /responses.yml#/createSubscription' leads to error: attribute paths.'/team/{teamID}/subscriptions'(post).responses.$ref is not of type`object`
+      200:
+        description: "subscription created"
+        content:
+          application/json:
+            schema:
+              $ref: "../shared/schemas/Subscription.yml#/Subscription"
+      400:
+        description: "Invalid request data"
+        content:
+          application/json:
+            schema:
+              $ref: "../shared/schemas/Errors.yml#/Error"
+            examples:
+              missingField:
+                description: "a required field isn't in the request body"
+                value:
+                  status: "Invalid request"
+                  message: "subscription must have tags"
+          text/html:
+            schema:
+              type: string
