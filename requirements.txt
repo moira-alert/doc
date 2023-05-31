@@ -6,4 +6,3 @@ sphinxcontrib-images
 pyenchant
 recommonmark
 txredisapi
-anyjson
