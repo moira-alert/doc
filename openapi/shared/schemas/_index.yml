@@ -18,6 +18,10 @@ Subscription:
   $ref: "./Subscription.yml#/Subscription"
 Trigger:
   $ref: "./Trigger.yml#/Trigger"
+Team:
+  $ref: "./Team.yml#/Team"
+TeamMembers:
+  $ref: "./Team.yml#/TeamMembers"
 TriggerCheck:
   $ref: "./TriggerCheck.yml#/TriggerCheck"
 User:

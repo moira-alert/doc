@@ -18,6 +18,7 @@ newContact:
     content:
       application/json:
         schema:
+          type: object
           $ref: "../shared/schemas/Contact.yml#/Contact"
 
   400:

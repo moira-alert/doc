@@ -35,10 +35,9 @@ metricName:
   description: Name of the target metric
   example: "DevOps.my_server.hdd.freespace_mbytes"
 
-
 notificationId:
   in: query
-  name: notificationId
+  name: id
   required: true
   schema:
     type: string
@@ -145,3 +144,22 @@ triggerID:
     format: uuid
   description: The ID of updated trigger
   example: 5A8AF369-86D2-44DD-B514-D47995ED6AF7
+
+teamID:
+  in: path
+  name: teamID
+  required: true
+  schema:
+    type: string
+    format: uuid
+  description: The ID of team
+  example: d5d98eb3-ee18-4f75-9364-244f67e23b54
+
+teamUserID:
+  in: path
+  name: teamUserID
+  required: true
+  schema:
+    type: string
+  description: User login in methods related to teams manipulation
+  example: anonymous

@@ -1,0 +1,19 @@
+2.8.0
+=====
+
+What’s Changed
+--------------
+
+*Added and Fixed*
+
+Breaking
+    - ⚠️ Update carbonapi to 0.16.0 by @Tetrergeru in https://github.com/moira-alert/moira/pull/822
+    - ⚠️ Replace flat logs with structured logging by @Tetrergeru in https://github.com/moira-alert/moira/pull/811 and https://github.com/moira-alert/moira/pull/819
+
+Other
+   - Fix regex in series by tag parser by @balalay12 in https://github.com/moira-alert/moira/pull/825
+   - Validate trigger target on create/update by @Dimedrolity in https://github.com/moira-alert/moira/pull/817
+   - Fix sending plot in slack-threads by @kissken in https://github.com/moira-alert/moira/pull/828
+   - Add created_by and updated_by for trigger by @kissken in https://github.com/moira-alert/moira/pull/824
+   - Make strings.Split function available in description templates by @kotbauk in https://github.com/moira-alert/moira/pull/843
+   - Added cleanup abandoned tags by @Dimedrolity in https://github.com/moira-alert/moira/pull/773
