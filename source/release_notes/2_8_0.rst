@@ -7,13 +7,13 @@ What’s Changed
 *Added and Fixed*
 
 Breaking
-    - ⚠️ Update carbonapi to 0.16.0 by @Tetrergeru in `#822 https://github.com/moira-alert/moira/pull/822`_
-    - ⚠️ Replace flat logs with structured logging by @Tetrergeru in `#811 https://github.com/moira-alert/moira/pull/811`_ and `#819 https://github.com/moira-alert/moira/pull/819`_
+    - ⚠️ Update carbonapi to 0.16.0 by @Tetrergeru in https://github.com/moira-alert/moira/pull/822
+    - ⚠️ Replace flat logs with structured logging by @Tetrergeru in https://github.com/moira-alert/moira/pull/811 and https://github.com/moira-alert/moira/pull/819
 
 Other
-   - Fix regex in series by tag parser by @balalay12 in `#825 https://github.com/moira-alert/moira/pull/825`_
-   - Validate trigger target on create/update by @Dimedrolity in `#817 https://github.com/moira-alert/moira/pull/817`_
-   - Fix sending plot in slack-threads by @kissken in `#828 https://github.com/moira-alert/moira/pull/828`_
-   - Add created_by and updated_by for trigger by @kissken in `#824 https://github.com/moira-alert/moira/pull/824`_
-   - Make strings.Split function available in description templates by @kotbauk in `#843 https://github.com/moira-alert/moira/pull/843`_
-   - Added cleanup abandoned tags by @Dimedrolity in `#773 https://github.com/moira-alert/moira/pull/773`_
+   - Fix regex in series by tag parser by @balalay12 in https://github.com/moira-alert/moira/pull/825
+   - Validate trigger target on create/update by @Dimedrolity in https://github.com/moira-alert/moira/pull/817
+   - Fix sending plot in slack-threads by @kissken in https://github.com/moira-alert/moira/pull/828
+   - Add created_by and updated_by for trigger by @kissken in https://github.com/moira-alert/moira/pull/824
+   - Make strings.Split function available in description templates by @kotbauk in https://github.com/moira-alert/moira/pull/843
+   - Added cleanup abandoned tags by @Dimedrolity in https://github.com/moira-alert/moira/pull/773
