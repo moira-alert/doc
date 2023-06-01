@@ -1,0 +1,11 @@
+2.8.1
+=====
+
+What’s Changed
+--------------
+
+*Added and Fixed*
+
+- Updated golang to 1.18 by @Dimedrolity in https://github.com/moira-alert/moira/pull/775
+- Upgraded dependencies by @Dimedrolity in https://github.com/moira-alert/moira/pull/776
+- Add support for sentinel auth by @DreidSpb in https://github.com/moira-alert/moira/pull/847
