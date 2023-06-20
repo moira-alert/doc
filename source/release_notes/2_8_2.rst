@@ -1,0 +1,11 @@
+2.8.2
+=====
+
+What’s Changed
+--------------
+
+*Added and Fixed*
+
+ * Add func to delete unused triggers without subscriptions by @kissken in `#851 https://github.com/moira-alert/moira/pull/851`_
+ * Fix incorrect key naming that broke subscriptions and contact of anonymous user in upgrade from 2.7 to 2.8 by @kissken in `#850 https://github.com/moira-alert/moira/pull/850`_
+    * For fix incorrect behaviour run cli command ``update --from-version=2.7 --to-version=2.8``
