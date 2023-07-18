@@ -42,6 +42,8 @@ Templates
 
 The template is supported by Moira, the template implements data-driven templates for generating textual output.
 Information about how to program the templates themselves, see the `documentation. <https://golang.org/pkg/html/template/>`_
+You can also use functions from `sprig-library. <https://pkg.go.dev/github.com/masterminds/sprig#section-readme>`_
+
 
 Data you can use:
 ~~~~~~~~~~~~~~~~~
