@@ -31,11 +31,64 @@ You can use any govaluate_ expression with predefined constants here:
 - ``PREV_STATE`` is equal to previously set state, and allows you
   to prevent frequent state changes
 
-.. note:: Only T1 target can resolve into multiple metrics in Advanced Mode. T2, T3, ... must resolve to single metrics.
-          Moira will calculate expression separately for every metric in T1.
-
 Any incorrect expressions or bad syntax will result in EXCEPTION trigger state.
 
+Alone Metric
+-------------
+
+By default, each target returns an array of series of values, which is then involved in the calculation of various expressions and all that would be fine, 
+but problems can arise when calculating arithmetic expressions if the arrays have different sizes.
+
+To solve this problem, a ``single`` checkbox appears in the Moira web interface **after adding new targets**, which means 
+that the target returns a single series of values that can be easily used when calculating any expressions.
+
+Example 1. (without using single)
+~~~~~~~~~~~~~~~~~
+
+1. I have metrics:
+
+- ``host1.loadavg`` — Load Average on server host1
+- ``host2.loadavg``
+- ``host3.loadavg``
+- ``host1.cpu_count`` — number of cores on host1
+- ``host2.cpu_count``
+- ``host3.cpu_count``
+
+2. I'm creating an Advanced Mode trigger:
+
+- t1 — ``aliasByNode(*.loadavg, 0)``
+- t2 — ``aliasByNode(*.cpu_count, 0)``
+
+Expression — ``t1/t2 > 1 ? ERROR : OK``
+
+3. This results in three metrics in the trigger, for which the state is tracked separately:
+
+- ``host1`` — expression is calculated for ``t1 = host1.loadavg, t2 = host1.cpu_count`` 
+- ``host2`` — expression is calculated for ``t1 = host2.loadavg, t2 = host2.cpu_count``  
+- ``host3`` — expression is calculated for ``t1 = host3.loadavg, t2 = host3.cpu_count`` 
+
+Example 2. (using single)
+~~~~~~~~~~~~~~~~~
+
+1. I have metrics:
+
+- ``host1.loadavg`` — Load Average on server host1
+- ``host2.loadavg``  
+- ``host3.loadavg`` 
+- ``all_hosts.cpu_count`` — number of cores on any of the servers (the same everywhere)
+
+2. I'm creating an Advanced Mode trigger:
+
+- t1 — ``aliasByNode(*.loadavg, 0)`` 
+- t2 — ``all_hosts.cpu_count`` — **alone metric**
+
+Expression — ``t1/t2 > 1 ? ERROR : OK``
+
+3. This results in three metrics in the trigger, for which the state is tracked separately:
+
+- ``host1`` — expression is calculated for ``t1 = host1.loadavg, t2 = all_hosts.cpu_count`` 
+- ``host2`` — expression is calculated for ``t1 = host2.loadavg, t2 = all_hosts.cpu_count`` 
+- ``host3`` — expression is calculated for ``t1 = host3.loadavg, t2 = all_hosts.cpu_count``  
 
 Templates
 -------------
@@ -58,7 +111,8 @@ Data you can use:
   }
 
 Example:
-``https://grafana.yourhost.com/some-dashboard{{ range $i, $v := .Events }}{{ if ne $i 0 }}&{{ else }}?{{ end }}var-host={{ $v.Metric }}{{ end }}``
+``https://grafana.yourhost.com/some-dashboard{{ range $i, $v := .Events }}{{ if ne $i 0 }}&{{ else }}?
+{{ end }}var-host={{ $v.Metric }}{{ end }}``
 
 Strings manipulations
 ~~~~~~~~~~~~~~~~~~~~~
