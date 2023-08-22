@@ -1,4 +1,0 @@
-newContact:
-  $ref: "../shared/schemas/Contact.yml#/ContactRequest"
-updateContact:
-  $ref: "../shared/schemas/Contact.yml#/ContactRequest"
