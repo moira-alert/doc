@@ -1,7 +1,0 @@
-get:
-  summary: "Get available configuration"
-  operationId: GetConfig
-  tags:
-    - config
-  responses:
-    $ref: ./responses.yml#/get
