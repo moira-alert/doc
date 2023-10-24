@@ -28,7 +28,7 @@ Checker
 .. literalinclude:: ../../checker.example.yml
    :language: yaml
 
-.. _remote-triggers-checker:
+.. _graphite-remote-triggers-checker:
 
 Remote Triggers Checker
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -56,6 +56,18 @@ using ``lazy_triggers_check_interval`` option in checker section. This can
 reduce CPU usage on your server. Lazy triggers checker works if
 ``lazy_triggers_check_interval`` > ``check_interval``. We recommend set
 it to ``10m`` (10 minutes).
+
+.. _prometheus-remote-triggers-checker:
+
+Prometheus Checker
+^^^^^^^^^^^^^^^^^^
+
+In Moira 2.9 Prometheus Remote metric source was added. It works like Graphite
+remote metric source, but uses mrometheus metrics and PromQL instead. It makes 
+queries to Prometheus api ar Victoria Metrics VMSelect api.
+
+Proemtheus Checker can be counfigured to use retries when trying to fetch metrics.
+We recommend to use 3 retries with the retry timeout of `10s`.
 
 .. _notifier-configuration:
 

@@ -3,7 +3,7 @@
 
 - Add API methods: ``DELETE /notification/all`` and ``DELETE /event/all`` `moira-alert/moira#73 <https://github.com/moira-alert/moira/pull/73>`_.
 - Add notifier config option: DateTime format for email sender `moira-alert/moira#74 <https://github.com/moira-alert/moira/pull/74>`_.
-- Add Graphite-API support for remote triggers `moira-alert/moira#75 <https://github.com/moira-alert/moira/pull/75>`_. See more: :ref:`remote-triggers-checker`. Thanks to `@errx <https://github.com/errx>`_.
+- Add Graphite-API support for remote triggers `moira-alert/moira#75 <https://github.com/moira-alert/moira/pull/75>`_. See more: :ref:`graphite-remote-triggers-checker`. Thanks to `@errx <https://github.com/errx>`_.
 - Fix newlines in trigger description body for web and email sender `moira-alert/moira#76 <https://github.com/moira-alert/moira/pull/76>`_.
 - Add option to enable runtime metrics in Graphite-section of configuration `moira-alert/moira#79 <https://github.com/moira-alert/moira/pull/79>`_.
 - Add new fancy email template 🎂 `moira-alert/moira#82 <https://github.com/moira-alert/moira/pull/82>`_.
