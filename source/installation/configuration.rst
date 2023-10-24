@@ -63,10 +63,10 @@ Prometheus Checker
 ^^^^^^^^^^^^^^^^^^
 
 In Moira 2.9 Prometheus Remote metric source was added. It works like Graphite
-remote metric source, but uses mrometheus metrics and PromQL instead. It makes 
-queries to Prometheus api ar Victoria Metrics VMSelect api.
+remote metric source, but uses prometheus metrics and PromQL instead. It makes 
+queries to Prometheus api or Victoria Metrics VMSelect api.
 
-Proemtheus Checker can be counfigured to use retries when trying to fetch metrics.
+Prometheus Checker can be counfigured to use retries when trying to fetch metrics.
 We recommend to use 3 retries with the retry timeout of `10s`.
 
 .. _notifier-configuration:
