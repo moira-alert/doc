@@ -1,0 +1,20 @@
+2.8.3
+=====
+
+What’s Changed
+--------------
+
+*Major features*
+
+ * Collect history of sent notifications by @ejuravlev in https://github.com/moira-alert/moira/pull/846 
+ * Change PR Action logic to trigger build from comment and support build on forks @kotbauk in https://github.com/moira-alert/moira/pull/868
+
+*Other*
+
+ * Trigger with duplicated metrics now has EXCEPTION state instead of ERROR by @almostinf in https://github.com/moira-alert/moira/pull/875
+ * Add support for sprig library in trigger description templates by @gODeaLoAple https://github.com/moira-alert/moira/pull/876 
+ * Add EXCEPTION state to the list of daily reminded states by @Tetrergeru in https://github.com/moira-alert/moira/pull/878
+ * Add validation of the list of used variables in trigger expressions by @almostinf in https://github.com/moira-alert/moira/pull/881
+ * Stricter validation of trigger ids by @almostinf in https://github.com/moira-alert/moira/pull/887
+ * Add timezone to messages in notifier by @almostinf in https://github.com/moira-alert/moira/pull/885
+ * Add swagger generation by @almostinf in https://github.com/moira-alert/moira/pull/891
