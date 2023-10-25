@@ -1,0 +1,91 @@
+2.9.0
+=====
+
+What’s Changed
+--------------
+
+*Major Changes*
+
+ * Add Prometheus support. !! Config changes required to use prometheus,
+   see the docs (:ref:`prometheus-remote-triggers-checker`).
+   https://github.com/moira-alert/moira/pull/848
+   (by @tetrergeru)
+
+ * Filter apply regices the same way as graphite, see the docs
+   (:ref:`filter-configuration`).
+   https://github.com/moira-alert/moira/pull/923
+   https://github.com/moira-alert/moira/pull/924
+   (by @lordvidex and @tetrergeru)
+
+ * Add swagger generated client
+   https://github.com/moira-alert/client-go
+   (by @almostinf)
+
+*Minor Changes*
+
+ * Log failed notification only after several retries
+   https://github.com/moira-alert/moira/pull/906
+   (by @kissken)
+
+ * Add metrics for the number of triggers by source
+   https://github.com/moira-alert/moira/pull/904
+   (by @tetrergeru)
+
+ * Add prometheus retries
+   https://github.com/moira-alert/moira/pull/909
+   (by @tetrergeru)
+
+ * Add notifier is alive metric in notifier-selfcheck
+   https://github.com/moira-alert/moira/pull/910
+   (by @kissken)
+
+ * Add api for all unused triggers
+   https://github.com/moira-alert/moira/pull/915
+   (by @kissken)
+
+ * Add search by created by parameter
+   https://github.com/moira-alert/moira/pull/908
+   (by @almostinf)
+
+ * Add error handling for regex compilation
+   https://github.com/moira-alert/moira/pull/933
+   (by @tetrergeru)
+
+*Dependencies*
+ 
+ * Switch to a maintained version of carbon-c-relay
+   https://github.com/moira-alert/moira/pull/925
+   (by @Pliner)
+
+ * Upgrade mattermost & x/net version
+   https://github.com/moira-alert/moira/pull/937
+   (by @kissken)
+
+ * Update go to 1.19
+   https://github.com/moira-alert/moira/pull/938
+   (by @kissken)
+
+*Fixes*
+
+ * Fix switch to maintenance at set del
+   https://github.com/moira-alert/moira/pull/916
+   (by @almostinf)
+
+ * Fix panics in checker and enable panic logging
+   https://github.com/moira-alert/moira/pull/928
+   https://github.com/moira-alert/moira/pull/929
+   https://github.com/moira-alert/moira/pull/939
+   (by @tetrergeru)
+
+ * Don't mock decode err in api
+   https://github.com/moira-alert/moira/pull/902
+   (by @kissken)
+
+ * Calculate RemoteAllowed based on remote/prom configs
+   https://github.com/moira-alert/moira/pull/945
+   (by @Pliner)
+
+ * Add x-nullable annotation and fix documentaion in config handler
+   https://github.com/moira-alert/moira/pull/903
+   (by @almostinf)
+   
