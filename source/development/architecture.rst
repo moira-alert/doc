@@ -209,14 +209,23 @@ Checker metrics handler reads triggers by pattern from
 ``moira-pattern-triggers:<pattern>`` and add ``trigger_id`` to Redis set
 ``moira-triggers-to-check``. NODATA Checker adds all triggers to Redis set
 ``moira-triggers-to-check`` once per ``nodata_check_interval`` setting.
-:ref:`remote-triggers-checker` gets all remote trigger ID and adds it to
+
+:ref:`graphite-remote-triggers-checker` gets all graphite remote trigger IDs and adds it to
 Redis set ``moira-remote-triggers-to-check`` once per ``remote\check_interval``
 setting.
 
+:ref:`prometheus-remote-triggers-checker` gets all prometheus remote trigger IDs and adds it to
+Redis set ``moira-prometheus-triggers-to-check`` once per ``prometheus\check_interval``
+setting.
+
 Checker pops ``trigger_id`` from ``moira-triggers-to-check`` and starts
-checking procedure. :ref:`remote-triggers-checker` does the same, but pops
+checking procedure.
+:ref:`graphite-remote-triggers-checker` does the same, but pops
 ``trigger_id`` from ``moira-remote-triggers-to-check`` and starts remote check,
 which involve remote Graphite HTTP API.
+Same for :ref:`prometheus-remote-triggers-checker`, which pops
+``trigger_id`` from ``moira-prometheus-triggers-to-check`` and starts remote check,
+which involve remote Prometheus HTTP API.
 
 Trigger target can contain one or multiple metrics, so results are written
 per metric. ``moira-metric-last-check:<trigger_id>`` Redis key contains last

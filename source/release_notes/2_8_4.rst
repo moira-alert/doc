@@ -1,0 +1,10 @@
+2.8.4
+=====
+
+What’s Changed
+--------------
+
+*Fixed*
+
+ * Uprade moira from 2.7 to 2.8
+ * Now notifier configs must use exact types (now you can't use `"true"` in boolean fields, only `true`)

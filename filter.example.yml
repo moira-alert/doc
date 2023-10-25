@@ -57,6 +57,17 @@ filter:
   max_parallel_matches: 0
   # Period in which patterns will be reloaded from Redis
   patterns_update_period: 1s
+  # Compatibility with different versions of graphite supported (carbon and clickhouse)
+  # By default moira is compatible with carbon, but can be configured to be compatible with clickhouse
+  graphite_compatibility:
+    # Controls how regices in tag matching are treated
+    # If false (default value), regex will match start of the string strictly. 'tag~=foo' is equivalent to 'tag~=^foo.*'
+    # If true, regex will match start of the string loosely. 'tag~=foo' is equivalent to 'tag~=.*foo.*'
+    allow_regex_loose_start_match: false
+    # Controls how absent tags are treated
+    # If true (default value), empty tags in regices will be matched
+    # If false, empty tags will be discarded
+    allow_regex_match_empty: true
 log:
   log_file: stdout
   log_level: info
