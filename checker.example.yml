@@ -59,6 +59,8 @@ checker:
   # Is related with remote triggers (see remote section)
   # Equals to the number of processor cores found on Moira host by default or when variable is defined as 0.
   max_parallel_remote_checks: 0
+  # Equals to the number of processor cores found on Moira host by default or when variable is defined as 0.
+  max_parallel_prometheus_checks: 0
 # This section configures remote triggers Checker.
 # See https://moira.readthedocs.io/en/latest/installation/configuration.html#graphite-remote-triggers-checker for futher information
 remote:
