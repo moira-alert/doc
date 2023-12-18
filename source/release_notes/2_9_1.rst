@@ -1,0 +1,11 @@
+2.9.1
+=====
+
+What’s Changed
+--------------
+
+*Fixes*
+
+ * Fix checker settings: add `max_parallel_prometheus_checks` and fix filling default settings
+   https://github.com/moira-alert/moira/pull/972
+   (by @almostinf)
