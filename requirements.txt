@@ -7,4 +7,4 @@ pyenchant
 recommonmark
 txredisapi
 mkdocs==1.2.3
-jinja2==3.0.0
+jinja2==3.1.3
