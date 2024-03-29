@@ -144,7 +144,7 @@ graphite_remote:
     # Specify full URL including '/render'
     url: "http://graphite.example.com/render"
     # Auth username. Only Basic-auth supported
-    user: devops
+    user: graphite_admin
     # Auth password. Only Basic-auth supported
     password: verySecurePassword
     # Minimal period to perform triggers re-check. 
@@ -168,7 +168,7 @@ prometheus_remote:
     # Only domain name must be specified, no URL-path
     url: https://prometheus.example.com
     # Auth username. Only Basic-auth supported
-    user: devops
+    user: prometheus_admin
     # Auth password. Only Basic-auth supported
     password: verySecurePassword
     # Minimal period to perform triggers re-check. 
