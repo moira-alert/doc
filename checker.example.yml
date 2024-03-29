@@ -51,9 +51,10 @@ checker:
   # You can change this behaviour using option below. This can reduce CPU usage on your server.
   # Lazy triggers checker works if lazy_triggers_check_interval > check_interval. We recommend setting it to 10m.
   lazy_triggers_check_interval: 10m
-  # Period to cancel forced checks for all triggers if no metrics were received (greater than 'NoDataCheckInterval')
+  # Period to cancel forced checks for all triggers if no metrics were received (greater than 'local.check_interval')
   stop_checking_interval: 30s
-  # Time after which the check is considered critically slow. Such checks are logged for debug purposes 
+  # Time after which the check is considered critically slow. Such checks are logged for debug purposes
+  # default: 1h
   critical_time_of_check: 10m
 local: 
   # Period for every non-lazy trigger to perform a check on
