@@ -13,9 +13,10 @@ What’s Changed
 
  * Add admin permissions via list of admins in api
    https://github.com/moira-alert/moira/pull/996
+   https://github.com/moira-alert/moira/pull/1001
    (by @tetrergeru)
 
- * Fix sending notifications on muted and deleted triggers and metrics
+ * Fix sending notifications on muted and deleted triggers and muted metrics
    https://github.com/moira-alert/moira/pull/966
    (by @almostinf)
 
@@ -52,7 +53,7 @@ What’s Changed
  
  * Add api for getting a single subscription
    https://github.com/moira-alert/moira/pull/998
-   (by @almostinf)
+   (by @tetrergeru)
 
 *Fixes*
 
@@ -66,10 +67,6 @@ What’s Changed
 
  * Fix panic with alone and regular metrics
    https://github.com/moira-alert/moira/pull/984
-   (by @almostinf)
-
- * Fix high memory usage in checker
-   https://github.com/moira-alert/moira/pull/990
    (by @almostinf)
 
  * Increase sleep and attempts count for lock
