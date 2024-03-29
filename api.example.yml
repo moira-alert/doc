@@ -127,6 +127,22 @@ web:
     - type: discord
       label: Discord
       placeholder: "Discord channel (eg: general-text) or user (eg: @user)"
+  # Feature flags settings
+  feature_flags:
+    # Sets whether sending graphics in subscriptions is enabled by default
+    is_plotting_default_on: true
+    # Sets whether sending graphics is available
+    is_plotting_available: true
+    # Sets whether it is allowed to create subscriptions to all tags
+    is_subscription_to_all_tags_available: true
+    # Sets the readonly mode in the Moira, which disables state-changing requests
+    is_readonly_enabled: false
+  # sentry sets sentry settings for the frontend
+  sentry:
+    # Sets the dsn key
+    dsn: https://public@sentry.example.com/
+    # Sets the platform where the frontend is deployed
+    platform: prod
 log:
   log_file: stdout
   log_level: info
