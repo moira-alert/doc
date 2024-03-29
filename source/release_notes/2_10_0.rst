@@ -15,6 +15,10 @@ What’s Changed
    https://github.com/moira-alert/moira/pull/996
    (by @tetrergeru)
 
+ * Fix sending notifications on muted and deleted triggers and metrics
+   https://github.com/moira-alert/moira/pull/966
+   (by @almostinf)
+
 *Minor Changes*
 
  * Make triggers with seriesByTag function require at least one argument with a strict equality
