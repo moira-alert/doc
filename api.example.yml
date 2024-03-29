@@ -49,6 +49,16 @@ api:
   enable_cors: false
   # Web_UI config file path. If file not found, api will return 404 in response to "api/config"
   web_config_path: "/etc/moira/web.json"
+  # Configuration of user roles
+  authorization:
+    # If disabled (default), every use has access to every resource (except for subscriptions and contacts, which are only available for their owners)
+    # If enabled, some resources are limited to admins-only, and admins have access to users' subscriptions and contacts
+    enabled: true
+    # List of users who have admin rights
+    # User login is extracted from `x-webauth-user` header`
+    admin_list:
+      - alice
+      - bob
 web:
   # Moira administrator email address
   supportEmail: "devops@example.com"
@@ -136,43 +146,55 @@ web:
 log:
   log_file: stdout
   log_level: info
-# This section configures remote triggers Checker.
-# See https://moira.readthedocs.io/en/latest/installation/configuration.html#graphite-remote-triggers-checker for futher information
-remote:
-  enabled: false
-  # URL of Graphite HTTP API: graphite-web, carbonapi, etc.
-  # Specify full URL including '/render'
-  url: "http://graphite.example.com/render"
-  # Auth username. Only Basic-auth supported
-  user: devops
-  # Auth password. Only Basic-auth supported
-  password: verySecurePassword
-  # Min period to perform triggers re-check. 
-  # Note: Reducing of this value leads to increasing of CPU and memory usage values and extra load on Graphite HTTP API
-  check_interval: 60s
-  # Don't fetch metrics older than this value from remote storage
-  metrics_ttl: 168h
-  # Maximum timeout for HTTP-request made to Graphite HTTP API
-  timeout: 60s
-# This section configures prometheus triggers Checker.
-# See https://moira.readthedocs.io/en/latest/installation/configuration.html#prometheus-remote-triggers-checker for futher information
-prometheus:
-  enabled: false
-  # URL of Prometheus HTTP API: Prometheus or VMSelect
-  # Only domain name must be specified, no URL-path
-  url: https://prometheus.example.com
-  # Auth username. Only Basic-auth supported
-  user: devops
-  # Auth password. Only Basic-auth supported
-  password: verySecurePassword
-  # Minimal period to perform triggers re-check. 
-  # Note: Reducing of this value leads to increasing of CPU and memory usage values and extra load on Prometheus HTTP API
-  checkInterval: "60s"
-  # Maximum timeout for HTTP-request made to Prometheus HTTP API
-  timeout: "10s"
-  # Number of times failed request should be retried
-  retries: 3
-  # Delay between retries
-  retry_timeout: "3s"
-  # Don't fetch metrics older than this value from remote storage
-  metricsTTL: "168h"
+# This section configures the list of graphite remote triggers sources.
+# See https://moira.readthedocs.io/en/latest/installation/configuration.html#graphite-remote-triggers-checker for further information
+# Used to be `remote` and contain only one source before v2.10
+graphite_remote:
+  - # Unique cluster id (no other graphite_remote cluster should have the same one)
+    # Use `default` for compatibility with old triggers without cluster_id
+    # Should not be changed if there are any triggers using it
+    cluster_id: default
+    # Cluster name to be displayed in UI
+    cluster_name: Graphite Remote
+    # URL of Graphite HTTP API: graphite-web, carbonapi, etc.
+    # Specify full URL including '/render'
+    url: "http://graphite.example.com/render"
+    # Auth username. Only Basic-auth supported
+    user: graphite_admin
+    # Auth password. Only Basic-auth supported
+    password: verySecurePassword
+    # Minimal period to perform triggers re-check. 
+    # Note: Reducing of this value leads to increasing of CPU and memory usage values and extra load on Graphite HTTP API
+    check_interval: 60s
+    # Don't fetch metrics older than this value from remote storage
+    metrics_ttl: 168h
+    # Maximum timeout for HTTP-request made to Graphite HTTP API
+    timeout: 60s
+# This section configures the list of prometheus remote triggers sources.
+# See https://moira.readthedocs.io/en/latest/installation/configuration.html#prometheus-remote-triggers-checker for further information
+# Used to be `prometheus` and contain only one source before v2.10
+prometheus_remote:
+  - # Unique cluster id (no other prometheus_remote cluster should have the same one)
+    # Use `default` for compatibility with old triggers without cluster_id
+    # Should not be changed if there are any triggers using it
+    cluster_id: default
+    # Cluster name to be displayed in UI
+    cluster_name: Prometheus Remote
+    # URL of Prometheus HTTP API: Prometheus or VMSelect
+    # Only domain name must be specified, no URL-path
+    url: https://prometheus.example.com
+    # Auth username. Only Basic-auth supported
+    user: prometheus_admin
+    # Auth password. Only Basic-auth supported
+    password: verySecurePassword
+    # Minimal period to perform triggers re-check. 
+    # Note: Reducing of this value leads to increasing of CPU and memory usage values and extra load on Prometheus HTTP API
+    check_interval: "60s"
+    # Maximum timeout for HTTP-request made to Prometheus HTTP API
+    timeout: "10s"
+    # Number of times failed request should be retried
+    retries: 3
+    # Delay between retries
+    retry_timeout: "3s"
+    # Don't fetch metrics older than this value from remote storage
+    metricsTTL: "168h"
