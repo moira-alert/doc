@@ -1,0 +1,104 @@
+2.10.0
+=====
+
+What’s Changed
+--------------
+
+*Major Changes*
+
+ * Multiple clusters per trigger source. !! Config changes required in checker, notifier and api,
+   see the docs (:ref:`checker-configuration`, :ref:`notifier-configuration`, :ref:`api-and-web-config`).
+   https://github.com/moira-alert/moira/pull/981
+   (by @tetrergeru)
+
+ * Add admin permissions via list of admins in api.
+   Admins can be configured via config (:ref:`api-and-web-config`)
+   https://github.com/moira-alert/moira/pull/996
+   https://github.com/moira-alert/moira/pull/1001
+   (by @tetrergeru)
+
+ * Fix sending notifications on muted and deleted triggers and muted metrics.
+   Read more in notifier docs (:ref:`notifier-configuration`)
+   https://github.com/moira-alert/moira/pull/966
+   (by @almostinf)
+
+*Minor Changes*
+
+ * Make triggers with seriesByTag function require at least one argument with a strict equality
+   https://github.com/moira-alert/moira/pull/988
+   (by @mchrome)
+
+ * Add metrics for number of contacts
+   https://github.com/moira-alert/moira/pull/1002
+   (by @almostinf)
+
+ * Add remove subscriptions command
+   https://github.com/moira-alert/moira/pull/979
+   (by @almostinf)
+
+ * Add sentry dsn in web config
+   https://github.com/moira-alert/moira/pull/973
+   (by @almostinf)
+
+ * Add platform field to get sentry handler
+   https://github.com/moira-alert/moira/pull/982
+   (by @almostinf)
+
+ * Log triggers with critical time of check
+   https://github.com/moira-alert/moira/pull/987
+   (by @tetrergeru)
+
+ * Add api route for tags creation
+   https://github.com/moira-alert/moira/pull/991 
+   (by @almostinf)
+ 
+ * Add api for getting a single subscription
+   https://github.com/moira-alert/moira/pull/998
+   (by @tetrergeru)
+
+*Fixes*
+
+ * Fix fetching notifications by batch
+   https://github.com/moira-alert/moira/pull/974
+   (by @almostinf)
+
+ * Fix nodata when toggling alone metrics checkbox
+   https://github.com/moira-alert/moira/pull/983
+   (by @almostinf)
+
+ * Fix panic with alone and regular metrics
+   https://github.com/moira-alert/moira/pull/984
+   (by @almostinf)
+
+ * Increase sleep and attempts count for lock
+   https://github.com/moira-alert/moira/pull/985
+   https://github.com/moira-alert/moira/pull/986
+   (by @kissken)
+
+*Dependencies*
+ 
+ * Update blackfriday slack to 0.1.2
+   https://github.com/moira-alert/moira/pull/978
+   (by @tetrergeru)
+
+ * Bump golang.org/x/crypto from 0.14.0 to 0.17.0
+   https://github.com/moira-alert/moira/pull/977
+   (by @dependabot)
+
+ * Bump google.golang.org/protobuf from 1.31.0 to 1.33.0
+   https://github.com/moira-alert/moira/pull/999
+   (by @dependabot)
+
+*Lints*
+
+ * Add decorder, errorlint, loggercheck and noctx lints
+   https://github.com/moira-alert/moira/pull/960
+   (by @kissken)
+ 
+ * Add dots to godocs
+   https://github.com/moira-alert/moira/pull/997
+   (by @tetrergeru)
+
+ * Add exportloopref, gocheckcompilerdirectives, goconst, godot, gofumpt, goheader and grouper lints
+   https://github.com/moira-alert/moira/pull/1000
+   (by @kissken)
