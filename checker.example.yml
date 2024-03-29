@@ -53,6 +53,8 @@ checker:
   lazy_triggers_check_interval: 10m
   # Period to cancel forced checks for all triggers if no metrics were received (greater than 'NoDataCheckInterval')
   stop_checking_interval: 30s
+  # Time after which the check is considered critically slow. Such checks are logged for debug purposes 
+  critical_time_of_check: 10m
 local: 
   # Period for every non-lazy trigger to perform a check on
   # Used to be `checker.nodata_check_interval` before v2.10
