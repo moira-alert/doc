@@ -52,7 +52,7 @@ api:
   # Configuration of user roles
   authorization:
     # If disabled (default), every use has access to every resource (except for subscriptions and contacts, which are only available for their owners)
-    # IF enabled, some resources are limited to admins-only, and admins have access to users' subscriptions and contacts
+    # If enabled, some resources are limited to admins-only, and admins have access to users' subscriptions and contacts
     enabled: true
     # List of users who have admin rights
     # User login is extracted from `x-webauth-user` header`
