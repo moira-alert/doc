@@ -7,16 +7,18 @@ What’s Changed
 *Major Changes*
 
  * Multiple clusters per trigger source. !! Config changes required in checker, notifier and api,
-   see the docs (// TODO add links).
+   see the docs (:ref:`checker-configuration`, :ref:`notifier-configuration`, :ref:`api-and-web-config`).
    https://github.com/moira-alert/moira/pull/981
    (by @tetrergeru)
 
- * Add admin permissions via list of admins in api
+ * Add admin permissions via list of admins in api.
+   Admins can be configured via config (:ref:`api-and-web-config`)
    https://github.com/moira-alert/moira/pull/996
    https://github.com/moira-alert/moira/pull/1001
    (by @tetrergeru)
 
- * Fix sending notifications on muted and deleted triggers and muted metrics
+ * Fix sending notifications on muted and deleted triggers and muted metrics.
+   Read more in notifier docs (:ref:`notifier-configuration`)
    https://github.com/moira-alert/moira/pull/966
    (by @almostinf)
 
@@ -44,7 +46,6 @@ What’s Changed
 
  * Log triggers with critical time of check
    https://github.com/moira-alert/moira/pull/987
-   // TODO: add link to config
    (by @tetrergeru)
 
  * Add api route for tags creation
