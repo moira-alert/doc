@@ -21,6 +21,7 @@ Filter
 storage-schemas.conf_ is graphite carbon configuration file that
 should match similarly-named file in your Graphite installation.
 
+.. _checker-configuration:
 
 Checker
 -------

@@ -147,43 +147,68 @@ notifier:
 log:
   log_file: stdout
   log_level: info
-# This section configures remote triggers Checker.
-# See https://moira.readthedocs.io/en/latest/installation/configuration.html#graphite-remote-triggers-checker for futher information
-remote:
-  enabled: false
-  # URL of Graphite HTTP API: graphite-web, carbonapi, etc.
-  # Specify full URL including '/render'
-  url: "http://graphite.example.com/render"
-  # Auth username. Only Basic-auth supported
-  user: devops
-  # Auth password. Only Basic-auth supported
-  password: verySecurePassword
-  # Min period to perform triggers re-check. 
-  # Note: Reducing of this value leads to increasing of CPU and memory usage values and extra load on Graphite HTTP API
-  check_interval: 60s
-  # Don't fetch metrics older than this value from remote storage
-  metrics_ttl: 168h
-  # Maximum timeout for HTTP-request made to Graphite HTTP API
-  timeout: 60s
-# This section configures prometheus triggers Checker.
-# See https://moira.readthedocs.io/en/latest/installation/configuration.html#prometheus-remote-triggers-checker for futher information
-prometheus:
-  enabled: false
-  # URL of Prometheus HTTP API: Prometheus or VMSelect
-  # Only domain name must be specified, no URL-path
-  url: https://prometheus.example.com
-  # Auth username. Only Basic-auth supported
-  user: devops
-  # Auth password. Only Basic-auth supported
-  password: verySecurePassword
-  # Minimal period to perform triggers re-check. 
-  # Note: Reducing of this value leads to increasing of CPU and memory usage values and extra load on Prometheus HTTP API
-  checkInterval: "60s"
-  # Maximum timeout for HTTP-request made to Prometheus HTTP API
-  timeout: "10s"
-  # Number of times failed request should be retried
-  retries: 3
-  # Delay between retries
-  retry_timeout: "3s"
-  # Don't fetch metrics older than this value from remote storage
-  metricsTTL: "168h"
+# notification sets the configuration setting for sending notifications
+notification:
+  # resave_time is the time by which the timestamp of notifications with triggers or metrics on Maintenance is incremented
+  # Important! Do not set this time too long, as this parameter sets the delay in sending notifications
+  resave_time: 30s
+  # Need to determine if notification is delayed - the difference between creation time and sending time is greater than delayed_time
+  delayed_time: 1m
+  # transaction_timeout defines the timeout between fetch notifications transactions
+  transaction_timeout: 100ms
+  # transaction_max_retries defines the maximum number of attempts to make a transaction
+  transaction_max_retries: 10
+  # transaction_heuristic_limit maximum allowable limit, after this limit all notifications without limit will be taken
+  transaction_heuristic_limit: 10000
+# This section configures the list of graphite remote triggers sources.
+# See https://moira.readthedocs.io/en/latest/installation/configuration.html#graphite-remote-triggers-checker for further information
+# Used to be `remote` and contain only one source before v2.10
+graphite_remote:
+  - # Unique cluster id (no other graphite_remote cluster should have the same one)
+    # Use `default` for compatibility with old triggers without cluster_id
+    # Should not be changed if there are any triggers using it
+    cluster_id: default
+    # Cluster name to be displayed in UI
+    cluster_name: Graphite Remote
+    # URL of Graphite HTTP API: graphite-web, carbonapi, etc.
+    # Specify full URL including '/render'
+    url: "http://graphite.example.com/render"
+    # Auth username. Only Basic-auth supported
+    user: graphite_admin
+    # Auth password. Only Basic-auth supported
+    password: verySecurePassword
+    # Minimal period to perform triggers re-check. 
+    # Note: Reducing of this value leads to increasing of CPU and memory usage values and extra load on Graphite HTTP API
+    check_interval: 60s
+    # Don't fetch metrics older than this value from remote storage
+    metrics_ttl: 168h
+    # Maximum timeout for HTTP-request made to Graphite HTTP API
+    timeout: 60s
+# This section configures the list of prometheus remote triggers sources.
+# See https://moira.readthedocs.io/en/latest/installation/configuration.html#prometheus-remote-triggers-checker for further information
+# Used to be `prometheus` and contain only one source before v2.10
+prometheus_remote:
+  - # Unique cluster id (no other prometheus_remote cluster should have the same one)
+    # Use `default` for compatibility with old triggers without cluster_id
+    # Should not be changed if there are any triggers using it
+    cluster_id: default
+    # Cluster name to be displayed in UI
+    cluster_name: Prometheus Remote
+    # URL of Prometheus HTTP API: Prometheus or VMSelect
+    # Only domain name must be specified, no URL-path
+    url: https://prometheus.example.com
+    # Auth username. Only Basic-auth supported
+    user: prometheus_admin
+    # Auth password. Only Basic-auth supported
+    password: verySecurePassword
+    # Minimal period to perform triggers re-check. 
+    # Note: Reducing of this value leads to increasing of CPU and memory usage values and extra load on Prometheus HTTP API
+    check_interval: "60s"
+    # Maximum timeout for HTTP-request made to Prometheus HTTP API
+    timeout: "10s"
+    # Number of times failed request should be retried
+    retries: 3
+    # Delay between retries
+    retry_timeout: "3s"
+    # Don't fetch metrics older than this value from remote storage
+    metricsTTL: "168h"
