@@ -122,7 +122,7 @@ notifier:
       # Basic authorization parameters (if required)
       user: ...
       password: ...
-      # body allows you to set the json request body using go-templates, the available fields for use are: .Contact.Type and .Contact.Value
+      # optional field body allows you to set the json request body using go-templates, the available fields for use are: .Contact.Type and .Contact.Value
       body: '{ "value": {{ .Contact.Value }}, "text": "test" }'
       # headers a field that allows you to set headers in the "key: value" format
       headers:
