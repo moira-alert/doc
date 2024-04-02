@@ -56,12 +56,12 @@ notifier:
   # Amount of messages notifier reads from Redis per iteration, -1 for unlimited
   read_batch_size: -1
   # List of senders, every element has required "sender_type" field (one of ["pushover", "slack", "mail", "telegram", "twilio sms", "twilio voice", "script", "discord", "selfstate", "webhook", "opsgenie", "victorops", "pagerduty", "msteams", "mattermost"]) and "contact_type"
-  # "sender_type" - characterizes the specific structure of the sender in the code
-  # "contact_type" - matches 1-1 sender with the contact template type in the api web config, uniquely identifies the sender
   # It is possible to create several senders with the same "sender_type", but different "contact_type"
   # Every type of sender has additional config fields
   senders:
+      # sender_type characterizes the specific structure of the sender in the code
     - sender_type: msteams
+      # contact_type matches 1-1 sender with the contact template type in the api web config, uniquely identifies the sender
       contact_type: msteams
       #the max amount of events you want to be sent to your channel, -1 for unlimited, any other positive value to limit events
       max_events: -1
