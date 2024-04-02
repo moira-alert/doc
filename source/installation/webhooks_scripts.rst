@@ -22,11 +22,11 @@ Add a separate section for each script:
 
 .. code-block:: yaml
 
-   - type: script
-     name: jira
+   - sender_type: script
+     contact_type: jira
      exec: /usr/bin/post_to_jira --project=${contact_value}
-   - type: script
-     name: irc
+   - sender_type: script
+     contact_type: irc
      exec: /opt/myscripts/irc_adapter ${contact_value} ${trigger_id}
 
 Then, in web UI configuration:
@@ -72,7 +72,8 @@ Webhooks
 --------
 
 On each event, Moira will make a POST request to the URL specified
-in notifier configuration file with the following JSON payload.
+in notifier configuration file with the following JSON payload 
+if the request body in the config is empty.
 
 
 ========= =========== =====================================
@@ -138,10 +139,14 @@ Name         Value
 ============ ================
 User-Agent   Moira
 Content-Type application/json
+...          ...
 ============ ================
 
+... - You can set additional headers in the webhook config 
+(see :doc:`/installation/configuration` for details).
 
-Example
+
+Example of a request without explicitly specifying the request body in the config
 -------
 
 .. code-block:: json
@@ -190,4 +195,29 @@ Example
        },
        "plot": "",
        "throttled": false
+   }
+
+You can also explicitly specify the request body using go-templates. 
+Available fields: .Contact.Value and .Contact.Type
+
+Example of a configuration with an explicit request body
+-------
+
+.. code-block:: yaml
+
+   - sender_type: webhook
+     contact_type: test_webhook
+     url: http://localhost:8080/webhook
+     body: { "name": "test-name", "value": {{ .Contact.Value | quote }} }
+     headers:
+        test-header: test-value
+
+Example of a request with explicitly specifying the request body in the config 
+-------
+
+.. code-block:: json
+
+   {
+       "name": "test",
+       "value": "test-contact-value"
    }

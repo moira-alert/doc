@@ -63,7 +63,7 @@ web:
   # Moira administrator email address
   supportEmail: "devops@example.com"
   # List of enabled contact types
-  contacts:
+  contacts_template:
     - type: mail
       label: E-mail
       validation: "^.+@.+\\..+$"
