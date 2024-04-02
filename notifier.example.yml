@@ -127,6 +127,11 @@ notifier:
       # headers a field that allows you to set headers in the "key: value" format
       headers:
         test: test-header
+    # Example of creating multiple webhook type senders
+    - sender_type: webhook
+      contact_type: webhook2
+      url: ...
+      timeout: ...
     - sender_type: pagerduty
       contact_type: pagerduty
     - sender_type: opsgenie

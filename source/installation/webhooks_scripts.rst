@@ -218,6 +218,6 @@ Example of a request with explicitly specifying the request body in the config
 .. code-block:: json
 
    {
-       "name": "test",
+       "name": "test-name",
        "value": "test-contact-value"
    }
