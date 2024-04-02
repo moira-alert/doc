@@ -73,7 +73,7 @@ Webhooks
 
 On each event, Moira will make a POST request to the URL specified
 in notifier configuration file with the following JSON payload 
-if the request body in the config is empty.
+if the request `body` in the config is empty.
 
 
 ========= =========== =====================================
