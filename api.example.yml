@@ -69,7 +69,7 @@ web:
       # If you do not specify a value for this field, the default logo option will be selected
       # All logos are stored in the web2.0 repository, the value can be one of: [discord-logo.svg, facebook-logo.svg, mail-logo.svg, mattermost-logo.svg, msteams-logo.svg, opsgenie-logo.svg, 
       # pagerduty-logo.svg, phone-logo.svg, pushover-logo.svg, slack-logo.svg, telegram-logo.svg, twilio-logo.svg, twitter-logo.svg, viber-logo.svg, victorops-logo.svg, 
-      # webhook-logo.svg, whatsapp-logo.svg]
+      # webhook-logo.svg, whatsapp-logo.svg, sms-logo.svg]
       logo_uri: mail-logo.svg
       label: E-mail
       validation: "^.+@.+\\..+$"
