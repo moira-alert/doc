@@ -55,24 +55,32 @@ notifier:
   date_time_format: "15:04 02.01.2006"
   # Amount of messages notifier reads from Redis per iteration, -1 for unlimited
   read_batch_size: -1
-  # List of senders, every element has "type" field (one of ["pushover", "slack", "mail", "telegram", "twilio sms", "twilio voice", "script"])
+  # List of senders, every element has required "sender_type" field (one of ["pushover", "slack", "mail", "telegram", "twilio sms", "twilio voice", "script", "discord", "selfstate", "webhook", "opsgenie", "victorops", "pagerduty", "msteams", "mattermost"]) and "contact_type"
+  # It is possible to create several senders with the same "sender_type", but different "contact_type"
   # Every type of sender has additional config fields
   senders:
-    - type: msteams
+      # sender_type characterizes the specific structure of the sender in the code
+    - sender_type: msteams
+      # contact_type matches 1-1 sender with the contact template type in the api web config, uniquely identifies the sender
+      contact_type: msteams
       #the max amount of events you want to be sent to your channel, -1 for unlimited, any other positive value to limit events
       max_events: -1
-    - type: pushover
+    - sender_type: pushover
+      contact_type: pushover
       # Api token for your pushover channel, for more info see https://pushover.net/api#registration
       api_token: ...
-    - type: slack
+    - sender_type: slack
+      contact_type: slack
       # Api token for your moira notifications slack user, for more info see https://get.slack.help/hc/en-us/articles/215770388-Create-and-regenerate-API-tokens
       api_token: ...
       # If true, notification will be sent with state-specific icon, for more info see https://moira.readthedocs.io/en/latest/installation/configuration.html#slack-icons.
       use_emoji: false
-    - type: telegram
+    - sender_type: telegram
+      contact_type: telegram
       # Api token for your telegram bot, for more info about creating bot and get token see https://core.telegram.org/bots#3-how-do-i-create-a-bot
       api_token: ...
-    - type: mail
+    - sender_type: mail
+      contact_type: mail
       mail_from: ...
       smtp_host: ...
       smtp_port: ...
@@ -83,14 +91,16 @@ notifier:
       smtp_pass: ...
       # Email template file path (standard Go templates). By default use 'Fancy' template (see screenshot below). If empty, use build-in template with no markups and styles.
       template_file: '/etc/moira/fancy-template.html'
-    - type: twilio voice
+    - sender_type: twilio voice
+      contact_type: twilio voice
       api_asid: ...
       api_authtoken: ...
       api_fromphone: ...
       # URL that responds with TwiML config for voice message generation, see https://www.twilio.com/docs/api/twiml/voice-overview
       voiceurl: ...
       append_message: true
-    - type: twilio sms
+    - sender_type: twilio sms
+      contact_type: twilio sms
       api_asid: ...
       api_authtoken: ...
       api_fromphone: ...
@@ -99,25 +109,39 @@ notifier:
     # ${contact_value} contact value (as specified by user via web UI)
     # ${contact_type}  contact type (as specified in web UI config file)
     # ${trigger_id}    trigger ID
-    - type: script
-      name: ...
+    - sender_type: script
+      contact_type: script
       # Executable path. File must exist on all machines where notifier is running.
       # You can use templated parameters here (see above), they will be replaced with appropriate values.
       exec: ...
-    - type: webhook
-      name: ...
+    - sender_type: webhook
+      contact_type: webhook
       # URL to send POST request (you can use templated parameters, see above)
       url: ...
       timeout: ...
       # Basic authorization parameters (if required)
       user: ...
       password: ...
-    - type: pagerduty
-    - type: opsgenie
+      # optional field body allows you to set the json request body using go-templates, the available fields for use are: .Contact.Type and .Contact.Value
+      body: '{ "value": {{ .Contact.Value }}, "text": "test" }'
+      # headers a field that allows you to set headers in the "key: value" format
+      headers:
+        test: test-header
+    # Example of creating multiple webhook type senders
+    - sender_type: webhook
+      contact_type: webhook2
+      url: ...
+      timeout: ...
+    - sender_type: pagerduty
+      contact_type: pagerduty
+    - sender_type: opsgenie
+      contact_type: opsgenie
       api_key: ...
-    - type: victorops
+    - sender_type: victorops
+      contact_type: victorops
       routing_url: ...
-    - type: discord
+    - sender_type: discord
+      contact_type: discord
       token: ...
   # Self state monitor configuration section. Note: No inner subscriptions is required. Moira will use its notification mechanism to send messages.
   moira_selfstate:
