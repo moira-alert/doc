@@ -65,18 +65,28 @@ web:
   # List of enabled contact types
   contacts_template:
     - type: mail
+      # logo_uri is an optional field that specifies the path to the file with the contact's logo
+      # If you do not specify a value for this field, the default logo option will be selected
+      # All logos are stored in the web2.0 repository, the value can be one of: [discord-logo.svg, facebook-logo.svg, mail-logo.svg, mattermost-logo.svg, msteams-logo.svg, opsgenie-logo.svg, 
+      # pagerduty-logo.svg, phone-logo.svg, pushover-logo.svg, slack-logo.svg, telegram-logo.svg, twilio-logo.svg, twitter-logo.svg, viber-logo.svg, victorops-logo.svg, 
+      # webhook-logo.svg, whatsapp-logo.svg, sms-logo.svg]
+      logo_uri: mail-logo.svg
       label: E-mail
       validation: "^.+@.+\\..+$"
     - type: msteams
+      logo_uri: msteams-logo.svg
       label: Microsoft Teams
     - type: pushover
+      logo_uri: pushover-logo.svg
       label: Pushover
       placeholder: "Pushover user key"
     - type: slack
+      logo_uri: slack-logo.svg
       label: Slack
       validation: "^[@#][a-zA-Z0-9-_]+"
       placeholder: "Slack #channel or @user"
     - type: telegram
+      logo_uri: telegram-logo.svg
       label: Telegram
       placeholder: "#public_channel, %private_channel, @username or group"
       help: |
@@ -103,28 +113,35 @@ web:
         - get channel id from URL (e.g., `https://web.telegram.org/#/im?p=c1494975744_17340166617136722341`) between `c` and `_`;
         - type channel id in the above field as `%1494975744`.
     - type: twilio sms
+      logo_uri: twilio-logo.svg
       label: Twilio SMS
       validation: "^\\+79\\d{9}$"
       placeholder: "Phone number format +79*********"
     - type: twilio voice
+      logo_uri: twilio-logo.svg
       label: Twilio voice
       validation: "^\\+79\\d{9}$"
       placeholder: "Phone number format +79*********"
     - type: webhook
+      logo_uri: webhook-logo.svg
       label: My Webhook
       validation: "^(http|https):\\/\\/.*(example.com|example.org)(:[0-9]{2,5})?\\/"
       placeholder: "https://example.com/webhooks/moira"
       help: "### Domains whitelist:\n - example.com\n - example.org"
     - type: pagerduty
+      logo_uri: pagerduty-logo.svg
       label: PagerDuty
       placeholder: "Integration key"
     - type: opsgenie
+      logo_uri: opsgenie-logo.svg
       label: OpsGenie
       placeholder: "Responder Name or ID"
     - type: victorops
+      logo_uri: victorops-logo.svg
       label: VictorOps
       placeholder: "Routing key"
     - type: discord
+      logo_uri: discord-logo.svg
       label: Discord
       placeholder: "Discord channel (eg: general-text) or user (eg: @user)"
   # Feature flags settings
