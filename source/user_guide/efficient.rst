@@ -1,5 +1,42 @@
 .. include:: <isonum.txt>
 
+.. raw:: html
+
+    <style>
+    @keyframes moira-status-blink {
+        0% {
+            opacity: .25;
+        }
+        15% {
+            opacity: 1;
+        }
+        40% {
+            opacity: 1;
+        }
+        100% {
+            opacity: .25;
+        }
+    }
+    .moira-status-exception {
+        animation: moira-status-blink 1.6s infinite;
+        animation-name: moira-status-blink;
+        animation-duration: 1.6s;
+        animation-timing-function: initial;
+        animation-delay: initial;
+        animation-iteration-count: infinite;
+        animation-direction: initial;
+        animation-fill-mode: initial;
+        animation-play-state: initial;
+    }
+    .moira-status {
+        margin-bottom: 10px;
+    }
+    .moira-status > * {
+        vertical-align: middle;
+        margin-right: 5px;
+    }
+    </style>
+
 Efficient Triggers
 ==================
 
@@ -29,8 +66,15 @@ Every state has a well-defined meaning, and you should use these states
 accordingly.
 
 
-OK
+OK 
 ^^
+
+.. raw:: html
+
+  <div class="moira-status">
+    <span>Color:</span>
+    <svg viewBox="-1 -1 2 2" width="20" height="20"><circle cx="0" cy="0" r="1" fill="#00bfa5"></circle></svg>
+  </div>
 
 This is a basic state, in which all your metrics must spend most of their
 time. Just like you keep your autotests green, you should keep your
@@ -39,6 +83,12 @@ metrics green.
 
 WARN
 ^^^^
+
+.. raw:: html
+  <div class="moira-status">
+    <span>Color:</span>
+    <svg viewBox="-1 -1 2 2" width="20" height="20"><circle cx="0" cy="0" r="1" fill="#ffc107"></circle></svg>
+   </div>
 
 This state means that you should do something to prevent ERRORs in the future.
 Not immediately: maybe you should order more hardware from your vendor,
@@ -50,6 +100,12 @@ Metrics can be in this state for days or even weeks.
 
 ERROR
 ^^^^^
+
+.. raw:: html
+  <div class="moira-status">
+    <span>Color:</span>
+    <svg viewBox="-1 -1 2 2" width="20" height="20"><circle cx="0" cy="0" r="1" fill="#ffc107"></circle></svg>
+   </div>
 
 This is a critical condition that requires immediate intervention. Your
 datacenter is on fire. All application processes shut down. There is no
@@ -70,6 +126,12 @@ Moira will try to use them for ERRORs.
 
 NODATA
 ^^^^^^
+
+.. raw:: html
+  <div class="moira-status">
+    <span>Color:</span>
+    <svg viewBox="-1 -1 2 2" width="20" height="20"><circle cx="0" cy="0" r="1" fill="#9e9e9e"></circle></svg>
+   </div>
 
 This state means that Moira hasn't been receiving data points for a metric
 for some time. See :doc:`/user_guide/nodata` for details. This state
@@ -95,6 +157,12 @@ have sent at least one data point to Moira.
 
 EXCEPTION
 ^^^^^^^^^
+
+.. raw:: html
+  <div class="moira-status">
+    <span>Color:</span>
+    <svg viewBox="-1 -1 2 2" width="20" height="20"><circle cx="0" cy="0" r="1" fill="#ff5722" class="moira-status-exception"></circle></svg>
+   </div>
 
 This is an error inside Moira. Unless you have bad syntax in your
 :doc:`/user_guide/advanced` trigger, this has nothing to do with your
