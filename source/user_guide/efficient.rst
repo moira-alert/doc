@@ -106,7 +106,7 @@ ERROR
 
   <div class="moira-status">
     <span>Color:</span>
-    <svg viewBox="-1 -1 2 2" width="20" height="20"><circle cx="0" cy="0" r="1" fill="#ffc107"></circle></svg>
+    <svg viewBox="-1 -1 2 2" width="20" height="20"><circle cx="0" cy="0" r="1" fill="#ff5722"></circle></svg>
    </div>
 
 This is a critical condition that requires immediate intervention. Your
@@ -162,7 +162,7 @@ EXCEPTION
 ^^^^^^^^^
 
 .. raw:: html
-  
+
   <div class="moira-status">
     <span>Color:</span>
     <svg viewBox="-1 -1 2 2" width="20" height="20"><circle cx="0" cy="0" r="1" fill="#ff5722" class="moira-status-exception"></circle></svg>
