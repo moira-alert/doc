@@ -85,6 +85,7 @@ WARN
 ^^^^
 
 .. raw:: html
+
   <div class="moira-status">
     <span>Color:</span>
     <svg viewBox="-1 -1 2 2" width="20" height="20"><circle cx="0" cy="0" r="1" fill="#ffc107"></circle></svg>
@@ -102,6 +103,7 @@ ERROR
 ^^^^^
 
 .. raw:: html
+
   <div class="moira-status">
     <span>Color:</span>
     <svg viewBox="-1 -1 2 2" width="20" height="20"><circle cx="0" cy="0" r="1" fill="#ffc107"></circle></svg>
@@ -128,6 +130,7 @@ NODATA
 ^^^^^^
 
 .. raw:: html
+
   <div class="moira-status">
     <span>Color:</span>
     <svg viewBox="-1 -1 2 2" width="20" height="20"><circle cx="0" cy="0" r="1" fill="#9e9e9e"></circle></svg>
@@ -159,6 +162,7 @@ EXCEPTION
 ^^^^^^^^^
 
 .. raw:: html
+  
   <div class="moira-status">
     <span>Color:</span>
     <svg viewBox="-1 -1 2 2" width="20" height="20"><circle cx="0" cy="0" r="1" fill="#ff5722" class="moira-status-exception"></circle></svg>
