@@ -78,14 +78,14 @@ Example 2. Incorrect use of Advanced Mode
 - ``host1.loadavg`` — Load Average on server host1
 - ``host1.cpu_count`` — Number of cores on host1
 
-1. I'm creating an Advanced Mode trigger:
+2. I'm creating an Advanced Mode trigger:
 
 - t1 — ``aliasByNode(*.loadavg, 1)``
 - t2 — ``aliasByNode(*.cpu_count, 1)``
 
 Expression — ``(t1 / t2) > 1 ? ERROR : OK``
 
-1. This results in two metrics in the trigger:
+3. This results in two metrics in the trigger:
 
 - ``loadavg`` — expression is calculated for ``t1 = host1.loadavg, t2 = NaN``, ``NaN`` appeared because there are no metrics named ``loadavg`` in the second target.
 - ``cpu_count`` — expression is calculated for ``t1 = NaN, t2 = host2.cpu_count``, ``NaN`` appeared because there are no metrics named ``cpu_count`` in the first target.
