@@ -107,9 +107,10 @@ it is not necessary that the metrics that result from such targets have the same
 
 A ``single`` checkbox appears in the Moira web interface **after adding new targets** to mark some target as Alone.
 
-It is important that the Alone target returns **only one** series of values, otherwise the trigger will change state to **EXCEPTION**.
+It is important that the Alone target returns **only one** series of values. If the ``single`` flag is set but more target series are returned, 
+the trigger will change state to **EXCEPTION**.
 
-Example 3. Using single target
+Example 3. Using single and not single targets
 ~~~~~~~~~~~~~~~~~
 
 1. I have metrics:
@@ -134,6 +135,30 @@ Expression — ``(t1 / t2) > 1 ? ERROR : OK``
 
 .. image:: ../_static/advanced_trigger_example_3.png
    :alt: advanced trigger third example
+
+Example 4. Using only single targets
+~~~~~~~~~~~~~~~~~
+
+1. I have metrics:
+
+- ``all_hosts.loadavg`` — Load Average on any of the servers (the same everywhere)
+- ``all_hosts.cpu_count`` — Number of cores on any of the servers (the same everywhere)
+
+1. I'm creating an Advanced Mode trigger:
+
+- t1 — ``all_hosts.loadavg`` — **alone metric**
+- t2 — ``all_hosts.cpu_count`` — **alone metric**
+
+Expression — ``(t1 / t2) < 1 ? OK : ERROR``
+
+3. This results in one metric in the trigger, for which the state is tracked separately:
+
+- ``all_hosts.loadavg`` — expression is calculated for ``t1 = all_hosts.loadavg, t2 = all_hosts.cpu_count``
+
+If the trigger has **all single** targets, there will always be one metric whose name will be the same as the metric for the first target.
+
+.. image:: ../_static/advanced_trigger_example_4.png
+   :alt: advanced trigger fourth example
 
 Templates
 ~~~~~~~~~~~~~~~~~
