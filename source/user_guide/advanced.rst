@@ -144,14 +144,14 @@ Example 4. Using only single targets
 - ``all_hosts.loadavg`` — Load Average on any of the servers (the same everywhere)
 - ``all_hosts.cpu_count`` — Number of cores on any of the servers (the same everywhere)
 
-1. I'm creating an Advanced Mode trigger:
+2. I'm creating an Advanced Mode trigger:
 
 - t1 — ``all_hosts.loadavg`` — **alone metric**
 - t2 — ``all_hosts.cpu_count`` — **alone metric**
 
 Expression — ``(t1 / t2) < 1 ? OK : ERROR``
 
-3. This results in one metric in the trigger, for which the state is tracked separately:
+3. This results in one metric in the trigger:
 
 - ``all_hosts.loadavg`` — expression is calculated for ``t1 = all_hosts.loadavg, t2 = all_hosts.cpu_count``
 
