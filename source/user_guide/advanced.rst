@@ -21,8 +21,13 @@ metrics for this:
 Maybe you can construct a monstrous Graphite expression to reflect
 this combination, but Moira's Advanced Mode is better:
 
-.. image:: ../_static/advanced.png
+.. image:: ../_static/advanced_edit.png
+   :alt: advanced trigger edit
+
+.. image:: ../_static/advanced_trigger.png
    :alt: advanced trigger
+
+`aliasByNode` is needed so that the final name of the metric for two targets is the same
 
 You can use any govaluate_ expression with predefined constants here:
 
@@ -34,16 +39,10 @@ You can use any govaluate_ expression with predefined constants here:
 
 Any incorrect expressions or bad syntax will result in EXCEPTION trigger state.
 
-Alone Metric
--------------
+If you do not use alone metrics, it is important that the names of the metrics received at the output 
+for several targets are the same so that they can be matched. Use `aliasByTags`, `aliasByNode` and other similar functions.
 
-By default, each target returns an array of series of values, which is then involved in the calculation of various expressions and all that would be fine, 
-but problems can arise when calculating arithmetic expressions if the arrays have different sizes.
-
-To solve this problem, a ``single`` checkbox appears in the Moira web interface **after adding new targets**, which means 
-that the target returns a single series of values that can be easily used when calculating any expressions.
-
-Example 1. (without using single)
+Example 1. Correct use of Advanced Mode
 ~~~~~~~~~~~~~~~~~
 
 1. I have metrics:
@@ -51,7 +50,7 @@ Example 1. (without using single)
 - ``host1.loadavg`` — Load Average on server host1
 - ``host2.loadavg``
 - ``host3.loadavg``
-- ``host1.cpu_count`` — number of cores on host1
+- ``host1.cpu_count`` — Number of cores on host1
 - ``host2.cpu_count``
 - ``host3.cpu_count``
 
@@ -60,39 +59,109 @@ Example 1. (without using single)
 - t1 — ``aliasByNode(*.loadavg, 0)``
 - t2 — ``aliasByNode(*.cpu_count, 0)``
 
-Expression — ``t1/t2 > 1 ? ERROR : OK``
+Expression — ``(t1 / t2) > 1 ? ERROR : OK``
 
 3. This results in three metrics in the trigger, for which the state is tracked separately:
 
 - ``host1`` — expression is calculated for ``t1 = host1.loadavg, t2 = host1.cpu_count`` 
 - ``host2`` — expression is calculated for ``t1 = host2.loadavg, t2 = host2.cpu_count``  
-- ``host3`` — expression is calculated for ``t1 = host3.loadavg, t2 = host3.cpu_count`` 
+- ``host3`` — expression is calculated for ``t1 = host3.loadavg, t2 = host3.cpu_count``
 
-Example 2. (using single)
+.. image:: ../_static/advanced_trigger_example_1.png
+   :alt: advanced trigger first example
+
+Example 2. Incorrect use of Advanced Mode
 ~~~~~~~~~~~~~~~~~
 
 1. I have metrics:
 
 - ``host1.loadavg`` — Load Average on server host1
-- ``host2.loadavg``  
-- ``host3.loadavg`` 
-- ``all_hosts.cpu_count`` — number of cores on any of the servers (the same everywhere)
+- ``host1.cpu_count`` — Number of cores on host1
+
+2. I'm creating an Advanced Mode trigger:
+
+- t1 — ``aliasByNode(*.loadavg, 1)``
+- t2 — ``aliasByNode(*.cpu_count, 1)``
+
+Expression — ``(t1 / t2) > 1 ? ERROR : OK``
+
+3. This results in two metrics in the trigger:
+
+- ``loadavg`` — expression is calculated for ``t1 = host1.loadavg, t2 = NaN``, ``NaN`` appeared because there are no metrics named ``loadavg`` in the second target.
+- ``cpu_count`` — expression is calculated for ``t1 = NaN, t2 = host2.cpu_count``, ``NaN`` appeared because there are no metrics named ``cpu_count`` in the first target.
+  
+``NaN`` is a series in which there are no points, it will not be possible to correctly calculate the expression with it, 
+so both final metrics will be in **NODATA**.
+
+.. image:: ../_static/advanced_trigger_example_2.png
+   :alt: advanced trigger second example
+
+Alone Target
+~~~~~~~~~~~~~~~~~
+
+Alone targets are targets that result in a single metric, for example, you can use grouping functions
+(`groupByNode`, `groupByTags` and other similar ones) for such targets.
+
+The advantage of such targets is that it is very easy to use them in Advanced Mode, 
+it is not necessary that the metrics that result from such targets have the same name as the metrics of non alone targets.
+
+A ``single`` checkbox appears in the Moira web interface **after adding new targets** to mark some target as Alone.
+
+It is important that the Alone target returns **only one** series of values. If the ``single`` flag is set but more target series are returned, 
+the trigger will change state to **EXCEPTION**.
+
+Example 3. Using single and not single targets
+~~~~~~~~~~~~~~~~~
+
+1. I have metrics:
+
+- ``host1.loadavg`` — Load Average on server host1
+- ``host2.loadavg``
+- ``host3.loadavg``
+- ``all_hosts.cpu_count`` — Number of cores on any of the servers (the same everywhere)
 
 2. I'm creating an Advanced Mode trigger:
 
 - t1 — ``aliasByNode(*.loadavg, 0)`` 
 - t2 — ``all_hosts.cpu_count`` — **alone metric**
 
-Expression — ``t1/t2 > 1 ? ERROR : OK``
+Expression — ``(t1 / t2) > 1 ? ERROR : OK``
 
 3. This results in three metrics in the trigger, for which the state is tracked separately:
 
 - ``host1`` — expression is calculated for ``t1 = host1.loadavg, t2 = all_hosts.cpu_count`` 
 - ``host2`` — expression is calculated for ``t1 = host2.loadavg, t2 = all_hosts.cpu_count`` 
-- ``host3`` — expression is calculated for ``t1 = host3.loadavg, t2 = all_hosts.cpu_count``  
+- ``host3`` — expression is calculated for ``t1 = host3.loadavg, t2 = all_hosts.cpu_count`` 
+
+.. image:: ../_static/advanced_trigger_example_3.png
+   :alt: advanced trigger third example
+
+Example 4. Using only single targets
+~~~~~~~~~~~~~~~~~
+
+1. I have metrics:
+
+- ``all_hosts.loadavg`` — Load Average on any of the servers (the same everywhere)
+- ``all_hosts.cpu_count`` — Number of cores on any of the servers (the same everywhere)
+
+2. I'm creating an Advanced Mode trigger:
+
+- t1 — ``all_hosts.loadavg`` — **alone metric**
+- t2 — ``all_hosts.cpu_count`` — **alone metric**
+
+Expression — ``(t1 / t2) < 1 ? OK : ERROR``
+
+3. This results in one metric in the trigger:
+
+- ``all_hosts.loadavg`` — expression is calculated for ``t1 = all_hosts.loadavg, t2 = all_hosts.cpu_count``
+
+If the trigger has **all single** targets, there will always be one metric whose name will be the same as the metric for the first target.
+
+.. image:: ../_static/advanced_trigger_example_4.png
+   :alt: advanced trigger fourth example
 
 Templates
--------------
+~~~~~~~~~~~~~~~~~
 
 The template is supported by Moira, the template implements data-driven templates for generating textual output.
 Information about how to program the templates themselves, see the `documentation. <https://golang.org/pkg/html/template/>`_
@@ -147,12 +216,12 @@ Also you can use some methods for events:
 
 
 Data source
-------------
+~~~~~~~~~~~~~~~~~
 
 If :ref:`graphite-remote-triggers-checker` or :ref:`prometheus-remote-triggers-checker` is enabled, you can
 choose between following Data Sources:
 
-- Local_ — Moira database. By default Redis stores data for only several hours.
+- Local_ — Moira database. By default Redis stores data for only several hours.
   It covers most of user cases when you need real-time alerting.
 - Graphite_ — remote Graphite-like HTTP API. It should be used only when you
   need to get metrics for a large period.
