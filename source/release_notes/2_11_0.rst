@@ -1,0 +1,40 @@
+2.11.0
+=====
+
+What’s Changed
+--------------
+
+*Incompatible changes*
+
+ * To realize the feature with multiple senders of the same type we have changed the configuration of senders in notifier config and web api config.
+ * It is necessary to replace the `contacts` field in the web config api with `contacts_template`.
+ * It is also necessary to replace field `type` with `sender_type` in notifier config and add field `contact_type`, which will refer to `type` in web config `contacts_template`.
+
+*Major Changes*
+
+ * Add ability to scale senders with same type.
+   Read more in notifier docs (:ref:`notifier-configuration`)
+   https://github.com/moira-alert/moira/pull/994
+   (by @almostinf)
+
+ * Add ability to use template webhook body and custom headers.
+   Read more in webhook docs
+   https://github.com/moira-alert/moira/pull/995
+   (by @almostinf)
+
+*Minor Changes*
+
+ * Add contacts logo uri to web config.
+   Read more in api docs (:ref:`api-and-web-config`)
+   https://github.com/moira-alert/moira/pull/1005
+   (by @almostinf)
+
+ * Update go to 1.21.
+   https://github.com/moira-alert/moira/pull/1008
+   (by @tetrergeru)
+
+*Fixes*
+
+ * Fix filter connection, heartbeat and create matching handler logs level.
+   https://github.com/moira-alert/moira/pull/1010
+   (by @almostinf)

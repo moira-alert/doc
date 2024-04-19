@@ -5,6 +5,8 @@ By default, microservices will look for ``/etc/moira/<servicename>.yml``,
 but you can change this location by passing your path as a command-line
 parameter ``--config``.
 
+**Important**: Incorrect configuration format may cause the service to crash at startup
+
 On this page you can find examples of configuration files
 for Moira microservices.
 
