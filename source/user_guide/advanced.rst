@@ -45,7 +45,7 @@ for several targets are the same so that they can be matched. Use `aliasByTags`,
 Example 1. Correct use of Advanced Mode
 ~~~~~~~~~~~~~~~~~
 
-1. I have metrics:
+1. Suppose you have metrics:
 
 - ``host1.loadavg`` — Load Average on server host1
 - ``host2.loadavg``
@@ -54,7 +54,7 @@ Example 1. Correct use of Advanced Mode
 - ``host2.cpu_count``
 - ``host3.cpu_count``
 
-2. I'm creating an Advanced Mode trigger:
+2. You are creating an Advanced Mode trigger:
 
 - t1 — ``aliasByNode(*.loadavg, 0)``
 - t2 — ``aliasByNode(*.cpu_count, 0)``
@@ -73,12 +73,12 @@ Expression — ``(t1 / t2) > 1 ? ERROR : OK``
 Example 2. Incorrect use of Advanced Mode
 ~~~~~~~~~~~~~~~~~
 
-1. I have metrics:
+1. Suppose you have metrics:
 
 - ``host1.loadavg`` — Load Average on server host1
 - ``host1.cpu_count`` — Number of cores on host1
 
-2. I'm creating an Advanced Mode trigger:
+2. You are creating an Advanced Mode trigger:
 
 - t1 — ``aliasByNode(*.loadavg, 1)``
 - t2 — ``aliasByNode(*.cpu_count, 1)``
@@ -113,14 +113,14 @@ the trigger will change state to **EXCEPTION**.
 Example 3. Using single and not single targets
 ~~~~~~~~~~~~~~~~~
 
-1. I have metrics:
+1. Suppose you have metrics:
 
 - ``host1.loadavg`` — Load Average on server host1
 - ``host2.loadavg``
 - ``host3.loadavg``
 - ``all_hosts.cpu_count`` — Number of cores on any of the servers (the same everywhere)
 
-2. I'm creating an Advanced Mode trigger:
+2. You are creating an Advanced Mode trigger:
 
 - t1 — ``aliasByNode(*.loadavg, 0)`` 
 - t2 — ``all_hosts.cpu_count`` — **alone metric**
@@ -139,12 +139,12 @@ Expression — ``(t1 / t2) > 1 ? ERROR : OK``
 Example 4. Using only single targets
 ~~~~~~~~~~~~~~~~~
 
-1. I have metrics:
+1. Suppose you have metrics:
 
 - ``all_hosts.loadavg`` — Load Average on any of the servers (the same everywhere)
 - ``all_hosts.cpu_count`` — Number of cores on any of the servers (the same everywhere)
 
-2. I'm creating an Advanced Mode trigger:
+2. You are creating an Advanced Mode trigger:
 
 - t1 — ``all_hosts.loadavg`` — **alone metric**
 - t2 — ``all_hosts.cpu_count`` — **alone metric**
