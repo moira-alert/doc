@@ -26,10 +26,11 @@ redis:
   # Skip this setting or set 0 for default.
   write_timeout: 5s
   # Enables read-only commands on slave nodes
-  read_only: true
+  # Notifer requires master and slaves to synchronize too fast, so it is safer to turn this flag off
+  read_only: false
   # Allows routing read-only commands to the **random** master or slave node
   # It automatically enables ReadOnly
-  route_randomly: true
+  route_randomly: false
   # Allows routing read-only commands to the **closest** master or slave node
   # It automatically enables ReadOnly
   route_by_latency: false
