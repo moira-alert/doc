@@ -26,6 +26,7 @@ redis:
   # Skip this setting or set 0 for default.
   write_timeout: 5s
   # Enables read-only commands on slave nodes
+  # Flagged automatically as true when `route_randomly` or `route_by_latency` is selected
   read_only: true
   # Allows routing read-only commands to the **random** master or slave node
   # It automatically enables ReadOnly
