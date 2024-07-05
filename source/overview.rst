@@ -109,6 +109,8 @@ API
 ^^^
 
 API is an application that serves as a backend for UI.
+The Moira API is documented in swagger at https://app.swaggerhub.com/apis/Moira/moira-alert/master 
+or at the relative path ``/api/swagger/index.html``.
 
 
 Web 2.0

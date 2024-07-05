@@ -1,0 +1,99 @@
+2.11.1
+=====
+
+What’s Changed
+--------------
+
+*Major Changes*
+
+ * Add clean up moira patterns metrics key in cli command ``--cleanup-pattern-metrics``.
+   Be careful using this command, it can save checker resources a lot, however it changes the default behavior of `transformNull` in Moira, 
+   in fact the moment you use this command the function stops working for metrics that did not come to Moira more than `metrics_ttl`. 
+   If you do a nightly cleanup in cronjob, the behavior of the function becomes similar in Graphite.
+   https://github.com/moira-alert/moira/pull/1011
+   https://github.com/moira-alert/moira/pull/1019
+   (by @almostinf)
+
+ * Add ability to read from slaves in redis cluster.
+   Read more in the redis configuration of each service (:ref:`checker-configuration`, :ref:`notifier-configuration`, :ref:`api-and-web-config`, :ref:`filter-configuration`).
+   https://github.com/moira-alert/moira/pull/1025
+   (by @tetrergeru)
+
+*Minor Changes*
+
+ * Move batch forced save timeout to filter config.
+   Read more in filter docs (:ref:`filter-configuration`).
+   https://github.com/moira-alert/moira/pull/1014
+   (by @tetrergeru)
+
+ * Add remove future metrics in cli with command ``--cleanup-future-metrics``.
+   Also added discarding such metrics that are written further into the future than the current time plus `drop_metrics_ttl`.
+   https://github.com/moira-alert/moira/pull/1012
+   (by @almostinf)
+
+ * Add ability for admins to create contacts and subscriptions for other users and teams.
+   https://github.com/moira-alert/moira/pull/1024
+   (by @tetrergeru)
+
+ * Add custom name field to contacts.
+   https://github.com/moira-alert/moira/pull/1021
+   (by @almostinf)
+
+ * Add emoji support in Mattermost notifications.
+   Read more in notifier docs (:ref:`notifier-configuration`).
+   https://github.com/moira-alert/moira/pull/1028
+   (by @kissken)
+
+ * Forbidden create unresolved contact type.
+   https://github.com/moira-alert/moira/pull/1030
+   https://github.com/moira-alert/moira/pull/1030
+   (by @almostinf)
+
+ * Add user authorization info to /api/user/settings.
+   https://github.com/moira-alert/moira/pull/1034
+   (by @tetrergeru)
+
+ * Add a cli command ``--remove-unused-triggers-with-ttl`` to remove unsubscribed triggers 
+   that have not been modified within the time passed.
+   https://github.com/moira-alert/moira/pull/1033
+   (by @kissken)
+
+ * Remove benchmarks from CI.
+   https://github.com/moira-alert/moira/pull/1032
+   (by @almostinf)
+
+ * Improve perfomance of `restoreMetricStringByNameAndLabels` function.
+   It reduced allocations by more than a factor of two in filters.
+   https://github.com/moira-alert/moira/pull/1039
+   https://github.com/moira-alert/moira/pull/1045
+   (by @almostinf)
+
+ * Add cache for pattern matching handler in filters.
+   This increased the speed of building the tree by ~20%.
+   Read more in filter docs (:ref:`filter-configuration`).
+   https://github.com/moira-alert/moira/pull/1038
+   (by @almostinf)
+
+*Fixes*
+ 
+ * Fix workers lock key in discord and telegram.
+   https://github.com/moira-alert/moira/pull/1027
+   (by @almostinf)
+
+ * Increase local `stop_checking_interval`.
+   https://github.com/moira-alert/moira/pull/1041
+   (by @almostinf)
+
+ * Don't rewrite error while compare trigger states.
+   https://github.com/moira-alert/moira/pull/1035
+   (by @kissken)
+
+*Dependencies*
+
+ * Update golang image in docker to 1.21.
+   https://github.com/moira-alert/moira/pull/1026
+   (by @tetrergeru)
+ 
+ * Upgrade Mattermost client and improve the look of the notifications in Mattermost.
+   https://github.com/moira-alert/moira/pull/1023
+   (by @kissken)

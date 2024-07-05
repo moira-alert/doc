@@ -25,6 +25,15 @@ redis:
   # with a timeout instead of blocking. Default is ReadTimeout.
   # Skip this setting or set 0 for default.
   write_timeout: 5s
+  # Enables read-only commands on slave nodes
+  # The flag does not work without `route_randomly` or `route_by_latency` set to true
+  read_only: true
+  # Allows routing read-only commands to the **random** master or slave node
+  # It automatically enables ReadOnly
+  route_randomly: true
+  # Allows routing read-only commands to the **closest** master or slave node
+  # It automatically enables ReadOnly
+  route_by_latency: false
 telemetry:
   # Common port for all telemetry data: Prometheus scraping, pprof, etc.
   listen: ":8091"

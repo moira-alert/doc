@@ -25,6 +25,16 @@ redis:
   # with a timeout instead of blocking. Default is ReadTimeout.
   # Skip this setting or set 0 for default.
   write_timeout: 5s
+  # Enables read-only commands on slave nodes
+  # The flag does not work without `route_randomly` or `route_by_latency` set to true
+  # Notifer requires master and slaves to synchronize too fast, so it is safer to turn this flag off
+  read_only: false
+  # Allows routing read-only commands to the **random** master or slave node
+  # It automatically enables ReadOnly
+  route_randomly: false
+  # Allows routing read-only commands to the **closest** master or slave node
+  # It automatically enables ReadOnly
+  route_by_latency: false
 telemetry:
   # Common port for all telemetry data: Prometheus scraping, pprof, etc.
   listen: ":8091"
@@ -74,7 +84,40 @@ notifier:
       # Api token for your moira notifications slack user, for more info see https://get.slack.help/hc/en-us/articles/215770388-Create-and-regenerate-API-tokens
       api_token: ...
       # If true, notification will be sent with state-specific icon, for more info see https://moira.readthedocs.io/en/latest/installation/configuration.html#slack-icons.
-      use_emoji: false
+      use_emoji: true
+      # Used if `emoji_map` does not find `emoji` by any metric state in `emoji_map`
+      default_emoji: ':moira-state-ok:'
+      # Sets the correspondence between the emoji used and the state of the metrics in the notification in Slack
+      # Default fill is shown below
+      emoji_map:
+        'OK': ':moira-state-ok:'
+        'WARN': ':moira-state-warn:'
+        'ERROR': ':moira-state-error:'
+        'NODATA': ':moira-state-nodata:'
+        'EXCEPTION': ':moira-state-exception:'
+        'TEST': ':moira-state-test:'
+    - sender_type: mattermost
+      contact_type: mattermost
+      # Sets the url to the Mattermost API for the client
+      url: ...
+      # Controls whether a client verifies the server's certificate chain and host name
+      # If it's is true, crypto/tls accepts any certificate presented by the server and any host name in that certificate
+      insecure_tls: false
+      # Api token for moira notifications Mattermost client
+      api_token: ...
+      # If true, notification will be sent with state-specific icon
+      use_emoji: true
+      # Used if `emoji_map` does not find `emoji` by any metric state in `emoji_map`
+      default_emoji: ':moira-state-ok:'
+      # Sets the correspondence between the emoji used and the state of the metrics in the notification in Mattermost
+      # Default fill is shown below
+      emoji_map:
+        'OK': ':moira-state-ok:'
+        'WARN': ':moira-state-warn:'
+        'ERROR': ':moira-state-error:'
+        'NODATA': ':moira-state-nodata:'
+        'EXCEPTION': ':moira-state-exception:'
+        'TEST': ':moira-state-test:'
     - sender_type: telegram
       contact_type: telegram
       # Api token for your telegram bot, for more info about creating bot and get token see https://core.telegram.org/bots#3-how-do-i-create-a-bot

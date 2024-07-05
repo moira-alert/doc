@@ -25,6 +25,15 @@ redis:
   # with a timeout instead of blocking. Default is ReadTimeout.
   # Skip this setting or set 0 for default.
   write_timeout: 5s
+  # Enables read-only commands on slave nodes
+  # The flag does not work without `route_randomly` or `route_by_latency` set to true
+  read_only: true
+  # Allows routing read-only commands to the **random** master or slave node
+  # It automatically enables ReadOnly
+  route_randomly: true
+  # Allows routing read-only commands to the **closest** master or slave node
+  # It automatically enables ReadOnly
+  route_by_latency: false
 telemetry:
   # Common port for all telemetry data: Prometheus scraping, pprof, etc.
   listen: ":8091"
@@ -52,7 +61,7 @@ checker:
   # Lazy triggers checker works if lazy_triggers_check_interval > check_interval. We recommend setting it to 10m.
   lazy_triggers_check_interval: 10m
   # Period to cancel forced checks for all triggers if no metrics were received (greater than 'local.check_interval')
-  stop_checking_interval: 30s
+  stop_checking_interval: 3600s
   # Time after which the check is considered critically slow. Such checks are logged for debug purposes
   # default: 1h
   critical_time_of_check: 10m
