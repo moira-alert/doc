@@ -70,6 +70,7 @@ What’s Changed
 
  * Add cache for pattern matching handler in filters.
    This increased the speed of building the tree by ~20%.
+   Read more in filter docs (:ref:`filter-configuration`).
    https://github.com/moira-alert/moira/pull/1038
    (by @almostinf)
 
