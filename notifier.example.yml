@@ -57,6 +57,8 @@ notifier:
   sender_timeout: 10s
   # Hard timeout to stop retrying to send notification after multiple failed attempts
   resending_timeout: "1:00"
+  # Delay before performing one more send attempt
+  rescheduling_delay: 60s
   # Web-UI uri prefix for trigger links in notifications. For example: with 'http://localhost' every notification will contain link like 'http://localhost/trigger/triggerId'
   front_uri: "https://moira.example.com"
   # Timezone to use to convert ticks. Default is UTC. See https://golang.org/pkg/time/#LoadLocation for more details.

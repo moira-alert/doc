@@ -105,7 +105,7 @@ web:
         - execute command `/start`;
         - type your login in above field as `@login`.
 
-        ### In group chat:
+        ### In group chat (with or without topics):
         - invite bot [@YourMoiraBot](https://t.me/YourMoiraBot) into chat;
         - execute command `/start@YourMoiraBot`;
         - bot will send you chat name, you should type it without extra characters in above field.

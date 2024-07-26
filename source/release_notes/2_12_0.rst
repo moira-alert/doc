@@ -1,0 +1,41 @@
+2.12.0
+=====
+
+What’s Changed
+--------------
+
+*Major Changes*
+
+ * Add support group topics in Telegram sender.
+   The instruction for adding such contacts are the same as in group chats (:ref:`api-and-web-config`).
+   https://github.com/moira-alert/moira/pull/1044
+   https://github.com/moira-alert/moira/pull/1022
+   (by @Gaspero & @almostinf)
+
+*Minor Changes*
+
+ * Add filling with default values of ``ttl_state``, ``ttl`` and ``sched`` fields in the trigger dto.
+   https://github.com/moira-alert/moira/pull/1047
+   (by @AleksandrMatsko)
+
+ * Add validating of ``alone_metrics`` field in trigger dto.
+   https://github.com/moira-alert/moira/pull/1049
+   (by @AleksandrMatsko)
+
+ * Accelerate handling of non-strict asterisk tags.
+   https://github.com/moira-alert/moira/pull/1050
+   (by @almostinf)
+
+ * Added more info (``clusted_id`` and ``source``) to trigger check failed logs.
+   https://github.com/moira-alert/moira/pull/1052
+   (by @kissken)
+
+ * Make configurable rescheduling delay in notifier.
+   Read more in notifier docs (:ref:`notifier-configuration`).
+   https://github.com/moira-alert/moira/pull/1046
+   (by @AleksandrMatsko)
+
+ * Replaced old notifiers logs about plotting with more informative logs with sending notifications.
+   https://github.com/moira-alert/moira/pull/1054
+   https://github.com/moira-alert/moira/pull/1057
+   (by @AleksandrMatsko)
