@@ -11,7 +11,7 @@ On the side page you may see statistics per trigger in particular time range.
 .. image:: ../_static/contact-events-per-trigger.png
    :alt: contact events per trigger
 
-And events groupped by trigger transitions.
+You can also see events groupped by trigger transitions.
 
 .. image:: ../_static/trigger-transition-stats.png
    :alt: trigger transition stats
