@@ -205,6 +205,9 @@ notifier:
     last_remote_check_delay: 300s
     # Self state monitor alerting interval
     notice_interval: 300s
+    # Maximum contact events storage interval
+    notification_history:
+      ttl: "48h"
     # Self state monitor check interval (default 10s)
     check_interval: 10s
     # Count available mute resend call, if more than set - you see error in logs (default 3)
