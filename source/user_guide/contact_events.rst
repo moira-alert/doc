@@ -16,5 +16,4 @@ And events groupped by trigger transitions.
 .. image:: ../_static/trigger-transition-stats.png
    :alt: trigger transition stats
 
-Storage time interval may be configured, see Configuration page for details.
-
+Storage time interval can be configured, see :doc:`/installation/configuration` for details.
