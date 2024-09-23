@@ -6,7 +6,7 @@ To track notifications in a specific delivery channel, you can use the "Events" 
 .. image:: ../_static/contact-events-button.png
    :alt: contact events button
 
-On the side page you may see statistics per trigger in particular time range.
+On the side page you can see statistics per trigger in particular time range.
 
 .. image:: ../_static/contact-events-per-trigger.png
    :alt: contact events per trigger
