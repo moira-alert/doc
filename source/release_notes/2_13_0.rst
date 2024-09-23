@@ -1,0 +1,39 @@
+2.13.0
+=====
+
+What’s Changed
+--------------
+
+*Major Changes*
+
+* Add trigger description to telegram alerts
+  https://github.com/moira-alert/moira/pull/1075 (by @AleksandrMatsko)
+* fix (api): contact notification history
+  You need to update with the command ``cli --update --from-version '2.12'``.
+  https://github.com/moira-alert/moira/pull/1051  (by @AleksandrMatsko)
+
+
+*Minor Changes*
+
+* fix(filter): fix support custom retention for tagged metrics 
+  https://github.com/moira-alert/moira/pull/950 (by @kissken)
+* feat(api): query params to event history
+  https://github.com/moira-alert/moira/pull/1072 (by @AleksandrMatsko)
+* fix(notifier): fixed sending of notifications with schedule between different days
+  https://github.com/moira-alert/moira/pull/1069 (by @almostinf)
+* feat(notifier): add ability to move contacts and subscriptions between users and teams
+  https://github.com/moira-alert/moira/pull/1067 (by @almostinf)
+* fix(checker): fix skip first metric value
+  https://github.com/moira-alert/moira/pull/1007 (by @almostinf)
+* fix: counting of trigger events
+  https://github.com/moira-alert/moira/pull/1076 (by @AleksandrMatsko)
+* fix(config): redis sentinel
+  https://github.com/moira-alert/moira/pull/1090 (by @almostinf)
+
+## Dependencies
+* chore: update go chart version
+https://github.com/moira-alert/moira/pull/1070 (by @almostinf)
+* feat(build): Upgrade go 1.22
+https://github.com/moira-alert/moira/pull/1062 (by @kissken)
+* build(deps): bump actions/download-artifact from 3 to 4.1.7 in /.github/workflows
+  https://github.com/moira-alert/moira/pull/1079 (by @dependabot)
