@@ -1,5 +1,5 @@
 Pillow
-Sphinx==1.8.5
+Sphinx==5.0.0
 sphinx-rtd-theme
 sphinxcontrib-httpdomain
 sphinxcontrib-images
