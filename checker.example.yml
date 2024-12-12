@@ -38,6 +38,12 @@ redis:
   # Allows routing read-only commands to the **closest** master or slave node
   # It automatically enables ReadOnly
   route_by_latency: false
+  # Minimum backoff between retries. Used to calculate exponential backoff. Default value is 0
+  min_retry_backoff: 1s
+  # Maximum backoff between retries. Used to calculate exponential backoff. Default value is 0
+  max_retry_backoff: 10s
+  # Max amount of attempts to find alive node (in Redis cluster)
+  max_redirects: 4
 telemetry:
   # Common port for all telemetry data: Prometheus scraping, pprof, etc.
   listen: ":8091"
@@ -101,6 +107,46 @@ graphite_remote:
     timeout: 60s
     # Equals to the number of processor cores found on Moira host by default or when variable is defined as 0.
     max_parallel_checks: 0
+    # From 2.14.0
+    # Retries configuration for requests, that fetch data.
+    # Library used for calculating exponential backoff retries: https://pkg.go.dev/github.com/cenkalti/backoff/v4
+    retries:
+      # Initial interval for retry attempt
+      initial_interval: 60s
+      # Used to calc interval between retries: RandomizedRetryInterval = RetryInterval *
+      # * (random value from range [1 - randomization_factor, 1 + randomization_factor])
+      randomization_factor: 0.5
+      # For calculating next: RetryInterval = RetryInterval * multiplier
+      multiplier: 1.5
+      # Caps RetryInterval (NOT RandomizedRetryInterval)
+      max_interval: 120s
+      # If already max_retries_count retries performed, stop retrying.
+      # At least one of (max_retries_count, max_elapsed_time) should be specified
+      max_retries_count: 3
+      # If time passed since first try is more than max_elapsed_time than stop retrying
+      # At least one of (max_retries_count, max_elapsed_time) should be specified
+      max_elapsed_time: 360s
+    # From 2.14.0
+    # Maximum timeout for healthcheck requests
+    heathcheck_timeout: 60s
+    # From 2.14.0
+    # Retries configuration for healthcheck requests (same fields as for retries)
+    heathcheck_retries:
+      # Initial interval for retry attempt
+      initial_interval: 10s
+      # Used to calc interval between retries: RandomizedRetryInterval = RetryInterval *
+      # * (random value from range [1 - randomization_factor, 1 + randomization_factor])
+      randomization_factor: 0.5
+      # For calculating next: RetryInterval = RetryInterval * multiplier
+      multiplier: 1.5
+      # Caps RetryInterval (NOT RandomizedRetryInterval)
+      max_interval: 60s
+      # If already max_retries_count retries performed, stop retrying.
+      # At least one of (max_retries_count, max_elapsed_time) should be specified
+      max_retries_count: 3
+      # If time passed since first try is more than max_elapsed_time than stop retrying
+      # At least one of (max_retries_count, max_elapsed_time) should be specified
+      max_elapsed_time: 200s
 # This section configures the list of prometheus remote triggers sources.
 # See https://moira.readthedocs.io/en/latest/installation/configuration.html#prometheus-remote-triggers-checker for further information
 # Used to be `prometheus` and contain only one source before v2.10
@@ -128,7 +174,7 @@ prometheus_remote:
     # Delay between retries
     retry_timeout: "3s"
     # Don't fetch metrics older than this value from remote storage
-    metricsTTL: "168h"
+    metrics_ttl: "168h"
     # Equals to the number of processor cores found on Moira host by default or when variable is defined as 0.
     max_parallel_checks: 0
 log:
