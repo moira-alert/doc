@@ -40,3 +40,21 @@ Patterns
 
 You can see a list of all Graphite patterns with links to corresponding
 triggers and list of all matching metrics at ``/patterns``.
+
+
+Contacts
+--------
+
+Sometimes you need to find (and/or modify, delete) contact registered in Moira,
+which not belongs to you or your team.
+For this purpose ``/contacts`` page maybe useful.
+If authorization is enabled this page is available only for admins.
+
+
+Teams
+--------
+
+We recommend to use teams to store contacts and subscriptions
+because after creating inside the team they are visible to all team members.
+With ``/teams/all`` you can find all the teams exist in Moira.
+If authorization is enabled this page is available only for admins.
