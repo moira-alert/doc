@@ -30,7 +30,8 @@ What’s Changed
 * fix(config): redis sentinel
   https://github.com/moira-alert/moira/pull/1090 (by @almostinf)
 
-## Dependencies
+*Dependencies*
+
 * chore: update go chart version
 https://github.com/moira-alert/moira/pull/1070 (by @almostinf)
 * feat(build): Upgrade go 1.22
