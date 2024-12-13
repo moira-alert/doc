@@ -18,3 +18,4 @@ from simple and universal to complicated and specific.
    hidden_pages
    maintenance
    selfstate
+   contact_events

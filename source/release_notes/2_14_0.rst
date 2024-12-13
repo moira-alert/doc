@@ -1,0 +1,59 @@
+2.14.0
+=====
+
+What’s Changed
+--------------
+
+*Major*
+
+ * Update cabonapi to v0.17.0
+   https://github.com/moira-alert/moira/pull/1074 (by @Tetrergeru)
+
+   .. warning:: Please note that triggers with invalid alias expressions (e.g. alias by nonexisting nodes or tags) will break after this update
+
+ * Add remote graphite retries
+   https://github.com/moira-alert/moira/pull/1085 (by @AleksandrMatsko)
+
+   .. warning:: Please note that retries must be set in configs for each graphite remote, otherwise servises won't start
+
+ * Add team validation
+   https://github.com/moira-alert/moira/pull/1123 (by @AleksandrMatsko)
+
+   .. warning:: Please note that database migration is required due to this feature. Use ``cli --update --from-version '2.13'``
+
+*Features*
+
+ * Add contact template validation
+   https://github.com/moira-alert/moira/pull/1100 (by @AleksandrMatsko)
+
+ * Add limit for trigger name length
+   https://github.com/moira-alert/moira/pull/1080 (by @AleksandrMatsko)
+
+ * Optimize hot paths in filter
+   https://github.com/moira-alert/moira/pull/1114,
+   https://github.com/moira-alert/moira/pull/1115
+   (by @Tetrergeru)
+
+ * Update sprig
+   https://github.com/moira-alert/moira/pull/1125 (by @kissken)
+
+ * Add api to get all teams
+   https://github.com/moira-alert/moira/pull/1126 (by @AleksandrMatsko)
+
+ * feat: Add retry backoffs and max redirects to database config
+   https://github.com/moira-alert/moira/pull/1068
+   https://github.com/moira-alert/moira/pull/1128 (by @Tetrergeru)
+
+ * Add celebration mode
+   https://github.com/moira-alert/moira/pull/1129 (by @kissken)
+
+ * Add remote graphite trigger validation
+   https://github.com/moira-alert/moira/pull/1127 (by @AleksandrMatsko)
+
+*Fixes*
+
+ * Add validation for prometheus target
+   https://github.com/moira-alert/moira/pull/1077 (by @AleksandrMatsko)
+
+ * Trigger schedule fill
+   https://github.com/moira-alert/moira/pull/1116 (by @AleksandrMatsko)
