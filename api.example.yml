@@ -81,6 +81,10 @@ api:
   # Configurable limits to some Moira entities
   limits:
     # Limits applied to trigger
+    pager:
+      # Default ttl for pager
+      ttl: "30m"
+    # Limits applied to trigger
     trigger:
       # Max amount of characters allowed in trigger name
       # We do not recommend to greatly increase this limit because it can cause failures on sending alerts

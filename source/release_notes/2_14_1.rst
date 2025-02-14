@@ -1,0 +1,39 @@
+2.14.1
+=====
+
+What’s Changed
+--------------
+
+*Deprecation warning*
+
+ * Unify contact dto between /team/settings and /contact (#1138) (by @Tetrergeru)
+
+    .. warning:: Please note, that field ``team`` in contacts dto is deprecated and will be removed in the next version. Please use field ``team_id`` instead.
+
+*Features*
+
+ * Trigger noisiness
+   https://github.com/moira-alert/moira/pull/1131 (by @AleksandrMatsko)
+
+ * Validate trigger patterns
+   https://github.com/moira-alert/moira/pull/1136 (by @AleksandrMatsko)
+
+ * Take pager TTL from config instead of hardcoded const
+   https://github.com/moira-alert/moira/pull/1139 (by @HeavyPunk)
+
+*Fixes and chores*
+
+ * Notifier metric alive count
+   https://github.com/moira-alert/moira/pull/1130 (by @AleksandrMatsko)
+
+ * Bump deps
+   https://github.com/moira-alert/moira/pull/1132 (by @AleksandrMatsko)
+
+ * Checker handle source unavailable
+   https://github.com/moira-alert/moira/pull/1134 (by @AleksandrMatsko)
+
+ * Fix swagger type for typeOfProblem
+   https://github.com/moira-alert/moira/pull/1141 (by @kissken)
+
+ * Change log to warning if remote unavailable
+   https://github.com/moira-alert/moira/pull/1142 (by @HeavyPunk)

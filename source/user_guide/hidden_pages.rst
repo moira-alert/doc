@@ -58,3 +58,12 @@ We recommend to use teams to store contacts and subscriptions
 because after creating inside the team they are visible to all team members.
 With ``/teams/all`` you can find all the teams exist in Moira.
 If authorization is enabled this page is available only for admins.
+
+
+Noisiness
+--------
+
+As soon as you've set up your triggers, contact and subscriptions you may want to know
+what triggers generate more events than others.
+With ``/noisiness`` you can find how many events each trigger has generated.
+If authorization is enabled this page is available only for admins.
