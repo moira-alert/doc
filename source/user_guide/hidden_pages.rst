@@ -64,5 +64,6 @@ Noisiness
 --------
 
 As soon as you've set up your triggers, contact and subscriptions you may want to know
-what triggers generate more events than overs.
+what triggers generate more events than others.
 With ``/noisiness`` you can find how many events each trigger has generated.
+If authorization is enabled this page is available only for admins.
