@@ -147,7 +147,7 @@ Content-Type application/json
 
 
 Example of a request without explicitly specifying the request body in the config
--------
+---------------------------------------------------------------------------------
 
 .. code-block:: json
 
@@ -201,7 +201,7 @@ You can also explicitly specify the request body using go-templates.
 Available fields: .Contact.Value and .Contact.Type
 
 Example of a configuration with an explicit request body
--------
+--------------------------------------------------------
 
 .. code-block:: yaml
 
@@ -213,7 +213,7 @@ Example of a configuration with an explicit request body
         test-header: test-value
 
 Example of a request with explicitly specifying the request body in the config 
--------
+------------------------------------------------------------------------------
 
 .. code-block:: json
 
@@ -221,3 +221,151 @@ Example of a request with explicitly specifying the request body in the config
        "name": "test-name",
        "value": "test-contact-value"
    }
+
+Delivery checks
+---------------
+As you may notice, Moira will do her best to send notification.
+But often successful sending doesn't mean that notification was successfully delivered
+(for example if delivering is a long lasting operation).
+
+In order to solve the problem we add the delivery checks support to webhook sender.
+
+First please read the notifier :doc:`/installation/configuration` and pay attention to webhook sender
+
+The most important fields for performing delivery checks is ``url_template`` and ``check_template``.
+These two fields are both `go templates <https://pkg.go.dev/text/template>`_ and support `sprig functions <https://masterminds.github.io/sprig/>`_.
+
+
+How it works?
+~~~~~~~~~~~~~
+
+When the notification is sent (HTTP POST request performed) Moira reads response status code and response body.
+If response code is greater or equal 200 and less than 300, then for Moira it means that notification is sent ok, otherwise sent failed.
+
+After successful notification sending ``url_template`` is filled with data to provide a valid url.
+URL and other necessary information is stored in the database.
+
+Separate goroutine reads such info from database (every ``check_timeout`` seconds) and perform delivery check request (HTTP GET request), with:
+
+* URL got after filling ``url_template``
+* user and password specified in ``delivery_check`` option of config
+* headers specified in ``delivery_check`` option of config and headers from **HTTP Headers** above
+
+If delivery check request succeeds, then the response body and some other fields (you can find details below) is used
+to fill ``check_template``. The result of filling ``check_template`` must be one of a valid delivery states.
+Based on calculated delivery state and already performed attempts Moira will do one of the following things:
+
+* Mark delivery notification ok
+* Mark delivery notification failed
+* Mark that delivery checks is stopped
+* Schedule one more delivery check
+
+``url_template``
+~~~~~~~~~~~~~~~~
+Here is the list of data that available for use in ``url_template``
+
+================== ============== ==============================================
+Attribute          Type           Description
+================== ============== ==============================================
+.Contact.Type      string         Contact type
+.Contact.Value     string         Contact value
+.TriggerID         string         Trigger id
+.SendAlertResponse map[string]any JSON response on POST request decoded into map
+================== ============== ==============================================
+
+For example, if we have:
+
+* Contact.Type: slack
+* Contact.Value: some_channel
+* TriggerID: some-trigger-id
+* And on send alert we have response:
+
+.. code-block:: json
+
+    {
+        "some_value": 25,
+        "another_value": "hello"
+    }
+
+And our ``url_template`` is the following:
+
+.. code-block::
+
+    "https://example.com/{{ .Contact.Type }}/{{ .Contact.Value }}/{{ .TriggerID }}/{{ .SendAlertResponse.another_value }}"
+
+Our result URL  will be:
+
+.. code-block::
+
+    "https://example.com/slack/some_channel/some-trigger-id/hello"
+
+``check_template``
+~~~~~~~~~~~~~~~~~~
+Here is the list of data that available for use in ``check_template``
+
+====================== ================= =================================================================================================================
+Attribute              Type              Description
+====================== ================= =================================================================================================================
+.Contact.Type          string            Contact type
+.Contact.Value         string            Contact value
+.TriggerID             string            Trigger id
+.DeliveryCheckResponse map[string]any    JSON response on GET request decoded into map
+.StateConstants        map[string]string Available delivery states constants. The result of filling template must be one of the constants (see them below)
+====================== ================= =================================================================================================================
+
+StateConstants map
+====================== ==============================================================================
+Constant name          Description
+====================== ==============================================================================
+DeliveryStateOK        Should be returned if notification was successfully delivered
+DeliveryStateFailed    Should be returned if notification definitely was not delivered
+DeliveryStatePending   Should be returned if notification has not yet been delivered
+DeliveryStateException Should be returned if error occurred while understanding the state of delivery
+====================== ==============================================================================
+
+For example, if we have:
+
+* Contact.Type: slack
+* Contact.Value: some_channel
+* TriggerID: some-trigger-id
+* And on delivery check request we have response:
+
+.. code-block:: json
+
+    {
+        "contact_value": "some_channel"
+        "some_value": 25,
+        "important_value": "ok"
+    }
+
+And our ``check_template`` is:
+
+.. code-block::
+
+    {{-if and
+        (eq .DeliveryCheckResponse.contact_value .Contact.Value)
+        (eq .DeliveryCheckResponse.important_value "ok")
+    -}}
+        {{- .StateConstants.DeliveryStateOK -}}
+    {{- else -}}
+        {{- .StateConstants.DeliveryStateFailed -}}
+    {{- end -}}
+
+The result of filling the template will be the value of ``StateConstants.DeliveryStateOK``.
+For Moira this means that notification was successfully delivered.
+
+For the same ``check_template`` but following delivery check request:
+
+.. code-block:: json
+
+    {
+        "contact_value": "some_channel"
+        "some_value": 25,
+        "important_value": "not ok"
+    }
+
+The result of filling the template will be the value of ``StateConstants.DeliveryStateFailed``
+For Moira this means that notification definitely was not delivered.
+
+**Note** that if the result of filling ``check_template`` is one of ``DeliveryStatePending``, ``DeliveryStateException``,
+Moira continues to perform delivery checks until ``max_attempts`` count will be performed.
