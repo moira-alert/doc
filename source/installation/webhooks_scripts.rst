@@ -313,7 +313,8 @@ Attribute              Type              Description
 .StateConstants        map[string]string Available delivery states constants. The result of filling template must be one of the constants (see them below)
 ====================== ================= =================================================================================================================
 
-StateConstants map
+StateConstants map contains the following:
+
 ====================== ==============================================================================
 Constant name          Description
 ====================== ==============================================================================
@@ -354,7 +355,7 @@ And our ``check_template`` is:
 The result of filling the template will be the value of ``StateConstants.DeliveryStateOK``.
 For Moira this means that notification was successfully delivered.
 
-For the same ``check_template`` but following delivery check request:
+For the same ``check_template`` but following delivery check response body:
 
 .. code-block:: json
 
