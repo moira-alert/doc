@@ -230,7 +230,7 @@ But often successful sending doesn't mean that notification was successfully del
 
 In order to solve the problem we add the delivery checks support to webhook sender.
 
-First please read the notifier :doc:`/installation/configuration` and pay attention to webhook sender
+First please read the notifier :doc:`/installation/configuration` and pay attention to webhook sender.
 
 The most important fields for performing delivery checks is ``url_template`` and ``check_template``.
 These two fields are both `go templates <https://pkg.go.dev/text/template>`_ and support `sprig functions <https://masterminds.github.io/sprig/>`_.
@@ -252,12 +252,12 @@ Separate goroutine reads such info from database (every ``check_timeout`` second
 * headers specified in ``delivery_check`` option of config and headers from **HTTP Headers** above
 
 If delivery check request succeeds, then the response body and some other fields (you can find details below) is used
-to fill ``check_template``. The result of filling ``check_template`` must be one of a valid delivery states.
-Based on calculated delivery state and already performed attempts Moira will do one of the following things:
+to fill ``check_template``. The result of filling ``check_template`` must be one of a valid delivery states (also could be found below).
+Based on calculated delivery state and count of already performed attempts Moira will do one of the following things:
 
-* Mark delivery notification ok
-* Mark delivery notification failed
-* Mark that delivery checks is stopped
+* Mark delivery notification ok in metrics
+* Mark delivery notification failed in metrics
+* Mark that delivery checks is stopped in metrics
 * Schedule one more delivery check
 
 ``url_template``
@@ -293,7 +293,7 @@ And our ``url_template`` is the following:
 
     "https://example.com/{{ .Contact.Type }}/{{ .Contact.Value }}/{{ .TriggerID }}/{{ .SendAlertResponse.another_value }}"
 
-Our result URL  will be:
+Our result URL will be:
 
 .. code-block::
 
