@@ -334,7 +334,7 @@ For example, if we have:
 .. code-block:: json
 
     {
-        "contact_value": "some_channel"
+        "contact_value": "some_channel",
         "some_value": 25,
         "important_value": "ok"
     }
@@ -360,7 +360,7 @@ For the same ``check_template`` but following delivery check response body:
 .. code-block:: json
 
     {
-        "contact_value": "some_channel"
+        "contact_value": "some_channel",
         "some_value": 25,
         "important_value": "not ok"
     }
