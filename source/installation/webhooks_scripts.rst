@@ -252,7 +252,8 @@ Separate goroutine reads such info from database (every ``check_timeout`` second
 * headers specified in ``delivery_check`` option of config and headers from **HTTP Headers** above
 
 If delivery check request succeeds, then the response body and some other fields (you can find details below) is used
-to fill ``check_template``. The result of filling ``check_template`` must be one of a valid delivery states (also could be found below).
+to fill ``check_template``. The result of filling ``check_template`` must be one of valid strings
+(which represent delivery states, more info could also be found below).
 Based on calculated delivery state and count of already performed attempts Moira will do one of the following things:
 
 * Mark delivery notification ok in metrics
@@ -272,6 +273,8 @@ Attribute          Type           Description
 .TriggerID         string         Trigger id
 .SendAlertResponse map[string]any JSON response on POST request decoded into map
 ================== ============== ==============================================
+
+The result of filling template must be a valid url.
 
 For example, if we have:
 
@@ -303,26 +306,25 @@ Our result URL will be:
 ~~~~~~~~~~~~~~~~~~
 Here is the list of data that available for use in ``check_template``
 
-====================== ================= =================================================================================================================
-Attribute              Type              Description
-====================== ================= =================================================================================================================
-.Contact.Type          string            Contact type
-.Contact.Value         string            Contact value
-.TriggerID             string            Trigger id
-.DeliveryCheckResponse map[string]any    JSON response on GET request decoded into map
-.StateConstants        map[string]string Available delivery states constants. The result of filling template must be one of the constants (see them below)
-====================== ================= =================================================================================================================
+====================== ============== =============================================
+Attribute              Type           Description
+====================== ============== =============================================
+.Contact.Type          string         Contact type
+.Contact.Value         string         Contact value
+.TriggerID             string         Trigger id
+.DeliveryCheckResponse map[string]any JSON response on GET request decoded into map
+====================== ============== =============================================
 
-StateConstants map contains the following:
+The result of filling the template must be one of the strings below:
 
-====================== ==============================================================================
-Constant name          Description
-====================== ==============================================================================
-DeliveryStateOK        Should be returned if notification was successfully delivered
-DeliveryStateFailed    Should be returned if notification definitely was not delivered
-DeliveryStatePending   Should be returned if notification has not yet been delivered
-DeliveryStateException Should be returned if error occurred while understanding the state of delivery
-====================== ==============================================================================
+============ ==============================================================================
+String value Description
+============ ==============================================================================
+OK           Should be returned if notification was successfully delivered
+FAILED       Should be returned if notification definitely was not delivered
+PENDING      Should be returned if notification has not yet been delivered
+EXCEPTION    Should be returned if error occurred while understanding the state of delivery
+============ ==============================================================================
 
 For example, if we have:
 
@@ -347,12 +349,12 @@ And our ``check_template`` is:
         (eq .DeliveryCheckResponse.contact_value .Contact.Value)
         (eq .DeliveryCheckResponse.important_value "ok")
     -}}
-        {{- .StateConstants.DeliveryStateOK -}}
+        OK
     {{- else -}}
-        {{- .StateConstants.DeliveryStateFailed -}}
+        FAILED
     {{- end -}}
 
-The result of filling the template will be the value of ``StateConstants.DeliveryStateOK``.
+The result of filling the template will be ``OK``.
 For Moira this means that notification was successfully delivered.
 
 For the same ``check_template`` but following delivery check response body:
@@ -365,8 +367,8 @@ For the same ``check_template`` but following delivery check response body:
         "important_value": "not ok"
     }
 
-The result of filling the template will be the value of ``StateConstants.DeliveryStateFailed``
+The result of filling the template will be ``FAILED``.
 For Moira this means that notification definitely was not delivered.
 
-**Note** that if the result of filling ``check_template`` is one of ``DeliveryStatePending``, ``DeliveryStateException``,
+**Note** that if the result of filling ``check_template`` is one of ``PENDING``, ``EXCEPTION``,
 Moira continues to perform delivery checks until ``max_attempts`` count will be performed.

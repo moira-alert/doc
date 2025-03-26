@@ -206,9 +206,9 @@ notifier:
         # for more information please see "Webhooks and Custom Scripts" in the installation section
         check_template: |
           {{- if eq .DeliveryCheckResponse.some_value "#" -}}
-            {{- .StateConstants.DeliveryStateOK -}}
+            OK
           {{- else -}}
-            {{- .StateConstants.DeliveryStatePending -}}
+            PENDING
           {{- end -}}
         # check timeout (in seconds)  is the timeout before performing checks
         # default value is 60
