@@ -66,7 +66,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Moira'
-copyright = u'2023, SKB Kontur'
+copyright = u'2025, SKB Kontur'
 author = u'SKB Kontur'
 
 # The version info for the project you're documenting, acts as replacement for
