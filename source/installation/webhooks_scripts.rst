@@ -263,7 +263,7 @@ Based on calculated delivery state and count of already performed attempts Moira
 
 ``url_template``
 ~~~~~~~~~~~~~~~~
-Here is the list of data that available for use in ``url_template``
+Here is the list of data that is available for use in ``url_template``
 
 ================== ============== ==============================================
 Attribute          Type           Description
