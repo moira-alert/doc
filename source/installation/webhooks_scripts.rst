@@ -236,7 +236,7 @@ The most important fields for performing delivery checks is ``url_template`` and
 These two fields are both `go templates <https://pkg.go.dev/text/template>`_ and support `sprig functions <https://masterminds.github.io/sprig/>`_.
 
 
-How it works?
+How does it work?
 ~~~~~~~~~~~~~
 
 When the notification is sent (HTTP POST request performed) Moira reads response status code and response body.
