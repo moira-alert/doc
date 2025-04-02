@@ -237,7 +237,7 @@ These two fields are both `go templates <https://pkg.go.dev/text/template>`_ and
 
 
 How does it work?
-~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~
 
 When the notification is sent (HTTP POST request performed) Moira reads response status code and response body.
 If response code is greater or equal 200 and less than 300, then for Moira it means that notification is sent ok, otherwise sent failed.
@@ -317,14 +317,14 @@ Attribute              Type           Description
 
 The result of the template filling  must be one of the strings below:
 
-============ ==============================================================================
+============ ===========================================================================
 String value Description
-============ ==============================================================================
+============ ===========================================================================
 OK           Should be returned if notification was successfully delivered
 FAILED       Should be returned if notification definitely was not delivered
 PENDING      Should be returned if notification has not yet been delivered
-EXCEPTION    Should be returned if error occurred while understanding the state of delivery
-============ ==============================================================================
+EXCEPTION    Should be returned if error occurred while evaluating the state of delivery
+============ ===========================================================================
 
 For example, if we have:
 
@@ -354,7 +354,7 @@ And our ``check_template`` is:
         FAILED
     {{- end -}}
 
-The result of filling the template will be ``OK``.
+The result of the template filling will be ``OK``.
 For Moira this means that notification was successfully delivered.
 
 For the same ``check_template`` but following delivery check response body:
@@ -367,7 +367,7 @@ For the same ``check_template`` but following delivery check response body:
         "important_value": "not ok"
     }
 
-The result of the template filling  will be ``FAILED``.
+The result of the template filling will be ``FAILED``.
 For Moira this means that notification definitely was not delivered.
 
 **Note** that if the result of filling ``check_template`` is one of ``PENDING``, ``EXCEPTION``,
