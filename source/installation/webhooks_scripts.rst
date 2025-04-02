@@ -228,7 +228,7 @@ As you may notice, Moira will do her best to send notification.
 But often successful sending doesn't mean that notification was successfully delivered
 (for example if delivering is a long lasting operation).
 
-In order to solve the problem we add the delivery checks support to webhook sender.
+In order to solve the problem we add the delivery checks feature to webhook sender.
 
 First please read the notifier :doc:`/installation/configuration` and pay attention to webhook sender.
 
