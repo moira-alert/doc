@@ -274,7 +274,7 @@ Attribute          Type           Description
 .SendAlertResponse map[string]any JSON response on POST request decoded into map
 ================== ============== ==============================================
 
-The result of filling template must be a valid url.
+The result of  the template filling must be a valid url.
 
 For example, if we have:
 
@@ -315,7 +315,7 @@ Attribute              Type           Description
 .DeliveryCheckResponse map[string]any JSON response on GET request decoded into map
 ====================== ============== =============================================
 
-The result of filling the template must be one of the strings below:
+The result of the template filling  must be one of the strings below:
 
 ============ ==============================================================================
 String value Description
@@ -367,7 +367,7 @@ For the same ``check_template`` but following delivery check response body:
         "important_value": "not ok"
     }
 
-The result of filling the template will be ``FAILED``.
+The result of the template filling  will be ``FAILED``.
 For Moira this means that notification definitely was not delivered.
 
 **Note** that if the result of filling ``check_template`` is one of ``PENDING``, ``EXCEPTION``,
