@@ -113,7 +113,7 @@ notifier:
       # Sets the url to the Mattermost API for the client
       url: ...
       # Controls whether a client verifies the server's certificate chain and host name
-      # If it's is true, crypto/tls accepts any certificate presented by the server and any host name in that certificate
+      # If it is true, crypto/tls accepts any certificate presented by the server and any host name in that certificate
       insecure_tls: false
       # Api token for moira notifications Mattermost client
       api_token: ...
@@ -182,6 +182,43 @@ notifier:
       # headers a field that allows you to set headers in the "key: value" format
       headers:
         test: test-header
+      # Controls whether a client verifies the server's certificate chain and host name
+      # If it is true, crypto/tls accepts any certificate presented by the server and any host name in that certificate
+      insecure_tls: false
+      # enables the delivery metrics for the sender, if the sender can't work with delivery metrics they will have zero values all the time
+      enable_metrics: true
+      # configures the delivery checks to ensure that the notification was successfully delivered
+      delivery_check:
+        # If the delivery checks enabled or not. If enabled, then enable_metrics must be true
+        enabled: true
+        # go template of url, that is used in delivery check request.
+        # must be specified, if enabled = true
+        # for more information please see "Webhooks and Custom Scripts" in the installation section
+        url_template: "http://example.com/{{ .SendAlertRequest.some_request_id }}"
+        # headers allow you to set custom headers for delivery check request (the same as above)
+        headers:
+          test2: test-2-header
+        # Basic authorization parameters (if required)
+        user: ...
+        password: ...
+        # go template for checking notification delivery check
+        # must be specified, if enabled = true
+        # for more information please see "Webhooks and Custom Scripts" in the installation section
+        check_template: |
+          {{- if eq .DeliveryCheckResponse.some_value "#" -}}
+            OK
+          {{- else -}}
+            PENDING
+          {{- end -}}
+        # check timeout (in seconds)  is the timeout before performing checks
+        # default value is 60
+        check_timeout: 60
+        # max attempts for performing delivery check per notification
+        # default is 5
+        max_attempts_count: 5
+        # rescheduling delay is added to time.Now().Unix() than we schedule delivery checks, that need to be checked again
+        # default is 45
+        rescheduling_delay: 45
     # Example of creating multiple webhook type senders
     - sender_type: webhook
       contact_type: webhook2

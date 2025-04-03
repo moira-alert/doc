@@ -15,7 +15,7 @@ We also introduce new UI based on React. It is not backwards-compatible with old
 Breaking Changes
 ^^^^^^^^^^^^^^^^
 
-- New structure of :doc:`installation/configuration` files.
+- New structure of :doc:`../installation/configuration` files.
 - New Advanced mode expression format. Moira 2.0 supports govaluate_ expressions instead of Python expressions. Use ``moira-cli -convert-expressions`` to convert.
 - API methods URLs do not have trailing slashes anymore.
 - API ``/notification`` method returns valid JSON list instead of plain text.
