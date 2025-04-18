@@ -250,8 +250,8 @@ notifier:
     # Max Remote triggers Checker checks perform delay to send alert when reached
     # See https://moira.readthedocs.io/en/latest/installation/configuration.html#graphite-remote-triggers-checker for futher information
     last_remote_check_delay: 300s
-    # Self state monitor alerting interval
-    notice_interval: 300s
+    # Time threshold between last success selfstate check and current check to send user notifications
+    user_notifications_interval: 300s
     # Maximum contact events storage interval
     notification_history:
       ttl: "48h"

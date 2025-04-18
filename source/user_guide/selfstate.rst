@@ -23,7 +23,7 @@ problem**.
 .. warning::
 
   When Self State Monitor detects a problem, it disables any notifications to end users
-  and does not turn it back on without manual intervention.
+  and does not turn it back on when the problem is over.
 
   Please, read this manual before using Self State Monitor in production.
 
@@ -62,7 +62,7 @@ When you turn Self State Monitor on, it works this way:
 * Something breaks down. It can be Graphite-Relay, connection
   to Redis DB or crashed Moira-Filter docker container.
 
-* Self State send alarm message to administrator with issue discription.
+* Self State send alarm message to administrator with issue discription and switch own state to ``WARN``
 
   *Here is an example of message*:
 
@@ -81,6 +81,14 @@ When you turn Self State Monitor on, it works this way:
 
     .. image:: ../_static/helth-check-webui.png
       :alt: WEB UI error notification
+
+* Self State Monitor waits for ``user_notifications_interval`` and switches own state from ``WARN`` to ``ERROR`` if problem persists.
+  Then users will be notified via them system-subscriptions about rised problem.
+
+* If Self State Monitor problem disappeares then it switches own state to ``OK`` and sends notifications by these rules.
+
+  - Self State monitor state mutates from ``WARN`` to ``OK`` then notification about Moira normalize only sends admins.
+  - Self State monitor state mutates from ``ERROR`` to ``OK`` then notification sends both admins and users via system-subscriptions.
 
 -----
 

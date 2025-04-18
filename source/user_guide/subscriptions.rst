@@ -79,6 +79,25 @@ For example:
 
     By using Subscription2 you will receive events only for Trigger1
 
+
+.. _system-tags-description:
+
+System-tags
+-----------
+
+You can create a subscription with special tags provided by Moira Self State Monitor.
+System tags may be defined in Moira's config only and cannot be mutated by any users or admins in Moira's UI.
+
+Users can only subscribe on system tags to receive notifications from Moira Self State Monitor (read about it :doc:`/user_guide/selfstate`).
+
+.. _system-subscriptions-description:
+System-subscriptions
+--------------------
+
+A sub-kind of Moira's subscriptions that have system-tags in tags list.
+This type cannot have a triggers because system-subscriptions are used by Moira Self State Monitor only.
+
+
 .. _subscription-states-transitions:
 
 Ignore Specific States Transitions
