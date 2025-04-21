@@ -17,12 +17,12 @@ it should switch triggers to ``NODATA`` state and send alert messages to users.
 
 To handle this situation properly, we recommend turning on the Self
 State Monitor. In this case, Moira will **prevent itself from sending
-alert messages to end users but notify administrators of the existing
-problem or end users subscribed on Self State alerts (see :ref:`system-subscriptions-description`)**.
+alert messages to end users but will notify administrators of the existing
+problem or end users who have subscribed to Self State alerts (see :ref:`system-subscriptions-description`)**.
 
 .. warning::
 
-  When Self State Monitor detects a problem, it disables notifications to end users by their triggers, but can send notifications about the problem via system-subscriptions. When problem is over Self State Monitor notifies admins about it and end users via system-subscriptions and turn back sending notifications automatically.
+  When Self State Monitor detects a problem, it disables notifications to end users by their triggers, but can send notifications about the problem via system-subscriptions. When the problem resolved, Self State Monitor notifies admins about it and end users via system-subscriptions and turn back sending notifications automatically.
 
   Please, read this manual before using Self State Monitor in production.
 
@@ -82,12 +82,12 @@ When you turn Self State Monitor on, it works this way:
       :alt: WEB UI error notification
 
 * Self State Monitor waits for ``user_notifications_interval`` and switches own state from ``WARN`` to ``ERROR`` if problem persists.
-  Then users will be notified via them system-subscriptions about rised problem.
+  Then users will be notified about the problem via their system-subscriptions.
 
-* If Self State Monitor problem disappeares then it switches own state to ``OK`` and sends notifications by these rules.
+* If problem disappears, the Self State Monitor switches own state to ``OK`` and sends notifications according to these rules.
 
-  - Self State monitor state mutates from ``WARN`` to ``OK`` then notification about Moira normalize sends admins only.
-  - Self State monitor state mutates from ``ERROR`` to ``OK`` then notification sends both admins and users via system-subscriptions.
+  - Self State Monitor state mutates from ``WARN`` to ``OK`` then notification about Moira normalize are sent only to admins.
+  - Self State Monitor state mutates from ``ERROR`` to ``OK`` then notification sends to both admins and users via system-subscriptions.
 
 -----
 
