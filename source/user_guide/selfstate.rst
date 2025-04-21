@@ -89,6 +89,19 @@ When you turn Self State Monitor on, it works this way:
   - Self State Monitor state mutates from ``WARN`` to ``OK`` then notification about Moira normalize are sent only to admins.
   - Self State Monitor state mutates from ``ERROR`` to ``OK`` then notification sends to both admins and users via system-subscriptions.
 
+.. note::
+   For a better understanding, look at pictures below
+   
+If Self State detects a problem, then it possible 2 ways to next actions:
+
+* If problem persists a much more than ``user_notifications_interval``
+  .. image:: ../_static/selfstate_full_cycle_WARN_to_ERROR.png
+   :alt: Self State sends notifications to admins and users
+
+* If problem persists a less than ``user_notifications_interval``
+  .. image:: ../_static/selfstate_full_cycle_WARN_to_OK.png
+   :alt: Self State sends notifications to admins only
+
 -----
 
 .. _notifier-state-api:
