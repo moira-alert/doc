@@ -91,12 +91,14 @@ System tags may be defined in Moira's config only and cannot be mutated by any u
 Users can only subscribe on system tags to receive notifications from Moira Self State Monitor (read about it :doc:`/user_guide/selfstate`).
 
 .. _system-subscriptions-description:
+
 System-subscriptions
 --------------------
 
-A sub-kind of Moira's subscriptions that have system-tags in tags list.
-This type cannot have a triggers because system-subscriptions are used by Moira Self State Monitor only.
+If Self State Monitor detects an error then it sends notification to admins. But if end users want to get notifications about Moira's problems, they can subscribe on Self State Monitor events.
+These subscriptions are called as system-subscriptions. System-subscriptions are sub-kind of Moira's subscriptions that should have only system-tags in tags list.
 
+System-subscriptions cannot be matched to any triggers because it used by Moira Self State Monitor.
 
 .. _subscription-states-transitions:
 

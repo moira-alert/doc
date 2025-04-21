@@ -3,7 +3,7 @@ Self State Monitor
 
 Self State Monitor is a built-in mechanism designed to protect
 end user from false ``NODATA`` notifications and notify administrator
-about issues in Moira and/or Graphite systems.
+and end user about issues in Moira and/or Graphite systems.
 
 
 Why Self State Monitor
@@ -18,12 +18,11 @@ it should switch triggers to ``NODATA`` state and send alert messages to users.
 To handle this situation properly, we recommend turning on the Self
 State Monitor. In this case, Moira will **prevent itself from sending
 alert messages to end users but notify administrators of the existing
-problem**.
+problem or end users subscribed on Self State alerts (see :ref:`system-subscriptions-description`)**.
 
 .. warning::
 
-  When Self State Monitor detects a problem, it disables any notifications to end users
-  and does not turn it back on when the problem is over.
+  When Self State Monitor detects a problem, it disables notifications to end users by their triggers, but can send notifications about the problem via system-subscriptions. When problem is over Self State Monitor notifies admins about it and end users via system-subscriptions and turn back sending notifications automatically.
 
   Please, read this manual before using Self State Monitor in production.
 
@@ -87,7 +86,7 @@ When you turn Self State Monitor on, it works this way:
 
 * If Self State Monitor problem disappeares then it switches own state to ``OK`` and sends notifications by these rules.
 
-  - Self State monitor state mutates from ``WARN`` to ``OK`` then notification about Moira normalize only sends admins.
+  - Self State monitor state mutates from ``WARN`` to ``OK`` then notification about Moira normalize sends admins only.
   - Self State monitor state mutates from ``ERROR`` to ``OK`` then notification sends both admins and users via system-subscriptions.
 
 -----
