@@ -90,6 +90,10 @@ System tags can only be defined in Moira's config and cannot be mutated by any u
 
 Users can only subscribe to system tags to receive notifications from Moira Self State Monitor (read about it :doc:`/user_guide/selfstate`).
 
+  .. note::
+
+    System tags should be defined in a notifier config. Example can be found in the :ref:`Moira-Notifier section <notifier-configuration>`
+
 .. _system-subscriptions-description:
 
 System-subscriptions

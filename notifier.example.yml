@@ -263,6 +263,24 @@ notifier:
     contacts:
       - type: mail
         value: devopsteam@example.com
+    # Heartbeats configuration section
+    selfstate_checks:
+      database:
+        # System-tags matched to this heartbeat. If heartbeat detects a problem, then it will search a system-subscription by thise tags
+        tags:
+         - moira-system-fatal
+      filter:
+        tags:
+         - moira-system-fatal
+      local_checker:
+        tags:
+         - moira-system-fatal
+      notifier:
+        tags:
+         - moira-system-fatal
+      remote_checker:
+        tags:
+         - moira-system-fatal
 log:
   log_file: stdout
   log_level: info
