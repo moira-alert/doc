@@ -100,6 +100,18 @@ These subscriptions are called system-subscriptions. System-subscriptions are su
 
 System-subscriptions cannot be mapped to any triggers because they are used by Moira Self State Monitor.
 
+You can create the system-subscription on subscription creation modal view.
+The first, switch tags selector to "System tags"
+
+.. image:: ../_static/system_subscription_switch_select.png
+
+The second, select subscription tags and delivery channels
+
+.. image:: ../_static/system_subscription_tags.png
+
+Now, you will receive all system notifications from Self State Monitor designed for end-users!
+
+
 .. _subscription-states-transitions:
 
 Ignore Specific States Transitions
