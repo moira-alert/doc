@@ -250,8 +250,8 @@ notifier:
     # Max Remote triggers Checker checks perform delay to send alert when reached
     # See https://moira.readthedocs.io/en/latest/installation/configuration.html#graphite-remote-triggers-checker for futher information
     last_remote_check_delay: 300s
-    # Self state monitor alerting interval
-    notice_interval: 300s
+    # Time threshold between last success selfstate check and current check to send user notifications
+    user_notifications_interval: 300s
     # Maximum contact events storage interval
     notification_history:
       ttl: "48h"
@@ -263,6 +263,24 @@ notifier:
     contacts:
       - type: mail
         value: devopsteam@example.com
+    # Heartbeats configuration section
+    selfstate_checks:
+      database:
+        # System-tags matched to this heartbeat. If heartbeat detects a problem, then it will search a system-subscription by thise tags
+        tags:
+         - moira-system-fatal
+      filter:
+        tags:
+         - moira-system-fatal
+      local_checker:
+        tags:
+         - moira-system-fatal
+      notifier:
+        tags:
+         - moira-system-fatal
+      remote_checker:
+        tags:
+         - moira-system-fatal
 log:
   log_file: stdout
   log_level: info
