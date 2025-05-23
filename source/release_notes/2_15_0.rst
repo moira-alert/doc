@@ -1,0 +1,39 @@
+2.15.0
+=====
+
+What's Changed
+--------------
+
+*Features*
+
+*Major*
+
+* feat(api): added full trigger validation in api by @Tetrergeru in https://github.com/moira-alert/moira/pull/957
+* feat(api): move from swagger v2 to swagger v3 by @kissken
+* feat: system subscriptions on moira's selfstate monitor events. Enable moira automatically when selfstate detects no problem (#1166 #1179 #1190 #1152 #1164). By @HeavyPunk
+* feat(build): Update go into 1.23 by @kissken in https://github.com/moira-alert/moira/pull/1186
+
+*Minor*
+
+* feat: contact noisiness by @AleksandrMatsko in https://github.com/moira-alert/moira/pull/1137
+* feat: senders delivery metrics by @AleksandrMatsko in https://github.com/moira-alert/moira/pull/1143
+* fix: metric maintenace disappearance by @AleksandrMatsko in https://github.com/moira-alert/moira/pull/1145
+* feat: insecure tls option for webhook by @AleksandrMatsko in https://github.com/moira-alert/moira/pull/1154
+* feat: db methods for delivery check and new metric for sender by @AleksandrMatsko in https://github.com/moira-alert/moira/pull/1149
+* feat: controller for delivery checks by @AleksandrMatsko in https://github.com/moira-alert/moira/pull/1157
+* feat: Pass redis connection pool settings to config by @Tetrergeru in https://github.com/moira-alert/moira/pull/1140
+* feat(api): Add ability filer who can delete triggers by @kissken in https://github.com/moira-alert/moira/pull/1184
+* feat(api): Add ability filer who can change triggers by @kissken in https://github.com/moira-alert/moira/pull/1189
+* feat: webhook sender delivery checks by @AleksandrMatsko in https://github.com/moira-alert/moira/pull/1162
+* feat(api): Delete notifications filtered by tags by @Tetrergeru in https://github.com/moira-alert/moira/pull/1187
+
+*Fixes and chores*
+
+* chore: updated linters by @kissken
+* chore: Update mockgen to v0.5.1 by @Tetrergeru in https://github.com/moira-alert/moira/pull/1188
+* fix(filter): Fix metric overrides by @Tetrergeru in https://github.com/moira-alert/moira/pull/1183
+* build: Update dependency by @kissken in https://github.com/moira-alert/moira/pull/1195
+
+
+
+**Full Changelog**: https://github.com/moira-alert/moira/compare/v2.14.1...v2.15.0
