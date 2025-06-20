@@ -113,8 +113,8 @@ metric        String  Metric name
 value         Float64 Metric value
 timestamp     Int64   Event timestamp
 trigger_event Bool    Event type
-state         String  Current metric state
-old_state     String  Previous metric state
+state         State   Current metric state
+old_state     State   Previous metric state
 ============= ======= =====================
 
 
