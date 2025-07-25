@@ -95,6 +95,10 @@ api:
       max_name_size: 100
       # Max amount of characters allowed in team description
       max_description_size: 1000
+    # Limits applied to contact
+    contact:
+      # Amount of time to wait for sending test notification via contact
+      test_notification_wait_time: "10s"
 web:
   # Moira administrator email address
   supportEmail: "devops@example.com"
