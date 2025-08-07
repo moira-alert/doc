@@ -98,6 +98,7 @@ api:
     # Limits applied to contact
     contact:
       # Amount of time to wait for sending test notification via contact
+      # First, a test notification will be sent. Then, wait for the contact score to change, but no longer than the test_notification_wait_time.
       test_notification_wait_time: "10s"
 web:
   # Moira administrator email address
