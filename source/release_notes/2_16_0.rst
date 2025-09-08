@@ -1,0 +1,21 @@
+## What's Changed
+* fix(api): Fixed trigger validation by @HeavyPunk in https://github.com/moira-alert/moira/pull/1196
+* fix: Fixed answer code if no dots to render by @HeavyPunk in https://github.com/moira-alert/moira/pull/1198
+* feat(linter) Add wastedesign linter by @kissken in https://github.com/moira-alert/moira/pull/1201
+* feat: Add proxy for telegram sender by @jollyekb in https://github.com/moira-alert/moira/pull/1203
+* feat(swagger) Add crutch into swagger spec by @kissken in https://github.com/moira-alert/moira/pull/1207
+* feat: Add ExtraMessage to contact in moira by @Tetrergeru in https://github.com/moira-alert/moira/pull/1209
+* feat: Contact score by @HeavyPunk in https://github.com/moira-alert/moira/pull/1204, https://github.com/moira-alert/moira/pull/1205, https://github.com/moira-alert/moira/pull/1206
+* feat: Failed triggers sending by @HeavyPunk in https://github.com/moira-alert/moira/pull/1210, https://github.com/moira-alert/moira/pull/1211, https://github.com/moira-alert/moira/pull/1214
+* fix: NRE on checking tree of problems by @HeavyPunk in https://github.com/moira-alert/moira/pull/1218
+* feat: Disable notifications by source in api by @Tetrergeru in https://github.com/moira-alert/moira/pull/1208, https://github.com/moira-alert/moira/pull/1217, https://github.com/moira-alert/moira/pull/1219, https://github.com/moira-alert/moira/pull/1221
+* feat: Add filtration by metric sources on notification deletion by @Tetrergeru in https://github.com/moira-alert/moira/pull/1222
+* Feat: Support alternative query param list parsing by @Tetrergeru in https://github.com/moira-alert/moira/pull/1226
+* feat: New metric interface by @HeavyPunk in https://github.com/moira-alert/moira/pull/1223
+* feat(build) Upgrade go into 1.24 and go-chart by @kissken in https://github.com/moira-alert/moira/pull/1228
+
+## New Contributors
+* @jollyekb made their first contribution in https://github.com/moira-alert/moira/pull/1203
+* @EduardZaydler made their first contribution in https://github.com/moira-alert/moira/pull/1224
+
+**Full Changelog**: https://github.com/moira-alert/moira/compare/v2.15.0...v2.16.0
