@@ -19,9 +19,4 @@ What's Changed
 * feat: New metric interface by @HeavyPunk in https://github.com/moira-alert/moira/pull/1223
 * feat(build) Upgrade go into 1.24 and go-chart by @kissken in https://github.com/moira-alert/moira/pull/1228
 
-*New Contributors*
-
-* @jollyekb made their first contribution in https://github.com/moira-alert/moira/pull/1203
-* @EduardZaydler made their first contribution in https://github.com/moira-alert/moira/pull/1224
-
 **Full Changelog**: https://github.com/moira-alert/moira/compare/v2.15.0...v2.16.0
