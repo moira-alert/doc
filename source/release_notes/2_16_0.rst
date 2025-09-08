@@ -1,4 +1,9 @@
-## What's Changed
+2.16.0
+=====
+
+What's Changed
+--------------
+
 * fix(api): Fixed trigger validation by @HeavyPunk in https://github.com/moira-alert/moira/pull/1196
 * fix: Fixed answer code if no dots to render by @HeavyPunk in https://github.com/moira-alert/moira/pull/1198
 * feat(linter) Add wastedesign linter by @kissken in https://github.com/moira-alert/moira/pull/1201
@@ -14,7 +19,8 @@
 * feat: New metric interface by @HeavyPunk in https://github.com/moira-alert/moira/pull/1223
 * feat(build) Upgrade go into 1.24 and go-chart by @kissken in https://github.com/moira-alert/moira/pull/1228
 
-## New Contributors
+*New Contributors*
+
 * @jollyekb made their first contribution in https://github.com/moira-alert/moira/pull/1203
 * @EduardZaydler made their first contribution in https://github.com/moira-alert/moira/pull/1224
 
